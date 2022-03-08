@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
-          cd /var/html/www/
+          cd /var/www/html/
           sudo git checkout -b prod
           sudo git pull 
           sudo git status
