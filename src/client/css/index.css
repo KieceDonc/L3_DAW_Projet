@@ -1,0 +1,39 @@
+.brand {
+  font-weight: bold;
+  font-size: 20px; 
+}
+
+.site-header {
+  position: relative;
+  background-color: #def7ff; 
+}
+
+.site-header__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem; 
+}
+
+.site-header__wrapper {
+  justify-content: initial; 
+} 
+
+.site-header__middle {
+  margin-left: auto; 
+} 
+
+.nav__wrapper {
+  display: flex; 
+  list-style-type: none;
+} 
+
+.nav__item a {
+  display: block;
+  padding: 1rem;
+}
+
+.nav__toggle {
+  display: none; 
+}
