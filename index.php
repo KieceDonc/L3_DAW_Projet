@@ -31,7 +31,14 @@
           </nav>
         </div>
         <div class="site-header__end">
-          <a id="header-button" href="./src/client/html/login.php">Sign in/up</a>
+        <?php
+          session_start();
+          if($_SESSION['test'] == 'started'){
+            echo '<a id="header-button" href="#">'.$_SESSION['email'].'</a>';
+          }else{
+            echo '<a id="header-button" href="./src/client/php/login.php">Sign in/up</a>';
+          }
+        ?>
         </div>
       </div>
     </header>

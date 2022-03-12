@@ -14,22 +14,26 @@ if(isset($_POST['email']) && isset($_POST['password'])){
   $email    = mysqli_real_escape_string($db,htmlspecialchars($_POST['email'])); 
   
   if($email !== "" && $password !== ""){
-    $requete = "SELECT count(*) FROM users where email = '".$email."' and password = '".$password."' ";
-    $exec_requete = mysqli_query($db,$requete);
-    $reponse      = mysqli_fetch_array($exec_requete);
+    $requete = "SELECT count(*) FROM dev_users where email = '".$email."' and password = '".$password."' ";
+    $result = mysqli_query($db,$requete,MYSQLI_STORE_RESULT);
+    $reponse = $result->fetch_assoc();
     $count = $reponse['count(*)'];
+
     if($count!=0){ 
       // nom d'utilisateur et mot de passe correctes
+      $_SESSION['test'] = 'started';
       $_SESSION['email'] = $email;
-      header('Location: index.html');
+      header('Location: ../../../index.php');
     }else{
       // utilisateur ou mot de passe incorrect
-      header('Location: login.php?erreur');
+      header('Location: login.php?erreur=incorrect');
     }
+
   }else{
     // utilisateur ou mot de passe vide
-    header('Location: login.php?erreur'); 
+    header('Location: login.php?erreur=empty'); 
   }
+  
 }else{
   header('Location: login.php');
 }
