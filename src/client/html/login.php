@@ -11,7 +11,7 @@
     <div id="container">
       <!-- zone de connexion -->
       
-      <form action="../php/checklogin.php" method="POST">
+      <form action="./checklogin.php" method="POST">
           <h1>Connexion</h1>
           
           <label><b>Email</b></label>
