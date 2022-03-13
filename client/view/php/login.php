@@ -5,13 +5,13 @@
     <title>E-lolning</title>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="./src/client/css/font-face.css" />
+    <link rel="stylesheet" href="../css/font-face.css" />
   </head>
   <body>
     <div id="container">
       <!-- zone de connexion -->
       
-      <form action="./checklogin.php" method="POST">
+      <form action="../../controller/checkLogin.php" method="POST">
           <h1>Connexion</h1>
           
           <label><b>Email</b></label>
@@ -29,7 +29,5 @@
           ?>
       </form>
     </div>
-    <!-- JS -->
-    <script src="./src/client/js/login.js"></script>
   </body>
 </html>

@@ -5,9 +5,9 @@
     <title>E-lolning</title>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="./src/client/css/font-face.css" />
-    <link rel="stylesheet" href="./src/client/css/shared.css" />
-    <link rel="stylesheet" href="./src/client/css/TO_CHANGE.css" />
+    <link rel="stylesheet" href="../css/font-face.css" />
+    <link rel="stylesheet" href="../css/shared.css" />
+    <link rel="stylesheet" href="../css/TO_CHANGE.css" />
   </head>
   <body>
     <header class="site-header">
