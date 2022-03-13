@@ -22,8 +22,8 @@
 
           <input type="submit" id='submit' value='login' >
           <?php
-          if(isset($_GET['erreur'])){
-            $err = $_GET['erreur'];
+          if(isset($_GET['error'])){
+            $err = $_GET['error'];
             echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
           }
           ?>

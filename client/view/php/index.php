@@ -36,8 +36,8 @@
           
           $Sign_in_up = '<a id="header-button" href="./login.php">Sign in/up</a>';
           
-          if(isset($_SESSION['hasStarted'])){
-            if($_SESSION['hasStarted']){
+          if(isset($_SESSION['loginResult'])){
+            if($_SESSION['loginResult'] == 'ACCEPTED'){
               echo '<a id="header-button" href="#">'.$_SESSION['email'].'</a>';
             }else{
               echo $Sign_in_up;
