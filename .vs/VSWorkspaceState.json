@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client",
+    "\\client\\controller",
+    "\\client\\model",
+    "\\client\\view",
+    "\\client\\view\\php"
+  ],
+  "SelectedNode": "\\client\\view\\php\\forum.php",
+  "PreviewInSolutionExplorer": false
+}

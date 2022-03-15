@@ -10,31 +10,7 @@
     <link rel="stylesheet" href="../css/TO_CHANGE.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="wrapper site-header__wrapper">
-        <div class="site-header__start">
-          <a href="#" class="brand">E-lolning</a>
-        </div>
-        <div class="site-header__middle">
-          <nav class="nav">
-            <ul class="nav__wrapper">
-                <li class="nav__item">
-                    <a href="#">Home</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#">About us</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="site-header__end">
-          <a id="header-button" href="#">Sign in/up</a>
-        </div>
-      </div>
-    </header>
+    <?php include_once("header.php") ?>
 
     <!-- JS -->
     <script src="./src/client/js/shared.js"></script>

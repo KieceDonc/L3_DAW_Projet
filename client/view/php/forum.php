@@ -7,12 +7,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
     <link rel="stylesheet" href="../css/shared.css" />
-    <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
-    <?php include_once("header.php") ?>
+   
+  <?php include_once("header.php") ?>
 
     <!-- JS -->
-    <script src="../js/shared.js"></script>
+    <script src="./src/client/js/shared.js"></script>
   </body>
 </html>
