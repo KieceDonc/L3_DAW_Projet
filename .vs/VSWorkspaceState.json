@@ -1,12 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.github",
+    "\\.github\\workflows",
     "\\client",
     "\\client\\controller",
     "\\client\\model",
     "\\client\\view",
     "\\client\\view\\php"
   ],
-  "SelectedNode": "\\client\\view\\php\\forum.php",
+  "SelectedNode": "\\client\\model\\checkLogin.php",
   "PreviewInSolutionExplorer": false
 }
