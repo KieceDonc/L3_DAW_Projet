@@ -1,0 +1,44 @@
+body{
+    background-color: #F3F5F7;
+    font-family:'Titillium Web', sans-serif;
+}
+
+#info{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+}
+
+.choice-container {
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1.8rem;
+  border: 0.1rem solid #1c2347;
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.choice-prefix {
+  padding: 1.5rem 2.5rem;
+  color: #1c2347;;
+}
+
+.choice-text {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.choice-valid{
+    
+    width: 100%;
+    text-align: center;
+}
+

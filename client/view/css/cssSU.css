@@ -1,0 +1,63 @@
+body{
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    width:200px;
+    background-color: #354e75;
+    
+}
+
+
+form{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    display : block;
+    box-shadow: 0 20px 20px -5px #1C2347, 0 15px 15px -5px #1C2347, 0 20px 20px -5px #1C2347;
+    border-radius: 20px;
+    border-color: #fff;
+    padding: 50px 65px; 
+    background-color : #f3f5f7;
+    color : black;    
+}
+
+header{
+    font-size: xx-large;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+label{
+    display: block;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top:10px;
+}
+
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    margin-top:15px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+::placeholder{
+    display: inline-block;
+    color: black;
+    text-align: center;
+}
+
+button{
+    margin-top: 10px;
+    padding: 20px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: transparent;
+    border-radius: 5px;
+    color : black;
+    
+}   
