@@ -29,7 +29,7 @@
   </div>
 
     <!-- JS -->
-    <script src="./src/client/js/shared.js"></script>
+    <script src="../js/shared.js"></script>
   </body>
 </html>
 

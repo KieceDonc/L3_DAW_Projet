@@ -13,7 +13,7 @@
     <?php include_once("header.php") ?>
 
     <!-- JS -->
-    <script src="./src/client/js/shared.js"></script>
-    <script src="./src/client/js/TO_CHANGE.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/TO_CHANGE.js"></script>
   </body>
 </html>

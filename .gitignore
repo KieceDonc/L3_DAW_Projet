@@ -1,3 +1,4 @@
 dev/*
 !dev/push.sh
 !dev/README.md
+.vs/*
