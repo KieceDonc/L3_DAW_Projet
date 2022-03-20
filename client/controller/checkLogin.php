@@ -4,7 +4,7 @@
   if(isset($_SESSION['loginCallback'])){
     if($_SESSION['loginCallback']){
       $_SESSION['loginCallback'] = false;
-      if($_SESSION['loginResult'] == 'ACCEPTED'){
+      if($_SESSION['loggedin'] == 'ACCEPTED'){
         // l'email et le mot de passe sont vérifiés
         header('Location: ../view/php/index.php');
         exit();

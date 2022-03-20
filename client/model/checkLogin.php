@@ -6,6 +6,8 @@
     $db_password = 'php_local';
     $db_name     = 'sys';
     $db_host     = 'localhost';
+
+
     $db          = mysqli_connect($db_host, $db_username, $db_password,$db_name) or die('could not connect to database');
 
 
@@ -21,10 +23,10 @@
 
     if($count!=0){ 
       // nom d'utilisateur et mot de passe correctes
-      $_SESSION['loginResult'] = "ACCEPTED";
+      $_SESSION['loggedin'] = "ACCEPTED";
     }else{
       // utilisateur ou mot de passe incorrect
-      $_SESSION['loginResult'] = "DENIED";
+      $_SESSION['loggedin'] = "DENIED";
     }
     $_SESSION['loginCallback'] = true;
 
