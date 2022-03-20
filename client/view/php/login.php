@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <title>E-lolning</title>
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
   </head>
   <body>
     <div id="container">
       <!-- zone de connexion -->
-      
+
       <form action="../../controller/checkLogin.php" method="POST">
           <h1>Connexion</h1>
-          
+
           <label><b>Email</b></label>
           <input type="text" placeholder="Entrer l'email'" name="email" required>
 
@@ -21,7 +21,9 @@
           <input type="password" placeholder="Entrer le mot de passe" name="password" required>
 
           <input type="submit" id='submit' value='login' >
+          <p class="options">Pas inscrit? <a href="register.php">Créer un compte!</a></p>
           <?php
+
           if(isset($_GET['error'])){
             $err = $_GET['error'];
             echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
