@@ -1,0 +1,11 @@
+:root{
+  --title-color: #e63746;          /* Titres */ 
+  --background-color: #1c2347;     /* Fond */
+  --handler-lvl-1-color: #212b52;  /* Conteneur de niveau 1 */
+  --handler-lvl-2-color: #2b3b68;  /* Conteneur de niveau 2 */
+  --handler-lvl-3-color: #354e75;  /* Conteneur de niveau 3 */
+  --text-color: #909090;           /* Texte */
+
+  font-family: "Quicksand SemiBold", serif;
+
+}

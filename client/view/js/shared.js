@@ -32,5 +32,36 @@ function underlineElementOnHover(element){
   element.addEventListener("mouseout",()=>{
     element.style.textDecoration=""
   })
-
 }
+
+/*
+ * Script use for switch into light mode and dark mode
+ */
+
+let buttonState = 0;
+
+function changeTheme() {
+    if(buttonState == 0)
+    {
+        var head = document.getElementsByTagName('HEAD')[0];
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../css/lightFile.css';
+        head.appendChild(link);
+        buttonState = 1;
+    }
+    else
+    {
+        var head = document.getElementsByTagName('HEAD')[0];
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../css/darkFile.css';
+        head.appendChild(link);
+        buttonState = 0;
+    }
+   
+}
+
+window.onload = changeTheme();

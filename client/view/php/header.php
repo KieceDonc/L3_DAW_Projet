@@ -37,5 +37,9 @@
             
         ?>
         </div>
+        <label class="switch">
+            <input onclick="changeTheme()" type="checkbox" checked>
+            <span class="slider round"></span>
+        </label>
     </div>
 </header>
