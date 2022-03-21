@@ -13,6 +13,7 @@
     <?php include_once("header.php") ?>
 
     <!-- JS -->
+    <script src="../js/jquery.js"></script>
     <script src="../js/shared.js"></script>
   </body>
 </html>
