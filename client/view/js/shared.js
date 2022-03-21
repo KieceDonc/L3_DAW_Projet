@@ -40,28 +40,28 @@ function underlineElementOnHover(element){
 
 let buttonState = 0;
 
+var cssLink = $("<link>");
+$("head").append(cssLink); 
+
 function changeTheme() {
     if(buttonState == 0)
     {
-        var head = document.getElementsByTagName('HEAD')[0];
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../css/lightFile.css';
-        head.appendChild(link);
+        cssLink.attr({
+            rel:  "stylesheet",
+            type: "text/css",
+            href: "../css/lightFile.css"
+        });
         buttonState = 1;
     }
     else
     {
-        var head = document.getElementsByTagName('HEAD')[0];
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../css/darkFile.css';
-        head.appendChild(link);
+        cssLink.attr({
+            rel:  "stylesheet",
+            type: "text/css",
+            href: "../css/darkFile.css"
+        });
         buttonState = 0;
     }
-   
 }
 
 window.onload = changeTheme();
