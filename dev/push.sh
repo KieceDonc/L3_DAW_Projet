@@ -1,4 +1,4 @@
-rsync -rvc --delete ../* dev@192.168.2.7:/var/www/html/dev
+rsync -rvc --delete ../* dev@daw.privatedns.org:/var/www/html/dev
 echo '----------'
 echo ''
 echo '   done'
