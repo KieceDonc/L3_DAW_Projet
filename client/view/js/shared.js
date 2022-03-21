@@ -42,7 +42,7 @@ let buttonState = 0;
 
 var cssLink = $("<link>");
 $("head").append(cssLink); 
-//test
+
 function changeTheme() {
     if(buttonState == 0)
     {
