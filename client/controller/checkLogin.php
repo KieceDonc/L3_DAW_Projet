@@ -1,6 +1,6 @@
 <?php
 
-  require_once("../model/checkData.php");
+  require_once("../model/checkLogin.php");
   
   $email = $_POST['email'];
   $password = $_POST['password'];
@@ -10,7 +10,9 @@
     if($email !== "" && $password !== ""){
       // l'email et le mot de passe sont vérifiés
       // retourne ACCEPTED ou DENIED
-      if(checkDataLogin($email,$password) == "ACCEPTED"){
+
+      // On hash le pwd
+      if(checkLogin($email,$password) == "ACCEPTED"){
         session_start();
         $_SESSION['loggedin'] = 'ACCEPTED';
         $_SESSION['email'] = $email;

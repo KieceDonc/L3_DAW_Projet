@@ -71,13 +71,13 @@
             $stmt->close();
 
         }
-        mysqli_report(MYSQLI_REPORT_ALL);
+
         $stmt = $mysqli->prepare("INSERT INTO users (username,email,firstname, lastname, password,birthdate,creationdate,lastconnection) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         if(!($stmt === false))
         {
             $stmt->bind_param("ssssssss", $param_username, $param_email, $param_firstname, $param_lastname, $param_password, $param_birthdate, $param_creationdate, $param_lastconnection);
 
-            $param_username = strtolower(trim($usernames));
+            $param_username = strtolower(trim($username));
             $param_email = strtolower(trim($email));
             $param_firstname = trim($firstname);
             $param_lastname = trim($lastname);
