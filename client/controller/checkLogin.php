@@ -1,41 +1,33 @@
 <?php
-  session_start(); 
 
-  if(isset($_SESSION['loginCallback'])){
-    if($_SESSION['loginCallback']){
-      $_SESSION['loginCallback'] = false;
-      if($_SESSION['loggedin'] == 'ACCEPTED'){
-        // l'email et le mot de passe sont vérifiés
-        header('Location: ../view/php/index.php');
-        exit();
-      }else{
-        // l'email et/ou le mot de passe est/sont invalide/s
-        header('Location: ../view/php/login.php?error=invalid');
-        exit();
-      }
-    }
-  }
-
-  if(isset($_POST['email']) && isset($_POST['password'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+  require_once("../model/checkData.php");
+  
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  
+  if(isset($email) && isset($password)){
     
     if($email !== "" && $password !== ""){
-      $_SESSION['email'] = $email;
-      $_SESSION['password'] = $password;
-      header("Location: ../model/checkLogin.php");
-      exit();
-
+      // l'email et le mot de passe sont vérifiés
+      // retourne ACCEPTED ou DENIED
+      if(checkDataLogin($email,$password) == "ACCEPTED"){
+        session_start();
+        $_SESSION['loggedin'] = 'ACCEPTED';
+        $_SESSION['email'] = $email;
+        
+        header('Location: ../view/php/index.php');
+      }else{
+        header('Location: ../view/php/login.php?error=DENIED');
+      }
     }else{
       // utilisateur ou mot de passe vide
-      header('Location: ../view/php/login.php?error=empty'); 
-      exit();
-
+      header('Location: ../view/php/login.php?error=EMPTY');
     }
-    
-  }else{
-    header('Location: ../view/php/login.php');
-    exit();
 
+  }else{
+    header('Location: ../view/php/login.php?error=PROCESSERROR');
   }
+
+  exit();
+
 ?>

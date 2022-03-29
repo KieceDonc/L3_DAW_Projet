@@ -25,14 +25,14 @@
             $Sign_in_up = '<a id="header-button" href="./login.php">Sign in/up</a>';
           
             if(isset($_SESSION['loggedin'])){
-            if($_SESSION['loggedin'] == 'ACCEPTED'){
-                echo '<a id="header-button" href="#">'.$_SESSION['email'].'</a>';
-                echo '<a id="header-button" href="logout.php">Log out</a>';
+                if($_SESSION['loggedin'] == 'ACCEPTED'){
+                    echo '<a id="header-button" href="#">'.$_SESSION['email'].'</a>';
+                    echo '<a id="header-button" href="logout.php">Log out</a>';
+                }else{
+                    echo $Sign_in_up;
+                }
             }else{
                 echo $Sign_in_up;
-            }
-            }else{
-            echo $Sign_in_up;
             }
             
         ?>
