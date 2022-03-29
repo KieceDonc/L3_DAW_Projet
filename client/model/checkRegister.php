@@ -58,7 +58,7 @@
 
                 if($totalRows == 1)
                 {
-                    custom_debug($stmt->error);
+                    closeMysqli($mysqli);
                     return 'EMAIL_ALREADY_EXISTS';
                 }
             }
@@ -71,9 +71,9 @@
             $stmt->close();
 
         }
-        
-
-        if($stmt = $mysqli->prepare("INSERT INTO users (username,email,firstname, lastname, password,birthdate,creationdate,lastconnection) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"))
+        mysqli_report(MYSQLI_REPORT_ALL);
+        $stmt = $mysqli->prepare("INSERT INTO users (username,email,firstname, lastname, password,birthdate,creationdate,lastconnection) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        if(!($stmt === false))
         {
             $stmt->bind_param("ssssssss", $param_username, $param_email, $param_firstname, $param_lastname, $param_password, $param_birthdate, $param_creationdate, $param_lastconnection);
 
@@ -94,7 +94,7 @@
         }
         else
         {
-            echo "something went wrong";
+            echo "Oops! Something went wrong. Please try again later.";
         }
     
         closeMysqli($mysqli);

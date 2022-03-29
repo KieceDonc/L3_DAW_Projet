@@ -86,6 +86,8 @@
             $result = checkRegister($username, $password, $email, $firstname, $lastname, $birthdate);
             if($result == 'ACCEPTED'){
                 // all good
+                $_SESSION['loggedin'] = 'ACCEPTED';
+                $_SESSION['email'] = $email;
                 header('Location: ../view/php/index.php');
                 exit();
             }elseif($result == 'USERNAME_ALREADY_EXISTS'){ 
