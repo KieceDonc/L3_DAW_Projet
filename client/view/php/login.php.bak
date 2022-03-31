@@ -13,7 +13,7 @@
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			require_once("../controller/checkLogin.php");
+			require_once("../../controller/checkLogin.php");
 		}
 		else
 		{
@@ -30,13 +30,6 @@
 
 				  <input type="submit" id='submit' value='Connexion'>
 				  <footer class="options">Pas inscrit? <a href="register.php">Créer un compte!</a></footer>
-				  <?php
-
-				  if(isset($_GET['error'])){
-					$err = $_GET['error'];
-					echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-				  }
-				  ?>
 			  </form>
 		<?php
 		}

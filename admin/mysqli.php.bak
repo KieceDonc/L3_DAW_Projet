@@ -1,6 +1,6 @@
 <?php 
 
-  require_once("../../admin/config.php");
+  require_once "../../admin/config.php";
 
   function getMysqli(){
     $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
