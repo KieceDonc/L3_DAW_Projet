@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
-    <?php include_once("header.php") ?>
+    <?php 
+      require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+    ?>
 
     <!-- JS -->
     <script src="../js/jquery.js"></script>

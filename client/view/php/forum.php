@@ -12,7 +12,7 @@
   <body>
    
   <?php 
-    include_once("header.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
     $topics = array(
             (object) array("id" => 1, "name" => "Sujet 1"),
             (object) array("id" => 2, "name" => "Sujet 2")

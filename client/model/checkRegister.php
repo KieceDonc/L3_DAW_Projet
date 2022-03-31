@@ -1,6 +1,6 @@
 <?php
 
-    require_once("../../admin/mysqli.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
 
     function checkRegister($username, $password, $email, $firstname, $lastname, $birthdate){
         session_start();
