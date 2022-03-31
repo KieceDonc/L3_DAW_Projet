@@ -10,26 +10,36 @@
   </head>
   <body>
     
+	<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			require_once("../controller/checkLogin.php");
+		}
+		else
+		{
+			?>
 
-      <form action="../../controller/checkLogin.php" method="POST">
-          <header>Connexion a votre compte</header>
+			  <form method="POST">
+				  <header>Connexion a votre compte</header>
 
-          <label>Email</label>
-          <input id="email" type="text" placeholder="Entrer l'email" name="email" required>
+				  <label>Email</label>
+				  <input id="email" type="text" placeholder="Entrer l'email" name="email" required>
 
-          <label>Mot de passe</label>
-          <input id="password" type="password" placeholder="Entrer le mot de passe" name="password" required>
+				  <label>Mot de passe</label>
+				  <input id="password" type="password" placeholder="Entrer le mot de passe" name="password" required>
 
-          <input type="submit" id='submit' value='Connexion'>
-          <footer class="options">Pas inscrit? <a href="register.php">Créer un compte!</a></footer>
-          <?php
+				  <input type="submit" id='submit' value='Connexion'>
+				  <footer class="options">Pas inscrit? <a href="register.php">Créer un compte!</a></footer>
+				  <?php
 
-          if(isset($_GET['error'])){
-            $err = $_GET['error'];
-            echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-          }
-          ?>
-      </form>
-    
+				  if(isset($_GET['error'])){
+					$err = $_GET['error'];
+					echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+				  }
+				  ?>
+			  </form>
+		<?php
+		}
+		?>
   </body>
 </html>

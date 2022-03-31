@@ -17,17 +17,17 @@
         $_SESSION['loggedin'] = 'ACCEPTED';
         $_SESSION['email'] = $email;
         
-        header('Location: ../view/php/index.php');
+        header('Location: /');
       }else{
-        header('Location: ../view/php/login.php?error=DENIED');
+        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
       }
     }else{
       // utilisateur ou mot de passe vide
-      header('Location: ../view/php/login.php?error=EMPTY');
+      echo "<p style='color:red'>Veuillez entrer un mot de passe et/ou un nom d'utilisateur</p>";
     }
 
   }else{
-    header('Location: ../view/php/login.php?error=PROCESSERROR');
+    echo "<p style='color:red'>Erreur</p>";
   }
 
   exit();
