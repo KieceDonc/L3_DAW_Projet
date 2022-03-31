@@ -5,9 +5,7 @@ USER="dev"
 if [ "$#" -eq 1 ]; then
    USER=$1
 fi
-
-
-rsync -rvc --delete ../* $USER@daw.privatedns.org:/var/www/html/dev
+ssh -t $USER@daw.privatedns.org "cd /var/www/html/dev/ && sudo git stash push --include-untracked && sudo git pull origin prod"
 echo '----------'
 echo ''
 echo '   done'

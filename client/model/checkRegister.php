@@ -1,6 +1,8 @@
 <?php
 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
+
 
     function checkRegister($username, $password, $email, $firstname, $lastname, $birthdate){
         session_start();
@@ -28,7 +30,7 @@
                 if($totalRows == 1)
                 {
                     closeMysqli($mysqli);
-                    return 'USERNAME_ALREADY_EXISTS';
+                    return CONST_DB_ERR_USERNAMEEXIST;
                 }
             }
             else
@@ -59,7 +61,7 @@
                 if($totalRows == 1)
                 {
                     closeMysqli($mysqli);
-                    return 'EMAIL_ALREADY_EXISTS';
+                    return CONST_DB_ERR_EMAILEXISTS;
                 }
             }
             else
@@ -90,7 +92,7 @@
             $stmt->close();
 
             closeMysqli($mysqli);
-            return "ACCEPTED";
+            return CONST_DB_ACCEPTED;
         }
         else
         {

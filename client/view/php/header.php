@@ -20,13 +20,15 @@
         </div>
         <div class="site-header__end">
         <?php
+            require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
+
             session_start();
           
             $Sign_in_up = '<a id="header-button" href="/login">Sign in/up</a>';
           
-            if(isset($_SESSION['loggedin'])){
-                if($_SESSION['loggedin'] == 'ACCEPTED'){
-                    echo '<a id="header-button" href="#">'.$_SESSION['email'].'</a>';
+            if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
+                if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+                    echo '<a id="header-button" href="#">'.$_SESSION[CONST_SESSION_EMAIL].'</a>';
                     echo '<a id="header-button" href="logout.php">Log out</a>';
                 }else{
                     echo $Sign_in_up;

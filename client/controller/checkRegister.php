@@ -1,110 +1,130 @@
 <?php
-    
-    require_once('../model/checkRegister.php');
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/checkRegister.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
+
+    $errors = [];
 
     if(isset($_POST['username'])&& isset($_POST['email']) && isset($_POST['firstname']) &&
         isset($_POST['lastname']) && isset($_POST['password']) && isset($_POST['passwordconfirmation'])
         && isset($_POST['birthdate'])){   
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $passwordconfirmation = $_POST['passwordconfirmation'];
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $birthdate = $_POST['birthdate'];
+            $username = trim($_POST['username']);
+            $email = trim($_POST['email']);
+            $password = trim($_POST['password']);
+            $passwordconfirmation = trim($_POST['passwordconfirmation']);
+            $firstname = trim($_POST['firstname']);
+            $lastname = trim($_POST['lastname']);
+            $birthdate = trim($_POST['birthdate']);
 
         //username vide ou carac interdits
-        if(empty(trim($username)))
-        {
-            header('Location: ../view/php/register.php?username_err=empty');
-            exit();
+        if(empty($username)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_USERNAME, CONST_ERR_EMPTY);
         }
-        elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"])))
-        {
-            header('Location: ../view/php/register.php?username_err=forbiddenchars');
-            exit();
+
+        if(!preg_match('/^[a-zA-Z0-9_]+$/', $username)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_USERNAME, CONST_ERR_FORBIDDENCHARS);
         }
+
         //email vide
-        elseif(empty(trim($email)))
-        {
-            header('Location: ../view/php/register.php?email_err=empty');
-            exit();
+        if(empty($email)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_EMAIL, CONST_ERR_EMPTY);
         }
+
         //password vide ou trop court
-        elseif(empty(trim($password)))
-        {
-            header('Location: ../view/php/register.php?password_err=empty');
-            exit();
+        if(empty($password)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_PASSWORD, CONST_ERR_EMPTY);
         }
-        elseif(strlen(trim($_POST["password"])) < 6)
-        {
-            header('Location: ../view/php/register.php?password_err=tooshort');
-            exit();
+
+        if(strlen($password) < 6){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_PASSWORD, CONST_ERR_TOOSHORT);
         }
+
         //password confirmation vide ou unmatched
-        elseif(empty(trim($passwordconfirmation)))
-        {
-            header('Location: ../view/php/register.php?passwordconfirmation_err=empty');
-            exit();
+        if(empty($passwordconfirmation)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_PASSWORDCONFIRMATION, CONST_ERR_EMPTY);
         }
-        elseif($password !== $passwordconfirmation){
-            header('Location: ../view/php/register.php?passwordconfirmation_err=unmatchedpasswords');
-            exit();
+        
+        if($password !== $passwordconfirmation){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_PASSWORDCONFIRMATION, CONST_ERR_UNMATCHED);
         }
 
         //firstname ou lastname vide ou carac interdits
-        elseif(empty(trim($firstname)))
-        {
-            header('Location: ../view/php/register.php?firstname_err=empty');
-            exit();
+        if(empty($firstname)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_FIRSTNAME, CONST_ERR_EMPTY);
         }
-        elseif(!preg_match('/^[a-zA-Z]+$/', trim($_POST["firstname"])))
-        {
-            header('Location: ../view/php/register.php?firstname_err=forbiddenchars');
-            exit();
+
+        if(!preg_match('/^[a-zA-Z]+$/', $firstname)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_FIRSTNAME, CONST_ERR_FORBIDDENCHARS);
         }
-        elseif(empty(trim($lastname)))
-        {
-            header('Location: ../view/php/register.php?lastname_err=empty');
-            exit();
+
+        if(empty(trim($lastname))){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_LASTNAME, CONST_ERR_EMPTY);
         }
-        elseif(!preg_match('/^[a-zA-Z]+$/', trim($_POST["lastname"])))
-        {
-            header('Location: ../view/php/register.php?lastname_err=forbiddenchars');
-            exit();
+        
+        if(!preg_match('/^[a-zA-Z]+$/', $lastname)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_LASTNAME, CONST_ERR_FORBIDDENCHARS);
         }
+
         //birthdate vide
-        elseif(empty(trim($birthdate)))
-        {
-            header('Location: ../view/php/register.php?birthdate_err=empty');
-            exit();
+        if(empty($birthdate)){
+            $errors = storeError($errors,CONST_URLPARAM_ERR_BIRTHDATE, CONST_ERR_EMPTY);
         }
-        else
-        {
+
+        if(count($errors) > 0){
+            redirectTo('/client/view/php/register.php',$errors);
+        }else{
             session_start();
 
-            $result = checkRegister($username, $password, $email, $firstname, $lastname, $birthdate);
-            if($result == 'ACCEPTED'){
-                // all good
-                $_SESSION['loggedin'] = 'ACCEPTED';
-                $_SESSION['email'] = $email;
-                header('Location: ../view/php/index.php');
-                exit();
-            }elseif($result == 'USERNAME_ALREADY_EXISTS'){ 
-                // le username existe déjà
-                header('Location: ../view/php/register.php?username_err=alreadyexists');
-                exit();
-            }elseif($result == 'EMAIL_ALREADY_EXISTS'){
-                // l'email existe déjà
-                header('Location: ../view/php/register.php?email_err=alreadyexists');
-                exit();
+            switch(checkRegister($username, $password, $email, $firstname, $lastname, $birthdate)){
+                case CONST_DB_ACCEPTED:
+                    $_SESSION[CONST_SESSION_ISLOGGED] = CONST_SESSION_ISLOGGED_YES;
+                    $_SESSION[CONST_SESSION_EMAIL] = $email;
+                    redirectTo('/client/view/php/index.php',$errors);
+                    break;
+                case CONST_DB_ERR_USERNAMEEXIST:
+                    $errors = storeError($errors,CONST_URLPARAM_ERR_USERNAME, CONST_ERR_ALREADYEXISTS);
+                    redirectTo('/client/view/php/register.php',$errors);
+                    break;
+                case CONST_DB_ERR_EMAILEXISTS:
+                    $errors = storeError($errors,CONST_URLPARAM_ERR_EMAIL, CONST_ERR_ALREADYEXISTS);
+                    redirectTo('/client/view/php/register.php',$errors);
+                    break;     
+            }
+
+        }
+
+    }else{
+        redirectTo('/');
+    }
+
+    function redirectTo($path,$errors){
+        header('Location: ' . $path . concactEror($errors));
+        exit();
+    }
+
+    function storeError($errors,$origin, $error){
+        array_push($errors,$origin . '=' . $error);
+        return $errors;
+    }
+
+    function concactEror($errors){
+        $errors_length = count($errors);
+        $str = '';
+
+        if($errors_length == 1){
+            $str.= '?'.$errors[0];
+
+        }elseif($errors_length > 0){
+            $str.= '?';
+            for ($index = 0; $index < $errors_length ; $index++) {
+                $str.= $errors[$index]; 
+                
+                if($index != $errors_length - 1){
+                    // if not last element of errors array
+                    $str.= '&';
+                }
             }
         }
 
-    }
-    else
-    {
-        header('Location: /');
-        exit();
+        return $str;
     }
 ?>

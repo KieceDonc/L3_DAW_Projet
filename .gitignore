@@ -1,6 +1,6 @@
 dev/*
-!dev/betterRequire.php
-!dev/push.sh
+!dev/revertCode.sh
+!dev/testCode.sh
 !dev/README.md
 .vs/*
 *.bak

@@ -36,65 +36,95 @@
 
         <input type="submit" id='submit' value="S'inscrire" >
         <?php
-        //messages d'erreurs
-        if(isset($_GET['username_err'])){
-            if($_GET['username_err'] === "alreadyexists")
-                echo "<p style='color:red'>Nom d'utilisateur existant</p>";
-            elseif($_GET['username_err'] === "empty")
-                echo "<p style='color:red'>Veuillez donner un nom d'utilisateur</p>";
-            elseif($_GET['username_err'] === "forbiddenchars")
-                echo "<p style='color:red'>Votre nom d'utilisateur contient des caracteres interdits</p>";
+            require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
+            
+            //messages d'erreurs
+            if(($error = checkError(CONST_URLPARAM_ERR_USERNAME)) !== false){
+                switch($error){
+                    case CONST_ERR_ALREADYEXISTS:
+                        echoError("Nom d'utilisateur existant");
+                        break;
+                    case CONST_ERR_EMPTY:
+                        echoError("Veuillez donner un nom d'utilisateur");
+                        break;
+                    case CONST_ERR_FORBIDDENCHARS:
+                        echoError("Votre nom d'utilisateur contient des caracteres interdits");
+                        break;
+                }
+            }
 
-        }
-        elseif(isset($_GET['email_err']))
-        {
-            if($_GET['email_err'] === "alreadyexists")
-                echo "<p style='color:red'>Email existante</p>";
-            elseif($_GET['email_err'] === "empty")
-                echo "<p style='color:red'>Veuillez donner une adresse mail</p>";
+            if(($error = checkError(CONST_URLPARAM_ERR_EMAIL)) !== false){
+                switch($error){
+                    case CONST_ERR_ALREADYEXISTS:
+                        echoError('Email existant');
+                        break;
+                    case CONST_ERR_EMPTY:
+                        echoError('Veuillez donner une adresse mail');
+                        break;
+                }
+            }
+            
+            if(($error = checkError(CONST_URLPARAM_ERR_PASSWORD)) !== false){
+                switch($error){
+                    case CONST_ERR_EMPTY:
+                        echoError('Veuillez donner un mot de passe');
+                        break;
+                    case CONST_ERR_TOOSHORT:
+                        echoError('Votre mot de passe doit au moins contenir 6 caracteres');
+                        break;
+                }
+            }
+            
+            if(($error = checkError(CONST_URLPARAM_ERR_PASSWORDCONFIRMATION)) !== false){
+                switch($error){
+                    case CONST_ERR_EMPTY:
+                        echoError('Veuillez confirmer votre mot de passe');
+                        break;
+                    case CONST_ERR_UNMATCHED:
+                        echoError('Vos mot de passes sont différents');
+                        break;
+                }
+            }
 
+            if(($error = checkError(CONST_URLPARAM_ERR_FIRSTNAME)) !== false){
+                switch($error){
+                    case CONST_ERR_EMPTY:
+                        echoError('Veuillez donner votre prénom');
+                        break;
+                    case CONST_ERR_FORBIDDENCHARS:
+                        echoError('Votre prénom ne doit contenir que des lettres');
+                        break;
+                }
+            }
+            
+            if(($error = checkError(CONST_URLPARAM_ERR_LASTNAME)) !== false){
+                switch($error){
+                    case CONST_ERR_EMPTY:
+                        echoError('Veuillez donner votre nom<');
+                        break;
+                    case CONST_ERR_ALREADYEXISTS:
+                        echoError('Votre nom ne doit contenir que des lettres');
+                        break;
+                }
+            }
+            
+            if(($error = checkError(CONST_URLPARAM_ERR_BIRTHDATE)) !== false){
+                if($error === CONST_ERR_EMPTY){
+                    echoError('Veuillez donner votre date de naissance');
+                }
+            }
 
-        }
-        elseif(isset($_GET['password_err']))
-        {
-            if($_GET['password_err'] === "empty")
-                echo "<p style='color:red'>Veuillez donner un mot de passe</p>";
-            elseif($_GET['email_err'] === "tooshort")
-                echo "<p style='color:red'>Votre mot de passe doit au moins contenir 6 caracteres</p>";
+            function checkError($toCheck){
+                if(isset($_GET[$toCheck])){
+                    return $_GET[$toCheck];
+                }else{
+                    return false;
+                }
+            }
 
-        }
-        elseif(isset($_GET['passwordconfirmation_err']))
-        {
-            if($_GET['passwordconfirmation_err'] === "empty")
-                echo "<p style='color:red'>Veuillez confirmer votre mot de passe</p>";
-            elseif($_GET['passwordconfirmation_err'] === "unmatchedpasswords" )
-                echo "<p style='color:red'>Vos mot de passes sont différents</p>";
-
-        }
-        elseif(isset($_GET['firstname_err']))
-        {
-            if($_GET['firstname_err'] === "empty")
-                echo "<p style='color:red'>Veuillez donner votre prénom</p>";
-            elseif($_GET['firstname_err'] === "forbiddenchars" )
-                echo "<p style='color:red'>Votre prénom ne doit contenir que des lettres</p>";
-
-        }
-        elseif(isset($_GET['lastname_err']))
-        {
-            if($_GET['lastname_err'] === "empty")
-                echo "<p style='color:red'>Veuillez donner votre nom</p>";
-            elseif($_GET['lastname_err'] === "forbiddenchars" )
-                echo "<p style='color:red'>Votre nom ne doit contenir que des lettres</p>";
-
-        }
-        elseif(isset($_GET['birthdate_err']))
-        {
-            if($_GET['birthdate_err'] === "empty")
-                echo "<p style='color:red'>Veuillez donner votre date de naissance</p>";
-
-        }
-
-
+            function echoError($toShow){
+                echo "<p style='color:red'>" . $toShow . "</p>";
+            }
         ?>
     </form>
 </div>
