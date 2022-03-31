@@ -104,7 +104,7 @@
     }
     else
     {
-        header('Location: ../view/php/index.php');
+        header('Location: /');
         exit();
     }
 ?>
