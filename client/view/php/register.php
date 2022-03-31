@@ -6,7 +6,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
-    <link rel="stylesheet" href="../css/su.css" />
+    <link rel="stylesheet" href="../css/register.css" />
 </head>
 <body>
 <div id="container">

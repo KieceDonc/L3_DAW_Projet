@@ -49,7 +49,7 @@ function changeTheme() {
         cssLink.attr({
             rel:  "stylesheet",
             type: "text/css",
-            href: "../css/lightFile.css"
+            href: "../css/lightMode.css"
         });
         buttonState = 1;
     }
@@ -58,7 +58,7 @@ function changeTheme() {
         cssLink.attr({
             rel:  "stylesheet",
             type: "text/css",
-            href: "../css/darkFile.css"
+            href: "../css/darkMode.css"
         });
         buttonState = 0;
     }
