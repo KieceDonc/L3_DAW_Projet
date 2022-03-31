@@ -1,19 +1,19 @@
 <header class="site-header">
     <div class="wrapper site-header__wrapper">
         <div class="site-header__start">
-            <a href="#" class="brand">E-lolning</a>
+            <a href="/" class="brand">E-lolning</a>
         </div>
         <div class="site-header__middle">
             <nav class="nav">
             <ul class="nav__wrapper">
                 <li class="nav__item">
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#">About us</a>
+                    <a href="/about">About us</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
             </ul>
             </nav>
