@@ -6,22 +6,22 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
+    <link rel="stylesheet" href="../css/si.css"/>
   </head>
   <body>
-    <div id="container">
-      <!-- zone de connexion -->
+    
 
       <form action="../../controller/checkLogin.php" method="POST">
-          <h1>Connexion</h1>
+          <header>Connexion a votre compte</header>
 
-          <label><b>Email</b></label>
-          <input type="text" placeholder="Entrer l'email'" name="email" required>
+          <label>Email</label>
+          <input id="email" type="text" placeholder="Entrer l'email" name="email" required>
 
-          <label><b>Mot de passe</b></label>
-          <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+          <label>Mot de passe</label>
+          <input id="password" type="password" placeholder="Entrer le mot de passe" name="password" required>
 
-          <input type="submit" id='submit' value='login' >
-          <p class="options">Pas inscrit? <a href="register.php">Créer un compte!</a></p>
+          <input type="submit" id='submit' value='Connexion'>
+          <footer class="options">Pas inscrit? <a href="register.php">Créer un compte!</a></footer>
           <?php
 
           if(isset($_GET['error'])){
@@ -30,6 +30,6 @@
           }
           ?>
       </form>
-    </div>
+    
   </body>
 </html>

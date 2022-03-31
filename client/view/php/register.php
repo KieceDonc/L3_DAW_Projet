@@ -6,34 +6,35 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
+    <link rel="stylesheet" href="../css/su.css" />
 </head>
 <body>
 <div id="container">
     <!-- zone de connexion -->
 
     <form action="../../controller/checkRegister.php" method="POST">
-        <h1>Connexion</h1>
-        <label><b>Username</b></label>
+        <header>Connexion</header>
+        <label>Nom d'utilisateur</label>
         <input type="text" placeholder="Entrer votre nom d'utilisateur" name="username" required>
 
-        <label><b>Nom</b></label>
+        <label>Nom</label>
         <input type="text" placeholder="Entrer votre nom" name="lastname" required>
 
-        <label><b>Prénom</b></label>
+        <label>Prénom</label>
         <input type="text" placeholder="Entrer votre prénom" name="firstname" required>
 
-        <label><b>Email</b></label>
+        <label>Email</label>
         <input type="email" placeholder="Email" name="email" required>
-        <label><b>Date de naissance</b></label>
+        <label>Date de naissance</label>
         <input id="datefield" type='date' min='1900-01-01' max='2099-12-31' name="birthdate"></input>
 
-        <label><b>Mot de passe</b></label>
+        <label>Mot de passe</label>
         <input type="password" placeholder="Entrer le mot de passe" name="password" required>
 
-        <label><b>Mot de passe</b></label>
+        <label>Mot de passe</label>
         <input type="password" placeholder="Confirmer le mot de passe" name="passwordconfirmation" required>
 
-        <input type="submit" id='submit' value='Sign Up' >
+        <input type="submit" id='submit' value="S'inscrire" >
         <?php
         //messages d'erreurs
         if(isset($_GET['username_err'])){
