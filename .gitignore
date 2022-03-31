@@ -1,4 +1,6 @@
 dev/*
+!dev/const.php
+!dev/betterRequire.php
 !dev/push.sh
 !dev/README.md
 .vs/*

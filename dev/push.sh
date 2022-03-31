@@ -1,4 +1,13 @@
-rsync -rvc --delete ../* dev@daw.privatedns.org:/var/www/html/dev
+#!/bin/bash
+
+USER="dev"
+
+if [ "$#" -eq 1 ]; then
+   USER=$1
+fi
+
+
+rsync -rvc --delete ../* $USER@daw.privatedns.org:/var/www/html/dev
 echo '----------'
 echo ''
 echo '   done'
