@@ -1,6 +1,6 @@
 <?php
 
-  require_once("../model/checkLogin.php");
+  require_once "../model/checkLogin.php";
   
   $email = $_POST['email'];
   $password = $_POST['password'];

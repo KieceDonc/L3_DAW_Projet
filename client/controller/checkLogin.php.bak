@@ -27,7 +27,7 @@
     }
 
   }else{
-    echo "<p style='color:red'>Erreur</p>";
+    echo "<p style='color:red'>Erreur inconnue</p>";
   }
 
   exit();
