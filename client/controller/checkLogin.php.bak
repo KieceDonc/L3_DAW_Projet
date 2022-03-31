@@ -17,17 +17,17 @@
         $_SESSION['loggedin'] = 'ACCEPTED';
         $_SESSION['email'] = $email;
         
-        header('Location: /index.php');
+        header('Location: ../view/php/index.php');
       }else{
-        header('Location: /login.php?error=DENIED');
+        header('Location: ../view/php/login.php?error=DENIED');
       }
     }else{
       // utilisateur ou mot de passe vide
-      header('Location: /login.php?error=EMPTY');
+      header('Location: ../view/php/login.php?error=EMPTY');
     }
 
   }else{
-    header('Location: /login.php?error=PROCESSERROR');
+    header('Location: ../view/php/login.php?error=PROCESSERROR');
   }
 
   exit();
