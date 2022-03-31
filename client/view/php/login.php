@@ -13,7 +13,7 @@
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			require_once("../../controller/checkLogin.php");
+			require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/checkLogin.php");
 		}
 		else
 		{

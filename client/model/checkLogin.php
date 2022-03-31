@@ -1,6 +1,5 @@
 <?php
-
-  require_once "../../admin/mysqli.php";
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
 
   function checkLogin($email, $password){
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
