@@ -72,6 +72,9 @@
                     case CONST_ERR_TOOSHORT:
                         echoError('Votre mot de passe doit au moins contenir 6 caracteres');
                         break;
+                    case CONST_ERR_FORBIDDENCHARS:
+                        echoError("Votre mot de passe doit contenir au moins: 1 lettre, 1 chiffre et 1 caractere spécial entre !,@,#,$,%");
+                        break;
                 }
             }
             

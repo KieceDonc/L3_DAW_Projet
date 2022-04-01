@@ -3,23 +3,20 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
 
     $errors = [];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $passwordconfirmation = $_POST['passwordconfirmation'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $birthdate = $_POST['birthdate'];
+    $creationdate = date("Y-m-d H:i:s");
+    $lastconnection = $creationdate;
 
-    if(isset($_POST['username'])&& isset($_POST['email']) && isset($_POST['firstname']) &&
-        isset($_POST['lastname']) && isset($_POST['password']) && isset($_POST['passwordconfirmation'])
-        && isset($_POST['birthdate'])){   
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $passwordconfirmation = $_POST['passwordconfirmation'];
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $birthdate = $_POST['birthdate'];
-            $creationdate = date("Y-m-d H:i:s");
-            $lastconnection = $creationdate;
-
-        //hashage du mot de passe avec l'algo par default de php
-        //$param_password = password_hash(trim($password), PASSWORD_DEFAULT);
-
+    if(isset($username)&& isset($email) && isset($firstname) &&
+        isset($lastname) && isset($password) && isset($passwordconfirmation)
+        && isset($birthdate))
+    {
 
         //username vide ou carac interdits
         if(empty($username)){
@@ -35,11 +32,14 @@
             $errors = storeError($errors,CONST_URLPARAM_ERR_EMAIL, CONST_ERR_EMPTY);
         }
 
-        //password vide ou trop court
+        //password vide ou trop court(ou trop long ^^) ou contenant des carac interdits
         if(empty($password)){
             $errors = storeError($errors,CONST_URLPARAM_ERR_PASSWORD, CONST_ERR_EMPTY);
         }
-
+        //at least 1 number, 1 letter, 1 special char !@#$% between 6 and 100 chars
+        if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{6,100}$/', $password)){
+            $error = storeError($errors,CONST_URLPARAM_ERR_PASSWORD, CONST_ERR_FORBIDDENCHARS);
+        }
         if(strlen($password) < 6){
             $errors = storeError($errors,CONST_URLPARAM_ERR_PASSWORD, CONST_ERR_TOOSHORT);
         }
