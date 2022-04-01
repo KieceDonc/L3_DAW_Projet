@@ -7,13 +7,19 @@
     if(isset($_POST['username'])&& isset($_POST['email']) && isset($_POST['firstname']) &&
         isset($_POST['lastname']) && isset($_POST['password']) && isset($_POST['passwordconfirmation'])
         && isset($_POST['birthdate'])){   
-            $username = trim($_POST['username']);
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
-            $passwordconfirmation = trim($_POST['passwordconfirmation']);
-            $firstname = trim($_POST['firstname']);
-            $lastname = trim($_POST['lastname']);
-            $birthdate = trim($_POST['birthdate']);
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $passwordconfirmation = $_POST['passwordconfirmation'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $birthdate = $_POST['birthdate'];
+            $creationdate = date("Y-m-d H:i:s");
+            $lastconnection = $creationdate;
+
+        //hashage du mot de passe avec l'algo par default de php
+        //$param_password = password_hash(trim($password), PASSWORD_DEFAULT);
+
 
         //username vide ou carac interdits
         if(empty($username)){
@@ -73,8 +79,8 @@
             redirectTo('/client/view/php/register.php',$errors);
         }else{
             session_start();
-
-            switch(checkRegister($username, $password, $email, $firstname, $lastname, $birthdate)){
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            switch(checkRegister($username, $email, $password, $firstname, $lastname, $birthdate,$creationdate,$lastconnection)){
                 case CONST_DB_ACCEPTED:
                     $_SESSION[CONST_SESSION_ISLOGGED] = CONST_SESSION_ISLOGGED_YES;
                     $_SESSION[CONST_SESSION_EMAIL] = $email;
