@@ -10,7 +10,7 @@
                     <a href="/">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="/about">About us</a>
+                    <a href="/client/view/php/">About us</a>
                 </li>
                 <li class="nav__item">
                     <a href="/contact">Contact</a>
