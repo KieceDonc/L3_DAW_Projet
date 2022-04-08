@@ -1,3 +1,8 @@
+body {
+    background-color: var(--background-color); 
+    color: var(--text-color);
+}
+
 .brand {
   font-weight: bold;
   font-size: 20px; 

@@ -1,0 +1,50 @@
+.infoAboutUs {
+    background-color: var(--handler-lvl-1-color);
+    float: left;
+	height: 90%;
+    width: 90%;
+    padding: 40px;
+    margin: 10px 50px 20px;
+}
+
+.game gameAboutUs {
+    background-color: var(--handler-lvl-1-color);
+    float: right;
+    width: 60%;
+    padding: 40px;
+    margin: 0px 20px 20px 0px;
+}
+
+.game img{
+    float: left;
+    width: 30%;
+    margin: 0px 0px 20px 20px;
+    padding-top: 10px;
+}
+
+.us {
+    background-color: var(--handler-lvl-1-color);
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 15%;
+}
+
+.pdp {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;}
+
+#infoPdp {
+    margin: 30px 40px 10px;
+    text-align: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+}
