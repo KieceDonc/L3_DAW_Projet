@@ -30,14 +30,14 @@
         //TODO: sanitize input
 		$requete = "SELECT * FROM topics WHERE id=" . $_GET["topic"] . ";";
 		$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-		$topic = $result->fetch_all(MYSQLI_ASSOC); 
+		$topic = $result->fetch_assoc(); 
         showTopic($topic, $messages); 
     }
     else 
     {
 		$requete = "SELECT * FROM topics;";
 		$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-		$topics = $result->fetch_assoc(); 
+		$topics = $result->fetch_all(MYSQLI_ASSOC); 
 	
         listTopics($topics);
     }
