@@ -98,7 +98,11 @@ function showTopic($topic, $messages)
 
 function showMessage($message)
 {
-    echo "<tr> <td> {$message->content} </td> </tr>";    
+	echo "<tr> <td>";
+    //TODO distinct if current user = author
+    $author = $message->author;
+    $date = date('m/d/Y H:i:s', $message->date);
+    echo $author . "<br /> $date </td> <td> {$message->content} </td> </tr>";
 }
 
 function showInputZone($topicId) {
