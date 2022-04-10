@@ -85,7 +85,7 @@ function showTopic($topic, $messages)
     <table>
     <tbody>
     <?php
-	$requete = "SELECT * FROM topics_posts WHERE topic=". $topic->id .";";
+	$requete = "SELECT * FROM topics_posts WHERE topic=". $topic["id"] .";";
 	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
 	$messages = $result->fetch_all(MYSQLI_ASSOC); 
     foreach($messages as $message)
