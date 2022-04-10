@@ -30,7 +30,7 @@
         //TODO: sanitize input
 		$requete = "SELECT * FROM topics WHERE id=" . $_GET["topic"] . ";";
 		$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-		$topic = $result->fetch_row(); 
+		$topic = $result->fetch_all(MYSQLI_ASSOC); 
         showTopic($topic, $messages); 
     }
     else 
@@ -65,7 +65,7 @@ function listTopics($topics)
 		<?php 
 		foreach($topics as $topic)
 		{
-			echo "<tr> <td> <button name='topic' value='{$topic->id}'> {$topic->name} </button> </td> </tr>";    
+			echo "<tr> <td> <button name='topic' value='". $topic["id"] ."'> ". $topic["name"]. " </button> </td> </tr>";    
 		}
 		?>
 		</tbody>
@@ -87,7 +87,7 @@ function showTopic($topic, $messages)
     <?php
 	$requete = "SELECT * FROM topics_posts WHERE topic=". $topic->id .";";
 	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-	$topics = $result->fetch_assoc(); 
+	$topics = $result->fetch_all(MYSQLI_ASSOC); 
     foreach($messages as $message)
     {
        showMessage($message);
@@ -104,9 +104,9 @@ function showMessage($message)
 {
 	echo "<tr> <td>";
     //TODO distinct if current user = author
-    $author = $message->author;
-    $date = date('m/d/Y H:i:s', $message->date);
-    echo $author . "<br /> $date </td> <td> {$message->content} </td> </tr>";
+    $author = $message["author"];
+    $date = date('m/d/Y H:i:s', $message["date"]);
+    echo $author . "<br /> $date </td> <td> ". $message["content"] . " </td> </tr>";
 }
 
 function showInputZone($topicId) 
