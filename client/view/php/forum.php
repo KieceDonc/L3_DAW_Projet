@@ -77,6 +77,7 @@ function listTopics($topics)
 function showTopic($topic, $messages) 
 {
 	//debug :  $messages as parameter
+	global $mysqli;
 	?>
 	<div>
 		<button id="backBtn"> Back </button>
@@ -124,6 +125,7 @@ function showInputZone($topicId)
 
 function addAnswer($msg)
 {
+	global $mysqli;
 	//TODO sanitize inputs
 	$mysqli->query("INSERT INTO topics_posts(author, date, content, topic) VALUES (5,".time().", ".$msg.", ". $_GET["topic"].")");
 }
