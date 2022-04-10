@@ -13,15 +13,8 @@
    
   <?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
-    $topics = array(
-            (object) array("id" => 1, "name" => "Sujet 1"),
-            (object) array("id" => 2, "name" => "Sujet 2")
-        ); //debug, get from bdd    
-	
-	$messages = array(
-			(object) array("id" => 1, "author"=> "Author 1", "date"=>"1646334563", "content" => "Message 1"),
-			(object) array("id" => 2, "author"=> "Author 2", "date"=>"1649606653", "content" => "Message 2")
-		); //debug, get from bdd     
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
+	$mysqli = getMysqli();
   ?>
   
   <div>
@@ -35,13 +28,21 @@
 			addAnswer($_POST["msg"]);	//TODO: sanitize input
 		}
         //TODO: sanitize input
-		$topic = $topics[array_search($_GET["topic"], array_column($topics, "id"))]; //get topic
+		$requete = "SELECT * FROM topics WHERE id=" . $_GET["topic"] . ";";
+		$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+		$topic = $result->fetch_row(); 
         showTopic($topic, $messages); 
     }
     else 
     {
+		$requete = "SELECT * FROM topics;";
+		$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+		$topics = $result->fetch_assoc(); 
+	
         listTopics($topics);
     }
+	
+	closeMysqli($mysqli);
     ?>
   </div>
 
@@ -57,19 +58,19 @@
 function listTopics($topics) 
 {
     ?>
-        <form method="get">
-            <h2> Topics </h2>
-            <table>
-            <tbody>
-            <?php 
-            foreach($topics as $topic)
-            {
-                echo "<tr> <td> <button name='topic' value='{$topic->id}'> {$topic->name} </button> </td> </tr>";    
-            }
-            ?>
-            </tbody>
-            </table>
-        </form>
+	<form method="get">
+		<h2> Topics </h2>
+		<table>
+		<tbody>
+		<?php 
+		foreach($topics as $topic)
+		{
+			echo "<tr> <td> <button name='topic' value='{$topic->id}'> {$topic->name} </button> </td> </tr>";    
+		}
+		?>
+		</tbody>
+		</table>
+	</form>
     <?php
 }
 
@@ -84,6 +85,9 @@ function showTopic($topic, $messages)
     <table>
     <tbody>
     <?php
+	$requete = "SELECT * FROM topics_posts WHERE topic=". $topic->id .";";
+	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+	$topics = $result->fetch_assoc(); 
     foreach($messages as $message)
     {
        showMessage($message);
@@ -105,7 +109,8 @@ function showMessage($message)
     echo $author . "<br /> $date </td> <td> {$message->content} </td> </tr>";
 }
 
-function showInputZone($topicId) {
+function showInputZone($topicId) 
+{
     ?>
     <form method="post">
         <div id="containerInputZone">
@@ -119,9 +124,8 @@ function showInputZone($topicId) {
 
 function addAnswer($msg)
 {
-	//TODO: insert in BDD
-	global $messages;
-	$messages[] = (object) array("id" => 3, "author"=> "Author 2", "date"=>time(), "content" => $msg);	//debug
+	//TODO sanitize inputs
+	$mysqli->query("INSERT INTO topics_posts(author, date, content, topic) VALUES (5,".time().", ".$msg.", ". $_GET["topic"].")");
 }
 
 ?>

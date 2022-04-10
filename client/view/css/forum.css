@@ -25,6 +25,10 @@ td:first-child {
 	text-align: center;
 }
 
+td:nth-child(2) {
+	padding: 2%;
+}
+
 td {
     border: 1px solid grey;
 }
