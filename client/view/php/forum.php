@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>E-lolning</title>
+    <title>E-lolning Forum</title>
     
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
@@ -19,14 +19,15 @@
         ); //debug, get from bdd    
 	
 	$messages = array(
-			(object) array("id" => 1, "content" => "Message 1"),
-			(object) array("id" => 2, "content" => "Message 2")
+			(object) array("id" => 1, "author"=> "Author 1", "date"=>"1646334563", "content" => "Message 1"),
+			(object) array("id" => 2, "author"=> "Author 2", "date"=>"1649606653", "content" => "Message 2")
 		); //debug, get from bdd     
   ?>
   
   <div>
     <h1> Forum </h1>
-    <?php 
+    <?php
+	date_default_timezone_set("Etc/GMT-2");
     if(isset($_GET["topic"]) && !empty($_GET["topic"]))
     {
         if(isset($_POST["msg"]) && !empty($_POST["msg"]))
@@ -47,6 +48,7 @@
     <!-- JS -->
 	<script src="../js/jquery.js"></script>
     <script src="../js/shared.js"></script>
+	<script src="../js/forum.js"></script>
   </body>
 </html>
 
@@ -75,31 +77,37 @@ function showTopic($topic, $messages)
 {
 	//debug :  $messages as parameter
 	?>
+	<div>
+		<button id="backBtn"> Back </button>
+	</div>
     <h2> <?php echo $topic->name ?> </h2>
     <table>
     <tbody>
     <?php
     foreach($messages as $message)
     {
-       echo "<tr> <td> {$message->content} </td> </tr>";    
+       showMessage($message);
     }
     ?>
     </tbody>
     </table>
-
     <?php
     //TODO: show only if logged ?
-    showInputZone();
+    showInputZone($topic->id);
 }
 
-function showInputZone() {
-//TODO : check if msg is not empty
+function showMessage($message)
+{
+    echo "<tr> <td> {$message->content} </td> </tr>";    
+}
+
+function showInputZone($topicId) {
     ?>
     <form method="post">
         <div id="containerInputZone">
-	        <input hidden name="topic" value="<?php echo $topic->id ?>" />
-            <textarea name="msg" placeholder="Type your reply..."></textarea>
-            <input type="submit" value="Answer" />
+	        <input hidden name="topic" value="<?php echo $topicId ?>" />
+            <textarea id="msgArea" name="msg" placeholder="Type your reply..."></textarea>
+            <input id="addAnswerBtn" type="submit" value="Answer" />
         </div>
     </form>
     <?php
@@ -109,7 +117,7 @@ function addAnswer($msg)
 {
 	//TODO: insert in BDD
 	global $messages;
-	$messages[] = (object) array("id" => 3, "content" => $msg);	//debug
+	$messages[] = (object) array("id" => 3, "author"=> "Author 2", "date"=>time(), "content" => $msg);	//debug
 }
 
 ?>

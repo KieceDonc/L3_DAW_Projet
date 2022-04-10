@@ -14,3 +14,17 @@ textarea {
 #containerInputZone input {
     margin-left: 10px;
 }
+
+table {
+    width: 100%;
+	border-collapse: collapse;
+}
+
+td:first-child {
+    width: 20%;
+	text-align: center;
+}
+
+td {
+    border: 1px solid grey;
+}

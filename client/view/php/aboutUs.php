@@ -71,22 +71,22 @@
           <h2>Fondateurs</h2>
           <div class="pdp"> 
               <div id="infoPdp">
-                <img alt="pdp" src="../src/pdpTest.png" > <p>Vestracte Valentin</p>
+                <img alt="pdp" src="../media/pdpTest.png" > <p>Vestracte Valentin</p>
               </div>
               <div id="infoPdp">
-                <img alt="pdp" src="../src/pdpTest.png" > <p>Petit Evan</p> 
+                <img alt="pdp" src="../media/pdpTest.png" > <p>Petit Evan</p> 
               </div>
               <div id="infoPdp">
-                <img alt="pdp" src="../src/pdpTest.png" > <p>Bertoux Hugo</p> 
+                <img alt="pdp" src="../media/pdpTest.png" > <p>Bertoux Hugo</p> 
               </div>
               <div id="infoPdp">    
-                <img alt="pdp" src="../src/pdpTest.png" > <p>Perion Maxence</p>
+                <img alt="pdp" src="../media/pdpMaxence.png" > <p>Perion Maxence</p>
               </div>
               <div id="infoPdp">    
-                <img alt="pdp" src="../src/pdpTest.png" > <p>Mohamed Nazim</p>
+                <img alt="pdp" src="../media/pdpTest.png" > <p>Mohamed Nazim</p>
               </div>
               <div id="infoPdp">
-                <img alt="pdp" src="../src/pdpTest.png" > <p>Pinon Alexandre</p> 
+                <img alt="pdp" src="../media/pdpTest.png" > <p>Pinon Alexandre</p> 
               </div>
           </div>
       </div>
