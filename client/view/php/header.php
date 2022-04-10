@@ -9,8 +9,11 @@
                 <li class="nav__item">
                     <a href="/">Home</a>
                 </li>
+				<li class="nav__item">
+                    <a href="/forum">Forum</a>
+                </li>
                 <li class="nav__item">
-                    <a href="/client/view/php/aboutUs.php">About us</a>
+                    <a href="/aboutUs">About us</a>
                 </li>
                 <li class="nav__item">
                     <a href="/contact">Contact</a>
