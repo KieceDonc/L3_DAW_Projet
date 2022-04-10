@@ -127,7 +127,7 @@ function addAnswer($msg)
 {
 	global $mysqli;
 	//TODO sanitize inputs
-	$mysqli->query("INSERT INTO topics_posts(author, date, content, topic) VALUES (5,".time().", ".$msg.", ". $_GET["topic"].")");
+	$mysqli->query("INSERT INTO topics_posts (author, date, content, topic) VALUES (5,".time().", '".$msg."', ". $_GET["topic"].");");
 }
 
 ?>
