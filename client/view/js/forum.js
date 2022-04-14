@@ -15,7 +15,7 @@ $(document).ready(function () {
 		{
 			if(jQuery.inArray("Missing topic name", errors) == -1)
 			{	
-				$('.errorsDiv').append($("<p></p>").text("Missing topic name"));
+				$('#errorsDiv').append($("<p></p>").text("Missing topic name"));
 				errors.push("Missing topic name");
 			}
 			return false;
