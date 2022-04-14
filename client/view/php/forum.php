@@ -156,10 +156,8 @@ function addAnswer($msg, $topic_id)
 	$mysqli->query("INSERT INTO topics_posts (author, date, content, topic) VALUES (5,".time().", '".$msg."', ". $topic_id.");");
 }
 
-function showCreateTopicForm($errors)
-{
-	$errors = $errors || array();
-	
+function showCreateTopicForm($errors = array())
+{	
 	if(count($errors) > 0)
 	{
 		echo "<div id='errorsDiv'>";
@@ -177,7 +175,7 @@ function showCreateTopicForm($errors)
 		<label for="inputName"> Name : </label>
 		<input name="name" type="text" id="inputName"/>
 		
-		<button name="create"> Create </button>
+		<button id="createTopicBtn" name="create"> Create </button>
 	</form>
 	<?php
 }
