@@ -9,7 +9,12 @@ $(document).ready(function () {
 	});
 	
 	$('#createTopicBtn').click(function() {
-		return $('#inputName').val().length > 0;
+		if($('#inputName').val().length == 0)
+		{
+			$('.errorsDiv').append($("<p>Missing topic name</p>"));
+			return false;
+		}
+		return true;
 	});
 
 });

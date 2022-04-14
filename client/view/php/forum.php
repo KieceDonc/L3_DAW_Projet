@@ -158,16 +158,13 @@ function addAnswer($msg, $topic_id)
 
 function showCreateTopicForm($errors = array())
 {	
-	if(count($errors) > 0)
+	echo "<div id='errorsDiv'>";
+	foreach($errors as $e)
 	{
-		echo "<div id='errorsDiv'>";
-		foreach($errors as $e)
-		{
-			echo "<p> $e </p>";
-		}
-		echo "</div>";
+		echo "<p> $e </p>";
 	}
-	
+	echo "</div>";
+
 	?>
 	<h2> Create a new topic </h2>
 	<button id="backBtn"> Back </button>
@@ -186,9 +183,12 @@ function createTopic($name)
 	global $mysqli;
 	//TODO sanitize inputs
 	//TODO load real user
-	$mysqli->query("INSERT INTO topics (name, author) VALUES ('$name', 5);");
+	$mysqli->query("INSERT INTO topics (name, author) VALUES ('".$name."', 5);");
 	
-	showTopic($mysqli->insert_id);
+	$requete = "SELECT * FROM topics WHERE id=" . $mysqli->insert_id . ";";
+	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+	$topic = $result->fetch_assoc(); 
+	showTopic($topic);
 }
 
 ?>
