@@ -120,7 +120,7 @@ function showTopic($topic)
     </table>
     <?php
     //TODO: show only if logged ?
-    showInputZone($topic->id);
+    showInputZone($topic["id"]);
 }
 
 function showMessage($message)

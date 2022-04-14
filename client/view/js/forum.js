@@ -11,7 +11,7 @@ $(document).ready(function () {
 	$('#createTopicBtn').click(function() {
 		if($('#inputName').val().length == 0)
 		{
-			$('.errorsDiv').append($("<p>Missing topic name</p>"));
+			$('.errorsDiv').append('<p>Missing topic name</p>');
 			return false;
 		}
 		return true;
