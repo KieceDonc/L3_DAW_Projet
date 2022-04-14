@@ -185,10 +185,7 @@ function createTopic($name)
 	//TODO load real user
 	$mysqli->query("INSERT INTO topics (name, author) VALUES ('".$name."', 5);");
 	
-	$requete = "SELECT * FROM topics WHERE id=" . $mysqli->insert_id . ";";
-	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-	$topic = $result->fetch_assoc(); 
-	showTopic($topic);
+	header("Location: /forum?topic=". $mysqli->insert_id);
 }
 
 ?>
