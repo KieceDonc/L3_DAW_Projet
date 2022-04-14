@@ -32,3 +32,8 @@ td:nth-child(2) {
 td {
     border: 1px solid grey;
 }
+
+#errorsDiv {
+	color: red;
+	font-weight: bold;
+}

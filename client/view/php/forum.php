@@ -21,17 +21,38 @@
     <h1> Forum </h1>
     <?php
 	date_default_timezone_set("Etc/GMT-2");
-    if(isset($_GET["topic"]) && !empty($_GET["topic"]))
+    if(isset($_REQUEST["topic"]) && !empty($_REQUEST["topic"]))
     {
-        if(isset($_POST["msg"]) && !empty($_POST["msg"]))
+		if($_REQUEST["topic"] == "new")
 		{
-			addAnswer($_POST["msg"]);	//TODO: sanitize input
+			if(isset($_REQUEST["create"]))
+			{
+				if(isset($_REQUEST["name"]) && !empty($_REQUEST["name"]))
+				{
+					createTopic($_REQUEST["name"]);
+				}
+				else
+				{		
+					showCreateTopicForm(array("Missing topic name"));
+				}
+			}
+			else
+			{
+				showCreateTopicForm();
+			}
 		}
-        //TODO: sanitize input
-		$requete = "SELECT * FROM topics WHERE id=" . $_GET["topic"] . ";";
-		$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-		$topic = $result->fetch_assoc(); 
-        showTopic($topic, $messages); 
+		else
+		{
+			if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"]))
+			{
+				addAnswer($_REQUEST["msg"], $_REQUEST["topic"]);	//TODO: sanitize input
+			}
+			//TODO: sanitize input
+			$requete = "SELECT * FROM topics WHERE id=" . $_REQUEST["topic"] . ";";
+			$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+			$topic = $result->fetch_assoc(); 
+			showTopic($topic);
+		}
     }
     else 
     {
@@ -60,6 +81,7 @@ function listTopics($topics)
     ?>
 	<form method="get">
 		<h2> Topics </h2>
+		<button name="topic" value="new"> New Topic </button>
 		<table>
 		<tbody>
 		<?php 
@@ -74,7 +96,7 @@ function listTopics($topics)
     <?php
 }
 
-function showTopic($topic, $messages) 
+function showTopic($topic) 
 {
 	//debug :  $messages as parameter
 	global $mysqli;
@@ -82,7 +104,7 @@ function showTopic($topic, $messages)
 	<div>
 		<button id="backBtn"> Back </button>
 	</div>
-    <h2> <?php echo $topic->name ?> </h2>
+    <h2> <?php echo $topic["name"] ?> </h2>
     <table>
     <tbody>
     <?php
@@ -103,11 +125,15 @@ function showTopic($topic, $messages)
 
 function showMessage($message)
 {
+	global $mysqli;
 	echo "<tr> <td>";
     //TODO distinct if current user = author
-    $author = $message["author"];
+	$requete = "SELECT * FROM users WHERE id=" . $message["author"] . ";";
+	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+	$author = $result->fetch_assoc(); 
+    $author_name = $author["firstname"] . " " . $author["lastname"];
     $date = date('m/d/Y H:i:s', $message["date"]);
-    echo $author . "<br /> $date </td> <td> ". $message["content"] . " </td> </tr>";
+    echo $author_name . "<br /> $date </td> <td> ". $message["content"] . " </td> </tr>";
 }
 
 function showInputZone($topicId) 
@@ -123,11 +149,47 @@ function showInputZone($topicId)
     <?php
 }
 
-function addAnswer($msg)
+function addAnswer($msg, $topic_id)
 {
 	global $mysqli;
 	//TODO sanitize inputs
-	$mysqli->query("INSERT INTO topics_posts (author, date, content, topic) VALUES (5,".time().", '".$msg."', ". $_GET["topic"].");");
+	$mysqli->query("INSERT INTO topics_posts (author, date, content, topic) VALUES (5,".time().", '".$msg."', ". $topic_id.");");
+}
+
+function showCreateTopicForm($errors)
+{
+	$errors = $errors || array();
+	
+	if(count($errors) > 0)
+	{
+		echo "<div id='errorsDiv'>";
+		foreach($errors as $e)
+		{
+			echo "<p> $e </p>";
+		}
+		echo "</div>";
+	}
+	
+	?>
+	<h2> Create a new topic </h2>
+	<form method="post">
+		<input name="topic" value="new" hidden />
+		<label for="inputName"> Name : </label>
+		<input name="name" type="text" id="inputName"/>
+		
+		<button name="create"> Create </button>
+	</form>
+	<?php
+}
+
+function createTopic($name)
+{
+	global $mysqli;
+	//TODO sanitize inputs
+	//TODO load real user
+	$mysqli->query("INSERT INTO topics (name, author) VALUES ($name, 5);");
+	
+	showTopic($mysqli->insert_id);
 }
 
 ?>
