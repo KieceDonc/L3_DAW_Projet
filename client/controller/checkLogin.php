@@ -1,5 +1,6 @@
 <?php
 
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/checkLogin.php");
   
   $email = $_POST['email'];
@@ -14,8 +15,8 @@
       // On hash le pwd
       if(checkLogin($email,$password) == "ACCEPTED"){
         session_start();
-        $_SESSION['loggedin'] = 'ACCEPTED';
-        $_SESSION['email'] = $email;
+        $_SESSION[CONST_SESSION_ISLOGGED] = 'ACCEPTED';
+        $_SESSION[CONST_SESSION_EMAIL] = $email;
         
         header('Location: /');
       }else{
