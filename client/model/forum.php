@@ -13,4 +13,15 @@
 
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
+
+    function getForumTopic($topicID){
+        $mysqli = getMysqli();
+
+        $requete = "SELECT * FROM topics WHERE id=" . $topicID . ";";
+        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+
+        closeMysqli($mysqli);
+
+        return $result->fetch_assoc(); 
+    }
 ?>

@@ -44,15 +44,16 @@
 		}
 		else
 		{
+			$topicID = $_REQUEST["topic"];
+
 			if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"]))
 			{
-				addAnswer($_REQUEST["msg"], $_REQUEST["topic"]);	//TODO: sanitize input
+				addAnswer($_REQUEST["msg"], $topicID);	//TODO: sanitize input
 			}
-			//TODO: sanitize input
-			$requete = "SELECT * FROM topics WHERE id=" . $_REQUEST["topic"] . ";";
-			$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-			$topic = $result->fetch_assoc(); 
-			showTopic($topic);
+
+			// We're inside a topic
+			// We show messages from it
+			showTopic(getForumTopic($topicID));
 		}
     }
     else 
