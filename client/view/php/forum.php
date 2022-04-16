@@ -16,8 +16,6 @@
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/forum.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
-	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
-	$mysqli = getMysqli();
   ?>
   
   <div>
@@ -74,7 +72,6 @@
         listTopics(getForumTopics());
     }
 	
-	closeMysqli($mysqli);
     ?>
   </div>
 
