@@ -13,6 +13,7 @@
    
   <?php 
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/forum.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/forum.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
 	$mysqli = getMysqli();
@@ -45,10 +46,12 @@
 		else
 		{
 			$topicID = $_REQUEST["topic"];
+			$userMessage = $_REQUEST["msg"]; 
 
-			if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"]))
+			// User is trying to add a message
+			if(isset($userMessage) && !empty($userMessage))
 			{
-				addAnswer($_REQUEST["msg"], $topicID);	//TODO: sanitize input
+				addForumTopicMessage($topicID,5,$userMessage);	// TODO: change 5 to userID
 			}
 
 			// We're inside a topic
@@ -145,13 +148,6 @@ function showInputZone($topicId)
         </div>
     </form>
     <?php
-}
-
-function addAnswer($msg, $topic_id)
-{
-	global $mysqli;
-	//TODO sanitize inputs
-	$mysqli->query("INSERT INTO topics_posts (author, date, content, topic) VALUES (5,".time().", '".$msg."', ". $topic_id.");");
 }
 
 function showCreateTopicForm($errors = array())
