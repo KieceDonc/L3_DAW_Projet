@@ -27,7 +27,8 @@
     function getForumTopicMessages($topicID){
         $mysqli = getMysqli();
 
-        $requete = "SELECT * FROM topics_posts WHERE topic=". $topicID .";";
+        $requete = "SELECT ". CONST_DB_TABLE_NAME_TOPICSPOSTS .".". CONST_DB_TABLE_TOPICSPOSTS_ID. ", ". CONST_DB_TABLE_USERS_FIRSTNAME .", ". CONST_DB_TABLE_USERS_LASTNAME .", ". CONST_DB_TABLE_TOPICSPOSTS_DATE .", ". CONST_DB_TABLE_TOPICSPOSTS_TOPIC .", ". CONST_DB_TABLE_TOPICSPOSTS_CONTENT ." FROM ". CONST_DB_TABLE_NAME_TOPICSPOSTS .", ". CONST_DB_TABLE_NAME_USERS ." WHERE ". CONST_DB_TABLE_TOPICSPOSTS_TOPIC ."=". $topicID ." AND ". CONST_DB_TABLE_NAME_TOPICSPOSTS .".". CONST_DB_TABLE_TOPICSPOSTS_AUTHOR ." = ". CONST_DB_TABLE_NAME_USERS .".". CONST_DB_TABLE_USERS_ID .";";
+        // without const, query look like this = "SELECT topics_posts.ID, firstname, lastname, date, topic, content FROM topics_posts, users WHERE topic=". $topicID ." AND topics_posts.author = users.ID;";
         $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
 
         closeMysqli($mysqli);

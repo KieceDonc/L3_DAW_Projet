@@ -139,13 +139,9 @@ function showTopic($topic)
 
 function showMessage($message)
 {
-	global $mysqli;
 	echo "<tr> <td>";
     //TODO distinct if current user = author
-	$requete = "SELECT * FROM users WHERE id=" . $message["author"] . ";";
-	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-	$author = $result->fetch_assoc(); 
-    $author_name = $author["firstname"] . " " . $author["lastname"];
+    $author_name = $message["firstname"] . " " . $message["lastname"];
     $date = date('m/d/Y H:i:s', $message["date"]);
     echo $author_name . "<br /> $date </td> <td> ". $message["content"] . " </td> </tr>";
 }
