@@ -12,6 +12,7 @@
   <body>
    
   <?php 
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/forum.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
 	$mysqli = getMysqli();
@@ -56,11 +57,7 @@
     }
     else 
     {
-		$requete = "SELECT * FROM topics;";
-		$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-		$topics = $result->fetch_all(MYSQLI_ASSOC); 
-	
-        listTopics($topics);
+        listTopics(getForumTopics());
     }
 	
 	closeMysqli($mysqli);
