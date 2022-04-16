@@ -181,14 +181,4 @@ function showCreateTopicForm($errors = array())
 	<?php
 }
 
-function createTopic($name)
-{
-	global $mysqli;
-	//TODO sanitize inputs
-	//TODO load real user
-	$mysqli->query("INSERT INTO topics (name, author) VALUES ('".$name."', 5);");
-	
-	header("Location: /forum?topic=". $mysqli->insert_id);
-}
-
 ?>
