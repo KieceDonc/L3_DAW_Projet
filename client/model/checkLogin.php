@@ -14,18 +14,16 @@
     $reponse = $result->fetch_assoc();
     $count = $reponse['count(*)'];
     
-    mysqli_close($mysqli); // fermer la connexion
+    closeMysqli($mysqli); // fermer la connexion
 
     if($count!=0){ 
       $hashed_password = $reponse['password'];
       if(password_verify($password, $hashed_password)){
         // nom d'utilisateur et mot de passe correctes
-        return "ACCEPTED";
+        return CONST_LOGGING_ACCEPTED;
       }
     } 
     // utilisateur ou mot de passe incorrect
-    return "INVALID";
-
-    closeMysqli($mysqli);
+    return CONST_LOGGING_INVALID;
   }
 ?>

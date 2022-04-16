@@ -9,13 +9,10 @@
   if(isset($email) && isset($password)){
     
     if($email !== "" && $password !== ""){
-      // l'email et le mot de passe sont vérifiés
-      // retourne ACCEPTED ou DENIED
 
-      // On hash le pwd
-      if(checkLogin($email,$password) == "ACCEPTED"){
+      if(checkLogin($email,$password) == CONST_LOGGING_ACCEPTED){
         session_start();
-        $_SESSION[CONST_SESSION_ISLOGGED] = 'ACCEPTED';
+        $_SESSION[CONST_SESSION_ISLOGGED] = CONST_SESSION_ISLOGGED_YES;
         $_SESSION[CONST_SESSION_EMAIL] = $email;
         
         header('Location: /');

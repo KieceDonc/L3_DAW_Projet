@@ -14,6 +14,7 @@
   <?php 
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/forum.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/forum.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
 	$mysqli = getMysqli();
@@ -46,13 +47,20 @@
 		else
 		{
 			$topicID = $_REQUEST["topic"];
-			$userMessage = $_REQUEST["msg"]; 
 
-			// User is trying to add a message
-			if(isset($userMessage) && !empty($userMessage))
-			{
-				addForumTopicMessage($topicID,5,$userMessage);	// TODO: change 5 to userID
-			}
+			// Is user connected
+			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
+                if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+                    
+					$userMessage = $_REQUEST["msg"]; 
+					$userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
+					// User is trying to add a message
+					if(isset($userMessage) && !empty($userMessage)){
+						addForumTopicMessage($topicID,$userID,$userMessage);
+						var_dump($userMessage);
+					}
+                }
+            }
 
 			// We're inside a topic
 			// We show messages from it
@@ -120,8 +128,14 @@ function showTopic($topic)
     </tbody>
     </table>
     <?php
-    //TODO: show only if logged ?
-    showInputZone($topic["id"]);
+	// Is user connected
+	if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
+		if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+			
+			showInputZone($topic["id"]);
+
+		}
+	}
 }
 
 function showMessage($message)
