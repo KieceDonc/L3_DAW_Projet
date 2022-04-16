@@ -13,7 +13,7 @@
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
 
-    function getForumTopic($topicID){
+    function getForumTopicInfo($topicID){
         $mysqli = getMysqli();
 
         $requete = "SELECT * FROM topics WHERE id=" . $topicID . ";";
@@ -22,6 +22,17 @@
         closeMysqli($mysqli);
 
         return $result->fetch_assoc(); 
+    }
+
+    function getForumTopicMessages($topicID){
+        $mysqli = getMysqli();
+
+        $requete = "SELECT * FROM topics_posts WHERE topic=". $topicID .";";
+        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+
+        closeMysqli($mysqli);
+
+        return $result->fetch_all(MYSQLI_ASSOC); 
     }
 
     function addForumTopicMessageInDB($topicID, $userID, $sanitizedInput){

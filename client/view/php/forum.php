@@ -64,7 +64,7 @@
 
 			// We're inside a topic
 			// We show messages from it
-			showTopic(getForumTopic($topicID));
+			showTopic(getForumTopicInfo($topicID));
 		}
     }
     else 
@@ -108,7 +108,6 @@ function listTopics($topics)
 function showTopic($topic) 
 {
 	//debug :  $messages as parameter
-	global $mysqli;
 	?>
 	<div>
 		<button id="backBtn"> Back </button>
@@ -117,9 +116,9 @@ function showTopic($topic)
     <table>
     <tbody>
     <?php
-	$requete = "SELECT * FROM topics_posts WHERE topic=". $topic["id"] .";";
-	$result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-	$messages = $result->fetch_all(MYSQLI_ASSOC); 
+
+	$messages = getForumTopicMessages($topic["id"]);
+
     foreach($messages as $message)
     {
        showMessage($message);
