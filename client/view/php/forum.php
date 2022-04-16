@@ -32,7 +32,9 @@
 			{
 				if(isset($_REQUEST["name"]) && !empty($_REQUEST["name"]))
 				{
-					createTopic($_REQUEST["name"]);
+					// We don't check if user is connected because "new topic" button only appear when the user is connected
+					$userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
+					createTopic($_REQUEST["name"],$userID);
 				}
 				else
 				{		
@@ -90,7 +92,16 @@ function listTopics($topics)
     ?>
 	<form method="get">
 		<h2> Topics </h2>
-		<button name="topic" value="new"> New Topic </button>
+		<?php
+			// Is user connected
+			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
+                if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+
+					// Yes so he can create new topic
+                    echo '<button name="topic" value="new"> New Topic </button>';
+                }
+            }
+		?>
 		<table>
 		<tbody>
 		<?php 

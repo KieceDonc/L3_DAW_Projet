@@ -18,10 +18,11 @@
     function getDBInfo($email,$columnName){
         $mysqli = getMysqli();
     
-        $requete = "SELECT ". $columnName .",". CONST_DB_TABLE_USERS_EMAIL ." FROM users where ". CONST_DB_TABLE_USERS_EMAIL ." = '".$email."'";
+        $requete = "SELECT count(*), ". $columnName .",". CONST_DB_TABLE_USERS_EMAIL ." FROM users where ". CONST_DB_TABLE_USERS_EMAIL ." = '".$email."' GROUP BY ".$columnName;
         $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
         $reponse = $result->fetch_assoc();
-        
+        $count = $reponse['count(*)'];
+
         closeMysqli($mysqli);
 
         if($count!=0){ 

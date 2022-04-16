@@ -22,14 +22,14 @@
     // Function call to create a new topic
     // it sanitize input, add the new topic in DB and then load the page of the topic
     // $userInput = topic name
-    function createTopic($userInput){
+    function createTopic($userInput, $userID){
         $sanitizedInput = sanitizeString($userInput); // TODO : check if it is really sanitize cuz I don't really know
 
         if(isset($sanitizedInput)){
             if(empty($sanitizedInput)){
                 // TODO: Handle error
             }else{
-                $topicID = createTopicInDB($sanitizedInput);        
+                $topicID = createTopicInDB($sanitizedInput, $userID);        
                 header("Location: /forum?topic=". $topicID);
 
             }

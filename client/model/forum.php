@@ -44,11 +44,11 @@
         closeMysqli($mysqli);
     }
 
-    function createTopicInDB($topicName){
+    function createTopicInDB($topicName, $userID){
         $mysqli = getMysqli();
 
         //TODO load real user (from maxence, plz see with him for further question)
-        $mysqli->query("INSERT INTO topics (name, author) VALUES ('".$topicName."', 5);");
+        $mysqli->query("INSERT INTO topics (name, author) VALUES ('".$topicName."', ". $userID .");");
         $topicID = $mysqli->insert_id;
 
         closeMysqli($mysqli);

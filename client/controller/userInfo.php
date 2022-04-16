@@ -3,13 +3,12 @@
     // TODO : generalize ( but can we ? ). Plz see in model userInfo.php to see how it was generalize
 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/userInfo.php");
 
     function getUserID($email){
-        $userID = $_SESSION[CONST_SESSION_USERSTORED_ID];
-
         // we check if we already stored the userID
-        if(isset($userID)){
+        if(!isset($_SESSION[CONST_SESSION_USERSTORED_ID])){
+            $userID = $_SESSION[CONST_SESSION_USERSTORED_ID];
 
             // No, we need to query id
             $userID = getDBUserID($email);
@@ -28,15 +27,14 @@
         }else{
 
             // Yes we return it
-            return $userID; 
+            return $_SESSION[CONST_SESSION_USERSTORED_ID]; 
         }
     }
 
     function getFirstnameID($email){
-        $firstname = $_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME];
-
         // we check if we already stored the firstname
-        if(isset($firstname)){
+        if(!isset($_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME])){
+            $firstname = $_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME];
 
             // No, we need to query firstname
             $firstname = getDBFirstName($email);
@@ -55,15 +53,14 @@
         }else{
 
             // Yes we return it
-            return $firstname; 
+            return $_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME]; 
         }
     }
 
     function getLastnameID($email){
-        $lastname = $_SESSION[USER_STORRED_LASTNAME];
-
         // we check if we already stored the lastname
-        if(isset($lastname)){
+        if(!isset($_SESSION[USER_STORRED_LASTNAME])){
+            $lastname = $_SESSION[USER_STORRED_LASTNAME];
 
             // No, we need to query lastname
             $lastname = getDBLastName($email);
@@ -82,7 +79,7 @@
         }else{
 
             // Yes we return it
-            return $lastname; 
+            return $_SESSION[USER_STORRED_LASTNAME]; 
         }
     }
 
