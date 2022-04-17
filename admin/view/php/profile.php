@@ -6,7 +6,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="../css/profile.css" />
-	<link rel="stylesheet" href="../css/shared.css" />
+	<link rel="stylesheet" href="../css/sharedAdmin.css" />
   </head>
   <body>
 	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); ?>
