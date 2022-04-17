@@ -29,3 +29,8 @@ li {
 	cursor: pointer;
 	list-style-type: none;
 }
+
+.brand {
+  font-weight: bold;
+  font-size: 20px; 
+}
