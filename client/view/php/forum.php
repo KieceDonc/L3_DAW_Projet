@@ -76,7 +76,7 @@
   </div>
 
     <!-- JS -->
-	<script src="../js/jquery.js"></script>
+	<script src="../../../../shared/js/jquery.js"></script>
     <script src="../js/shared.js"></script>
 	<script src="../js/forum.js"></script>
   </body>

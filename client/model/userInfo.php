@@ -1,6 +1,6 @@
 <?php
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/mysqli.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/model/mysqli.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
 
     function getDBUserID($email){
