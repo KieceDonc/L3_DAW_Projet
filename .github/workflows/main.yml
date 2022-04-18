@@ -26,3 +26,4 @@ jobs:
           git checkout prod
           git pull origin prod 
           git status
+          echo ${{ secrets.PASSWORD }} | sudo -S chown -R github:github /var/www/html/*
