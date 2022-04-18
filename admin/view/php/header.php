@@ -1,3 +1,12 @@
+<?php 
+	if(!isset($_SESSION[CONST_SESSION_ISLOGGED]) || $_SESSION[CONST_SESSION_ISLOGGED] != CONST_SESSION_ISLOGGED_YES){
+		header("Location:/login?callback=".$_SERVER['REQUEST_URI']);
+		die;
+	}
+
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");
+?>
+
 <nav>
 	<h1><a href="/" class="brand">E-lolning</a></h1>
 	<ul>
@@ -9,6 +18,8 @@
 </nav>
 <div class="content">
 	<header>
-	Welcome User 
+		<p>
+			Welcome <?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?> ! <br />
+		<p>
 	</header>
 </div>

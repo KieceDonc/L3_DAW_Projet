@@ -9,36 +9,24 @@
 	<link rel="stylesheet" href="../css/sharedAdmin.css" />
   </head>
   <body>
-	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); ?>
+	<?php 
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); 
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");
+  ?>
 	<div class="content">
-	Profile<br/>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium massa massa, ornare euismod nunc posuere id. Morbi vel nisi consectetur, ornare magna non, ornare eros. Nullam a erat orci. In hac habitasse platea dictumst. Curabitur erat lectus, lacinia at elit non, consectetur pharetra risus. Curabitur commodo elit quis enim tempus, eu egestas mauris sollicitudin. Etiam ac sem convallis, cursus odio nec, convallis turpis. Morbi vitae mauris ac erat mollis commodo. Sed ultricies sollicitudin erat nec rhoncus. Duis nec erat sit amet est condimentum condimentum. Duis rutrum felis nec bibendum sodales. Mauris ullamcorper orci at augue tincidunt, id laoreet elit commodo. Nam nec convallis mi. Sed urna augue, pharetra finibus laoreet eget, suscipit eu nibh.
-
-Donec vehicula ultrices tortor sit amet finibus. Fusce semper nulla vitae lacus consequat tincidunt. Praesent elit augue, suscipit sit amet aliquet quis, pellentesque vel orci. Etiam ultricies ornare turpis, et finibus felis tempor vel. Duis sodales, libero eget viverra efficitur, enim sem cursus leo, vitae tincidunt eros eros a erat. Sed a iaculis mi, consectetur gravida leo. Nulla eget justo ac massa interdum volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-In sollicitudin ante erat, non tristique orci tristique in. Vestibulum aliquet dignissim ligula, at fermentum dui dignissim vel. Nulla et ornare metus, lobortis lobortis ligula. Aenean lacinia consequat facilisis. Morbi dolor quam, tincidunt eu auctor vel, ultrices sit amet sem. Cras blandit tincidunt maximus. Donec ut neque ac nunc ullamcorper pellentesque in id nisi. Aliquam tempus, ligula quis sodales ullamcorper, nunc mauris placerat nulla, non vestibulum risus enim at neque. Integer id sem elit. Suspendisse ut blandit mauris. Phasellus sollicitudin, odio sed luctus placerat, nisl felis bibendum turpis, vitae rhoncus lectus purus vitae velit. Proin ut consectetur nibh, eu facilisis metus.
-
-Nunc et tristique magna. Vestibulum sit amet mollis odio, a rutrum odio. Nullam quis ornare elit, vitae viverra dolor. Sed nec sodales quam. Sed quis est a felis bibendum commodo quis tempus lectus. Nulla at erat mollis, tristique lacus ac, ultricies nibh. Pellentesque malesuada, lorem quis bibendum eleifend, nisl elit aliquet purus, ut accumsan lorem mi quis ex. Pellentesque ac quam at quam varius tincidunt quis ac leo. Vivamus nec ipsum id tortor sodales ornare. Cras congue mi justo, ut consectetur enim ullamcorper tristique. Morbi ut turpis vel metus congue congue.
-
-Maecenas vel mollis erat. Nulla efficitur ullamcorper orci eu lobortis. Praesent vulputate mollis lorem vitae varius. Aliquam et mattis tellus, sit amet rutrum tortor. Integer id enim quis tellus malesuada ornare. Donec mi arcu, ornare in scelerisque nec, bibendum eget sapien. In sed ligula non nibh tincidunt viverra.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium massa massa, ornare euismod nunc posuere id. Morbi vel nisi consectetur, ornare magna non, ornare eros. Nullam a erat orci. In hac habitasse platea dictumst. Curabitur erat lectus, lacinia at elit non, consectetur pharetra risus. Curabitur commodo elit quis enim tempus, eu egestas mauris sollicitudin. Etiam ac sem convallis, cursus odio nec, convallis turpis. Morbi vitae mauris ac erat mollis commodo. Sed ultricies sollicitudin erat nec rhoncus. Duis nec erat sit amet est condimentum condimentum. Duis rutrum felis nec bibendum sodales. Mauris ullamcorper orci at augue tincidunt, id laoreet elit commodo. Nam nec convallis mi. Sed urna augue, pharetra finibus laoreet eget, suscipit eu nibh.
-
-Donec vehicula ultrices tortor sit amet finibus. Fusce semper nulla vitae lacus consequat tincidunt. Praesent elit augue, suscipit sit amet aliquet quis, pellentesque vel orci. Etiam ultricies ornare turpis, et finibus felis tempor vel. Duis sodales, libero eget viverra efficitur, enim sem cursus leo, vitae tincidunt eros eros a erat. Sed a iaculis mi, consectetur gravida leo. Nulla eget justo ac massa interdum volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-In sollicitudin ante erat, non tristique orci tristique in. Vestibulum aliquet dignissim ligula, at fermentum dui dignissim vel. Nulla et ornare metus, lobortis lobortis ligula. Aenean lacinia consequat facilisis. Morbi dolor quam, tincidunt eu auctor vel, ultrices sit amet sem. Cras blandit tincidunt maximus. Donec ut neque ac nunc ullamcorper pellentesque in id nisi. Aliquam tempus, ligula quis sodales ullamcorper, nunc mauris placerat nulla, non vestibulum risus enim at neque. Integer id sem elit. Suspendisse ut blandit mauris. Phasellus sollicitudin, odio sed luctus placerat, nisl felis bibendum turpis, vitae rhoncus lectus purus vitae velit. Proin ut consectetur nibh, eu facilisis metus.
-
-Nunc et tristique magna. Vestibulum sit amet mollis odio, a rutrum odio. Nullam quis ornare elit, vitae viverra dolor. Sed nec sodales quam. Sed quis est a felis bibendum commodo quis tempus lectus. Nulla at erat mollis, tristique lacus ac, ultricies nibh. Pellentesque malesuada, lorem quis bibendum eleifend, nisl elit aliquet purus, ut accumsan lorem mi quis ex. Pellentesque ac quam at quam varius tincidunt quis ac leo. Vivamus nec ipsum id tortor sodales ornare. Cras congue mi justo, ut consectetur enim ullamcorper tristique. Morbi ut turpis vel metus congue congue.
-
-Maecenas vel mollis erat. Nulla efficitur ullamcorper orci eu lobortis. Praesent vulputate mollis lorem vitae varius. Aliquam et mattis tellus, sit amet rutrum tortor. Integer id enim quis tellus malesuada ornare. Donec mi arcu, ornare in scelerisque nec, bibendum eget sapien. In sed ligula non nibh tincidunt viverra.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium massa massa, ornare euismod nunc posuere id. Morbi vel nisi consectetur, ornare magna non, ornare eros. Nullam a erat orci. In hac habitasse platea dictumst. Curabitur erat lectus, lacinia at elit non, consectetur pharetra risus. Curabitur commodo elit quis enim tempus, eu egestas mauris sollicitudin. Etiam ac sem convallis, cursus odio nec, convallis turpis. Morbi vitae mauris ac erat mollis commodo. Sed ultricies sollicitudin erat nec rhoncus. Duis nec erat sit amet est condimentum condimentum. Duis rutrum felis nec bibendum sodales. Mauris ullamcorper orci at augue tincidunt, id laoreet elit commodo. Nam nec convallis mi. Sed urna augue, pharetra finibus laoreet eget, suscipit eu nibh.
-
-Donec vehicula ultrices tortor sit amet finibus. Fusce semper nulla vitae lacus consequat tincidunt. Praesent elit augue, suscipit sit amet aliquet quis, pellentesque vel orci. Etiam ultricies ornare turpis, et finibus felis tempor vel. Duis sodales, libero eget viverra efficitur, enim sem cursus leo, vitae tincidunt eros eros a erat. Sed a iaculis mi, consectetur gravida leo. Nulla eget justo ac massa interdum volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-In sollicitudin ante erat, non tristique orci tristique in. Vestibulum aliquet dignissim ligula, at fermentum dui dignissim vel. Nulla et ornare metus, lobortis lobortis ligula. Aenean lacinia consequat facilisis. Morbi dolor quam, tincidunt eu auctor vel, ultrices sit amet sem. Cras blandit tincidunt maximus. Donec ut neque ac nunc ullamcorper pellentesque in id nisi. Aliquam tempus, ligula quis sodales ullamcorper, nunc mauris placerat nulla, non vestibulum risus enim at neque. Integer id sem elit. Suspendisse ut blandit mauris. Phasellus sollicitudin, odio sed luctus placerat, nisl felis bibendum turpis, vitae rhoncus lectus purus vitae velit. Proin ut consectetur nibh, eu facilisis metus.
-
-Nunc et tristique magna. Vestibulum sit amet mollis odio, a rutrum odio. Nullam quis ornare elit, vitae viverra dolor. Sed nec sodales quam. Sed quis est a felis bibendum commodo quis tempus lectus. Nulla at erat mollis, tristique lacus ac, ultricies nibh. Pellentesque malesuada, lorem quis bibendum eleifend, nisl elit aliquet purus, ut accumsan lorem mi quis ex. Pellentesque ac quam at quam varius tincidunt quis ac leo. Vivamus nec ipsum id tortor sodales ornare. Cras congue mi justo, ut consectetur enim ullamcorper tristique. Morbi ut turpis vel metus congue congue.
-
-Maecenas vel mollis erat. Nulla efficitur ullamcorper orci eu lobortis. Praesent vulputate mollis lorem vitae varius. Aliquam et mattis tellus, sit amet rutrum tortor. Integer id enim quis tellus malesuada ornare. Donec mi arcu, ornare in scelerisque nec, bibendum eget sapien. In sed ligula non nibh tincidunt viverra.
+    <?php
+      if(isset($_REQUEST["edit"])){
+        if(isset($_REQUEST["save"])){
+          editProfile();
+        }
+        else{
+          showEditProfile();
+        }
+      }
+      else {
+        showProfileInfos();
+      }
+    ?>
 	</div>
 
 <!-- JS -->
@@ -46,3 +34,52 @@ Maecenas vel mollis erat. Nulla efficitur ullamcorper orci eu lobortis. Praesent
 	<script src="../js/profile.js"></script>
   </body>
 </html>
+
+<?php
+  function showProfileInfos(){
+    ?>
+      Your username : <?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
+      Last connection : <?php echo getDBLastConnection($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
+      You created your account on <?php echo getDBCreationDate($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
+      Your birthdate : <?php echo getDBBirthdate($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
+      Your full name : <?php echo getDBFirstName($_SESSION[CONST_SESSION_EMAIL]) . " " . getDBLastName($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
+
+      <form method="get">
+        <button name="edit"> Edit profile </button>
+      </form>
+    <?php
+  }
+
+  function showEditProfile(){
+    ?>
+      <form method="post">
+        <label for="username"> New username : </label>
+        <input type="text" name="username" id="username" value="<?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?>" />
+
+        <label for="firstname"> New first name : </label>
+        <input type="text" name="firstname" id="firstname" value="<?php echo getDBFirstName($_SESSION[CONST_SESSION_EMAIL])?>" />
+
+        <label for="lastname"> New last name : </label>
+        <input type="text" name="lastname" id="lastname" value="<?php echo getDBLastName($_SESSION[CONST_SESSION_EMAIL]); ?>" />
+
+        <label for="datefield">Edit your birthdate: </label>
+        <input id="datefield" type='date' min='1900-01-01' max='2099-12-31' name="birthdate" value="<?php echo getDBBirthdate($_SESSION[CONST_SESSION_EMAIL]); ?>"></input>
+
+        <label for="pass1">Mot de passe</label>
+        <input id="pass1" type="password" placeholder="Entrer le mot de passe" name="password">
+
+        <label for="pass2">Confirmer le mot de passe</label>
+        <input id="pass2" type="password" placeholder="Confirmer le mot de passe" name="passwordconfirmation">
+
+        <input hidden name="edit" />
+        <button name="save"> Save </button>
+      </form>
+    <?php
+  }
+
+  function editProfile(){
+
+  }
+
+
+?>

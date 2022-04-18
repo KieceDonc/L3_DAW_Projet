@@ -15,6 +15,22 @@
         return getDBInfo($email,CONST_DB_TABLE_USERS_LASTNAME);
     }
 
+    function getDBUserName($email){
+        return getDBInfo($email,CONST_DB_TABLE_USERS_USERNAME);
+    }
+
+    function getDBLastConnection($email) {
+        return getDBInfo($email, CONST_DB_TABLE_USERS_LASTCONNECTION);
+    }
+
+    function getDBBirthdate($email) {
+        return getDBInfo($email, CONST_DB_TABLE_USERS_BIRTHDATE);
+    }
+
+    function getDBCreationDate($email) {
+        return getDBInfo($email, CONST_DB_TABLE_USERS_CREATIONDATE);
+    }
+
     function getDBInfo($email,$columnName){
         $mysqli = getMysqli();
     

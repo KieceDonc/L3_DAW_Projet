@@ -14,6 +14,10 @@
     define('CONST_DB_TABLE_USERS_EMAIL','email'); // email = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_FIRSTNAME','firstname'); // firstname = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_LASTNAME','lastname'); // lastname = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_USERNAME','username'); // username = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_LASTCONNECTION','lastconnection'); // lastconnection = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_BIRTHDATE','birthdate'); // birthdate = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_CREATIONDATE','creationdate'); // creationdate = name of the column in db in users table
 
     // DB table, columns name for table courses
     define('CONST_DB_TABLE_NAME_USERS','id'); // id = name of table inside the db in courses table
