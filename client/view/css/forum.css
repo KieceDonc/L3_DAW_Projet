@@ -123,6 +123,7 @@ td {
     position: absolute;
     top: 50%;
     left: 50%;
+    
 }
 
 .newtopic {
@@ -130,6 +131,7 @@ td {
     border : 0.20em solid var(--background-color);
     color : white;
     text-align: center;
+    color : black;
 }
 
 .newtopic:hover {
@@ -147,6 +149,9 @@ td {
     width:100%;
     background: transparent;
     transition-duration: 0.5s;
+    font-family: 'Quicksand Regular';
+    font-weight: 300;
+    font-size: x-large;
 }
 
 .topicbutton:hover {
