@@ -95,7 +95,7 @@ function listTopics($topics)
                 if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 
 					// Yes so he can create new topic
-                    echo '<button name="topic" value="new" class="newtopic"> Create a Topic </button>';
+                    echo '<div class="button"><button name="topic" value="new" class="newtopic"> Create a Topic </button></div>'
                 }
             }
 		?>
@@ -118,7 +118,7 @@ function showTopic($topic)
 	//debug :  $messages as parameter
 	?>
     <h2> <?php echo $topic["name"] ?> </h2>
-	<div>
+	<div class="button">
 		<button id="backBtn"> Back </button>
 	</div>
     <table>
