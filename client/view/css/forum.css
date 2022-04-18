@@ -22,7 +22,6 @@ table {
 
 td:first-child {
     width: 20%;
-	text-align: center;
 }
 
 td:nth-child(2) {
@@ -36,4 +35,23 @@ td {
 #errorsDiv {
 	color: red;
 	font-weight: bold;
+}
+
+#author {
+    font-size : 22px;
+    color : black;
+    margin-left: 2px;
+    text-align: center;
+}
+
+#date {
+    background-color: black;
+    color : white;
+    margin-left :0;
+    margin-top : 12px;
+    text-align: right;
+}
+
+.message {
+    background-color: white;
 }
