@@ -1,19 +1,25 @@
 <?php
 
-    // DB table, columns name for table users
-    define('CONST_DB_TABLE_NAME_TOPICSPOSTS','topics_posts'); // topics_posts = name of table inside the db for users
-    define('CONST_DB_TABLE_TOPICSPOSTS_ID','id'); // id = name of the column in db inside topics_posts table
-    define('CONST_DB_TABLE_TOPICSPOSTS_AUTHOR','author'); // author = name of the column in db topics_posts table
-    define('CONST_DB_TABLE_TOPICSPOSTS_DATE','date'); // date = name of the column in db topics_posts table
-    define('CONST_DB_TABLE_TOPICSPOSTS_CONTENT','content'); // content = name of the column in db topics_posts table
-    define('CONST_DB_TABLE_TOPICSPOSTS_TOPIC','topic'); // topic = name of the column in db topics_posts table
+    // DB table, columns name for table topics_posts
+    define('CONST_DB_TABLE_NAME_TOPICSPOSTS','topics_posts'); // topics_posts = name of the column in db in topics_posts table
+    define('CONST_DB_TABLE_TOPICSPOSTS_ID','id'); // id = name of the column in db in topics_posts table
+    define('CONST_DB_TABLE_TOPICSPOSTS_AUTHOR','author'); // author = name of the column in db in topics_posts table
+    define('CONST_DB_TABLE_TOPICSPOSTS_DATE','date'); // date = name of the column in db in topics_posts table
+    define('CONST_DB_TABLE_TOPICSPOSTS_CONTENT','content'); // content = name of the column in db in topics_posts table
+    define('CONST_DB_TABLE_TOPICSPOSTS_TOPIC','topic'); // topic = name of the column in db in topics_posts table
 
     // DB table, columns name for table users
-    define('CONST_DB_TABLE_NAME_USERS','users'); // users = name of table inside the db for users
-    define('CONST_DB_TABLE_USERS_ID','id'); // id = name of the column in db inside users table
-    define('CONST_DB_TABLE_USERS_EMAIL','email'); // email = name of the column in db users table
-    define('CONST_DB_TABLE_USERS_FIRSTNAME','firstname'); // firstname = name of the column in db users table
-    define('CONST_DB_TABLE_USERS_LASTNAME','lastname'); // lastname = name of the column in db users table
+    define('CONST_DB_TABLE_NAME_USERS','users'); // users = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_ID','id'); // id = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_EMAIL','email'); // email = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_FIRSTNAME','firstname'); // firstname = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_LASTNAME','lastname'); // lastname = name of the column in db in users table
+
+    // DB table, columns name for table courses
+    define('CONST_DB_TABLE_NAME_USERS','id'); // id = name of table inside the db in courses table
+    define('CONST_DB_TABLE_USERS_ID','idauthor'); // idauthor = name of the column in db in courses table
+    define('CONST_DB_TABLE_USERS_EMAIL','name'); // name = name of the column in db in courses table
+    define('CONST_DB_TABLE_USERS_FIRSTNAME','description'); // description = name of the column in db in courses table
 
     // DB return type
     define('CONST_DB_ACCEPTED', 'ACCEPTED');
