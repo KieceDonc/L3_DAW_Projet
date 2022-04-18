@@ -30,17 +30,12 @@
 
             session_start();
           
-            $Sign_in_up = '<a id="header-button" href="/login">Sign in/up</a>';
           
-            if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
-                if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+            if(isset($_SESSION[CONST_SESSION_ISLOGGED]) && $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
                     echo '<a id="header-button" href="/admin/profile">'.$_SESSION[CONST_SESSION_EMAIL].'</a>';
                     echo '<a id="header-button" href="logout.php">Log out</a>';
-                }else{
-                    echo $Sign_in_up;
-                }
             }else{
-                echo $Sign_in_up;
+                echo '<a id="header-button" href="/login?callback='. $_SERVER['REQUEST_URI'] .'">Sign in/up</a>';
             }
             
         ?>

@@ -10,6 +10,7 @@
   </head>
   <body>
 	<?php 
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");
   ?>
@@ -76,10 +77,5 @@
       </form>
     <?php
   }
-
-  function editProfile(){
-
-  }
-
 
 ?>

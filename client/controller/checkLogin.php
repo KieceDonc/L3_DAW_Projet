@@ -15,7 +15,13 @@
         $_SESSION[CONST_SESSION_ISLOGGED] = CONST_SESSION_ISLOGGED_YES;
         $_SESSION[CONST_SESSION_EMAIL] = $email;
         
-        header('Location: /');
+        //TODO sanitize callback or vulnerable to xss
+        if(isset($_REQUEST["callback"]) && !empty($_REQUEST["callback"])){
+          header('Location: '.$_REQUEST["callback"]);
+        }
+        else {
+          header('Location: /');
+        }
       }else{
         echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
       }
