@@ -13,6 +13,7 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/profile.php");
   ?>
 	<div class="content">
     <?php
