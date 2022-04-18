@@ -120,7 +120,6 @@ td {
     text-align: center;
     justify-content: center;
     display : flex;
-    position: absolute;
     top: 50%;
     left: 50%;
     
@@ -132,6 +131,8 @@ td {
     color : white;
     text-align: center;
     color : black;
+    top: 50%;
+    left: 50%;
 }
 
 .newtopic:hover {
