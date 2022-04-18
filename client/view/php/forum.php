@@ -104,7 +104,7 @@ function listTopics($topics)
 		<?php 
 		foreach($topics as $topic)
 		{
-			echo "<tr> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";    
+			echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";    
 		}
 		?>
 		</tbody>
