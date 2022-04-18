@@ -114,4 +114,39 @@ td {
 
 #createTopic {
     text-align: center;
+}  
+
+.button {
+    text-align: center;
+    justify-content: center;
+    display : flex;
+}
+
+.newtopic {
+    transition-duration : 0.5s;
+    border : 0.20em solid var(--background-color);
+    color : white;
+    text-align: center;
+}
+
+.newtopic {
+    color : white;
+    background-color: #2fa0f6;
+}
+
+.topicbutton {
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
+    display : flex;
+    color : white;
+    background-color:var(--background-color);
+    width:100%;
+    background: transparent;
+    transition-duration: 0.5s;
+}
+
+.topicbutton {
+    background-color: #2fa0f6;
+    color : white;
 }

@@ -95,7 +95,7 @@ function listTopics($topics)
                 if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 
 					// Yes so he can create new topic
-                    echo '<button name="topic" value="new"> New Topic </button>';
+                    echo '<button name="topic" value="new" class="newtopic"> Create a Topic </button>';
                 }
             }
 		?>
@@ -104,7 +104,7 @@ function listTopics($topics)
 		<?php 
 		foreach($topics as $topic)
 		{
-			echo "<tr> <td> <button name='topic' value='". $topic["id"] ."'> ". $topic["name"]. " </button> </td> </tr>";    
+			echo "<tr> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";    
 		}
 		?>
 		</tbody>
@@ -178,16 +178,18 @@ function showCreateTopicForm($errors = array())
 
 	?>
 	<h2> Create a new topic </h2>
-	
+
 	<form id="createTopic" method="post">
 		<input name="topic" value="new" hidden />
 		<label for="inputName"> Name of Topic : </label>
 		<input name="name" type="text" id="inputName"/>
-		
+		<div class="button">
 		<button id="createTopicBtn" name="create"> Create </button>
+		</div>
 	</form>
-
+	<div class="button">
 	<button id="backBtn"> Back </button>
+	</div>
 	<?php
 }
 
