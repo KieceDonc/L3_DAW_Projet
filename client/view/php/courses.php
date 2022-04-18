@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Courses</title>
+    <title>courses</title>
     
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
@@ -13,10 +13,10 @@
     <?php 
       require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
     ?>
-    <h1>Courses</h1>
 
+    <h1>Courses</h1>
     <!-- JS -->
-    <script src="../js/jquery.js"></script>
+    <script src="../../../../shared/js/jquery.js"></script>
     <script src="../js/shared.js"></script>
   </body>
 </html>
