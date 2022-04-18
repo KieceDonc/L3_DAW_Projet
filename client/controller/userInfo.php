@@ -2,7 +2,7 @@
 
     // TODO : generalize ( but can we ? ). Plz see in model userInfo.php to see how it was generalize
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/userInfo.php");
 
     function getUserID($email){

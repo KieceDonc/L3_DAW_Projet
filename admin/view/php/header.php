@@ -1,9 +1,10 @@
 <?php 
-	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
-	
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+
 	if(!isset($_SESSION[CONST_SESSION_ISLOGGED]) || $_SESSION[CONST_SESSION_ISLOGGED] != CONST_SESSION_ISLOGGED_YES){
-		header("Location:/login?callback=".$_SERVER['REQUEST_URI']);
-		die;
+		//header("Location:/login?callback=".$_SERVER['REQUEST_URI']);
+		//die;
+		var_dump($_SESSION);
 	}
 
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/userInfo.php");

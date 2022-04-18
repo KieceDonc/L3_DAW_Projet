@@ -1,7 +1,7 @@
 <?php
 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/model/mysqli.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/const.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
 
     function getDBUserID($email){
         return getDBInfo($email,CONST_DB_TABLE_USERS_ID);
