@@ -120,6 +120,9 @@ td {
     text-align: center;
     justify-content: center;
     display : flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .newtopic {
@@ -129,7 +132,7 @@ td {
     text-align: center;
 }
 
-.newtopic {
+.newtopic:hover {
     color : white;
     background-color: #2fa0f6;
 }
@@ -146,7 +149,7 @@ td {
     transition-duration: 0.5s;
 }
 
-.topicbutton {
+.topicbutton:hover {
     background-color: #2fa0f6;
     color : white;
 }
