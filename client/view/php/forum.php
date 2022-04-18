@@ -19,7 +19,7 @@
   ?>
   
   <div>
-    <h1> Forum </h1>
+    <h1> Forum E-lolning </h1>
     <?php
 	date_default_timezone_set("Etc/GMT-2");
     if(isset($_REQUEST["topic"]) && !empty($_REQUEST["topic"]))
@@ -117,10 +117,10 @@ function showTopic($topic)
 {
 	//debug :  $messages as parameter
 	?>
+    <h2> <?php echo $topic["name"] ?> </h2>
 	<div>
 		<button id="backBtn"> Back </button>
 	</div>
-    <h2> <?php echo $topic["name"] ?> </h2>
     <table>
     <tbody>
     <?php
