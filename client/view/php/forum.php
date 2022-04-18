@@ -178,14 +178,16 @@ function showCreateTopicForm($errors = array())
 
 	?>
 	<h2> Create a new topic </h2>
-	<button id="backBtn"> Back </button>
-	<form method="post">
+	
+	<form id="createTopic" method="post">
 		<input name="topic" value="new" hidden />
-		<label for="inputName"> Name : </label>
+		<label for="inputName"> Name of Topic : </label>
 		<input name="name" type="text" id="inputName"/>
 		
 		<button id="createTopicBtn" name="create"> Create </button>
 	</form>
+
+	<button id="backBtn"> Back </button>
 	<?php
 }
 
