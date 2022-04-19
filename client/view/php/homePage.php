@@ -92,7 +92,7 @@
             <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Mohamed Nazim </figcaption>
         </figure>
         <figure>
-            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Pinon Alexandre </figcaption>
+            <img alt="pdp" src="../media/pdpAlexandre.png" > <figcaption> Pinon Alexandre </figcaption>
         </figure>
         </div>
     </div>
