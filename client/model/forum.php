@@ -29,7 +29,7 @@
         $query = $conn->prepare("SELECT date FROM topics_posts WHERE date=(SELECT MAX(date) FROM topics_posts tp2 WHERE tp2.id=:valueid);");
         $query->bindValue(":valueid", $topicID);
         $query->execute();
-        
+
         return $query->fetch()[0];
     }
 
@@ -46,10 +46,11 @@
         $conn = getPDO();
 
         // without const, query look like this = "SELECT topics_posts.ID, firstname, lastname, date, topic, content FROM topics_posts, users WHERE topic=". $topicID ." AND topics_posts.author = users.ID;";
-        $result = $conn->prepare("SELECT :topicposts.:topicpostid, :firstname, :lastname, :datename, :topicname, :content FROM :topicposts, :users WHERE :topicname=:topicvalue AND :topicposts.:author = :users.:nameid;");
-        $result->execute(array("topicposts"=>CONST_DB_TABLE_NAME_TOPICSPOSTS, "topicpostid"=>CONST_DB_TABLE_TOPICSPOSTS_ID, "firstname"=>CONST_DB_TABLE_USERS_FIRSTNAME, "lastname"=>CONST_DB_TABLE_USERS_LASTNAME, "datename"=>CONST_DB_TABLE_TOPICSPOSTS_DATE, "topicname"=>CONST_DB_TABLE_TOPICSPOSTS_TOPIC, "content"=>CONST_DB_TABLE_TOPICSPOSTS_CONTENT, "users"=>CONST_DB_TABLE_NAME_USERS, "topicvalue"=>$topicID, "author"=>CONST_DB_TABLE_TOPICSPOSTS_AUTHOR, "nameid"=>CONST_DB_TABLE_USERS_ID));
+        $query = $conn->prepare("SELECT topics_posts.ID, firstname, lastname, date, topic, content FROM topics_posts, users WHERE topic=:valueid AND topics_posts.author = users.ID");
+        $query->bindValue(":valueid", $topicID);
+        $query->execute();
 
-        return $result->fetchAll();
+        return $query->fetchAll();
     }
 
     function addForumTopicMessageInDB($topicID, $userID, $sanitizedInput){
