@@ -7,7 +7,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
     <link rel="stylesheet" href="../css/shared.css" />
-    <link rel="stylesheet" href="../css/aboutUs.css" />
+    <link rel="stylesheet" href="../css/homePage.css" />
     <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
@@ -17,13 +17,13 @@
         if(!file_exists("compteur.txt")){ 
             $compteur=fopen("compteur.txt","w");
             $hit=1;	
-            setcookie("Visite","ok",time()+365*24*3600); // 1 an
+            setcookie("Visite","ok",time()+365*24*3600); // one year
         }
         else{
                 $compteur=fopen("compteur.txt","r+");
                 $hit=fgets($compteur,255);
                 if(empty($_COOKIE["Visite"])){
-                    setcookie("Visite","ok",time()+365*24*3600); // 1 an
+                    setcookie("Visite","ok",time()+365*24*3600); 
                     $hit++;
                 }
         }
@@ -31,7 +31,7 @@
         fputs($compteur,$hit);
         fclose($compteur);
 
-        echo " Nombre de visiteur (1 ans maximum)" . $hit . " !! <br><br> ";
+        echo "Number of visitors over 1 year : " . $hit . "<br><br>";
 
         echo $HTTP_COOKIE_VARS["Visite"];
     ?>

@@ -16,9 +16,6 @@
                     <a href="/courses">Courses</a>
                 </li>
                 <li class="nav__item">
-                    <a href="/aboutUs">About us</a>
-                </li>
-                <li class="nav__item">
                     <a href="/contact">Contact</a>
                 </li>
             </ul>

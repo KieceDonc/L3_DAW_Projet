@@ -39,12 +39,14 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    align-content: center;}
+    align-content: center;
+}
 
 #infoPdp {
     margin: 30px 40px 10px;
     text-align: center;
     justify-content: space-between;
     flex-direction: column;
-
+    width: 250px;
+    height: 150px;
 }

@@ -12,6 +12,7 @@
   <body>
     <?php 
       require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+      require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/homePage.php");
     ?>
 
     <!-- JS -->
