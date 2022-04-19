@@ -87,7 +87,7 @@ td {
   font-family: 'Quicksand Regular';
   font-weight: 300;
   font-size: x-large;
-  color: var(--text-color-lvl-1);
+  color: black;
   text-align: center;
   transition: all 0.5s;
 }
@@ -138,9 +138,8 @@ td {
 .newtopic {
     transition-duration : 0.5s;
     border : 0.20em solid var(--background-color);
-    color : var(--text-color-lvl-1);
+    color : black;
     text-align: center;
-    color : var(--text-color-lvl-2);
     border-radius: 2em;
     box-sizing: border-box;
     font-size: xx-large;
