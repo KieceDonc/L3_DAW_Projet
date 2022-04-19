@@ -1,11 +1,10 @@
 :root{
   --title-color: #e63746;          /* Titres */ 
-  --background-color: #354e75;     /* Fond */
+  --background-color: #FFFFFF;     /* Fond */
   --handler-lvl-1-color: #2b3b68;  /* Conteneur de niveau 1 */
-  --handler-lvl-2-color: #212b52;  /* Conteneur de niveau 2 */
-  --handler-lvl-3-color: #1c2347;  /* Conteneur de niveau 3 */
-  --text-color: #f3f5f7;           /* Texte */
+  --handler-lvl-2-color: #354e75;  /* Conteneur de niveau 2 */
+  --handler-lvl-3-color: #2292DF;  /* Conteneur de niveau 3 */
+  --text-color: #000000;           /* Texte */
 
   font-family: "Quicksand SemiBold", serif;
-
 }
