@@ -34,7 +34,25 @@ function underlineElementOnHover(element){
   })
 }
 
-/*
+/**
+ * Find cookie parameters by its name
+ * @param name
+ */
+
+function readCookie(name) {
+  var cookieName = name + "=";
+  var cookieFind = document.cookie.split(';');
+  for(var i=0;i < cookieFind.length;i++) {
+    var currentCookie = cookieFind[i];
+    while (currentCookie.charAt(0)==' ') currentCookie = currentCookie.substring(1,currentCookie.length);
+    if (currentCookie.indexOf(cookieName) == 0)
+      return currentCookie.substring(cookieName.length,currentCookie.length);
+  }
+  return null;
+}
+
+
+/**
  * Script use for switch into light mode and dark mode
  */
 
@@ -44,7 +62,8 @@ var cssLink = $("<link>");
 $("head").append(cssLink); 
 
 function changeTheme() {
-    if(buttonState == 0)
+    //page load for first time, load light mode
+    if(readCookie("themes") == "light" && buttonState == 0)
     {
         cssLink.attr({
             rel:  "stylesheet",
@@ -52,15 +71,40 @@ function changeTheme() {
             href: "../css/lightMode.css"
         });
         buttonState = 1;
+        document.cookie = 'themes=light;';
     }
-    else
+    //page has already load, and change mode by the button click
+    else if(readCookie("themes") == "light" && buttonState == 1)
     {
         cssLink.attr({
             rel:  "stylesheet",
             type: "text/css",
             href: "../css/darkMode.css"
         });
-        buttonState = 0;
+        buttonState = 1;
+        document.cookie = 'themes=dark;';
+    }
+    //page load for first time, load dark mode
+    else if(readCookie("themes") == "dark" && buttonState == 0)
+    {
+        cssLink.attr({
+            rel:  "stylesheet",
+            type: "text/css",
+            href: "../css/darkMode.css"
+        });
+        buttonState = 1;
+        document.cookie = 'themes=dark;';
+    }
+    //page has already load, and change mode by the button click
+    else 
+    {
+        cssLink.attr({
+            rel:  "stylesheet",
+            type: "text/css",
+            href: "../css/lightMode.css"
+        });
+        buttonState = 1;
+        document.cookie = 'themes=light;';
     }
 }
 
