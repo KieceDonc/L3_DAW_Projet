@@ -46,20 +46,20 @@ td {
 }
 
 #errorsDiv {
-	color: red;
+	color: var(--title-color);
 	font-weight: bold;
 }
 
 #author {
     font-size : 26px;
-    color : white;
+    color: var(--text-color-lvl-2);
     margin-left: 2px;
     margin-top: 5px;
     text-align: center;
 }
 
 #date {
-    color : white;
+    color: var(--text-color-lvl-2);
     margin-top : 12px;
     text-align: right;
     padding-right: 2px;
@@ -80,13 +80,13 @@ td {
   font-family: 'Quicksand Regular';
   font-weight: 300;
   font-size: x-large;
-  color: black;
+  color: var(--text-color-lvl-1);
   text-align: center;
   transition: all 0.5s;
 }
 
 #backBtn:hover {
-  color: White;
+  color: var(--text-color-lvl-2);
   background-color : #2fa0f6;
 }
 
@@ -101,7 +101,7 @@ td {
   font-family: 'Quicksand Regular';
   font-weight: 300;
   font-size: x-large;
-  color: black;
+  color: var(--text-color-lvl-1);
   text-align: center;
   transition: all 0.5s;
   margin-top:2px;
@@ -110,7 +110,7 @@ td {
 }
 
 #createTopicBtn:hover {
-  color: white;
+  color: var(--text-color-lvl-2);
   background-color : #2fa0f6
 }
 
@@ -132,16 +132,16 @@ td {
 .newtopic {
     transition-duration : 0.5s;
     border : 0.20em solid var(--background-color);
-    color : white;
+    color : var(--text-color-lvl-2);
     text-align: center;
-    color : black;
+    color : var(--text-color-lvl-1);
     border: 0.20em solid var(--background-color);
     border-radius: 2em;
     box-sizing: border-box;
 }
 
 .newtopic:hover {
-    color : white;
+    color : var(--text-color-lvl-2);
     background-color: #2fa0f6;
 }
 
@@ -161,7 +161,7 @@ td {
 
 .topicbutton:hover {
     background-color: #2fa0f6;
-    color : white;
+    color : var(--text-color-lvl-2);
 }
 
 .rowtopic {

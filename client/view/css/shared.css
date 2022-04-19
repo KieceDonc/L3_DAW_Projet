@@ -75,7 +75,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--text-color-lvl-2);
+  color: var(--text-color-lvl-1);
 }
 
 .switch {
