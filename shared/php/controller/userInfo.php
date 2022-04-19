@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', 1);
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
 
@@ -33,14 +33,11 @@
 
     function getDBInfo($email,$columnName){
         $conn = getPDO();
-
-        $request = $conn->prepare("SELECT count(*), :column, :columnemail FROM users where email = :email GROUP BY :column");
-        $request.bindValue(":column", $columnName);
-        $request.bindValue(":email", $email);
+        $request = $conn->prepare("SELECT count(*), ".$columnName.", email FROM users where email = :email GROUP BY ".$columnName.";");
+        $request->bindValue(":email", $email);
         $request->execute();
         $answer = $request->fetch(PDO::FETCH_ASSOC);
         $count = $answer['count(*)'];
-
         closePDO($conn);
 
         if($count!=0){ 
