@@ -1,35 +1,40 @@
 <?php
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/model/mysqli.php");
+
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/config.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
 
 
     function checkRegister($username, $email, $password, $firstname, $lastname, $birthdate,$creationdate,$lastconnection){
         session_start();
 
-        //mysqli db poo connexion
-        $mysqli = getMysqli();
+        //pdo db poo connexion
+        try
+        {
+            $conn = new PDO('mysql:'.DB_SERVER.';dbname='.DB_NAME.';charset='.DB_CHARSET, DB_USERNAME, DB_PASSWORD);
 
-        $sqlusername = "SELECT count(*) FROM users WHERE LOWER(username) = ?";
-        $sqlemail = "SELECT count(*) FROM users WHERE LOWER(email) = ?";
-        if($stmt = $mysqli->prepare($sqlusername))
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Erreur de connection: " . $e->getMessage();
+        }
+
+        $sqlusername = "SELECT count(*) FROM ".DB_NAME.".users WHERE LOWER(username) = :username GROUP BY username";
+        $sqlemail = "SELECT count(*) FROM ".DB_NAME.".users WHERE LOWER(email) = :email GROUP BY email";
+        if($stmt = $conn->prepare($sqlusername))
         {
             $usernamelower = strtolower($username);
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $usernamelower);
-
-
 
             // Attempt to execute the prepared statement
-            if($stmt->execute())
+            if($stmt->execute(['username' => $usernamelower]))
             {
                 // store result
-                $stmt->bind_result($totalRows);
-                $stmt->fetch();
+                $reponse = $stmt->fetch(PDO::FETCH_ASSOC);
+                $count = $reponse['count(*)'];
 
-                if($totalRows == 1)
+                if($count == 1)
                 {
-                    closeMysqli($mysqli);
+                    $conn = null;
                     return CONST_DB_ERR_USERNAMEEXIST;
                 }
             }
@@ -38,29 +43,28 @@
                 echo "Oops! Something went wrong. Please try again later.";   
             }
 
-            // Close statement
-            $stmt->close();
+
 
         }
 
-        if($stmt = $mysqli->prepare($sqlemail))
+        if($stmt = $conn->prepare($sqlemail))
         {
             $emaillower = strtolower($email);
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $emaillower);
+
 
 
 
             // Attempt to execute the prepared statement
-            if($stmt->execute())
+            if($stmt->execute(['email' => $emaillower]))
             {
-                // store result
-                $stmt->bind_result($totalRows);
-                $stmt->fetch();
 
-                if($totalRows == 1)
+                // store result
+                $reponse = $stmt->fetch(PDO::FETCH_ASSOC);
+                $count = $reponse['count(*)'];
+
+                if($count == 1)
                 {
-                    closeMysqli($mysqli);
+                    $conn = null;
                     return CONST_DB_ERR_EMAILEXISTS;
                 }
             }
@@ -69,29 +73,24 @@
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
-            // Close statement
-            $stmt->close();
+
 
         }
 
-        $stmt = $mysqli->prepare("INSERT INTO users (username,email,firstname, lastname, password,birthdate,creationdate,lastconnection) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO ".DB_NAME.".users (username,email,firstname, lastname, password,birthdate,creationdate,lastconnection) VALUES (:username, :email, :firstname, :lastname, :password, :birthdate, :creationdate, :lastconnection)");
         if(!($stmt === false))
         {
-            $stmt->bind_param("ssssssss", $username, $email, $firstname, $lastname, $password, $birthdate, $creationdate, $lastconnection);
+            $stmt->execute(['username' => $username,'email' => $email,'firstname'=>$firstname,'lastname'=>$lastname,'password'=>$password,'birthdate'=>$birthdate,'creationdate'=>$creationdate,'lastconnection'=>$lastconnection]);
 
-
-            $stmt->execute();
-            $stmt->close();
-
-            closeMysqli($mysqli);
+            $conn = null;
             return CONST_DB_ACCEPTED;
         }
         else
         {
             echo "Oops! Something went wrong. Please try again later.";
         }
-    
-        closeMysqli($mysqli);
+
+        $conn = null;
     }
 ?>
 
