@@ -23,7 +23,7 @@
         </div>
         <div class="site-header__end">
         <?php
-            require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+            require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
 
             session_start();
           
