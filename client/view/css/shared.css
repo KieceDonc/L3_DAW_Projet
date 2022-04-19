@@ -138,3 +138,15 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+footer{
+  background-color: var(--handler-lvl-2-color);
+  position: relative;
+  margin-top: 500px;
+  padding: 5px 20px;
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0px;
+}

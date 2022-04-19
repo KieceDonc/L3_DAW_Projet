@@ -17,7 +17,6 @@
 
 <body>
   <?php
-  ini_set('display_errors', 1);
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/courses.php");
   ?>
@@ -26,6 +25,8 @@
 
   <?php
     showCourses()
+
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php");
   ?>
 </body>
 
