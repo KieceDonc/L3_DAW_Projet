@@ -24,10 +24,10 @@
   <h1>Courses</h1>
 
   <?php
-    showCourses()
-
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php");
+    showCourses();
   ?>
+
+  <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
 </body>
 
 </html>
