@@ -1,14 +1,23 @@
+body{
+    color: var(--text-color-lvl-2);
+}
+
 .infoAboutUs {
-    background-color: var(--handler-lvl-1-color);
-    float: left;
+    background-color: var(--handler-lvl-2-color);
 	height: 90%;
     width: 90%;
     padding: 40px;
     margin: 10px 50px 20px;
 }
 
-.game gameAboutUs {
-    background-color: var(--handler-lvl-1-color);
+.infoAboutUs p {
+    border: 2px solid var(--handler-lvl-3-color);
+    border-radius: 10px;
+    padding: 5px 8px 5px;
+}
+
+gameAboutUs {
+    background-color: var(--handler-lvl-2-color);
     float: right;
     width: 60%;
     padding: 40px;
@@ -16,40 +25,56 @@
 }
 
 .game img{
-    float: left;
     width: 30%;
     margin: 0px 0px 20px 20px;
     padding-top: 10px;
 }
 
 .us {
-    background-color: var(--handler-lvl-1-color);
+    background-color: var(--handler-lvl-2-color);
     text-align: center;
     position: absolute;
-    bottom: 0;
-    width: 70%;
+    width: 80%;
+    margin-top: 180px;
     margin-left: auto;
     margin-right: auto;
-    left: 15%;
+    left: 10%;
+}
+
+.pdp {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
 figure {
     border: thin var(--handler-lvl-2-color) solid;
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     padding: 5px;
-    max-width: 220px;
+    width: 220px;
     margin: auto;
 }
 
-img {
-    max-width: 220px;
-    max-height: 150px;
+figure img {
+    width: 220px;
+    height: 180px;
 }
 
 figcaption {
-    background-color: #222;
-    color: #fff;
+    background-color: var(--handler-lvl-3-color);
+    color: var(--text-color-lvl-1);
     padding: 3px;
     text-align: center;
+}
+
+.mentionLegal{
+    background-color: var(--handler-lvl-2-color);
+    position: relative;
+    margin-top: 500px;
+    padding: 5px 20px;
+}
+
+#nbConnection{
+    color: var(--text-color-lvl-1);
 }

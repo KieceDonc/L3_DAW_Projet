@@ -9,33 +9,9 @@
     <link rel="stylesheet" href="../css/shared.css" />
     <link rel="stylesheet" href="../css/homePage.css" />
     <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/lightMode.css" />
   </head>
   <body>
-    <?php 
-        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
-
-        if(!file_exists("compteur.txt")){ 
-            $compteur=fopen("compteur.txt","w");
-            $hit=1;	
-            setcookie("Visite","ok",time()+365*24*3600); // one year
-        }
-        else{
-                $compteur=fopen("compteur.txt","r+");
-                $hit=fgets($compteur,255);
-                if(empty($_COOKIE["Visite"])){
-                    setcookie("Visite","ok",time()+365*24*3600); 
-                    $hit++;
-                }
-        }
-        fseek($compteur,0);
-        fputs($compteur,$hit);
-        fclose($compteur);
-
-        echo '<p id="nbConnection"> Number of visitors over 1 year : ' . $hit . '</p>';
-
-        //echo $HTTP_COOKIE_VARS["Visite"];
-    ?>
-
     <div class="infoAboutUs">
         <h1>Informations général sur l'entreprise :</h1>
         
@@ -102,9 +78,7 @@
         <p>Mentions légales - CGV - CGU</p>
         <p>Copyright 2022 - E-lolning</p>
     </div>
-      
+    
     <!-- JS -->
-    <script src="../../../../shared/js/jquery.js"></script>
-    <script src="../js/shared.js"></script>
   </body>
 </html>
