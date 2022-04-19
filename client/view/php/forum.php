@@ -57,7 +57,6 @@
 					// User is trying to add a message
 					if(isset($userMessage) && !empty($userMessage)){
 						addForumTopicMessage($topicID,$userID,$userMessage);
-						var_dump($userMessage);
 					}
                 }
             }

@@ -4,81 +4,69 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     
     function getForumTopics(){
-        $mysqli = getMysqli();
+        $conn = getPDO();
 
         // TODO : use const
-        $requete = "SELECT topics.id AS id, topics.name AS name, topics.author AS author, firstname, lastname FROM topics, users WHERE topics.author = users.ID;";
-        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-
-        closeMysqli($mysqli);
-
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $result = $conn->query("SELECT topics.id AS id, topics.name AS name, topics.author AS author, firstname, lastname FROM topics, users WHERE topics.author = users.ID;", PDO::FETCH_ASSOC);;
+        return $result->fetch_all();
     } 
 
     function getForumTopicInfo($topicID){
-        $mysqli = getMysqli();
+        $conn = getPDO();
 
-        $requete = "SELECT * FROM topics WHERE id=" . $topicID . ";";
-        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+        // TODO : use const
+        $result = $conn->prepare("SELECT * FROM topics WHERE id=:id;");
+        $result->execute(array("id"=>$topicID));
 
-        closeMysqli($mysqli);
-
-        return $result->fetch_assoc(); 
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
     function getForumTopicLastMessageDateInDB($topicID){
-        $mysqli = getMysqli();
+        $conn = getPDO();
 
-        $requete = "SELECT ". CONST_DB_TABLE_TOPICSPOSTS_DATE ." FROM ". CONST_DB_TABLE_NAME_TOPICSPOSTS ." WHERE ". CONST_DB_TABLE_TOPICSPOSTS_DATE ."=(SELECT MAX(". CONST_DB_TABLE_TOPICSPOSTS_DATE .") FROM ". CONST_DB_TABLE_NAME_TOPICSPOSTS . " tp2 WHERE tp2.". CONST_DB_TABLE_TOPICSPOSTS_ID ."=". $topicID .");";
         // without const, query look like this = "SELECT date FROM topics_posts WHERE date=(SELECT MAX(date) FROM topics_posts tp2 WHERE tp2.id=$topicID);"
-        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
 
-        closeMysqli($mysqli);
+        $result = $conn->prepare("SELECT :column FROM :tablename WHERE :column=(SELECT MAX(:column) FROM :tablename tp2 WHERE tp2.:nameid =:valueid);");
+        $result->execute(array("column"=>CONST_DB_TABLE_TOPICSPOSTS_DATE, "tablename"=>CONST_DB_TABLE_NAME_TOPICSPOSTS, "nameid"=>CONST_DB_TABLE_TOPICSPOSTS_ID, "valueid"=>$topicID));
 
-        return $result->fetch_row()[0];
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
     function getForumTopicMessageCountInDB($topicID){
-        $mysqli = getMysqli();
+        $conn = getPDO();
 
-        // TODO : use const
-        $requete = "SELECT count(content) FROM topics_posts WHERE topic=". $topicID .";";
-        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+        $result = $conn->prepare("SELECT count(content) FROM topics_posts WHERE topic=:valueid;");
+        $result->execute(array("valueid"=>$topicID));
 
-        closeMysqli($mysqli);
-
-        return $result->fetch_row()[0];
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
     function getForumTopicMessagesInDB($topicID){
-        $mysqli = getMysqli();
+        $conn = getPDO();
 
-        $requete = "SELECT ". CONST_DB_TABLE_NAME_TOPICSPOSTS .".". CONST_DB_TABLE_TOPICSPOSTS_ID. ", ". CONST_DB_TABLE_USERS_FIRSTNAME .", ". CONST_DB_TABLE_USERS_LASTNAME .", ". CONST_DB_TABLE_TOPICSPOSTS_DATE .", ". CONST_DB_TABLE_TOPICSPOSTS_TOPIC .", ". CONST_DB_TABLE_TOPICSPOSTS_CONTENT ." FROM ". CONST_DB_TABLE_NAME_TOPICSPOSTS .", ". CONST_DB_TABLE_NAME_USERS ." WHERE ". CONST_DB_TABLE_TOPICSPOSTS_TOPIC ."=". $topicID ." AND ". CONST_DB_TABLE_NAME_TOPICSPOSTS .".". CONST_DB_TABLE_TOPICSPOSTS_AUTHOR ." = ". CONST_DB_TABLE_NAME_USERS .".". CONST_DB_TABLE_USERS_ID .";";
         // without const, query look like this = "SELECT topics_posts.ID, firstname, lastname, date, topic, content FROM topics_posts, users WHERE topic=". $topicID ." AND topics_posts.author = users.ID;";
-        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
+        $result = $conn->prepare("SELECT :topicposts.:topicpostid, :firstname, :lastname, :datename, :topicname, :content FROM :topicposts, :users WHERE :topicname=:topicvalue AND :topicposts.:author = :users.:nameid;");
+        $result->execute(array("topicposts"=>CONST_DB_TABLE_NAME_TOPICSPOSTS, "topicpostid"=>CONST_DB_TABLE_TOPICSPOSTS_ID, "firstname"=>CONST_DB_TABLE_USERS_FIRSTNAME, "lastname"=>CONST_DB_TABLE_USERS_LASTNAME, "datename"=>CONST_DB_TABLE_TOPICSPOSTS_DATE, "topicname"=>CONST_DB_TABLE_TOPICSPOSTS_TOPIC, "content"=>CONST_DB_TABLE_TOPICSPOSTS_CONTENT, "users"=>CONST_DB_TABLE_NAME_USERS, "topicvalue"=>$topicID, "author"=>CONST_DB_TABLE_TOPICSPOSTS_AUTHOR, "nameid"=>CONST_DB_TABLE_USERS_ID));
 
-        closeMysqli($mysqli);
-
-        return $result->fetch_all(MYSQLI_ASSOC); 
+        return $result->fetchAll();
     }
 
     function addForumTopicMessageInDB($topicID, $userID, $sanitizedInput){
-        $mysqli = getMysqli();
-
+        $conn = getPDO();
+        
         // TODO : use const
-        $mysqli->query("INSERT INTO topics_posts (author, date, content, topic) VALUES ($userID,".time().", '".$sanitizedInput."', ". $topicID.");");
-
-        closeMysqli($mysqli);
+        $result = $conn->prepare("INSERT INTO topics_posts (author, date, content, topic) VALUES (:userid, :time, ':input', :topicid);");
+        $result->execute(array("userid"=>$userID, "time"=>time(), "input"=>$sanitizedInput, "topicid"=>$topicID));
     }
 
     function createTopicInDB($topicName, $userID){
-        $mysqli = getMysqli();
-
+        $conn = getPDO();
+        
         // TODO : use const
-        $mysqli->query("INSERT INTO topics (name, author) VALUES ('".$topicName."', ". $userID .");");
-        $topicID = $mysqli->insert_id;
+        $result = $conn->prepare("INSERT INTO topics (name, author) VALUES (':name', :userid);");
+        $result->execute(array("name"=>$topicName, "userid"=>$userID));
 
-        closeMysqli($mysqli);
+        $topicID = $conn->lastInsertId();
 
         return $topicID;
     }
