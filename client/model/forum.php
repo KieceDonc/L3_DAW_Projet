@@ -8,7 +8,7 @@
 
         // TODO : use const
         $result = $conn->query("SELECT topics.id AS id, topics.name AS name, topics.author AS author, firstname, lastname FROM topics, users WHERE topics.author = users.ID;", PDO::FETCH_ASSOC);;
-        return $result->fetch_all();
+        return $result->fetchAll();
     } 
 
     function getForumTopicInfo($topicID){
