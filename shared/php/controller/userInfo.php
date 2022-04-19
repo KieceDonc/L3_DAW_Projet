@@ -34,8 +34,10 @@
     function getDBInfo($email,$columnName){
         $conn = getPDO();
 
-        $request = $conn->prepare("SELECT count(*), :column, :columnemail FROM users where :columnemail = :email GROUP BY :column");
-        $request->execute(array("column"=>$columnName, "columnemail"=>CONST_DB_TABLE_USERS_EMAIL, "email"=>$email));
+        $request = $conn->prepare("SELECT count(*), :column, :columnemail FROM users where email = :email GROUP BY :column");
+        $request.bindValue(":column", $columnName);
+        $request.bindValue(":email", $email);
+        $request->execute();
         $answer = $request->fetch(PDO::FETCH_ASSOC);
         $count = $answer['count(*)'];
 
