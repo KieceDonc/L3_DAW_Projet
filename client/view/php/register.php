@@ -36,7 +36,7 @@
 
         <input type="submit" id='submit' value="S'inscrire" >
         <?php
-            require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+            require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
             
             //messages d'erreurs
             if(($error = checkError(CONST_URLPARAM_ERR_USERNAME)) !== false){

@@ -1,5 +1,5 @@
 <?php 
-	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
 	session_start();
 	
 	if(!isset($_SESSION[CONST_SESSION_ISLOGGED]) || $_SESSION[CONST_SESSION_ISLOGGED] != CONST_SESSION_ISLOGGED_YES){
