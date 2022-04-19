@@ -35,8 +35,7 @@
 
 <?php
 
-/* Gets the list of every courses in the database as a structure containing three elements for each row (name, username, description) 
-*  and prints all of them on the page
+/* Prints the list of every courses in the database on the page
 */
 function showCourses()
 {
