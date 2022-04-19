@@ -1,7 +1,7 @@
 <?php
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/model/pdo.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
 
     function getDBUserID($email){
         return getDBInfo($email,CONST_DB_TABLE_USERS_ID);
@@ -32,17 +32,17 @@
     }
 
     function getDBInfo($email,$columnName){
-        $mysqli = getMysqli();
-    
-        $requete = "SELECT count(*), ". $columnName .",". CONST_DB_TABLE_USERS_EMAIL ." FROM users where ". CONST_DB_TABLE_USERS_EMAIL ." = '".$email."' GROUP BY ".$columnName;
-        $result = $mysqli->query($requete,MYSQLI_STORE_RESULT);
-        $reponse = $result->fetch_assoc();
+        $conn = getPDO();
+
+        $request = $conn->prepare("SELECT count(*), :column, :columnemail FROM users where :columnemail = :email GROUP BY :column");
+        $request->execute(["column"=>$columnName, "columnemail"=>CONST_DB_TABLE_USERS_EMAIL, "email"=>$email]);
+        $answer = $request->fetch(PDO::FETCH_ASSOC);
         $count = $reponse['count(*)'];
 
-        closeMysqli($mysqli);
+        closePDO($conn);
 
         if($count!=0){ 
-            return $reponse[$columnName];
+            return $answer[$columnName];
         } 
 
         return CONST_DB_ERR_USERDONTEXIST;

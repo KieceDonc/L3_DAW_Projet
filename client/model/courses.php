@@ -2,7 +2,7 @@
     
     // ---------------------- SQL FUNCTIONS
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/model/pdo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
 
     
     function getCourses(){

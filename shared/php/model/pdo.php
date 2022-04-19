@@ -1,6 +1,6 @@
 <?php
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
 
 function getPDO(){
     try
