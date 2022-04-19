@@ -26,10 +26,13 @@
 
         // without const, query look like this = "SELECT date FROM topics_posts WHERE date=(SELECT MAX(date) FROM topics_posts tp2 WHERE tp2.id=$topicID);"
 
-        $result = $conn->prepare("SELECT :column FROM :tablename WHERE :column=(SELECT MAX(:column) FROM :tablename tp WHERE tp.:nameid =:valueid);");
-        $result->execute(array("column"=>CONST_DB_TABLE_TOPICSPOSTS_DATE, "tablename"=>CONST_DB_TABLE_NAME_TOPICSPOSTS, "nameid"=>CONST_DB_TABLE_TOPICSPOSTS_ID, "valueid"=>$topicID));
+        $query = $conn->prepare("SELECT :column FROM :tablename WHERE :column=(SELECT MAX(:column) FROM :tablename tp2 WHERE tp2.:nameid =:valueid);");
+        $query->bindValue(":column", CONST_DB_TABLE_TOPICSPOSTS_DATE);
+        $query->bindValue(":tablename", CONST_DB_TABLE_NAME_TOPICSPOSTS);
+        $query->bindValue(":nameid", CONST_DB_TABLE_TOPICSPOSTS_ID);
+        $query->bindValue(":valueid", $topicID);
 
-        return $result->fetch(PDO::FETCH_ASSOC);
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 
     function getForumTopicMessageCountInDB($topicID){
@@ -38,7 +41,7 @@
         $result = $conn->prepare("SELECT count(content) FROM topics_posts WHERE topic=:valueid;");
         $result->execute(array("valueid"=>$topicID));
 
-        return $result->fetch(PDO::FETCH_ASSOC)[0];
+        return $result->fetch(PDO::FETCH_ASSOC)["count(content)"];
     }
 
     function getForumTopicMessagesInDB($topicID){
