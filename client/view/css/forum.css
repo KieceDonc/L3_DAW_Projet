@@ -186,6 +186,8 @@ td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 100%;
+    width: 100%;
 }
 
 .topicsTableTextCenter {
@@ -207,3 +209,5 @@ td {
   text-align: center;
   transition: all 0.5s;
 }
+
+
