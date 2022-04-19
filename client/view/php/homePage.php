@@ -80,7 +80,7 @@
             <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Vestracte Valentin </figcaption>
         </figure>
         <figure>
-            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Petit Evan </figcaption>
+            <img alt="pdp" src="../media/pdpEvan.png" > <figcaption> Petit Evan </figcaption>
         </figure>
         <figure>
             <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Bertoux Hugo </figcaption>
