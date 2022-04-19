@@ -16,6 +16,6 @@ function getPDO(){
 
 }
 
-function closePDO($conn){
+function closePDO(&$conn){
     $conn = null;
 }
