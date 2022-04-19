@@ -1,20 +1,12 @@
 <?php
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/config.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/model/pdo.php");
 
   function checkLogin($email, $password){
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
     // pour éliminer toute attaque de type injection SQL et XSS
-      try
-      {
-          $conn = new PDO('mysql:'.DB_SERVER.';dbname='.DB_NAME.';charset='.DB_CHARSET, DB_USERNAME, DB_PASSWORD);
-
-          // set the PDO error mode to exception
-          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      } catch (PDOException $e) {
-          echo "Erreur de connection: " . $e->getMessage();
-      }
+      $conn = getPDO();
 
     //$password = mysqli_real_escape_string($conn,htmlspecialchars($password));
     //$email    = mysqli_real_escape_string($conn,htmlspecialchars($email));
@@ -39,12 +31,12 @@
           $lastconnection = date("Y-m-d H:i:s");
           $stmt->execute(['lastconnection'=>$lastconnection,'email'=>$email]);
 
-          $conn=null; // fermer la connexion
+          closePDO($conn); // fermer la connexion
         return CONST_LOGGING_ACCEPTED;
       }
     }
 
-      $conn=null; // fermer la connexion
+      closePDO($conn);  // fermer la connexion
     // utilisateur ou mot de passe incorrect
     return CONST_LOGGING_INVALID;
   }

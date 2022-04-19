@@ -1,23 +1,16 @@
 <?php
 
 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/config.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
+
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/model/pdo.php");
 
 
     function checkRegister($username, $email, $password, $firstname, $lastname, $birthdate,$creationdate,$lastconnection){
         session_start();
 
         //pdo db poo connexion
-        try
-        {
-            $conn = new PDO('mysql:'.DB_SERVER.';dbname='.DB_NAME.';charset='.DB_CHARSET, DB_USERNAME, DB_PASSWORD);
+        $conn = getPDO();
 
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo "Erreur de connection: " . $e->getMessage();
-        }
 
         $sqlusername = "SELECT count(*) FROM ".DB_NAME.".users WHERE LOWER(username) = :username GROUP BY username";
         $sqlemail = "SELECT count(*) FROM ".DB_NAME.".users WHERE LOWER(email) = :email GROUP BY email";
@@ -34,7 +27,7 @@
 
                 if($count == 1)
                 {
-                    $conn = null;
+                    closePDO($conn);
                     return CONST_DB_ERR_USERNAMEEXIST;
                 }
             }
@@ -64,7 +57,7 @@
 
                 if($count == 1)
                 {
-                    $conn = null;
+                    closePDO($conn);
                     return CONST_DB_ERR_EMAILEXISTS;
                 }
             }
@@ -82,7 +75,7 @@
         {
             $stmt->execute(['username' => $username,'email' => $email,'firstname'=>$firstname,'lastname'=>$lastname,'password'=>$password,'birthdate'=>$birthdate,'creationdate'=>$creationdate,'lastconnection'=>$lastconnection]);
 
-            $conn = null;
+            closePDO($conn);
             return CONST_DB_ACCEPTED;
         }
         else
@@ -90,7 +83,7 @@
             echo "Oops! Something went wrong. Please try again later.";
         }
 
-        $conn = null;
+        closePDO($conn);
     }
 ?>
 
