@@ -25,14 +25,12 @@
         $conn = getPDO();
 
         // without const, query look like this = "SELECT date FROM topics_posts WHERE date=(SELECT MAX(date) FROM topics_posts tp2 WHERE tp2.id=$topicID);"
-
-        $query = $conn->prepare("SELECT :column FROM :tablename WHERE :column=(SELECT MAX(:column) FROM :tablename tp2 WHERE tp2.:nameid =:valueid);");
-        $query->bindValue(":column", CONST_DB_TABLE_TOPICSPOSTS_DATE);
-        $query->bindValue(":tablename", CONST_DB_TABLE_NAME_TOPICSPOSTS);
-        $query->bindValue(":nameid", CONST_DB_TABLE_TOPICSPOSTS_ID);
+        //TODO not working when binding const as table name
+        $query = $conn->prepare("SELECT date FROM topics_posts WHERE date=(SELECT MAX(date) FROM topics_posts tp2 WHERE tp2.id=:valueid);");
         $query->bindValue(":valueid", $topicID);
-
-        return $query->fetch(PDO::FETCH_ASSOC);
+        $query->execute();
+        
+        return $query->fetch()[0];
     }
 
     function getForumTopicMessageCountInDB($topicID){
