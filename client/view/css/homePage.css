@@ -33,20 +33,23 @@
     left: 15%;
 }
 
-.pdp {
-    text-align: center;
+figure {
+    border: thin var(--handler-lvl-2-color) solid;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    flex-flow: column;
+    padding: 5px;
+    max-width: 220px;
+    margin: auto;
 }
 
-#infoPdp {
-    margin: 30px 40px 10px;
+img {
+    max-width: 220px;
+    max-height: 150px;
+}
+
+figcaption {
+    background-color: #222;
+    color: #fff;
+    padding: 3px;
     text-align: center;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 250px;
-    height: 150px;
 }
