@@ -2,6 +2,13 @@ textarea {
     resize: none;
     width: 40%;
     height: 5em;
+    box-sizing: border-box;
+    border: 2px solid var(--background-color);
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    color:var(--text-color-lvl-1);
 }
 
 h1 {
@@ -101,7 +108,7 @@ td {
   font-family: 'Quicksand Regular';
   font-weight: 300;
   font-size: x-large;
-  color: var(--text-color-lvl-2);
+  color: black;
   text-align: center;
   transition: all 0.5s;
   margin-top:2px;
@@ -125,8 +132,7 @@ td {
     top: 50%;
     left: 50%;
     margin-top: 8px;
-    margin-bottom: 8px;
-    
+    margin-bottom: 8px;   
 }
 
 .newtopic {
@@ -135,9 +141,9 @@ td {
     color : var(--text-color-lvl-1);
     text-align: center;
     color : var(--text-color-lvl-2);
-    border: 0.20em solid var(--background-color);
     border-radius: 2em;
     box-sizing: border-box;
+    font-size: xx-large;
 }
 
 .newtopic:hover {
@@ -151,7 +157,7 @@ td {
     justify-content: center;
     display : flex;
     color : var(--text-color-lvl-1);
-    width: 100%;
+    width: 95%;
     background: transparent;
     transition-duration: 0.5s;
     font-family: 'Quicksand Regular';
@@ -167,4 +173,19 @@ td {
 .rowtopic {
     width : 90%;
     padding-left: 5%;
+}
+
+#addAnswerBtn {
+  text-align: center;
+  display: flex;
+  border: 0.20em solid var(--background-color);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Quicksand Regular';
+  font-weight: 300;
+  font-size: x-large;
+  color: var(--text-color-lvl-1);
+  text-align: center;
+  transition: all 0.5s;
 }
