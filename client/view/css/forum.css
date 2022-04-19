@@ -67,7 +67,6 @@ td {
 
 .message {
     text-align: justify;
-
 }
 
 #backBtn {
@@ -151,8 +150,8 @@ td {
     text-decoration: none;
     justify-content: center;
     display : flex;
-    color : white;
-    width:100%;
+    color : var(--text-color-lvl-2);
+    width: 100%;
     background: transparent;
     transition-duration: 0.5s;
     font-family: 'Quicksand Regular';
