@@ -1,6 +1,6 @@
 body {
     background-color: var(--background-color); 
-    color: var(--text-color-lvl-2);
+    color: var(--text-color-lvl-1);
 }
 
 .brand {
@@ -75,7 +75,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--text-color-lvl-1);
+  color: var(--text-color-lvl-2);
 }
 
 .switch {
