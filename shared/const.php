@@ -4,6 +4,7 @@
     define('DB_USERNAME', 'php');
     define('DB_PASSWORD', 'php_local');
     define('DB_NAME', 'sys');
+    define("DB_CHARSET", "utf8");
 
     // DB table, columns name for table topics_posts
     define('CONST_DB_TABLE_NAME_TOPICSPOSTS','topics_posts'); // topics_posts = name of the column in db in topics_posts table
