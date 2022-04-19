@@ -151,7 +151,7 @@ function showMessage($message)
     //TODO distinct if current user = author
     $author_name = $message["firstname"] . " " . $message["lastname"];
     $date = date('m/d/Y H:i:s', $message["date"]);
-    echo "<div id='author'>" . $author_name .  "</div><br /><div id='date'>" . $date ."</div></td> <td class='message'>". $message["content"] . " </td> </tr>";
+    echo "<div id='author'>" . $author_name .  "</div><br /><div id='date'>" . $date ."</div></td> <td class='message'>". wordwrap($message["content"],75,"-</br>\n-",true). " </td> </tr>";
 }
 
 function showInputZone($topicId) 
