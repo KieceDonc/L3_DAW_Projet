@@ -35,7 +35,7 @@
         $conn = getPDO();
 
         $request = $conn->prepare("SELECT count(*), :column, :columnemail FROM users where :columnemail = :email GROUP BY :column");
-        $request->execute(["column"=>$columnName, "columnemail"=>CONST_DB_TABLE_USERS_EMAIL, "email"=>$email]);
+        $request->execute(array("column"=>$columnName, "columnemail"=>CONST_DB_TABLE_USERS_EMAIL, "email"=>$email));
         $answer = $request->fetch(PDO::FETCH_ASSOC);
         $count = $reponse['count(*)'];
 
