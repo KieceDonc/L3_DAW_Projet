@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+	$('*[data-href]').on('click', function() {
+		window.location = "forum?topic="+$(this).data("href");
+	});
+
 	$('#backBtn').click(function() {
 		location.href = "/forum";
 	});

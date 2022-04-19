@@ -1,4 +1,9 @@
 <?php
+    // Info to connect to db
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'php');
+    define('DB_PASSWORD', 'php_local');
+    define('DB_NAME', 'sys');
 
     // DB table, columns name for table topics_posts
     define('CONST_DB_TABLE_NAME_TOPICSPOSTS','topics_posts'); // topics_posts = name of the column in db in topics_posts table
@@ -18,12 +23,6 @@
     define('CONST_DB_TABLE_USERS_LASTCONNECTION','lastconnection'); // lastconnection = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_BIRTHDATE','birthdate'); // birthdate = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_CREATIONDATE','creationdate'); // creationdate = name of the column in db in users table
-
-    // DB table, columns name for table courses
-    define('CONST_DB_TABLE_NAME_USERS','id'); // id = name of table inside the db in courses table
-    define('CONST_DB_TABLE_USERS_ID','idauthor'); // idauthor = name of the column in db in courses table
-    define('CONST_DB_TABLE_USERS_EMAIL','name'); // name = name of the column in db in courses table
-    define('CONST_DB_TABLE_USERS_FIRSTNAME','description'); // description = name of the column in db in courses table
 
     // DB return type
     define('CONST_DB_ACCEPTED', 'ACCEPTED');

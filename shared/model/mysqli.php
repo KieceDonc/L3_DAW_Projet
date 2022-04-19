@@ -1,6 +1,6 @@
 <?php 
 
-  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/config.php");
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/const.php");
 
   function getMysqli(){
     $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);

@@ -99,12 +99,44 @@ function listTopics($topics)
                 }
             }
 		?>
-		<table>
+		<table id="topicsTable">
 		<tbody>
+		<tr>
+			<td style="width: 80%;padding-left: 50px;">
+				<div class="topicsTableHideExtra">
+					Titre
+				</div>
+			</td>
+			<td style="min-width: 400px;max-width: 400px;">
+				<div class="topicsTableHideExtra" class="topicsTableTextCenter">
+					Auteur
+				</div>
+			</td>
+			<td style="min-width: 175px;" class="topicsTableTextCenter">
+				Messages
+			</td>
+			<td style="min-width: 125px;" class="topicsTableTextCenter">
+				Vues
+			</td>
+			<td style="min-width: 125px;" class="topicsTableTextCenter">
+				Date dernier message
+			</td>
+		</tr>
 		<?php 
 		foreach($topics as $topic)
 		{
-			echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";    
+			echo "<tr ><tr><td style='width: 80%;padding-left: 50px;'><div data-href='".$topic["id"]."' class='topicsTableHideExtra'>";
+			echo $topic["name"];
+			echo "</div></td><td style='min-width: 400px;max-width: 400px;'><div class='topicsTableHideExtra' class='topicsTableTextCenter'>";
+			echo $topic["firstname"]." ".$topic["lastname"];
+			echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
+			echo getForumTopicMessageCountInDB($topic["id"]) . " messages";
+			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
+			echo "TODO";
+			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
+			echo getForumTopicLastMessageDate($topic["id"]);
+			echo "</td></tr>";
+			// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
 		}
 		?>
 		</tbody>
@@ -125,7 +157,7 @@ function showTopic($topic)
     <tbody>
     <?php
 
-	$messages = getForumTopicMessages($topic["id"]);
+	$messages = getForumTopicMessagesInDB($topic["id"]);
 
     foreach($messages as $message)
     {
