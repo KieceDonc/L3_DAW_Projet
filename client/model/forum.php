@@ -1,5 +1,5 @@
 <?php
-    
+    ini_set('display_errors', 1);
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     
