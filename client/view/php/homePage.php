@@ -37,21 +37,23 @@
     ?>
       
     <div class="infoAboutUs">
-    Informations général sur l'entreprise
-        Qu’est-ce qui vous a motivé à lancer votre entreprise?
-        Quelles sont vos valeurs d’entreprise? (offrir le meilleur service possible, importance de la satisfaction de chaque client, souci environnemental, qualité des produits, etc.)
-        Quelle est la motivation derrière la création de votre entreprise ainsi que pour la continuation de son développement?
-        De quelle façon votre entreprise permet-elle de faire une différence positive auprès de sa clientèle ou de son milieu?
-        Ce que l'on peut faire chez nous...
+    Informations général sur l'entreprise :
         
     Qui sommes nous ? 
         Nous somme un groupe de 6 jeunes étudiant en licence informatique réalisant un projet WEB. 
+   
     Que propose notre site ?
-        Nous proposons un site de e-learning, en effet ce site permet de crée et participer a des cours sur le sujet de League Of Legend. Les cours 
+        Nous proposons un site de e-learning, en effet ce site permet de créer et participer à des cours sur un jeu vidéo qui est League Of Legend. Les cours peuvent être mis en place par tous le monde, quand un utilisateur lambda que nous avons appelé apprenant décide de mettre en place un cours quelqu'il soit devient alors le gérant de sont propre cours. Les apprenants d'un cours on également accès à un forum de discution afin de dialoguer entre eux du cours en question.
+        
+    Qu’est-ce qui vous a motivé à lancer votre entreprise?
+        Notre entreprise est un tremplin pour les joueurs débutant sur League Of Legend mais ce n'est pas tous, en effet elle permet également au joueurs entrainé de continuer leurs progression.
+        
+    Quelle est la motivation derrière la création de notre site?
+
     </div>
     
     <div class="game">
-        <img alt="lol image" src="../src/lolImage.png"  />
+        <img alt="lol image" src="../media/lolImage.png"  />
         <gameAboutUs>
         Le jeu LOL
             League of Legends (abrégé LoL) est un jeu vidéo sorti en 2009 de type arène de bataille en ligne, free-to-play, développé et édité par Riot Games sur Windows et Mac OS.
@@ -69,26 +71,24 @@
       
       <div class="us">
           <h2>Fondateurs</h2>
-          <div class="pdp"> 
-              <div id="infoPdp">
-                <img alt="pdp" src="../media/pdpTest.png" > <p>Vestracte Valentin</p>
-              </div>
-              <div id="infoPdp">
-                <img alt="pdp" src="../media/pdpTest.png" > <p>Petit Evan</p> 
-              </div>
-              <div id="infoPdp">
-                <img alt="pdp" src="../media/pdpTest.png" > <p>Bertoux Hugo</p> 
-              </div>
-              <div id="infoPdp">    
-                <img alt="pdp" src="../media/pdpMaxence.png" > <p>Perion Maxence</p>
-              </div>
-              <div id="infoPdp">    
-                <img alt="pdp" src="../media/pdpTest.png" > <p>Mohamed Nazim</p>
-              </div>
-              <div id="infoPdp">
-                <img alt="pdp" src="../media/pdpTest.png" > <p>Pinon Alexandre</p> 
-              </div>
-          </div>
+            <figure>
+                <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Vestracte Valentin </figcaption>
+            </figure>
+            <figure>
+                <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Petit Evan </figcaption>
+            </figure>
+            <figure>
+                <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Bertoux Hugo </figcaption>
+            </figure>
+            <figure>
+                <img alt="pdp" src="../media/pdpMaxence.png" > <figcaption> Perion Maxence </figcaption>
+            </figure>
+            <figure>
+                <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Mohamed Nazim </figcaption>
+            </figure>
+            <figure>
+                <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Pinon Alexandre </figcaption>
+            </figure>
       </div>
       
     
