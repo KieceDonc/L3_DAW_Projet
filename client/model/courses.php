@@ -6,14 +6,14 @@
 
     
     function getCourses(){
-        $mysqli = getMysqli();
+        $conn = getPDO();
         
         // QUERY - Retrieve the name of the course, name of its author and description of the course :
         $query = "SELECT name , username , description FROM courses JOIN users u on courses.idauthor = u.id;"; 
-        $courses = $mysqli -> query( $query , MYSQLI_STORE_RESULT );
+        $courses = $conn->prepare( $query)->execute();
 
-        closeMysqli( $mysqli );
+        closePDO($conn);
 
-        return $courses->fetch_all( MYSQLI_ASSOC );
+        return $courses->fetchAll();
     } 
 ?>
