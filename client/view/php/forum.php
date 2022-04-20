@@ -21,7 +21,6 @@
   <div>
     <h1> Forum E-lolning </h1>
     <?php
-	date_default_timezone_set("Etc/GMT-2");
     if(isset($_REQUEST["topic"]) && !empty($_REQUEST["topic"]))
     {
 		if($_REQUEST["topic"] == "new")
@@ -51,13 +50,13 @@
 			// Is user connected
 			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
                 if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
-                    
-					$userMessage = $_REQUEST["msg"]; 
+									
 					$userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
 					// User is trying to add a message
-					if(isset($userMessage) && !empty($userMessage)){
+					if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
+						//TODO sanitize input
+						$userMessage = $_REQUEST["msg"]; 
 						addForumTopicMessage($topicID,$userID,$userMessage);
-						var_dump($userMessage);
 					}
                 }
             }
@@ -130,12 +129,15 @@ function listTopics($topics)
 			echo "</div></td><td style='min-width: 400px;max-width: 400px;'><div class='topicsTableHideExtra' class='topicsTableTextCenter'>";
 			echo $topic["firstname"]." ".$topic["lastname"];
 			echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
-			echo getForumTopicMessageCountInDB($topic["id"]) . " messages";
+			$messagesCount = getForumTopicMessageCountInDB($topic["id"]);
+			echo $messagesCount . " messages";
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
 			echo $topic["view_count"];
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
-			$date = date('m/d/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
-			echo $date;
+			if($messagesCount != 0) {
+				$date = date('d/m/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
+				echo $date;
+			}
 			echo "</td></tr>";
 			// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
 		}
@@ -185,7 +187,7 @@ function showMessage($message)
 	echo "<tr> <td>";
     //TODO distinct if current user = author
     $author_name = $message["firstname"] . " " . $message["lastname"];
-    $date = date('m/d/Y H:i:s', $message["date"]);
+    $date = date('d/m/Y H:i:s', $message["date"]);
     echo "<div id='author'>" . $author_name .  "</div><br /><div id='date'>" . $date ."</div></td> <td class='message'>". wordwrap($message["content"],150,"-</br>\n-",true). " </td> </tr>";
 }
 

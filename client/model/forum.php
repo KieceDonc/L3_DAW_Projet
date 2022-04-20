@@ -25,7 +25,7 @@
 
         // without const, query look like this = "SELECT date FROM topics_posts WHERE date=(SELECT MAX(date) FROM topics_posts tp2 WHERE tp2.id=$topicID);"
         //TODO not working when binding const as table name
-        $query = $conn->prepare("SELECT date FROM topics_posts WHERE date=(SELECT MAX(date) FROM topics_posts tp2 WHERE tp2.id=:valueid);");
+        $query = $conn->prepare("SELECT MAX(date) FROM topics_posts WHERE topic=:valueid;");
         $query->bindValue(":valueid", $topicID);
         $query->execute();
 
@@ -56,7 +56,7 @@
         $conn = getPDO();
         
         // TODO : use const
-        $result = $conn->prepare("INSERT INTO topics_posts (author, date, content, topic) VALUES (:userid, :time, ':input', :topicid);");
+        $result = $conn->prepare("INSERT INTO topics_posts (author, date, content, topic) VALUES (:userid, :time, :input, :topicid);");
         $result->execute(array("userid"=>$userID, "time"=>time(), "input"=>$sanitizedInput, "topicid"=>$topicID));
     }
 
@@ -64,8 +64,10 @@
         $conn = getPDO();
         
         // TODO : use const
-        $result = $conn->prepare("INSERT INTO topics (name, author, view_count) VALUES (':name', :userid, 0);");
-        $result->execute(array("name"=>$topicName, "userid"=>$userID));
+        $query = $conn->prepare("INSERT INTO topics (name, author, view_count) VALUES (:name, :userid, 0);");
+        $query->bindValue(":name", $topicName);
+        $query->bindValue(":userid", $userID);
+        $query->execute();
 
         $topicID = $conn->lastInsertId();
 

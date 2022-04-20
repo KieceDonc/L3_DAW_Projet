@@ -7,8 +7,8 @@
 
     function getUserID($email){
         // we check if we already stored the userID
-        if(isset($_SESSION[CONST_SESSION_USERSTORED_ID])){
-            $userID = $_SESSION[CONST_SESSION_USERSTORED_ID];
+        if(!isset($_SESSION[CONST_SESSION_USERSTORED_ID])){
+            //$userID = $_SESSION[CONST_SESSION_USERSTORED_ID];
 
             // No, we need to query id
             $userID = getDBUserID($email);
@@ -33,8 +33,8 @@
 
     function getFirstnameID($email){
         // we check if we already stored the firstname
-        if(isset($_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME])){
-            $firstname = $_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME];
+        if(!isset($_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME])){
+           // $firstname = $_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME];
 
             // No, we need to query firstname
             $firstname = getDBFirstName($email);
@@ -59,8 +59,8 @@
 
     function getLastnameID($email){
         // we check if we already stored the lastname
-        if(isset($_SESSION[USER_STORRED_LASTNAME])){
-            $lastname = $_SESSION[USER_STORRED_LASTNAME];
+        if(!isset($_SESSION[USER_STORRED_LASTNAME])){
+            //$lastname = $_SESSION[USER_STORRED_LASTNAME];
 
             // No, we need to query lastname
             $lastname = getDBLastName($email);
