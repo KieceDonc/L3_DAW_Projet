@@ -155,7 +155,7 @@
         <input id="pass2" type="password" placeholder="Confirmer le mot de passe" name="passwordconfirmation"><br />
 
         <input type="hidden" name="edit" />
-        <button name="save"> Save </button>
+        <button class="EditBtn" name="save"> Save </button>
       </form>
     <?php
   }
