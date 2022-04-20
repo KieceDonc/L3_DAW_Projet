@@ -7,7 +7,7 @@
 		die;
 	}
 
-	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/userInfo.php");
 ?>
 
 <nav>
