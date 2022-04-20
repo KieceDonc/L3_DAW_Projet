@@ -4,19 +4,20 @@
 }
 
 .EditBtn {
-    color: #ffffff;
-    background-color: #2fa0f6;
-    min-width: 120px;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-align: center;
-    margin-left:10px;
+        
+        margin-top: 10px;
+        padding: 20px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: transparent;
+        border-radius: 5px;
+        color : black;
 }
 
 input{
     display: block;
     height: 50px;
-    width: 100%;
+    width: 65%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     margin-top:15px;
@@ -29,3 +30,5 @@ input{
     color: black;
     text-align: center;
 }
+
+

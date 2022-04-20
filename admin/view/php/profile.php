@@ -154,7 +154,7 @@
         <label for="pass2">Confirmer le mot de passe</label>
         <input id="pass2" type="password" placeholder="Confirmer le mot de passe" name="passwordconfirmation"><br />
 
-        <input hidden name="edit" />
+        <input type="hidden" name="edit" />
         <button name="save"> Save </button>
       </form>
     <?php
