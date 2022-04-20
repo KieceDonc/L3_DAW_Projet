@@ -42,7 +42,6 @@
     }
 
     function getForumTopicLastMessageDate($topicID){
-        // TODO : format date
         return getForumTopicLastMessageDateInDB($topicID);
     }
 

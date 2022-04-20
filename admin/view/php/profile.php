@@ -10,13 +10,13 @@
   </head>
   <body>
 	<?php 
-  ini_set('display_errors', 1);
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/profile.php");
   ?>
 	<div class="content">
+    <h1> Your profile </h1>
     <?php
       if(isset($_REQUEST["edit"])){
         if(isset($_REQUEST["save"])){
