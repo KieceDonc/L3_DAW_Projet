@@ -1,6 +1,6 @@
 .InfosProfiles {
     font-size: large;
-    font-family: ;
+    font-family:'Quicksand Regular' ;
 }
 
 .EditBtn {
@@ -10,5 +10,5 @@
     padding: 0.5rem 1rem;
     border-radius: 5px;
     text-align: center;
-    margin-left:4px;
+    margin-left:10px;
 }
