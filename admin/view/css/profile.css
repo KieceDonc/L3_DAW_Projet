@@ -13,17 +13,19 @@
     margin-left:10px;
 }
 
-input::placeholder {
-    display: flex;
-    margin-bottom: 0.5rem;
-    width: 65%;
-    font-size: 1.8rem;
-    border: 0.1rem solid #1c2347;
-    margin-left : 0.5rem;
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    margin-top:15px;
+    font-size: 14px;
+    font-weight: 300;
 }
 
-label {
-    font-size: 16px;
-    font-family: 'Quicksand Regular';
-    width : 15%;
+::placeholder{
+    display: inline-block;
+    color: black;
+    text-align: center;
 }
