@@ -64,8 +64,8 @@
         $conn = getPDO();
         
         // TODO : use const
-        $result = $conn->prepare("INSERT INTO topics (name, author, view_count) VALUES (':name', :userid, :view_count);");
-        $result->execute(array("name"=>$topicName, "userid"=>$userID, "view_count"=>0));
+        $result = $conn->prepare("INSERT INTO topics (name, author, view_count) VALUES (':name', :userid, 0);");
+        $result->execute(array("name"=>$topicName, "userid"=>$userID));
 
         $topicID = $conn->lastInsertId();
 
