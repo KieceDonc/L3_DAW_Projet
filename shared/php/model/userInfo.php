@@ -30,6 +30,10 @@
         return getDBInfo($email, CONST_DB_TABLE_USERS_CREATIONDATE);
     }
 
+    function getDBPassword($email) {
+        return getDBInfo($email, CONST_DB_TABLE_USERS_PASSWORD);
+    }
+
     function getDBInfo($email,$columnName){
         $conn = getPDO();
         $request = $conn->prepare("SELECT count(*), ".$columnName.", email FROM users where email = :email GROUP BY ".$columnName.";");
@@ -44,5 +48,43 @@
         } 
 
         return CONST_DB_ERR_USERDONTEXIST;
+    }
+
+    function setDBFirstName($email, $value){
+        return setDBInfo($email, CONST_DB_TABLE_USERS_FIRSTNAME, $value);
+    }
+
+    function setDBLastName($email, $value){
+        return setDBInfo($email, CONST_DB_TABLE_USERS_LASTNAME, $value);
+    }
+
+    function setDBUserName($email, $value){
+        return setDBInfo($email, CONST_DB_TABLE_USERS_USERNAME, $value);
+    }
+
+    function setDBLastConnection($email, $value) {
+        return setDBInfo($email, CONST_DB_TABLE_USERS_LASTCONNECTION, $value);
+    }
+
+    function setDBBirthdate($email, $value) {
+        return setDBInfo($email, CONST_DB_TABLE_USERS_BIRTHDATE, $value);
+    }
+
+    function setDBCreationDate($email, $value) {
+        return setDBInfo($email, CONST_DB_TABLE_USERS_CREATIONDATE, $value);
+    }
+
+    function setDBPassword($email, $value) {
+        return setDBInfo($email, CONST_DB_TABLE_USERS_PASSWORD, $value);
+    }
+
+    function setDBInfo($email, $columnName, $value){
+        $conn = getPDO();
+        $request = $conn->prepare("UPDATE users SET ".$columnName."=:value WHERE email = :email;");
+        $request->bindValue(":email", $email);
+        $request->bindValue(":value", $value);
+        $request->execute();
+        
+        closePDO($conn);
     }
 ?>

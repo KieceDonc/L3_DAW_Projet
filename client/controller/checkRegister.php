@@ -103,7 +103,7 @@
     }
 
     function redirectTo($path,$errors){
-        header('Location: ' . $path . concactEror($errors));
+        header('Location: ' . $path . concatErrors($errors));
         exit();
     }
 
@@ -112,7 +112,7 @@
         return $errors;
     }
 
-    function concactEror($errors){
+    function concatErrors($errors){
         $errors_length = count($errors);
         $str = '';
 

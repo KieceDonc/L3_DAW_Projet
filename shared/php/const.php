@@ -24,6 +24,7 @@
     define('CONST_DB_TABLE_USERS_LASTCONNECTION','lastconnection'); // lastconnection = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_BIRTHDATE','birthdate'); // birthdate = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_CREATIONDATE','creationdate'); // creationdate = name of the column in db in users table
+    define('CONST_DB_TABLE_USERS_PASSWORD','password'); // password = name of the column in db in users table
 
     // DB return type
     define('CONST_DB_ACCEPTED', 'ACCEPTED');
@@ -56,6 +57,9 @@
     define('CONST_SESSION_ISLOGGED','ISLOGGED');
     define('CONST_SESSION_ISLOGGED_YES','YES');
     define('CONST_SESSION_USERSTORED_ID','CONST_SESSION_USERSTORED_ID'); // Use for $_SESSION[CONST_SESSION_USERSTORED_ID] and know the id if we stored it. Plz see userInfo.php in controller
-    define('CONST_SESSION_USERSTORED_FIRSTNAME','USER_STORRED_FIRSTNAME'); // Use for $_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME] and know the firstname if we stored it. Plz see userInfo.php in controller
-    define('CONST_SESSION_USERSTORED_LASTNAME','USER_STORRED_LASTNAME'); // Use for $_SESSION[CONST_SESSION_USERSTORED_LASTNAME] and know the lastname if we stored it. Plz see userInfo.php in controller
+    define('CONST_SESSION_USERSTORED_FIRSTNAME','USER_STORED_FIRSTNAME'); // Use for $_SESSION[CONST_SESSION_USERSTORED_FIRSTNAME] and know the firstname if we stored it. Plz see userInfo.php in controller
+    define('CONST_SESSION_USERSTORED_LASTNAME','USER_STORED_LASTNAME'); // Use for $_SESSION[CONST_SESSION_USERSTORED_LASTNAME] and know the lastname if we stored it. Plz see userInfo.php in controller
+    define('CONST_SESSION_USERSTORED_USERNAME','USER_STORED_USERNAME'); // Use for $_SESSION[CONST_SESSION_USERSTORED_USERNAME] and know the username if we stored it. Plz see userInfo.php in controller
+    define('CONST_SESSION_USERSTORED_BIRTHDATE','USER_STORED_BIRTHDATE'); // Use for $_SESSION[CONST_SESSION_USERSTORED_BIRTHDATE] and know the birthdate if we stored it. Plz see userInfo.php in controller
+    define('CONST_SESSION_USERSTORED_PASSWORD','USER_STORED_PASSWORD'); // Use for $_SESSION[CONST_SESSION_USERSTORED_PASSWORD] and know the password if we stored it. Plz see userInfo.php in controller
 ?>
