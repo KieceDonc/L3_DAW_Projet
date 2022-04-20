@@ -10,8 +10,9 @@
         font-weight: 500;
         background-color: transparent;
         border-radius: 5px;
-        color : black;
+        color : white;
         margin-left:40%;
+        width : 45%
 }
 
 body{
@@ -33,7 +34,7 @@ input{
 
 ::placeholder{
     display: inline-block;
-    color: black;
+    color: #ffffff;
     text-align: center;
 }
 
