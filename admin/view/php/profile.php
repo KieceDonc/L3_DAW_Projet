@@ -49,7 +49,7 @@
       Your full name : <?php echo getDBFirstName($_SESSION[CONST_SESSION_EMAIL]) . " " . getDBLastName($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       </div>
       <form method="get">
-        <button name="edit"> Edit profile </button>
+        <button name="edit" class="EditBtn"> Edit profile </button>
       </form>
     <?php
   }
