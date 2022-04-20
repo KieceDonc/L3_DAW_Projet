@@ -57,6 +57,7 @@
 					// User is trying to add a message
 					if(isset($userMessage) && !empty($userMessage)){
 						addForumTopicMessage($topicID,$userID,$userMessage);
+						var_dump($userMessage);
 					}
                 }
             }
@@ -73,8 +74,6 @@
 	
     ?>
   </div>
-
-  <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
 
     <!-- JS -->
 	<script src="../../../../shared/js/jquery.js"></script>
@@ -135,7 +134,8 @@ function listTopics($topics)
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
 			echo "TODO";
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
-			echo getForumTopicLastMessageDate($topic["id"]);
+			$date = date('m/d/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
+			echo $date;
 			echo "</td></tr>";
 			// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
 		}
