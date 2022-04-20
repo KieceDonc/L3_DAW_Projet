@@ -132,7 +132,7 @@ function listTopics($topics)
 			echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
 			echo getForumTopicMessageCountInDB($topic["id"]) . " messages";
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
-			echo "TODO";
+			echo $topic["view_count"];
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
 			$date = date('m/d/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
 			echo $date;
@@ -164,6 +164,8 @@ function showTopic($topic)
     {
        showMessage($message);
     }
+
+	updateTopicViewCountInDB($topic["id"]);
     ?>
     </tbody>
     </table>

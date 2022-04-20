@@ -6,7 +6,7 @@
         $conn = getPDO();
 
         // TODO : use const
-        $result = $conn->query("SELECT topics.id AS id, topics.name AS name, topics.author AS author, firstname, lastname FROM topics, users WHERE topics.author = users.ID;", PDO::FETCH_ASSOC);;
+        $result = $conn->query("SELECT topics.id AS id, topics.name AS name, topics.author AS author, topics.view_count as view_count, firstname, lastname FROM topics, users WHERE topics.author = users.ID;", PDO::FETCH_ASSOC);;
         return $result->fetchAll();
     } 
 
@@ -64,11 +64,20 @@
         $conn = getPDO();
         
         // TODO : use const
-        $result = $conn->prepare("INSERT INTO topics (name, author) VALUES (':name', :userid);");
-        $result->execute(array("name"=>$topicName, "userid"=>$userID));
+        $result = $conn->prepare("INSERT INTO topics (name, author, view_count) VALUES (':name', :userid, :view_count);");
+        $result->execute(array("name"=>$topicName, "userid"=>$userID, "view_count"=>0));
 
         $topicID = $conn->lastInsertId();
 
         return $topicID;
+    }
+
+    function updateTopicViewCountInDB($topicID){
+        $conn = getPDO();
+        
+        // TODO : use const
+        $update = $conn->prepare("UPDATE topics SET view_count=view_count+1 WHERE id=:topicid;");
+        $update->bindValue(":topicid", $topicID);
+        $update->execute();
     }
 ?>
