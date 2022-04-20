@@ -1,0 +1,14 @@
+.InfosProfiles {
+    font-size: large;
+    font-family: ;
+}
+
+.EditBtn {
+    color: #ffffff;
+    background-color: #2fa0f6;
+    min-width: 120px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-left:4px;
+}

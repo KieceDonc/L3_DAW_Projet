@@ -41,12 +41,13 @@
 <?php
   function showProfileInfos(){
     ?>
-      Your username : <?php echo getUsernameID($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
+      <div class = "InfosProfiles">
+      Your username : <?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       Last connection : <?php echo getDBLastConnection($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       You created your account on <?php echo getDBCreationDate($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       Your birthdate : <?php echo getDBBirthdate($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       Your full name : <?php echo getDBFirstName($_SESSION[CONST_SESSION_EMAIL]) . " " . getDBLastName($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
-
+      </div>
       <form method="get">
         <button name="edit"> Edit profile </button>
       </form>
