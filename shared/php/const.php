@@ -31,6 +31,7 @@
     define('CONST_DB_ERR_USERDONTEXIST','USER_DONT_EXIST');
     define('CONST_DB_ERR_USERNAMEEXIST','USERNAME_ALREADY_EXISTS');
     define('CONST_DB_ERR_EMAILEXISTS','EMAIL_ALREADY_EXISTS');
+    define('CONST_DB_UNKNOWN_ERROR', 'UKNOWN_ERROR');
 
     // Error type
     define('CONST_ERR_EMPTY', 'empty');
@@ -62,4 +63,9 @@
     define('CONST_SESSION_USERSTORED_USERNAME','USER_STORED_USERNAME'); // Use for $_SESSION[CONST_SESSION_USERSTORED_USERNAME] and know the username if we stored it. Plz see userInfo.php in controller
     define('CONST_SESSION_USERSTORED_BIRTHDATE','USER_STORED_BIRTHDATE'); // Use for $_SESSION[CONST_SESSION_USERSTORED_BIRTHDATE] and know the birthdate if we stored it. Plz see userInfo.php in controller
     define('CONST_SESSION_USERSTORED_PASSWORD','USER_STORED_PASSWORD'); // Use for $_SESSION[CONST_SESSION_USERSTORED_PASSWORD] and know the password if we stored it. Plz see userInfo.php in controller
+    
+    define('CONST_SESSION_LANGUAGESTORED_LIST','LANGUAGE_STORED_LIST'); // Use for $_SESSION[CONST_SESSION_LANGUAGESTORED_LIST] and know the list if we stored it.
+    define('CONST_SESSION_LANGUAGESTORED_TRANSLATIONS','LANGUAGE_STORED_TRANSLATIONS'); // Use for $_SESSION[CONST_SESSION_LANGUAGESTORED_TRANSLATIONS] and know the list if we stored it.
+    define('CONST_SESSION_LANGUAGESTORED_CURRENT_LANG','LANGUAGE_STORED_LANG'); // Use for $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG] and know the current language for server if we stored it.
+
 ?>

@@ -16,14 +16,9 @@ body {
 .site-header__wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-top: 1rem;
   padding-bottom: 1rem; 
 }
-
-.site-header__wrapper {
-  justify-content: initial; 
-} 
 
 .site-header__middle {
   margin-left: auto; 
@@ -83,7 +78,8 @@ a {
     display: inline-block;
     width: 60px;
     height: 34px;
-    left: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .switch input { 

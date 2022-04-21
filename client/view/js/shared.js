@@ -15,6 +15,13 @@ $(".nav__item, .header-button").hover(function(){
     }
 );
 
+$("#language").on("change", function() {
+  if(readCookie("lang") != this.value){
+    document.cookie = 'lang=' + this.value +';';
+    location.reload();
+  }
+});
+
 
 /**
  * Script used to switch into light or dark mode
