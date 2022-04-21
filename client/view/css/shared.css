@@ -141,8 +141,7 @@ input:checked + .slider:before {
 
 footer{
   background-color: var(--handler-lvl-2-color);
-  position: relative;
-  margin-top: 500px;
+  margin-top: 50px;
   padding: 5px 20px;
 }
 

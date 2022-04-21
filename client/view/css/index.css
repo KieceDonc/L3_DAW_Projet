@@ -16,26 +16,24 @@ body{
     padding: 5px 8px 5px;
 }
 
-gameAboutUs {
+.gameAboutUs {
     background-color: var(--handler-lvl-2-color);
-    float: right;
-    width: 60%;
     padding: 40px;
     margin: 0px 20px 20px 0px;
 }
 
 .game img{
+    float: left;
     width: 30%;
     margin: 0px 0px 20px 20px;
-    padding-top: 10px;
+    padding-top: 50px;
+    padding-right: 10px;
 }
 
 .us {
     background-color: var(--handler-lvl-2-color);
     text-align: center;
-    position: absolute;
     width: 80%;
-    margin-top: 180px;
     margin-left: auto;
     margin-right: auto;
     left: 10%;

@@ -20,7 +20,7 @@
         }
         else{
                 $compteur=fopen("compteur.txt","r+");
-                $hit=fgets($compteur,255);
+                $hit=fgets($compteur);
                 if(empty($_COOKIE["Visite"])){
                     setcookie("Visite","ok",time()+365*24*3600); 
                     $hit++;
@@ -57,8 +57,7 @@
     
     <div class="game">
         <img alt="lol image" src="../media/lolImage.png"  />
-        <gameAboutUs>
-            <p>
+        <p class="gameAboutUs">
              League of Legends (abrégé LoL) est un jeu vidéo sorti en 2009 de type arène de bataille en ligne, free-to-play, développé et édité par Riot Games sur Windows et Mac OS.
 
             Le mode principal du jeu voit s'affronter deux équipes de 5 joueurs en temps réel dans des parties d'une durée d'environ une demi-heure, chaque équipe occupant et défendant sa propre base sur la carte. Chacun des dix joueurs contrôle un personnage à part entière parmi les plus de 150 qui sont proposés. Ces personnages, connus sous le nom de « champions » dans le jeu, disposent de compétences uniques et d'un style de jeu qui leur est propre. Ils gagnent en puissance au fil de la partie en amassant des points d'expérience ainsi qu'en achetant des objets, dans le but de battre l'équipe adverse. L'objectif d'une partie est de détruire le « Nexus » ennemi, une large structure située au centre de chaque base. D'autres modes de jeu, généralement moins compétitifs et se basant quasiment toujours sur le mode principal, sont également présents — à l'exception de Teamfight Tactics, un auto battler sorti en 2019 sans grand rapport avec le mode principal et qui dispose de sa propre communauté.
@@ -68,15 +67,14 @@
             League of Legends a reçu des critiques généralement positives de la critique, gagnant des prix pour son accessibilité, le design de ses personnages et sa compétitivité. En juillet 2012, il était le premier jeu vidéo sur ordinateur en nombre d'heures jouées en Europe et aux États-Unis. Son importante popularité a conduit à la création de produits dérivés tels que des clips musicaux, des bandes dessinées, des nouvelles, des figurines, et d'une série d'animation nommée Arcane.
 
             Le succès du jeu a également donné naissance à plusieurs autres jeux vidéo situés dans le même univers, tels que Legends of Runeterra, un jeu de cartes à collectionner, Ruined King: A League of Legends Story, un jeu de rôle au tour par tour, et League of Legends: Wild Rift, une adaptation sur mobile et console de LoL.
-            </p>
-        </gameAboutUs>
+        </p>
     </div>
       
     <div class="us">
-        <h2>E-lolning fonders</h2>
+        <h2>E-lolning founders</h2>
         <div class="pdp">
         <figure>
-            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Vestracte Valentin </figcaption>
+            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Verstracte Valentin </figcaption>
         </figure>
         <figure>
             <img alt="pdp" src="../media/pdpEvan.png" > <figcaption> Petit Evan </figcaption>
