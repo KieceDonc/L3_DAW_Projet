@@ -20,7 +20,7 @@
         }
         else{
                 $compteur=fopen("compteur.txt","r+");
-                $hit=fgets($compteur);
+                $hit=fgets($compteur,255);
                 if(empty($_COOKIE["Visite"])){
                     setcookie("Visite","ok",time()+365*24*3600); 
                     $hit++;
