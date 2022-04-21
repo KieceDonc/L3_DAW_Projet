@@ -1,8 +1,12 @@
+<?php     
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo getLangCode(); ?>">
   <head>
     <meta charset="UTF-8" />
-    <title>E-lolning Forum</title>
+    <title>E-lolning <?php echo getTranslation(2); ?></title>
     
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
@@ -19,7 +23,7 @@
   ?>
   
   <div>
-    <h1> Forum E-lolning </h1>
+    <h1> <?php echo getTranslation(2); ?> E-lolning </h1>
     <?php
     if(isset($_REQUEST["topic"]) && !empty($_REQUEST["topic"]))
     {
@@ -89,14 +93,16 @@ function listTopics($topics)
 {
     ?>
 	<form method="get">
-		<h2> Topics </h2>
+		<h2> <?php echo getTranslation(23); ?> </h2>
 		<?php
 			// Is user connected
 			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
                 if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 
 					// Yes so he can create new topic
-                    echo '<div class="button"><button name="topic" value="new" class="newtopic"> Create a Topic </button></div>';
+                    echo '<div class="button"><button name="topic" value="new" class="newtopic">';
+					echo getTranslation(11); 
+					echo '</button></div>';
                 }
             }
 		?>
@@ -105,22 +111,22 @@ function listTopics($topics)
 		<tr>
 			<td style="width: 80%;padding-left: 50px;">
 				<div class="topicsTableHideExtra">
-					Titre
+					<?php echo getTranslation(12); ?>
 				</div>
 			</td>
 			<td style="min-width: 400px;max-width: 400px;">
 				<div class="topicsTableHideExtra" class="topicsTableTextCenter">
-					Auteur
+					<?php echo getTranslation(13); ?>
 				</div>
 			</td>
 			<td style="min-width: 175px;" class="topicsTableTextCenter">
-				Messages
+				<?php echo getTranslation(14); ?>
 			</td>
 			<td style="min-width: 125px;" class="topicsTableTextCenter">
-				Vues
+				<?php echo getTranslation(15); ?>
 			</td>
 			<td style="min-width: 125px;" class="topicsTableTextCenter">
-				Date dernier message
+				<?php echo getTranslation(16); ?>
 			</td>
 		</tr>
 		<?php 
@@ -132,7 +138,7 @@ function listTopics($topics)
 			echo $topic["firstname"]." ".$topic["lastname"];
 			echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
 			$messagesCount = getForumTopicMessageCountInDB($topic["id"]);
-			echo $messagesCount . " messages";
+			echo $messagesCount . " " . getTranslation(14);
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
 			echo $topic["view_count"];
 			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
@@ -156,7 +162,7 @@ function showTopic($topic)
 	?>
     <h2> <?php echo $topic["name"] ?> </h2>
 	<div class="button">
-		<button id="backBtn"> Back </button>
+		<button id="backBtn"> <?php echo getTranslation(17); ?> </button>
 	</div>
     <table>
     <tbody>
@@ -199,8 +205,8 @@ function showInputZone($topicId)
     <form method="post">
         <div id="containerInputZone">
 	        <input hidden name="topic" value="<?php echo $topicId ?>" />
-            <textarea id="msgArea" name="msg" placeholder="Type your reply..."></textarea>
-            <input id="addAnswerBtn" type="submit" value="Answer" />
+            <textarea id="msgArea" name="msg" placeholder="<?php echo getTranslation(18); ?>"></textarea>
+            <input id="addAnswerBtn" type="submit" value="<?php echo getTranslation(19); ?>" />
         </div>
     </form>
     <?php
@@ -216,18 +222,18 @@ function showCreateTopicForm($errors = array())
 	echo "</div>";
 
 	?>
-	<h2> Create a new topic </h2>
+	<h2> <?php echo getTranslation(20); ?> </h2>
 
 	<form id="createTopic" method="post">
 		<input name="topic" value="new" hidden />
-		<label for="inputName"> Name of Topic : </label>
+		<label for="inputName"> <?php echo getTranslation(21); ?> </label>
 		<input name="name" type="text" id="inputName"/>
 		<div class="button">
-		<button id="createTopicBtn" name="create"> Create </button>
+		<button id="createTopicBtn" name="create"> <?php echo getTranslation(22); ?> </button>
 		</div>
 	</form>
 	<div class="button">
-	<button id="backBtn"> Back </button>
+	<button id="backBtn"> <?php echo getTranslation(17); ?> </button>
 	</div>
 	<?php
 }

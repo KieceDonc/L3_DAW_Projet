@@ -1,5 +1,9 @@
+<?php     
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo getLangCode(); ?>">
   <head>
     <meta charset="UTF-8" />
     <title>E-lolning</title>
@@ -19,16 +23,16 @@
 		{
 			?>
 			  <form method="POST">
-				  <header>Login</header>
+				  <header><?php echo getTranslation(24); ?></header>
 
-				  <label>Email</label>
-				  <input id="email" type="text" placeholder="Enter your email" name="email" required>
+				  <label><?php echo getTranslation(25); ?></label>
+				  <input id="email" type="text" placeholder="<?php echo getTranslation(26); ?>" name="email" required>
 
-				  <label>Password</label>
-				  <input id="password" type="password" placeholder="Enter your password" name="password" required>
+				  <label><?php echo getTranslation(37); ?></label>
+				  <input id="password" type="password" placeholder="<?php echo getTranslation(27); ?>" name="password" required>
 
-				  <input type="submit" id='submit' value='Log in'>
-				  <footer class="options">Not registered ? <a href="register.php">Create an account !</a></footer>
+				  <input type="submit" id='submit' value='<?php echo getTranslation(24); ?>'>
+				  <footer class="options"><?php echo getTranslation(28); ?><a href="register.php"><?php echo getTranslation(29); ?></a></footer>
 			  </form>
 		<?php
 		}

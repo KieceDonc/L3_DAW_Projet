@@ -4,7 +4,7 @@
 
     function getLanguageListDB(){
         $conn = getPDO();
-        $request = $conn->prepare("SELECT count(*), id, name FROM languages GROUP BY name, id;");
+        $request = $conn->prepare("SELECT count(*), id, name, code FROM languages GROUP BY name, id, code;");
         $request->execute();
         $answer = $request->fetchAll();
         closePDO($conn);

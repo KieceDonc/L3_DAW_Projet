@@ -1,7 +1,9 @@
+<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php"); ?>
+
 <footer>
     <ul>
-        <li>Gestion des cookies - RGPD</li>
-        <li>Mentions légales - CGV - CGU</li>
-        <li>Copyright 2022 - E-lolning</li>
+        <li><?php echo getTranslation(8); ?></li>
+        <li><?php echo getTranslation(9); ?></li>
+        <li><?php echo getTranslation(10); ?></li>
     </ul>
 </div>

@@ -2,6 +2,31 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/language.php");
 
+    function getLang(){
+        $lang = $_COOKIE["lang"];
+
+        //detect if the client switched his language
+        if(!isset($_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG]) || $lang != $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG]){
+            $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG] = $lang;
+            unset($_SESSION[CONST_SESSION_LANGUAGESTORED_TRANSLATIONS]);
+            $_SESSION[CONST_SESSION_LANGUAGESTORED_TRANSLATIONS] = array();
+        }
+
+        return $lang;
+    }
+
+    function getLangCode() {
+        $list = getLanguageList();
+        $lang = getLang();
+
+        foreach ($list as $key => $val) {
+            if ($val["id"] == $lang) {
+                return $val["code"];
+            }
+        }
+        return "UNKNOWN";
+    }
+
     function getLanguageList() {
         // we check if we already stored the list
         if(!isset($_SESSION[CONST_SESSION_LANGUAGESTORED_LIST])){
@@ -25,14 +50,7 @@
     }
 
     function getTranslation($textId) {
-        $lang = $_COOKIE["lang"];
-
-        //detect if the client switched his language
-        if(!isset($_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG]) || $lang != $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG]){
-            $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG] = $lang;
-            unset($_SESSION[CONST_SESSION_LANGUAGESTORED_TRANSLATIONS]);
-            $_SESSION[CONST_SESSION_LANGUAGESTORED_TRANSLATIONS] = array();
-        }
+        $lang = getLang();
 
         // we check if we already stored the translation
         if(!isset($_SESSION[CONST_SESSION_LANGUAGESTORED_TRANSLATIONS][$textId])){

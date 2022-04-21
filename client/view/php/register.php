@@ -1,5 +1,9 @@
+<?php     
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo getLangCode(); ?>">
 <head>
     <meta charset="UTF-8" />
     <title>E-lolning</title>
@@ -13,28 +17,28 @@
     <!-- zone de connexion -->
 
     <form action="../../controller/checkRegister.php" method="POST">
-        <header>Connection</header>
-        <label>Username</label>
-        <input type="text" placeholder="Enter your username" name="username" required>
+        <header><?php echo getTranslation(24); ?></header>
+        <label><?php echo getTranslation(30); ?></label>
+        <input type="text" placeholder="<?php echo getTranslation(31); ?>" name="username" required>
 
-        <label>Last name</label>
-        <input type="text" placeholder="Enter your last name" name="lastname" required>
+        <label><?php echo getTranslation(35); ?></label>
+        <input type="text" placeholder="<?php echo getTranslation(32); ?>" name="lastname" required>
 
-        <label>First name</label>
-        <input type="text" placeholder="Enter your first name" name="firstname" required>
+        <label><?php echo getTranslation(36); ?></label>
+        <input type="text" placeholder="<?php echo getTranslation(33); ?>" name="firstname" required>
 
-        <label>Email</label>
-        <input type="email" placeholder="Email" name="email" required>
+        <label><?php echo getTranslation(25); ?></label>
+        <input type="email" placeholder="<?php echo getTranslation(26); ?>" name="email" required>
         <label>Date de naissance</label>
         <input id="datefield" type='date' min='1900-01-01' max='2099-12-31' name="birthdate"></input>
 
         <label>Password</label>
-        <input type="password" placeholder="Enter your password" name="password" required>
+        <input type="password" placeholder="<?php echo getTranslation(27); ?>" name="password" required>
 
-        <label>Password</label>
-        <input type="password" placeholder="Confirm your password" name="passwordconfirmation" required>
+        <label><?php echo getTranslation(37); ?></label>
+        <input type="password" placeholder="<?php echo getTranslation(34); ?>" name="passwordconfirmation" required>
 
-        <input type="submit" id='submit' value="Register" >
+        <input type="submit" id='submit' value="<?php echo getTranslation(38); ?>" >
         <?php
             require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
             
@@ -42,13 +46,13 @@
             if(($error = checkError(CONST_URLPARAM_ERR_USERNAME)) !== false){
                 switch($error){
                     case CONST_ERR_ALREADYEXISTS:
-                        echoError("Username already taken");
+                        echoError(getTranslation(39));
                         break;
                     case CONST_ERR_EMPTY:
-                        echoError("Please enter an username");
+                        echoError(getTranslation(40));
                         break;
                     case CONST_ERR_FORBIDDENCHARS:
-                        echoError("Your username has forbidden characters");
+                        echoError(getTranslation(41));
                         break;
                 }
             }
@@ -56,10 +60,10 @@
             if(($error = checkError(CONST_URLPARAM_ERR_EMAIL)) !== false){
                 switch($error){
                     case CONST_ERR_ALREADYEXISTS:
-                        echoError('Email already registered');
+                        echoError(getTranslation(42));
                         break;
                     case CONST_ERR_EMPTY:
-                        echoError('Please enter an email');
+                        echoError(getTranslation(43));
                         break;
                 }
             }
@@ -67,13 +71,13 @@
             if(($error = checkError(CONST_URLPARAM_ERR_PASSWORD)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Please enter a password');
+                        echoError(getTranslation(44));
                         break;
                     case CONST_ERR_TOOSHORT:
-                        echoError("Your password must be at least 6 characters long");
+                        echoError(getTranslation(45));
                         break;
                     case CONST_ERR_FORBIDDENCHARS:
-                        echoError("Your password must contains: 1 letter, 1 digit and 1 special character between !,@,#,$,%");
+                        echoError(getTranslation(46));
                         break;
                 }
             }
@@ -81,10 +85,10 @@
             if(($error = checkError(CONST_URLPARAM_ERR_PASSWORDCONFIRMATION)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Please confirm your password');
+                        echoError(getTranslation(47));
                         break;
                     case CONST_ERR_UNMATCHED:
-                        echoError('Your password confirmation is not matching !');
+                        echoError(getTranslation(48));
                         break;
                 }
             }
@@ -92,10 +96,10 @@
             if(($error = checkError(CONST_URLPARAM_ERR_FIRSTNAME)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Please enter your first name');
+                        echoError(getTranslation(49));
                         break;
                     case CONST_ERR_FORBIDDENCHARS:
-                        echoError('Your first name must contains only letters');
+                        echoError(getTranslation(50));
                         break;
                 }
             }
@@ -103,17 +107,17 @@
             if(($error = checkError(CONST_URLPARAM_ERR_LASTNAME)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Please enter your last name');
+                        echoError(getTranslation(51));
                         break;
                     case CONST_ERR_ALREADYEXISTS:
-                        echoError('Your last name must contains only letters');
+                        echoError(getTranslation(52));
                         break;
                 }
             }
             
             if(($error = checkError(CONST_URLPARAM_ERR_BIRTHDATE)) !== false){
                 if($error === CONST_ERR_EMPTY){
-                    echoError('Please enter your date of birth');
+                    echoError(getTranslation(53));
                 }
             }
 

@@ -1,9 +1,13 @@
+<?php     
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo getLangCode(); ?>">
 
 <head>
   <meta charset="UTF-8" />
-  <title>courses</title>
+  <title>E-lolning <?php echo getTranslation(3); ?></title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="../css/font-face.css" />
@@ -17,11 +21,11 @@
 
 <body>
   <?php
-  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
-  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/courses.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/courses.php");
   ?>
 
-  <h1>Courses</h1>
+<h1><?php echo getTranslation(3); ?></h1>
 
   <?php
     showCourses();
