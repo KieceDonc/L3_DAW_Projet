@@ -1,0 +1,42 @@
+.InfosProfiles {
+    font-size: large;
+    font-family:'Quicksand Regular' ;
+}
+
+.EditBtn {
+        margin-top: 10px;
+        padding: 20px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color:#2fa0f6;
+        border-radius: 5px;
+        color : white;
+        margin-left:30%;
+        width : 45%
+}
+
+body{
+    background-color: #1c2347;
+    color:#ffffff;
+}
+
+input{
+    display: block;
+    height: 50px;
+    width: 45%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    margin-top:15px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-left: 30%;
+    color : #ffffff;
+}
+
+::placeholder{
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+}
+
+

@@ -27,7 +27,7 @@
 </nav>
 <div class="content">
 	<header>
-		<p>
+		<p class = "Welcome">
 			Welcome <?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?> ! <br />
 		<p>
 	</header>

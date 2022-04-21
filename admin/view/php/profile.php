@@ -41,14 +41,15 @@
 <?php
   function showProfileInfos(){
     ?>
-      Your username : <?php echo getUsernameID($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
+      <div class = "InfosProfiles">
+      Your username : <?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       Last connection : <?php echo getDBLastConnection($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       You created your account on <?php echo getDBCreationDate($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       Your birthdate : <?php echo getDBBirthdate($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
       Your full name : <?php echo getDBFirstName($_SESSION[CONST_SESSION_EMAIL]) . " " . getDBLastName($_SESSION[CONST_SESSION_EMAIL]); ?> <br />
-
+      </div>
       <form method="get">
-        <button name="edit"> Edit profile </button>
+        <button name="edit" class="EditBtn"> Edit profile </button>
       </form>
     <?php
   }
@@ -153,8 +154,8 @@
         <label for="pass2">Confirmer le mot de passe</label>
         <input id="pass2" type="password" placeholder="Confirmer le mot de passe" name="passwordconfirmation"><br />
 
-        <input hidden name="edit" />
-        <button name="save"> Save </button>
+        <input type="hidden" name="edit" />
+        <button class="EditBtn" name="save"> Save </button>
       </form>
     <?php
   }
