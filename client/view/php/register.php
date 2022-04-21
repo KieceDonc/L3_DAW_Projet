@@ -13,28 +13,28 @@
     <!-- zone de connexion -->
 
     <form action="../../controller/checkRegister.php" method="POST">
-        <header>Connexion</header>
-        <label>Nom d'utilisateur</label>
-        <input type="text" placeholder="Entrer votre nom d'utilisateur" name="username" required>
+        <header>Connection</header>
+        <label>Username</label>
+        <input type="text" placeholder="Enter your username" name="username" required>
 
-        <label>Nom</label>
-        <input type="text" placeholder="Entrer votre nom" name="lastname" required>
+        <label>Last name</label>
+        <input type="text" placeholder="Enter your last name" name="lastname" required>
 
-        <label>Prénom</label>
-        <input type="text" placeholder="Entrer votre prénom" name="firstname" required>
+        <label>First name</label>
+        <input type="text" placeholder="Enter your first name" name="firstname" required>
 
         <label>Email</label>
         <input type="email" placeholder="Email" name="email" required>
         <label>Date de naissance</label>
         <input id="datefield" type='date' min='1900-01-01' max='2099-12-31' name="birthdate"></input>
 
-        <label>Mot de passe</label>
-        <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+        <label>Password</label>
+        <input type="password" placeholder="Enter your password" name="password" required>
 
-        <label>Mot de passe</label>
-        <input type="password" placeholder="Confirmer le mot de passe" name="passwordconfirmation" required>
+        <label>Password</label>
+        <input type="password" placeholder="Confirm your password" name="passwordconfirmation" required>
 
-        <input type="submit" id='submit' value="S'inscrire" >
+        <input type="submit" id='submit' value="Register" >
         <?php
             require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
             
@@ -42,13 +42,13 @@
             if(($error = checkError(CONST_URLPARAM_ERR_USERNAME)) !== false){
                 switch($error){
                     case CONST_ERR_ALREADYEXISTS:
-                        echoError("Nom d'utilisateur existant");
+                        echoError("Username already taken");
                         break;
                     case CONST_ERR_EMPTY:
-                        echoError("Veuillez donner un nom d'utilisateur");
+                        echoError("Please enter an username");
                         break;
                     case CONST_ERR_FORBIDDENCHARS:
-                        echoError("Votre nom d'utilisateur contient des caracteres interdits");
+                        echoError("Your username has forbidden characters");
                         break;
                 }
             }
@@ -56,10 +56,10 @@
             if(($error = checkError(CONST_URLPARAM_ERR_EMAIL)) !== false){
                 switch($error){
                     case CONST_ERR_ALREADYEXISTS:
-                        echoError('Email existant');
+                        echoError('Email already registered');
                         break;
                     case CONST_ERR_EMPTY:
-                        echoError('Veuillez donner une adresse mail');
+                        echoError('Please enter an email');
                         break;
                 }
             }
@@ -67,13 +67,13 @@
             if(($error = checkError(CONST_URLPARAM_ERR_PASSWORD)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Veuillez donner un mot de passe');
+                        echoError('Please enter a password');
                         break;
                     case CONST_ERR_TOOSHORT:
-                        echoError('Votre mot de passe doit au moins contenir 6 caracteres');
+                        echoError("Your password must be at least 6 characters long");
                         break;
                     case CONST_ERR_FORBIDDENCHARS:
-                        echoError("Votre mot de passe doit contenir au moins: 1 lettre, 1 chiffre et 1 caractere spécial entre !,@,#,$,%");
+                        echoError("Your password must contains: 1 letter, 1 digit and 1 special character between !,@,#,$,%");
                         break;
                 }
             }
@@ -81,10 +81,10 @@
             if(($error = checkError(CONST_URLPARAM_ERR_PASSWORDCONFIRMATION)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Veuillez confirmer votre mot de passe');
+                        echoError('Please confirm your password');
                         break;
                     case CONST_ERR_UNMATCHED:
-                        echoError('Vos mot de passes sont différents');
+                        echoError('Your password confirmation is not matching !');
                         break;
                 }
             }
@@ -92,10 +92,10 @@
             if(($error = checkError(CONST_URLPARAM_ERR_FIRSTNAME)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Veuillez donner votre prénom');
+                        echoError('Please enter your first name');
                         break;
                     case CONST_ERR_FORBIDDENCHARS:
-                        echoError('Votre prénom ne doit contenir que des lettres');
+                        echoError('Your first name must contains only letters');
                         break;
                 }
             }
@@ -103,17 +103,17 @@
             if(($error = checkError(CONST_URLPARAM_ERR_LASTNAME)) !== false){
                 switch($error){
                     case CONST_ERR_EMPTY:
-                        echoError('Veuillez donner votre nom<');
+                        echoError('Please enter your last name');
                         break;
                     case CONST_ERR_ALREADYEXISTS:
-                        echoError('Votre nom ne doit contenir que des lettres');
+                        echoError('Your last name must contains only letters');
                         break;
                 }
             }
             
             if(($error = checkError(CONST_URLPARAM_ERR_BIRTHDATE)) !== false){
                 if($error === CONST_ERR_EMPTY){
-                    echoError('Veuillez donner votre date de naissance');
+                    echoError('Please enter your date of birth');
                 }
             }
 

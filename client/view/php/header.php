@@ -30,16 +30,16 @@
           
           
             if(isset($_SESSION[CONST_SESSION_ISLOGGED]) && $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
-                    echo '<a id="header-button" href="/admin/profile">Profile</a>';
-                    echo '<a id="header-button" href="logout.php">Log out</a>';
+                    echo '<a class="header-button" href="/admin/profile">Profile</a>';
+                    echo '<a class="header-button" href="logout.php">Log out</a>';
             }else{
-                echo '<a id="header-button" href="/login?callback='. $_SERVER['REQUEST_URI'] .'">Sign in/up</a>';
+                echo '<a class="header-button" href="/login?callback='. $_SERVER['REQUEST_URI'] .'">Sign in/up</a>';
             }
             
         ?>
         </div>
         <label class="switch">
-            <input onclick="changeTheme()" type="checkbox" checked>
+            <input id="switchBtn" type="checkbox" checked>
             <span class="slider round"></span>
         </label>
     </div>

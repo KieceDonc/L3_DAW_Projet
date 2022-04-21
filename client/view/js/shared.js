@@ -1,45 +1,39 @@
 /**
  * Execute code when DOM is loaded
  */
-document.addEventListener("DOMContentLoaded", ()=> {
-  underlineHeaderItems();
-});
 
+$(document).ready(function () {
 
 /**
  * underline <a> tag of header
  */
-function underlineHeaderItems(){
+$(".nav__item, .header-button").hover(function(){
+  $(this).css("textDecoration", "underline");
+  },
+  function(){
+    $(this).css("textDecoration", "none");
+    }
+);
 
-  let items = [].slice.call(document.getElementsByClassName("nav__item"));
-  items.forEach((HTMLElement)=>{
-    underlineElementOnHover(HTMLElement)
-  });
-
-  underlineElementOnHover(document.getElementById("header-button"));
-}
 
 /**
- * Handle underline on HTMLElement on mouse o ver/out
- * @param {HTMLElement} element 
+ * Script used to switch into light or dark mode
  */
-function underlineElementOnHover(element){
 
-  element.addEventListener("mouseover",()=>{
-    element.style.textDecoration="underline"
-  })
+loadTheme();
 
-  element.addEventListener("mouseout",()=>{
-    element.style.textDecoration=""
-  })
-}
+$("#switchBtn").click(changeTheme);
+});
+
+let buttonState = 0;
+let cssLink = $("<link>");
 
 /**
  * Find cookie parameters by its name
  * @param name
  */
 
-function readCookie(name) {
+ function readCookie(name) {
   var cookieName = name + "=";
   var cookieFind = document.cookie.split(';');
   for(var i=0;i < cookieFind.length;i++) {
@@ -51,61 +45,53 @@ function readCookie(name) {
   return null;
 }
 
+function loadTheme(){
+  $("head").append(cssLink); 
 
-/**
- * Script use for switch into light mode and dark mode
- */
+  //dark
+  if(readCookie("theme") == "0") {
+    buttonState = "0";
+    cssLink.attr({
+      rel:  "stylesheet",
+      type: "text/css",
+      href: "../css/darkMode.css"
+    });
 
-let buttonState = 0;
+    $("#switchBtn").prop("checked", false);
+  }
+  else{
+    //otherwise light
+    buttonState = "1";
+    cssLink.attr({
+      rel:  "stylesheet",
+      type: "text/css",
+      href: "../css/lightMode.css"
+    });
 
-var cssLink = $("<link>");
-$("head").append(cssLink); 
+    $("#switchBtn").prop("checked", true);
+  }
+}
 
 function changeTheme() {
-    //page load for first time, load light mode
-    if(readCookie("themes") == "light" && buttonState == 0)
+    //load light mode
+    if(buttonState == "0")
     {
         cssLink.attr({
             rel:  "stylesheet",
             type: "text/css",
             href: "../css/lightMode.css"
         });
-        buttonState = 1;
-        document.cookie = 'themes=light;';
-    }
-    //page has already load, and change mode by the button click
-    else if(readCookie("themes") == "light" && buttonState == 1)
-    {
-        cssLink.attr({
-            rel:  "stylesheet",
-            type: "text/css",
-            href: "../css/darkMode.css"
-        });
-        buttonState = 1;
-        document.cookie = 'themes=dark;';
-    }
-    //page load for first time, load dark mode
-    else if(readCookie("themes") == "dark" && buttonState == 0)
-    {
-        cssLink.attr({
-            rel:  "stylesheet",
-            type: "text/css",
-            href: "../css/darkMode.css"
-        });
-        buttonState = 1;
-        document.cookie = 'themes=dark;';
-    }
-    //page has already load, and change mode by the button click
+        buttonState = "1";
+    }//load dark mode
     else 
     {
         cssLink.attr({
             rel:  "stylesheet",
             type: "text/css",
-            href: "../css/lightMode.css"
+            href: "../css/darkMode.css"
         });
-        buttonState = 1;
-        document.cookie = 'themes=light;';
+        buttonState = "0";
     }
-}
 
-window.onload = changeTheme();
+    document.cookie = 'theme=' + buttonState +';';
+}

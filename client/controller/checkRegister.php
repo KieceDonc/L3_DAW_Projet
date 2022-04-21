@@ -76,7 +76,7 @@
         }
 
         if(count($errors) > 0){
-            redirectTo('/client/view/php/register.php',$errors);
+            redirectTo('/register',$errors);
         }else{
             session_start();
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -84,15 +84,15 @@
                 case CONST_DB_ACCEPTED:
                     $_SESSION[CONST_SESSION_ISLOGGED] = CONST_SESSION_ISLOGGED_YES;
                     $_SESSION[CONST_SESSION_EMAIL] = $email;
-                    redirectTo('/client/view/php/index.php',$errors);
+                    redirectTo('/',$errors);
                     break;
                 case CONST_DB_ERR_USERNAMEEXIST:
                     $errors = storeError($errors,CONST_URLPARAM_ERR_USERNAME, CONST_ERR_ALREADYEXISTS);
-                    redirectTo('/client/view/php/register.php',$errors);
+                    redirectTo('/register',$errors);
                     break;
                 case CONST_DB_ERR_EMAILEXISTS:
                     $errors = storeError($errors,CONST_URLPARAM_ERR_EMAIL, CONST_ERR_ALREADYEXISTS);
-                    redirectTo('/client/view/php/register.php',$errors);
+                    redirectTo('/register',$errors);
                     break;     
             }
 

@@ -19,16 +19,16 @@
 		{
 			?>
 			  <form method="POST">
-				  <header>Connexion a votre compte</header>
+				  <header>Login</header>
 
 				  <label>Email</label>
-				  <input id="email" type="text" placeholder="Entrer l'email" name="email" required>
+				  <input id="email" type="text" placeholder="Enter your email" name="email" required>
 
-				  <label>Mot de passe</label>
-				  <input id="password" type="password" placeholder="Entrer le mot de passe" name="password" required>
+				  <label>Password</label>
+				  <input id="password" type="password" placeholder="Enter your password" name="password" required>
 
-				  <input type="submit" id='submit' value='Connexion'>
-				  <footer class="options">Pas inscrit? <a href="register.php">Créer un compte!</a></footer>
+				  <input type="submit" id='submit' value='Log in'>
+				  <footer class="options">Not registered ? <a href="register.php">Create an account !</a></footer>
 			  </form>
 		<?php
 		}
