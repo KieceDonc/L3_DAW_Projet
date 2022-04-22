@@ -3,8 +3,14 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/language.php");
 
     function getLang(){
-        $lang = $_COOKIE["lang"];
-
+        if(!isset($_COOKIE["lang"]))
+        {
+            $lang = "1";
+        }
+        else{
+            $lang = $_COOKIE["lang"];
+        }
+        
         //detect if the client switched his language
         if(!isset($_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG]) || $lang != $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG]){
             $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG] = $lang;
