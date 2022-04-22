@@ -1,4 +1,4 @@
-<?php     
+<?php
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
 ?>
 
@@ -16,6 +16,7 @@
   <body>
    
   <?php 
+  	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/forum.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/forum.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
@@ -50,24 +51,43 @@
 		else
 		{
 			$topicID = $_REQUEST["topic"];
-
+			$editedMessage = "-1";
 			// Is user connected
 			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
                 if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 									
 					$userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
-					// User is trying to add a message
-					if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
-						//TODO sanitize input
-						$userMessage = $_REQUEST["msg"]; 
-						addForumTopicMessage($topicID,$userID,$userMessage);
+
+					//message option (edit, delete)
+					if(isset($_REQUEST["messageId"])){
+						if(isset($_REQUEST["delete"])){
+							//TODO more checks, if logged user is the author of the message
+							deleteMessage($_REQUEST["messageId"]);
+						}
+						else if(isset($_REQUEST["edit"])){//TODO sanitize inputs
+							//edited
+							if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
+								editMessage($_REQUEST["messageId"], $_REQUEST["msg"]);
+							}
+							else{//want to edit
+								$editedMessage = $_REQUEST["messageId"];
+							}
+						}
+					}
+					else{
+						// User is trying to add a message
+						if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
+							//TODO sanitize input
+							$userMessage = $_REQUEST["msg"]; 
+							addForumTopicMessage($topicID,$userID,$userMessage);
+						}
 					}
                 }
             }
 
 			// We're inside a topic
 			// We show messages from it
-			showTopic(getForumTopicInfo($topicID));
+			showTopic(getForumTopicInfo($topicID), $editedMessage);
 		}
     }
     else 
@@ -135,7 +155,7 @@ function listTopics($topics)
 			echo "<tr ><tr><td style='width: 80%;padding-left: 50px;'><div data-href='".$topic["id"]."' class='topicsTableHideExtra'>";
 			echo $topic["name"];
 			echo "</div></td><td style='min-width: 400px;max-width: 400px;'><div class='topicsTableHideExtra' class='topicsTableTextCenter'>";
-			echo $topic["firstname"]." ".$topic["lastname"];
+			echo $topic["username"];
 			echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
 			$messagesCount = getForumTopicMessageCountInDB($topic["id"]);
 			echo $messagesCount . " " . getTranslation(14);
@@ -156,7 +176,7 @@ function listTopics($topics)
     <?php
 }
 
-function showTopic($topic) 
+function showTopic($topic, $editedMessage) 
 {
 	//debug :  $messages as parameter
 	?>
@@ -169,10 +189,17 @@ function showTopic($topic)
     <?php
 
 	$messages = getForumTopicMessagesInDB($topic["id"]);
+	$currentMessage = "";
 
     foreach($messages as $message)
     {
-       showMessage($message);
+		if($message["id"] == $editedMessage){
+			showEditedMessage($message);
+			$currentMessage = $message["content"];
+		}
+		else{
+			showMessage($message, $topic["id"]);
+		}
     }
 
 	updateTopicViewCountInDB($topic["id"]);
@@ -184,29 +211,70 @@ function showTopic($topic)
 	if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
 		if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 			
-			showInputZone($topic["id"]);
+			showInputZone($topic["id"], $editedMessage, $currentMessage);
 
 		}
 	}
 }
 
-function showMessage($message)
+function showMessage($message, $topicId)
 {
 	echo "<tr> <td>";
-    //TODO distinct if current user = author
-    $author_name = $message["firstname"] . " " . $message["lastname"];
+
+	if(
+		isset($_SESSION[CONST_SESSION_ISLOGGED]) 
+		&& $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES 
+		&& $message["author"] == getUserID($_SESSION[CONST_SESSION_EMAIL])
+	){
+		$author_name = getTranslation(74);
+		$messageCode = " <td class='message'> <form method='post'><input name='topic' value='". $topicId ."' hidden/><input name='messageId' value='". $message["id"] ."' hidden/><button name='edit'>"
+			. getTranslation(75) . "</button><button name='delete'>". getTranslation(76) ."</button></form>" . wordwrap($message["content"],150,"-</br>\n-",true). " </td> </tr>";
+	}
+	else{
+		$author_name = $message["username"];
+		$messageCode = " <td class='message'>". wordwrap($message["content"],150,"-</br>\n-",true). " </td> </tr>";
+	}
     $date = date('d/m/Y H:i:s', $message["date"]);
-    echo "<div id='author'>" . $author_name .  "</div><br /><div id='date'>" . $date ."</div></td> <td class='message'>". wordwrap($message["content"],150,"-</br>\n-",true). " </td> </tr>";
+    echo "<div id='author'>" . $author_name .  "</div><br /><div id='date'>" . $date ."</div></td>";
+	echo $messageCode;
 }
 
-function showInputZone($topicId) 
+function showEditedMessage($message) {
+	echo "<tr> <td>";
+
+	if(
+		isset($_SESSION[CONST_SESSION_ISLOGGED]) 
+		&& $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES 
+		&& $message["author"] == getUserID($_SESSION[CONST_SESSION_EMAIL])
+	){
+		$author_name = getTranslation(74);
+	}
+	else{
+		$author_name = $message["username"];
+	}
+    $date = date('d/m/Y H:i:s', $message["date"]);
+    echo "<div id='author'>" . $author_name .  "</div><br /><div id='date'>" . $date ."</div></td>";
+	echo " <td class='message'> " . getTranslation(77) . " </td> </tr>";
+}
+
+function showInputZone($topicId, $editedMessage, $currentMessage) 
 {
     ?>
     <form method="post">
         <div id="containerInputZone">
 	        <input hidden name="topic" value="<?php echo $topicId ?>" />
-            <textarea id="msgArea" name="msg" placeholder="<?php echo getTranslation(18); ?>"></textarea>
-            <input id="addAnswerBtn" type="submit" value="<?php echo getTranslation(19); ?>" />
+			<?php
+				if($editedMessage != "-1"){
+					echo "<textarea id='msgArea' name='msg' placeholder='". getTranslation(18) ."'>" . $currentMessage . "</textarea>";
+					echo "<input name='messageId' value='". $editedMessage ."' hidden/>";
+					echo "<button id='addAnswerBtn' name='edit'>" . getTranslation(75) . "</button>";
+					echo "<button>" . getTranslation(78) . "</button>";
+				}
+				else{
+					echo "<textarea id='msgArea' name='msg' placeholder='". getTranslation(18) ."'></textarea>";
+					echo "<input id='addAnswerBtn' type='submit' value=".getTranslation(19) ." />";
+				}
+			?>
         </div>
     </form>
     <?php

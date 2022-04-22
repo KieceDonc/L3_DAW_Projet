@@ -6,7 +6,7 @@
         $conn = getPDO();
 
         // TODO : use const
-        $result = $conn->query("SELECT topics.id AS id, topics.name AS name, topics.author AS author, topics.view_count as view_count, firstname, lastname FROM topics, users WHERE topics.author = users.ID;", PDO::FETCH_ASSOC);;
+        $result = $conn->query("SELECT topics.id AS id, topics.name AS name, topics.author AS author, topics.view_count as view_count, username FROM topics, users WHERE topics.author = users.ID;", PDO::FETCH_ASSOC);;
         return $result->fetchAll();
     } 
 
@@ -45,7 +45,7 @@
         $conn = getPDO();
 
         // without const, query look like this = "SELECT topics_posts.ID, firstname, lastname, date, topic, content FROM topics_posts, users WHERE topic=". $topicID ." AND topics_posts.author = users.ID;";
-        $query = $conn->prepare("SELECT topics_posts.ID, firstname, lastname, date, topic, content FROM topics_posts, users WHERE topic=:valueid AND topics_posts.author = users.ID");
+        $query = $conn->prepare("SELECT topics_posts.ID AS id, username, topics_posts.author AS author, date, topic, content FROM topics_posts, users WHERE topic=:valueid AND topics_posts.author = users.ID");
         $query->bindValue(":valueid", $topicID);
         $query->execute();
 
@@ -80,6 +80,25 @@
         // TODO : use const
         $update = $conn->prepare("UPDATE topics SET view_count=view_count+1 WHERE id=:topicid;");
         $update->bindValue(":topicid", $topicID);
+        $update->execute();
+    }
+
+    function deleteMessage($id){
+        $conn = getPDO();
+        
+        // TODO : use const
+        $update = $conn->prepare("DELETE FROM topics_posts WHERE id=:id;");
+        $update->bindValue(":id", $id);
+        $update->execute();
+    }
+
+    function editMessage($id, $content) {
+        $conn = getPDO();
+        
+        // TODO : use const
+        $update = $conn->prepare("UPDATE topics_posts SET content=:content WHERE id=:id;");
+        $update->bindValue(":content", $content);
+        $update->bindValue(":id", $id);
         $update->execute();
     }
 ?>

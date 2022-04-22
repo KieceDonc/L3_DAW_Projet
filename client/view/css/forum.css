@@ -81,7 +81,6 @@ td {
 #backBtn {
   justify-content: center;
   text-align: center;
-  display: flex;
   border: 0.20em solid var(--background-color);
   border-radius: 2em;
   box-sizing: border-box;
@@ -198,7 +197,6 @@ td {
 
 #addAnswerBtn {
   text-align: center;
-  display: flex;
   border: 0.20em solid var(--background-color);
   border-radius: 2em;
   box-sizing: border-box;
