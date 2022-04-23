@@ -76,7 +76,7 @@
 						}
 						else{//want to edit
 							//TODO sanitize inputs
-							showTopic(getForumTopicInfo($topicID, $_REQUEST["messageId"]));
+							showTopic(getForumTopicInfo($topicID), $_REQUEST["messageId"]);
 						}
 					}
 				}
@@ -221,7 +221,6 @@ function listTopics()
 
 function showTopic($topic, $editedMessage="-1") 
 {
-	//debug :  $messages as parameter
 	?>
     <h2> <?php echo $topic["name"] ?> </h2>
 	<div class="button">
