@@ -90,7 +90,7 @@
             <img alt="pdp" src="../media/pdpMaxence.png" > <figcaption> Perion Maxence </figcaption>
         </figure>
         <figure>
-            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Mohamed Nazim </figcaption>
+            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Hamidou Nazim </figcaption>
         </figure>
         <figure>
             <img alt="pdp" src="../media/pdpAlexandre.png" > <figcaption> Pinon Alexandre </figcaption>
