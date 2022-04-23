@@ -1,15 +1,14 @@
 <?php
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
-
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/sanitizeHelper.php");
     function editProfile(){
-        //TODO sanitize inputs
-        $username = $_REQUEST["username"];
-        $firstname = $_REQUEST["firstname"];
-        $lastname = $_REQUEST["lastname"];
-        $birthdate = $_REQUEST["birthdate"];
-        $password = $_REQUEST["password"];
-        $passwordconfirmation = $_REQUEST["passwordconfirmation"];
+        $username = sanitizeString($_REQUEST["username"]);
+        $firstname = sanitizeString($_REQUEST["firstname"]);
+        $lastname = sanitizeString($_REQUEST["lastname"]);
+        $birthdate = sanitizeString($_REQUEST["birthdate"]);
+        $password = sanitizeString($_REQUEST["password"]);
+        $passwordconfirmation = sanitizeString($_REQUEST["passwordconfirmation"]);
 
         $errors = [];
         //TODO put in common because same as checkregister controller
