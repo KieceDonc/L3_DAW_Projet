@@ -34,18 +34,18 @@ h2 {
     margin-left: 10px;
 }
 
-table {
+#topicTable {
     width: 100%;
 	border-collapse: collapse;
     margin-top : 4px;
     max-width: 100%;
 }
 
-td:first-child {
+#topicTable td:first-child {
     width: 20%;
 }
 
-td:nth-child(2) {
+#topicTable td:nth-child(2) {
 	padding: 2%;
     max-width: 80%;
 }
@@ -209,4 +209,51 @@ td {
   transition: all 0.5s;
 }
 
+#topicsTable {
+    table-layout: fixed;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-top : 4px;
+}
 
+#topicsTable td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.tdTitle{
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdAuthor{
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdMsg{
+    width: 200px;
+}
+
+.tdViewCount{
+    width: 75px;
+}
+
+.tdLastMsg{
+    width: 250px;
+}
+
+.textCenter {
+    text-align: center; 
+    vertical-align: middle;
+}

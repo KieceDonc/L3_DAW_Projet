@@ -140,84 +140,76 @@
 
 <?php
 
-function listTopics() 
-{
-	$topics = getForumTopics();
-    ?>
-	<h2> <?php echo getTranslation(23); ?> </h2>
-	<?php
-		// Is user connected
-		if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
-			if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+	function listTopics(){
+		$topics = getForumTopics();
+		?>
+		<h2> <?php echo getTranslation(23); ?> </h2>
+		<?php
+			// Is user connected
+			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
+				if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 
-				// Yes so he can create new topic
-				echo '<div class="button"><button data-href="new" class="newtopic">';
-				echo getTranslation(11); 
-				echo '</button></div>';
+					// Yes so he can create new topic
+					echo '<div class="button"><button data-href="new" class="newtopic">';
+					echo getTranslation(11); 
+					echo '</button></div>';
+				}
 			}
-		}
-	?>
-	<table id="topicsTable">
-	<tbody>
-	<tr>
-		<td style="width: 80%;padding-left: 50px;">
-			<div class="topicsTableHideExtra">
+		?>
+		<table id="topicsTable">
+		<tbody>
+		<tr>
+			<td class="tdTitle">
 				<?php echo getTranslation(12); ?>
-			</div>
-		</td>
-		<td style="min-width: 400px;max-width: 400px;">
-			<div class="topicsTableHideExtra" class="topicsTableTextCenter">
+			</td>
+			<td class="tdAuthor textCenter">	
 				<?php echo getTranslation(13); ?>
-			</div>
-		</td>
-		<td style="min-width: 175px;" class="topicsTableTextCenter">
-			<?php echo getTranslation(14); ?>
-		</td>
-		<td style="min-width: 125px;" class="topicsTableTextCenter">
-			<?php echo getTranslation(15); ?>
-		</td>
-		<td style="min-width: 125px;" class="topicsTableTextCenter">
-			<?php echo getTranslation(16); ?>
-		</td>
-	</tr>
-	<?php 
-	foreach($topics as $topic)
-	{
-		echo "<tr ><tr><td style='width: 80%;padding-left: 50px;'><div data-href='".$topic["id"]."' class='topicsTableHideExtra'>";
-		echo $topic["name"];
-		echo "</div></td><td style='min-width: 400px;max-width: 400px;'><div class='topicsTableHideExtra' class='topicsTableTextCenter'>";
-		
-		if(
-			isset($_SESSION[CONST_SESSION_ISLOGGED]) 
-			&& $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES 
-			&& $topic["author"] == getUserID($_SESSION[CONST_SESSION_EMAIL])
-		){
-			echo getTranslation(74);
-			echo "<form method='get'><input name='topic' value='" . $topic["id"] . "' hidden/><button name='edit'>" . getTranslation(75) ."</button>"
-			. "<button name='delete'>" . getTranslation(76) . "</button></form>";
+			</td>
+			<td class="tdMsg textCenter">
+				<?php echo getTranslation(14); ?>
+			</td>
+			<td class="tdViewCount textCenter">
+				<?php echo getTranslation(15); ?>
+			</td>
+			<td class="tdLastMsg textCenter">
+				<?php echo getTranslation(16); ?>
+			</td>
+		</tr>
+		<?php 
+		foreach($topics as $topic)
+		{	
+			echo "<tr><td class='tdTitle' data-href='".$topic["id"]."'>".$topic["name"]. "<td class='tdAuthor'>";
+			if(
+				isset($_SESSION[CONST_SESSION_ISLOGGED]) 
+				&& $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES 
+				&& $topic["author"] == getUserID($_SESSION[CONST_SESSION_EMAIL])
+			){
+				echo getTranslation(74);
+				echo "<form method='get'><input name='topic' value='" . $topic["id"] . "' hidden/><button name='edit'>" . getTranslation(75) ."</button>"
+				. "<button name='delete'>" . getTranslation(76) . "</button></form>";
+			}
+			else{
+				echo $topic["username"];
+			}
+			
+			echo "</div></td><td class='tdMsg textCenter'>";
+			$messagesCount = getForumTopicMessageCountInDB($topic["id"]);
+			echo $messagesCount . " " . getTranslation(14);
+			echo "</td><td class='tdViewCount textCenter'>";
+			echo $topic["view_count"];
+			echo "</td><td class='tdLastMsg textCenter'>";
+			if($messagesCount != 0) {
+				$date = date('d/m/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
+				echo $date;
+			}
+			echo "</td></tr>";
+			// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
 		}
-		else{
-			echo $topic["username"];
-		}
-		
-		echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
-		$messagesCount = getForumTopicMessageCountInDB($topic["id"]);
-		echo $messagesCount . " " . getTranslation(14);
-		echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
-		echo $topic["view_count"];
-		echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
-		if($messagesCount != 0) {
-			$date = date('d/m/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
-			echo $date;
-		}
-		echo "</td></tr>";
-		// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
+		?>
+		</tbody>
+		</table>
+		<?php
 	}
-	?>
-	</tbody>
-	</table>
-    <?php
-}
 
 function showTopic($topic, $editedMessage="-1") 
 {
@@ -226,7 +218,7 @@ function showTopic($topic, $editedMessage="-1")
 	<div class="button">
 		<button id="backBtn"> <?php echo getTranslation(17); ?> </button>
 	</div>
-    <table>
+    <table id="topicTable">
     <tbody>
     <?php
 
