@@ -51,7 +51,6 @@
 		else
 		{
 			$topicID = $_REQUEST["topic"];
-			$editedMessage = "-1";
 			// Is user connected
 			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
                 if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
@@ -59,40 +58,71 @@
 					$userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
 
 					//message option (edit, delete)
-					if(isset($_REQUEST["messageId"])){
+					if(isset($_REQUEST["messageId"]) && !empty($_REQUEST["messageId"])){
 						if(isset($_REQUEST["delete"])){
 							//TODO more checks, if logged user is the author of the message
 							deleteMessage($_REQUEST["messageId"]);
+
+							// We're inside a topic
+							// We show messages from it
+							showTopic(getForumTopicInfo($topicID));
 						}
 						else if(isset($_REQUEST["edit"])){//TODO sanitize inputs
 							//edited
 							if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
 								editMessage($_REQUEST["messageId"], $_REQUEST["msg"]);
+
+								// We're inside a topic
+								// We show messages from it
+								showTopic(getForumTopicInfo($topicID));
 							}
 							else{//want to edit
-								$editedMessage = $_REQUEST["messageId"];
+								//TODO sanitize inputs
+								showTopic(getForumTopicInfo($topicID, $_REQUEST["messageId"]));
 							}
 						}
 					}
 					else{
-						// User is trying to add a message
-						if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
+						//topic options
+						if(isset($_REQUEST["delete"])){
+							//TODO more check
+							deleteTopic($topicID);
+
+							listTopics();
+						}
+						else if(isset($_REQUEST["edit"])){
+							if(isset($_REQUEST["name"]) && !empty($_REQUEST["name"])){
+								//TODO sanitize inputs, checks
+								editTopic($topicID, $_REQUEST["name"]);
+
+								showTopic(getForumTopicInfo($topicID));
+							}
+							else{//want to edit
+								showEditTopicForm(getForumTopicInfo($topicID));
+							}
+						}
+						else if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
+							// User is trying to add a message
 							//TODO sanitize input
 							$userMessage = $_REQUEST["msg"]; 
 							addForumTopicMessage($topicID,$userID,$userMessage);
+
+							// We're inside a topic
+							// We show messages from it
+							showTopic(getForumTopicInfo($topicID));
+						}
+						else{
+							//just show
+							showTopic(getForumTopicInfo($topicID));
 						}
 					}
                 }
             }
-
-			// We're inside a topic
-			// We show messages from it
-			showTopic(getForumTopicInfo($topicID), $editedMessage);
 		}
     }
     else 
     {
-        listTopics(getForumTopics());
+        listTopics();
     }
 	
     ?>
@@ -109,74 +139,86 @@
 
 <?php
 
-function listTopics($topics) 
+function listTopics() 
 {
+	$topics = getForumTopics();
     ?>
-	<form method="get">
-		<h2> <?php echo getTranslation(23); ?> </h2>
-		<?php
-			// Is user connected
-			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
-                if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+	<h2> <?php echo getTranslation(23); ?> </h2>
+	<?php
+		// Is user connected
+		if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
+			if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 
-					// Yes so he can create new topic
-                    echo '<div class="button"><button name="topic" value="new" class="newtopic">';
-					echo getTranslation(11); 
-					echo '</button></div>';
-                }
-            }
-		?>
-		<table id="topicsTable">
-		<tbody>
-		<tr>
-			<td style="width: 80%;padding-left: 50px;">
-				<div class="topicsTableHideExtra">
-					<?php echo getTranslation(12); ?>
-				</div>
-			</td>
-			<td style="min-width: 400px;max-width: 400px;">
-				<div class="topicsTableHideExtra" class="topicsTableTextCenter">
-					<?php echo getTranslation(13); ?>
-				</div>
-			</td>
-			<td style="min-width: 175px;" class="topicsTableTextCenter">
-				<?php echo getTranslation(14); ?>
-			</td>
-			<td style="min-width: 125px;" class="topicsTableTextCenter">
-				<?php echo getTranslation(15); ?>
-			</td>
-			<td style="min-width: 125px;" class="topicsTableTextCenter">
-				<?php echo getTranslation(16); ?>
-			</td>
-		</tr>
-		<?php 
-		foreach($topics as $topic)
-		{
-			echo "<tr ><tr><td style='width: 80%;padding-left: 50px;'><div data-href='".$topic["id"]."' class='topicsTableHideExtra'>";
-			echo $topic["name"];
-			echo "</div></td><td style='min-width: 400px;max-width: 400px;'><div class='topicsTableHideExtra' class='topicsTableTextCenter'>";
-			echo $topic["username"];
-			echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
-			$messagesCount = getForumTopicMessageCountInDB($topic["id"]);
-			echo $messagesCount . " " . getTranslation(14);
-			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
-			echo $topic["view_count"];
-			echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
-			if($messagesCount != 0) {
-				$date = date('d/m/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
-				echo $date;
+				// Yes so he can create new topic
+				echo '<div class="button"><button data-href="new" class="newtopic">';
+				echo getTranslation(11); 
+				echo '</button></div>';
 			}
-			echo "</td></tr>";
-			// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
 		}
-		?>
-		</tbody>
-		</table>
-	</form>
+	?>
+	<table id="topicsTable">
+	<tbody>
+	<tr>
+		<td style="width: 80%;padding-left: 50px;">
+			<div class="topicsTableHideExtra">
+				<?php echo getTranslation(12); ?>
+			</div>
+		</td>
+		<td style="min-width: 400px;max-width: 400px;">
+			<div class="topicsTableHideExtra" class="topicsTableTextCenter">
+				<?php echo getTranslation(13); ?>
+			</div>
+		</td>
+		<td style="min-width: 175px;" class="topicsTableTextCenter">
+			<?php echo getTranslation(14); ?>
+		</td>
+		<td style="min-width: 125px;" class="topicsTableTextCenter">
+			<?php echo getTranslation(15); ?>
+		</td>
+		<td style="min-width: 125px;" class="topicsTableTextCenter">
+			<?php echo getTranslation(16); ?>
+		</td>
+	</tr>
+	<?php 
+	foreach($topics as $topic)
+	{
+		echo "<tr ><tr><td style='width: 80%;padding-left: 50px;'><div data-href='".$topic["id"]."' class='topicsTableHideExtra'>";
+		echo $topic["name"];
+		echo "</div></td><td style='min-width: 400px;max-width: 400px;'><div class='topicsTableHideExtra' class='topicsTableTextCenter'>";
+		
+		if(
+			isset($_SESSION[CONST_SESSION_ISLOGGED]) 
+			&& $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES 
+			&& $topic["author"] == getUserID($_SESSION[CONST_SESSION_EMAIL])
+		){
+			echo getTranslation(74);
+			echo "<form method='get'><input name='topic' value='" . $topic["id"] . "' hidden/><button name='edit'>" . getTranslation(75) ."</button>"
+			. "<button name='delete'>" . getTranslation(76) . "</button></form>";
+		}
+		else{
+			echo $topic["username"];
+		}
+		
+		echo "</div></td><td style='min-width: 175px;' class='topicsTableTextCenter'>";
+		$messagesCount = getForumTopicMessageCountInDB($topic["id"]);
+		echo $messagesCount . " " . getTranslation(14);
+		echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
+		echo $topic["view_count"];
+		echo "</td><td style='min-width: 125px;' class='topicsTableTextCenter'>";
+		if($messagesCount != 0) {
+			$date = date('d/m/Y H:i:s', getForumTopicLastMessageDate($topic["id"]));
+			echo $date;
+		}
+		echo "</td></tr>";
+		// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
+	}
+	?>
+	</tbody>
+	</table>
     <?php
 }
 
-function showTopic($topic, $editedMessage) 
+function showTopic($topic, $editedMessage="-1") 
 {
 	//debug :  $messages as parameter
 	?>
@@ -298,6 +340,32 @@ function showCreateTopicForm($errors = array())
 		<input name="name" type="text" id="inputName"/>
 		<div class="button">
 		<button id="createTopicBtn" name="create"> <?php echo getTranslation(22); ?> </button>
+		</div>
+	</form>
+	<div class="button">
+	<button id="backBtn"> <?php echo getTranslation(17); ?> </button>
+	</div>
+	<?php
+}
+
+function showEditTopicForm($topic, $errors = array())
+{	
+	echo "<div id='errorsDiv'>";
+	foreach($errors as $e)
+	{
+		echo "<p> $e </p>";
+	}
+	echo "</div>";
+
+	?>
+	<h2> <?php echo getTranslation(79); ?> </h2>
+
+	<form id="createTopic" method="post">
+		<input name="topic" value="<?php echo $topic["id"];?>" hidden />
+		<label for="inputName"> <?php echo getTranslation(21); ?> </label>
+		<input name="name" type="text" id="inputName" value="<?php echo $topic["name"]; ?>"/>
+		<div class="button">
+		<button id="createTopicBtn" name="edit"> <?php echo getTranslation(75); ?> </button>
 		</div>
 	</form>
 	<div class="button">

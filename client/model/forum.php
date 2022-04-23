@@ -101,4 +101,23 @@
         $update->bindValue(":id", $id);
         $update->execute();
     }
+
+    function deleteTopic($id){
+        $conn = getPDO();
+        
+        // TODO : use const
+        $update = $conn->prepare("DELETE FROM topics WHERE id=:id;");
+        $update->bindValue(":id", $id);
+        $update->execute();
+    }
+
+    function editTopic($id, $name) {
+        $conn = getPDO();
+        
+        // TODO : use const
+        $update = $conn->prepare("UPDATE topics SET name=:name WHERE id=:id;");
+        $update->bindValue(":name", $name);
+        $update->bindValue(":id", $id);
+        $update->execute();
+    }
 ?>
