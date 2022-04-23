@@ -52,72 +52,73 @@
 		{
 			$topicID = $_REQUEST["topic"];
 			// Is user connected
-			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
-                if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
-									
-					$userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
+			if(isset($_SESSION[CONST_SESSION_ISLOGGED]) && $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+				$userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
 
-					//message option (edit, delete)
-					if(isset($_REQUEST["messageId"]) && !empty($_REQUEST["messageId"])){
-						if(isset($_REQUEST["delete"])){
-							//TODO more checks, if logged user is the author of the message
-							deleteMessage($_REQUEST["messageId"]);
+				//message option (edit, delete)
+				if(isset($_REQUEST["messageId"]) && !empty($_REQUEST["messageId"])){
+					if(isset($_REQUEST["delete"])){
+						//TODO more checks, if logged user is the author of the message
+						deleteMessage($_REQUEST["messageId"]);
+
+						// We're inside a topic
+						// We show messages from it
+						showTopic(getForumTopicInfo($topicID));
+					}
+					else if(isset($_REQUEST["edit"])){//TODO sanitize inputs
+						//edited
+						if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
+							editMessage($_REQUEST["messageId"], $_REQUEST["msg"]);
 
 							// We're inside a topic
 							// We show messages from it
 							showTopic(getForumTopicInfo($topicID));
 						}
-						else if(isset($_REQUEST["edit"])){//TODO sanitize inputs
-							//edited
-							if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
-								editMessage($_REQUEST["messageId"], $_REQUEST["msg"]);
-
-								// We're inside a topic
-								// We show messages from it
-								showTopic(getForumTopicInfo($topicID));
-							}
-							else{//want to edit
-								//TODO sanitize inputs
-								showTopic(getForumTopicInfo($topicID, $_REQUEST["messageId"]));
-							}
+						else{//want to edit
+							//TODO sanitize inputs
+							showTopic(getForumTopicInfo($topicID, $_REQUEST["messageId"]));
 						}
+					}
+				}
+				else{
+					//topic options
+					if(isset($_REQUEST["delete"])){
+						//TODO more check
+						deleteTopic($topicID);
+
+						listTopics();
+					}
+					else if(isset($_REQUEST["edit"])){
+						if(isset($_REQUEST["name"]) && !empty($_REQUEST["name"])){
+							//TODO sanitize inputs, checks
+							editTopic($topicID, $_REQUEST["name"]);
+
+							showTopic(getForumTopicInfo($topicID));
+						}
+						else{//want to edit
+							showEditTopicForm(getForumTopicInfo($topicID));
+						}
+					}
+					else if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
+						// User is trying to add a message
+						//TODO sanitize input
+						$userMessage = $_REQUEST["msg"]; 
+						addForumTopicMessage($topicID,$userID,$userMessage);
+
+						// We're inside a topic
+						// We show messages from it
+						showTopic(getForumTopicInfo($topicID));
 					}
 					else{
-						//topic options
-						if(isset($_REQUEST["delete"])){
-							//TODO more check
-							deleteTopic($topicID);
-
-							listTopics();
-						}
-						else if(isset($_REQUEST["edit"])){
-							if(isset($_REQUEST["name"]) && !empty($_REQUEST["name"])){
-								//TODO sanitize inputs, checks
-								editTopic($topicID, $_REQUEST["name"]);
-
-								showTopic(getForumTopicInfo($topicID));
-							}
-							else{//want to edit
-								showEditTopicForm(getForumTopicInfo($topicID));
-							}
-						}
-						else if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
-							// User is trying to add a message
-							//TODO sanitize input
-							$userMessage = $_REQUEST["msg"]; 
-							addForumTopicMessage($topicID,$userID,$userMessage);
-
-							// We're inside a topic
-							// We show messages from it
-							showTopic(getForumTopicInfo($topicID));
-						}
-						else{
-							//just show
-							showTopic(getForumTopicInfo($topicID));
-						}
+						//just show
+						showTopic(getForumTopicInfo($topicID));
 					}
-                }
+				}
             }
+			else{
+				//just show
+				showTopic(getForumTopicInfo($topicID));
+			}
 		}
     }
     else 
