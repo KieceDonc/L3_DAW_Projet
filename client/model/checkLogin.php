@@ -2,14 +2,16 @@
 
 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/sanitizeHelper.php");
 
   function checkLogin($email, $password){
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
     // pour éliminer toute attaque de type injection SQL et XSS
       $conn = getPDO();
 
-    //$password = mysqli_real_escape_string($conn,htmlspecialchars($password));
-    //$email    = mysqli_real_escape_string($conn,htmlspecialchars($email));
+      $password = sanitizeString($password);
+      $email = sanitizeEmail($email);
+
 
 
       // prepare sql and bind parameters

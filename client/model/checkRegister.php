@@ -3,7 +3,7 @@
 
 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
-
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/sanitizeHelper.php");
 
     function checkRegister($username, $email, $password, $firstname, $lastname, $birthdate,$creationdate,$lastconnection){
         session_start();
@@ -11,6 +11,12 @@
         //pdo db poo connexion
         $conn = getPDO();
 
+        $username = sanitizeString($username);
+        $email = sanitizeEmail($email);
+        $password = sanitizeString($password);
+        $firstname = sanitizeString($firstname);
+        $lastname = sanitizeString($lastname);
+        $birthdate = sanitizeString($birthdate);
 
         $sqlusername = "SELECT count(*) FROM ".DB_NAME.".users WHERE LOWER(username) = :username GROUP BY username";
         $sqlemail = "SELECT count(*) FROM ".DB_NAME.".users WHERE LOWER(email) = :email GROUP BY email";
