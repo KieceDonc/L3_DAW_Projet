@@ -1,0 +1,1 @@
+ErrorDocument 404 /shared/php/view/php/404.php
