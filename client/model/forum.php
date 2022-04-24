@@ -41,6 +41,24 @@
         return $result->fetch(PDO::FETCH_ASSOC)["count(content)"];
     }
 
+    function getForumTopicAuthorInDB($topicID){
+        $conn = getPDO();
+
+        $result = $conn->prepare("SELECT author FROM topics WHERE id=:valueid;");
+        $result->execute(array("valueid"=>$topicID));
+
+        return $result->fetch(PDO::FETCH_ASSOC)["author"];
+    }
+
+    function getForumMessageAuthorInDB($messageID){
+        $conn = getPDO();
+
+        $result = $conn->prepare("SELECT author FROM topics_posts WHERE id=:valueid;");
+        $result->execute(array("valueid"=>$messageID));
+
+        return $result->fetch(PDO::FETCH_ASSOC)["author"];
+    }
+
     function getForumTopicMessagesInDB($topicID){
         $conn = getPDO();
 
@@ -83,7 +101,7 @@
         $update->execute();
     }
 
-    function deleteMessage($id){
+    function deleteMessageInDB($id){
         $conn = getPDO();
         
         // TODO : use const
@@ -92,7 +110,7 @@
         $update->execute();
     }
 
-    function editMessage($id, $content) {
+    function editMessageInDB($id, $content) {
         $conn = getPDO();
         
         // TODO : use const
@@ -102,7 +120,7 @@
         $update->execute();
     }
 
-    function deleteTopic($id){
+    function deleteTopicInDB($id){
         $conn = getPDO();
         
         // TODO : use const
@@ -111,7 +129,7 @@
         $update->execute();
     }
 
-    function editTopic($id, $name) {
+    function editTopicInDB($id, $name) {
         $conn = getPDO();
         
         // TODO : use const
