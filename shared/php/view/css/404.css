@@ -1,0 +1,42 @@
+h1, h3, p, button {
+    text-align: center;
+    font-family: 'Arvo';
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+a {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    background-color: #39ac31;
+    font-size: 1em;
+    min-width: 120px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    width: 275px;
+    text-decoration: none;
+}
+
+.container{
+    background-image: url(/shared/php/view/media/404.gif);
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+}

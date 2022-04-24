@@ -4,6 +4,14 @@ $(document).ready(function () {
 		window.location = "forum?topic="+$(this).data("href");
 	});
 
+	$('*[data-href]').hover(function(){
+		$(this).css("textDecoration", "underline");
+		},
+		function(){
+		  $(this).css("textDecoration", "none");
+		  }
+	);
+
 	$('#backBtn').click(function() {
 		location.href = "/forum";
 	});
