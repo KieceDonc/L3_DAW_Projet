@@ -55,7 +55,6 @@
         ){
             editMessageInDB($messageId, $newContent);
         }
-        echo getForumMessageAuthorInDB($messageId);
     }
 
     function deleteMessage($messageId){
