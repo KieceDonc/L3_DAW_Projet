@@ -78,7 +78,7 @@
         <h2><?php echo getTranslation(64); ?></h2>
         <div class="pdp">
         <figure>
-            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Verstracte Valentin </figcaption>
+            <img alt="pdp" src="../media/pdpValentin.jpg" > <figcaption> Verstracte Valentin </figcaption>
         </figure>
         <figure>
             <img alt="pdp" src="../media/pdpEvan.png" > <figcaption> Petit Evan </figcaption>
