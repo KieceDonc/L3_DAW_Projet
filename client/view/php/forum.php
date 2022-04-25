@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
 ?>
 
@@ -58,7 +61,6 @@
 				//message option (edit, delete)
 				if(isset($_REQUEST["messageId"]) && !empty($_REQUEST["messageId"])){
 					if(isset($_REQUEST["delete"])){
-						//TODO more checks, if logged user is the author of the message
 						deleteMessage($_REQUEST["messageId"]);
 
 						// We're inside a topic
