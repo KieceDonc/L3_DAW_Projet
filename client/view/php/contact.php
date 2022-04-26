@@ -41,7 +41,7 @@
             </div>
                 <div>
                 <label for="email"><?php echo getTranslation(86); // Email * ?></label>
-                <input type="phone" name="phone">
+                <input type="email" name="email">
             </div>
             <div>
                 <label for="subject"><?php echo getTranslation(87); // Subject * ?></label>
