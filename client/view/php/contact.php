@@ -21,39 +21,39 @@
         </div>
         <div id="contactContainer">
             <h1>
-                Contact us
+                <?php echo getTranslation(81); // Contact us ?>
             </h1>
             <p>
-                Contact us about anything related to our company or services
+                <?php echo getTranslation(82); // Contact us about anything related to our company or services ?>
             </p>
             <p>
-                We'll do our best to get back to you as soon as possible
+                <?php echo getTranslation(83); // We'll do our best to get back to you as soon as possible ?>
             </p>
             
             <form action="" method="get">
             <div>
-                <label for="name">Your name *</label>
+                <label for="name"><?php echo getTranslation(84); // Your name * ?></label>
                 <input type="text" name="name" id="name" required>
             </div>
             <div>
-                <label for="phone">Phone number</label>
+                <label for="phone"><?php echo getTranslation(85); // Phone number ?></label>
                 <input type="phone" name="phone">
             </div>
                 <div>
-                <label for="email">Email *</label>
+                <label for="email"><?php echo getTranslation(86); // Email * ?></label>
                 <input type="phone" name="phone">
             </div>
             <div>
-                <label for="subject">Subject *</label>
+                <label for="subject"><?php echo getTranslation(87); // Subject * ?></label>
                 <input type="subject" name="subject">
             </div>
             <div>
-                <label for="question">Your question *</label>
+                <label for="question"><?php echo getTranslation(88); // Your question * ?></label>
                 <input type="question" name="question">
             </div>
             <div>
                 <label></label>
-                <input id="submit" type="submit" value="Send">
+                <input id="submit" type="submit" <?php echo "value='".getTranslation(89)."'"; // Your question * ?>>
             </div>
             </form>
         </div>
