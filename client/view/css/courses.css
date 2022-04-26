@@ -1,8 +1,35 @@
 .course{
     margin-bottom: 10px;
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border:solid black;
 }
 
-coursename{
+.coursename{
     font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.courselink:link{
     color:rgb(204, 193, 246);
+}
+
+.courselink:visited{
+    color:rgb(193, 104, 184);
+}
+
+.author{
+    font-style: italic;
+    text-align: center;
+}
+
+.description{
+    padding-top: 10px;
+    padding-left:20px;
+    padding-right:20px;
+    text-align: justify;
 }

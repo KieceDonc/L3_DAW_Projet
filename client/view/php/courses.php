@@ -1,5 +1,5 @@
-<?php     
-  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
+<?php
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
 ?>
 
 <!DOCTYPE html>
@@ -21,14 +21,14 @@
 
 <body>
   <?php
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/courses.php");
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/courses.php");
   ?>
 
-<h1><?php echo getTranslation(3); ?></h1>
+  <h1><?php echo getTranslation(3); ?></h1>
 
   <?php
-    showCourses();
+  showCourses();
   ?>
 
   <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
@@ -47,8 +47,17 @@ function showCourses()
 {
   // Only displays for now as a test. TODO : Show courses as link that take the user to the course page.
   $courses = getCourses();
-  foreach($courses as $course){
-    echo "<div class='course'><coursename>" . $course["name"] . "</coursename> par " . $course["username"] . "<br>Description : " . $course["description"] . "</div>";
+  foreach ($courses as $course) {
+    addcourse($course);
   }
+}
+
+function addCourse($course)
+{
+  echo  "<div class='course'>
+          <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"] . "</a></div>
+          <div class='author'>par " . $course["username"] . "</div>
+          <div class='description'>Description : " . $course["description"] . "</div>
+        </div>";
 }
 ?>
