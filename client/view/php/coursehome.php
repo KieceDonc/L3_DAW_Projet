@@ -27,7 +27,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     printCourse();
     ?>
 
-    
+
 
 
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
@@ -40,9 +40,9 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 
 <?php
 
-function printCourse(){
-    $id = $_GET["id"];
-    $name = getCourse($id);
+function printCourse()
+{
+    $name = getCourse();
     echo "<h1> NOM COURS : " . $name . "</h1>";
 }
 
