@@ -52,6 +52,7 @@ function showCourses()
   }
 }
 
+// Adds a course on the page, including a link redirecting towards its homepage. Passes the id of the course as an argument through the URL.
 function addCourse($course)
 {
   echo  "<div class='course'>
