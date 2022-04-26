@@ -48,12 +48,12 @@
                 <input type="subject" name="subject">
             </div>
             <div>
-                <label for="question"><?php echo getTranslation(88); // Your question * ?></label>
-                <input type="question" name="question">
+                <label for="question" style="vertical-align: middle;"><?php echo getTranslation(88); // Your question * ?></label>
+                <textarea></textarea>
             </div>
             <div>
                 <label></label>
-                <input id="submit" type="submit" <?php echo "value='".getTranslation(89)."'"; // Your question * ?>>
+                <input id="submit" type="submit" <?php echo "value='".getTranslation(89)."'"; // Send ?>>
             </div>
             </form>
         </div>

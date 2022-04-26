@@ -33,13 +33,18 @@ form div {
     display: table-row;
 }
 
-label, input {
+label, input, textarea {
     display: table-cell;
     margin-bottom: 20px;
 }
 
 label {
     padding-right: 30px;
+}
+
+textarea {
+    width:300px;
+    height:100px;
 }
 
 #submit {
