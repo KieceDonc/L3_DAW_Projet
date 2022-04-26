@@ -25,6 +25,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
 
     printCourse();
+    printSections();
     ?>
 
 
@@ -44,6 +45,14 @@ function printCourse()
 {
     $name = getCourse();
     echo "<h1> NOM COURS : " . $name . "</h1>";
+}
+
+function printSections()
+{
+    $sections = getSections();
+    foreach($sections as $section){
+        echo "<div> Section " . $section["ord"] . " - " . $section["name"] . "</div>";
+    }
 }
 
 ?>
