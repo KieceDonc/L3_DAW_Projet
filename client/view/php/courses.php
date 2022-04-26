@@ -57,8 +57,8 @@ function addCourse($course)
 {
   echo  "<div class='course'>
           <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"] . "</a></div>
-          <div class='author'>par " . $course["username"] . "</div>
-          <div class='description'>Description : " . $course["description"] . "</div>
+          <div class='author'>" . getTranslation(80) . " " . $course["username"] . "</div>
+          <div class='description'>" . $course["description"] . "</div>
         </div>";
 }
 ?>
