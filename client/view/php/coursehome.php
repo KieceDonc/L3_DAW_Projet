@@ -23,13 +23,12 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     <?php
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/coursesInfo.php");
 
     printCourse();
     printSections();
     ?>
-
-
-
 
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
 </body>
@@ -49,6 +48,14 @@ function printCourse()
 
 function printSections()
 {
+    // Tells the user if he has taken this class or not.
+    if(!isInCourse($_GET["id"]))
+        echo getTranslation(90);
+    else
+        echo getTranslation(91);
+
+    // Show the sections.
+    // TODO : Give access to links guiding to themes only if the user takes the class.
     $sections = getSections();
     foreach($sections as $section){
         echo "<div> Section " . $section["ord"] . " - " . $section["name"] . "</div>";
