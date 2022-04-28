@@ -2,7 +2,9 @@
     margin-bottom: 10px;
 }
 
-.coursename{
+.courseName{
     font-weight: bold;
-    color:rgb(204, 193, 246);
+    text-transform: uppercase;
+    color:rgb(124, 110, 179);
+    font-size: larger;
 }

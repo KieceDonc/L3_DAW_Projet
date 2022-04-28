@@ -6,7 +6,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="../css/profile.css" />
-	<link rel="stylesheet" href="../css/sharedAdmin.css" />
+	  <link rel="stylesheet" href="../css/sharedAdmin.css" />
   </head>
   <body>
 	<?php 
