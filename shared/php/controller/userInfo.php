@@ -5,6 +5,15 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/userInfo.php");
 
+    // Returns true if user is logged, false if user is not logged
+    function isLogged(){
+        $islogged = false;
+        if(isset($_SESSION[CONST_SESSION_ISLOGGED]))
+            if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES)
+                return true;
+        return $islogged;
+    }
+
     function getUserID($email){
         // we check if we already stored the userID
         if(!isset($_SESSION[CONST_SESSION_USERSTORED_ID])){
