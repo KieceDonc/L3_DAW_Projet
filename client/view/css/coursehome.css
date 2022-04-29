@@ -1,0 +1,17 @@
+.icon{
+    max-height:100%;
+    width:auto;
+}
+
+.theme{
+    height : 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left : 10px;
+    display: flex;
+    align-items: center; /* Vertical center alignment */
+}
+
+.themelabel{
+    margin-left: 5px;
+}

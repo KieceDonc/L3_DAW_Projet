@@ -14,3 +14,9 @@
         $sections = getSectionsFromDB($id);
         return $sections;
     }
+
+     // Retrieves each themes from the corresponding section
+     function getThemes($idsection){
+        $themes = getThemesFromDB($idsection);
+        return $themes;
+    }

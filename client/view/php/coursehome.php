@@ -12,7 +12,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     <!-- CSS -->
     <link rel="stylesheet" href="../css/font-face.css" />
     <link rel="stylesheet" href="../css/shared.css" />
-    <link rel="stylesheet" href="../css/courses.css" />
+    <link rel="stylesheet" href="../css/coursehome.css" />
 
     <!-- JS -->
     <script src="../../../../shared/js/jquery.js"></script>
@@ -59,6 +59,17 @@ function printSections()
     $sections = getSections();
     foreach($sections as $section){
         echo "<div> Section " . $section["ord"] . " - " . $section["name"] . "</div>";
+        printThemes($section["id"]);
+    }
+}
+
+function printThemes($idsection){
+    $themes = getThemes($idsection);
+    foreach($themes as $theme){
+        $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
+        if($theme["type"]=="quizz")
+            $icon = "<img src='../media/quizz.png' alt='quizz icon' class='icon'>";
+        echo "<div class='theme'>" . $icon . "<span class='themelabel'> Theme " . $theme["ord"] . " - " . $theme["name"] . "</span></div>";
     }
 }
 
