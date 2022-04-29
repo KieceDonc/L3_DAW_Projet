@@ -41,11 +41,10 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 
 <?php
 
-/* Prints the list of every courses in the database on the page
+/* Prints the list of every courses from the database on the page
 */
 function showCourses()
 {
-  // Only displays for now as a test. TODO : Show courses as link that take the user to the course page.
   $courses = getCourses();
   foreach ($courses as $course) {
     addcourse($course);
