@@ -39,3 +39,139 @@ li {
 	text-align: right;
 	font-size:xx-large;
 }
+
+body {
+    background-color: var(--background-color); 
+    color: var(--text-color-lvl-1);
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 20px; 
+}
+
+.site-header {
+  position: relative;
+  background-color: var(--handler-lvl-1-color); 
+}
+
+.site-header__wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem; 
+}
+
+.site-header__middle {
+  margin-left: auto; 
+} 
+
+.nav__wrapper {
+  display: flex; 
+  list-style-type: none;
+} 
+
+.nav__item a {
+  display: block;
+  padding: 1rem;
+}
+
+.nav__toggle {
+  display: none; 
+}
+
+.header-button {
+  color: #ffffff;
+  background-color: #2fa0f6;
+  min-width: 120px;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-align: center;
+  margin-left:4px;
+}
+
+.wrapper {
+  max-width: 1140px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color-lvl-2);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--background-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--handler-lvl-3-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+footer{
+  background-color: var(--handler-lvl-2-color);
+  margin-top: 50px;
+  padding: 5px 20px;
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0px;
+}
