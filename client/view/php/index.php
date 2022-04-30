@@ -18,7 +18,7 @@
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
 
         if(!file_exists("compteur.txt")){ 
-            $compteur=fopen("compteur.txt","w+");
+            $compteur=fopen("compteur.txt","w");
             $hit=1;	
             setcookie("Visite","ok",time()+365*24*3600); // one year
         }
