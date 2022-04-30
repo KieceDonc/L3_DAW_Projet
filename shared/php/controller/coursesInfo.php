@@ -9,7 +9,7 @@
     function isInCourse($idcourse){
         if(!isLogged())
             return false;
-        $isInCourse = isInCourseDB(getUserID($_SESSION[CONST_SESSION_EMAIL]),$idcourse);
+        $isInCourse = isInCourseDB($_SESSION[CONST_SESSION_USERID],$idcourse);
         return boolval($isInCourse[0]['takescourse']);
     }
 ?>
