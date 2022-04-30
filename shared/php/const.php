@@ -55,6 +55,7 @@
 
     // Session info, const etc ...
     define('CONST_SESSION_EMAIL','EMAIL');
+    define('CONST_SESSION_USERID','USERID');
     define('CONST_SESSION_ISLOGGED','ISLOGGED');
     define('CONST_SESSION_ISLOGGED_YES','YES');
     define('CONST_SESSION_USERSTORED_ID','CONST_SESSION_USERSTORED_ID'); // Use for $_SESSION[CONST_SESSION_USERSTORED_ID] and know the id if we stored it. Plz see userInfo.php in controller
