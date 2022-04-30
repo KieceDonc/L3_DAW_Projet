@@ -13,10 +13,10 @@
 <body>
   <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); ?>
   <div class="content">
-    <form method="post">
-      <div>Course name : <input type="text" id="namebtn" name="name" /></p>
-      <div>Course description : <input type="text" id="descbtn" name="description" /></p>
-      <p><input id="submitbtn" type="submit" value="OK" "></p>
+    <form action=<?php echo "submitCourse?userid=" . $_SESSION[CONST_SESSION_USERID]?>  method="post">
+      <div>Course name : <input type="text" id="nametxt" name="courseNameInput" /></p>
+      <div>Course description : <input type="text" id="desctxt" name="courseDescInput" /></p>
+      <p><input id="submitbtn" type="submit" value="OK" disabled="true"></p>
     </form>
   </div>
 

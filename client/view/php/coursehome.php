@@ -43,7 +43,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 function printCourse()
 {
     $name = getCourse();
-    echo "<h1> NOM COURS : " . $name . "</h1>";
+    echo "<h1> NOM COURS : " . $name . " - ID : " . getUserID($_SESSION[CONST_SESSION_EMAIL]) . " = " .  print_r($_SESSION) . "</h1>";
 }
 
 function printSections()

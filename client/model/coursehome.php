@@ -38,7 +38,7 @@
     function getThemesFromDB($id){
         $conn = getPDO();
 
-        // PREPARED QUERY - Retrieve each section from the course
+        // PREPARED QUERY - Retrieve each theme from the course
         $querystring = "SELECT themes.id AS id, themes.name AS name, themes.ord AS ord, themes.type AS type
                         FROM themes JOIN sections on themes.idsection = sections.id
                         WHERE sections.id=:id
