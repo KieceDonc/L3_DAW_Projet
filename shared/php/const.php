@@ -3,7 +3,7 @@
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'php');
     define('DB_PASSWORD', 'php_local');
-    define('DB_NAME', 'sys');
+    define('DB_NAME', 'public');
     define("DB_CHARSET", "utf8");
 
     // DB table, columns name for table topics_posts
