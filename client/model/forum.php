@@ -75,12 +75,14 @@
         return $result->fetch(PDO::FETCH_ASSOC)["author"];
     }
 
-    function getForumTopicMessagesInDB($topicID){
+    function getForumTopicMessagesInDB($topicID, $start, $count){
         $conn = getPDO();
 
         // without const, query look like this = "SELECT topics_posts.ID, firstname, lastname, date, topic, content FROM topics_posts, users WHERE topic=". $topicID ." AND topics_posts.author = users.ID;";
-        $query = $conn->prepare("SELECT topics_posts.ID AS id, username, topics_posts.author AS author, date, topic, content FROM topics_posts, users WHERE topic=:valueid AND topics_posts.author = users.ID");
+        $query = $conn->prepare("SELECT topics_posts.ID AS id, username, topics_posts.author AS author, date, topic, content FROM topics_posts, users WHERE topic=:valueid AND topics_posts.author = users.ID LIMIT :start, :max;");
         $query->bindValue(":valueid", $topicID);
+        $query->bindValue("start", $start, PDO::PARAM_INT);
+        $query->bindValue("max", $count, PDO::PARAM_INT);
         $query->execute();
 
         return $query->fetchAll();

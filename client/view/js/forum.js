@@ -26,6 +26,13 @@ $(document).ready(function () {
 		  location.reload();
 		}
 	  });
+	  
+	$("#selectMessagesPerPage").on("change", function() {
+		if(readCookie("messagesPerPage") != this.value){
+			document.cookie = 'messagesPerPage=' + this.value +';';
+			location.reload();
+		}
+	}); 
 
 	const errors = new Array();
 	

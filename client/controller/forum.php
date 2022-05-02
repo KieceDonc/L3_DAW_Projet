@@ -110,5 +110,30 @@
 
         return intdiv($count, $topicsPerPage);
     }
+    
+
+    function getForumTopicMessagesNbPages($topicId){
+        if(!isset($_COOKIE["messagesPerPage"]) || empty($_COOKIE["messagesPerPage"])){
+			$messagesPerPage = 10;
+		}
+		else{
+			$messagesPerPage = $_COOKIE["messagesPerPage"];//TODO sanitize inputs
+		}
+
+        $count = getForumTopicMessageCountInDB($topicId);
+
+        return intdiv($count, $messagesPerPage);
+    }
+
+    function getForumTopicMessages($topicID, $page){
+        if(!isset($_COOKIE["messagesPerPage"]) || empty($_COOKIE["messagesPerPage"])){
+			$messagesPerPage = 10;
+		}
+		else{
+			$messagesPerPage = $_COOKIE["messagesPerPage"];//TODO sanitize inputs
+		}
+
+        return getForumTopicMessagesInDB($topicID, $page * $messagesPerPage, $messagesPerPage);
+    }
 
 ?>

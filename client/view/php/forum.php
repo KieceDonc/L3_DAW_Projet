@@ -274,16 +274,59 @@ error_reporting(E_ALL);
 
 function showTopic($topic, $editedMessage="-1") 
 {
+	$nbPage = getForumTopicMessagesNbPages($topic["id"]);
+
+	if(!isset($_REQUEST["page"]) || empty($_REQUEST["page"])){
+		$page = 0;
+	}
+	else{
+		$page = min($_REQUEST["page"], $nbPage);//TODO sanitize inputs
+	}
+
+	if(!isset($_COOKIE["messagesPerPage"]) || empty($_COOKIE["messagesPerPage"])){
+		$messagesPerPage = "10";
+	}
+	else{
+		$messagesPerPage = $_COOKIE["messagesPerPage"];//TODO sanitize inputs
+	}
+
 	?>
     <h2> <?php echo $topic["name"] ?> </h2>
 	<div class="button">
 		<button id="backBtn" class='inputBtn'> <?php echo getTranslation(17); ?> </button>
 	</div>
+	<div class="pagesSelectionMessages">
+		<select id="selectMessagesPerPage">
+			<option value="10" <?php echo $messagesPerPage == 10 ? "selected" : "" ?>> 10 </option> 
+			<option value="50" <?php echo $messagesPerPage == 50 ? "selected" : "" ?>> 50 </option>
+			<option value="100" <?php echo $messagesPerPage == 100 ? "selected" : "" ?>> 100 </option> 
+		</select>
+		<form class="pageForm">
+			<input hidden name="topic" value="<?php echo $topic["id"]; ?>" />
+			<?php
+			if($page > 0){
+				echo "<button name='page' value=" . ($page - 1) ."><</button>";
+			}
+			else{
+				echo "<button disabled><</button>";
+			}
+			echo "<span> ". $page ." </span>";
+
+			if($page < $nbPage){
+				echo "<button name='page' value=" . ($page + 1) .">></button>";
+			}
+			else{
+				echo "<button disabled>></button>";
+			}
+			
+			?>
+		</form>
+		</div>
     <table id="topicTable">
     <tbody>
     <?php
 
-	$messages = getForumTopicMessagesInDB($topic["id"]);
+	$messages = getForumTopicMessages($topic["id"], $page);
 	$currentMessage = "";
 
     foreach($messages as $message)
