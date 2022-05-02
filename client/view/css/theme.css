@@ -1,0 +1,7 @@
+#lesson{
+    margin-left: 15%;
+    margin-right: 15%;
+    padding:10px;
+    background-color: var(--handler-lvl-2-color);
+    white-space: pre-line;
+}
