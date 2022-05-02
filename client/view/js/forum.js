@@ -19,7 +19,14 @@ $(document).ready(function () {
 	$('#addAnswerBtn').click(function() {
 		return $('#msgArea').val().length > 0;
 	});
-	
+
+	$("#selectTopicsPerPage").on("change", function() {
+		if(readCookie("topicsPerPage") != this.value){
+		  document.cookie = 'topicsPerPage=' + this.value +';';
+		  location.reload();
+		}
+	  });
+
 	const errors = new Array();
 	
 	$('#createTopicBtn').click(function() {
