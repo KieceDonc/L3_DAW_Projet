@@ -10,5 +10,11 @@
         $fileContent = file_get_contents($_FILES['userfile']['tmp_name']);
         echo print_r($_FILES);
         insertMediaDB($fileOwner,$fileType,$fileName,$fileSize,$fileContent);
+        header("Location: /admin/mediaManager");
     } 
+
+    function getAllFiles(){
+        $files = getAllFilesDB($_SESSION[CONST_SESSION_USERID]);
+        return $files;
+    }
 ?>

@@ -15,5 +15,18 @@
         $query->bindParam(':c',$fileContent);
         $query->execute();
         closePDO($conn);
+    }
+
+    function getAllFilesDB($id){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Get all the media from user $id in DB 
+        $querystring = "SELECT * FROM media WHERE owner=:id";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':id',$id);
+        $query->execute();
+        closePDO($conn);
+
+        return $query->fetchAll();
 
     }

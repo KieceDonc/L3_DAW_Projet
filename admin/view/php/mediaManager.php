@@ -20,6 +20,11 @@
     ?>
     
     <div class="content">
+        <h1>Upload medias :</h1>
+        <?php 
+        showFiles()
+        ?>
+
         <h1>Upload an image :</h1>
         <form enctype="multipart/form-data" action="#" method="post">
             <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
@@ -28,8 +33,7 @@
         </form>
 
         <?php
-        if ( isset($_FILES['userfile']) )
-        {
+        if ( isset($_FILES['userfile']) ){
             uploadFile();
         }
         ?>
@@ -41,5 +45,16 @@
 </body>
 
 </html>
+
+<?php
+
+function showFiles(){
+    $files = getAllFiles();
+    foreach($files as $file){
+        $bits = $file['content'];
+        echo '<img src="data:image/png;base64,'.base64_encode($bits).'"/>';
+    }
+}
+?>
 
 
