@@ -1,6 +1,3 @@
-_minted-main/
-build/
-
 *.aux
 *.laux
 *.synctex.gz
@@ -11,5 +8,6 @@ build/
 *.blg
 *.fls
 *.fdb_latexmk
+*.out
 
 Rapport/*.pdf
