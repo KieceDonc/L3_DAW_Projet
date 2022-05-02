@@ -4,7 +4,7 @@ $(document).ready(function () {
 		window.location = "forum?topic="+$(this).data("href");
 	});
 
-	$('*[data-href]').hover(function(){
+	$('[data-href]:not(button)').hover(function(){
 		$(this).css("textDecoration", "underline");
 		},
 		function(){

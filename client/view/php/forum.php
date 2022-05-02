@@ -187,8 +187,8 @@ error_reporting(E_ALL);
 				&& $topic["author"] == getUserID($_SESSION[CONST_SESSION_EMAIL])
 			){
 				echo getTranslation(74);
-				echo "<form method='get'><input name='topic' value='" . $topic["id"] . "' hidden/><button name='edit'>" . getTranslation(75) ."</button>"
-				. "<button name='delete'>" . getTranslation(76) . "</button></form>";
+				echo "<form method='get'><input name='topic' value='" . $topic["id"] . "' hidden/><button class='optionBtn' name='edit'>" . getTranslation(75) ."</button>"
+				. "<button class='optionBtn' name='delete'>" . getTranslation(76) . "</button></form>";
 			}
 			else{
 				echo $topic["username"];
@@ -218,7 +218,7 @@ function showTopic($topic, $editedMessage="-1")
 	?>
     <h2> <?php echo $topic["name"] ?> </h2>
 	<div class="button">
-		<button id="backBtn"> <?php echo getTranslation(17); ?> </button>
+		<button id="backBtn" class='inputBtn'> <?php echo getTranslation(17); ?> </button>
 	</div>
     <table id="topicTable">
     <tbody>
@@ -263,8 +263,8 @@ function showMessage($message, $topicId)
 		&& $message["author"] == getUserID($_SESSION[CONST_SESSION_EMAIL])
 	){
 		$author_name = getTranslation(74);
-		$messageCode = " <td class='message'> <form method='post'><input name='topic' value='". $topicId ."' hidden/><input name='messageId' value='". $message["id"] ."' hidden/><button name='edit'>"
-			. getTranslation(75) . "</button><button name='delete'>". getTranslation(76) ."</button></form>" . wordwrap($message["content"],150,"-</br>\n-",true). " </td> </tr>";
+		$messageCode = " <td class='message'> <form method='post'><input name='topic' value='". $topicId ."' hidden/><input name='messageId' value='". $message["id"] ."' hidden/><button class='optionBtn' name='edit'>"
+			. getTranslation(75) . "</button><button class='optionBtn' name='delete'>". getTranslation(76) ."</button></form>" . wordwrap($message["content"],150,"-</br>\n-",true). " </td> </tr>";
 	}
 	else{
 		$author_name = $message["username"];
@@ -303,12 +303,12 @@ function showInputZone($topicId, $editedMessage, $currentMessage)
 				if($editedMessage != "-1"){
 					echo "<textarea id='msgArea' name='msg' placeholder='". getTranslation(18) ."'>" . $currentMessage . "</textarea>";
 					echo "<input name='messageId' value='". $editedMessage ."' hidden/>";
-					echo "<button id='addAnswerBtn' name='edit'>" . getTranslation(75) . "</button>";
-					echo "<button>" . getTranslation(78) . "</button>";
+					echo "<button id='addAnswerBtn' class='inputBtn' name='edit'>" . getTranslation(75) . "</button>";
+					echo "<button class='inputBtn'>" . getTranslation(78) . "</button>";
 				}
 				else{
 					echo "<textarea id='msgArea' name='msg' placeholder='". getTranslation(18) ."'></textarea>";
-					echo "<input id='addAnswerBtn' type='submit' value=".getTranslation(19) ." />";
+					echo "<input id='addAnswerBtn' class='inputBtn' type='submit' value=".getTranslation(19) ." />";
 				}
 			?>
         </div>
@@ -337,7 +337,7 @@ function showCreateTopicForm($errors = array())
 		</div>
 	</form>
 	<div class="button">
-	<button id="backBtn"> <?php echo getTranslation(17); ?> </button>
+	<button id="backBtn" class="inputBtn"> <?php echo getTranslation(17); ?> </button>
 	</div>
 	<?php
 }
@@ -363,7 +363,7 @@ function showEditTopicForm($topic, $errors = array())
 		</div>
 	</form>
 	<div class="button">
-	<button id="backBtn"> <?php echo getTranslation(17); ?> </button>
+	<button id="backBtn" class="inputBtn"> <?php echo getTranslation(17); ?> </button>
 	</div>
 	<?php
 }

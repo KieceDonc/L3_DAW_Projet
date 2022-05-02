@@ -133,3 +133,14 @@ footer ul {
   list-style-type: none;
   padding: 0px;
 }
+
+header select{
+  border-radius: 5px;
+  background-color: #2fa0f6;
+  color: white;
+}
+
+header select option{
+  background-color: var(--background-color);
+  color: var(--handler-lvl-2-color);
+}
