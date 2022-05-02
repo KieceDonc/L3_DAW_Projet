@@ -1,0 +1,15 @@
+_minted-main/
+build/
+
+*.aux
+*.laux
+*.synctex.gz
+*.toc
+*.log
+*.fuse
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+
+Rapport/*.pdf
