@@ -9,5 +9,6 @@
 *.fls
 *.fdb_latexmk
 *.out
+*.bak
 
 Rapport/*.pdf

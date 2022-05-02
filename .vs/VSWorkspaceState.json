@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client\\controller",
+    "\\client\\model",
+    "\\client\\view",
+    "\\client\\view\\css",
+    "\\client\\view\\js",
+    "\\client\\view\\php"
+  ],
+  "PreviewInSolutionExplorer": false
+}
