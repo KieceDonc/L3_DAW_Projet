@@ -23,6 +23,7 @@
 		<li <?php if($filename == "profile") echo "class='selected'";?>><a href="profile"> Profile </a></li>
 		<li <?php if($filename == "courses") echo "class='selected'";?>><a href="courses"> Your courses </a></li>
 		<li <?php if($filename == "courseBuilder") echo "class='selected'";?>><a href="courseBuilder"> Create a new course </a></li>
+		<li <?php if($filename == "mediaManager") echo "class='selected'";?>><a href="mediaManager"> Media manager </a></li>
 	</ul>
 </nav>
 <div class="content">
