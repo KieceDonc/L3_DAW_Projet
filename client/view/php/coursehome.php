@@ -92,7 +92,7 @@ function printThemes($idsection){
         $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
         if($theme["type"]=="quizz")
             $icon = "<img src='../media/quizz.png' alt='quizz icon' class='icon'>";
-        echo "<div class='theme'>" . $icon . "<span class='themelabel'> Theme " . $theme["ord"] . " - " . $theme["name"] . "</span></div>";
+        echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - <a href='/theme?id=" . $theme["id"] . "&type=".$theme["type"]."' class='courselink'>" . $theme["name"] . "</a></span></div>";
     }
 }
 
