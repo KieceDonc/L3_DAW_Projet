@@ -9,11 +9,12 @@
   <link rel="stylesheet" href="../css/courseBuilder.css" />
   <link rel="stylesheet" href="../css/sharedAdmin.css" />
   <link rel="stylesheet" href="../../client/view/css/font-face.css" />
-    <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
+  <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
 </head>
 
 <body>
   <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); ?>
+  
   <div class="content">
     <form action=<?php echo "submitCourse?userid=" . $_SESSION[CONST_SESSION_USERID]?>  method="post">
       <div>Course name : <input type="text" id="nametxt" name="courseNameInput" /></p>
