@@ -50,4 +50,32 @@
 
         return $query->fetchAll();
     }
+
+    function swapOrderDB($type,$idSection1,$ord){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Get id of section to swap with
+        $querystring = "SELECT sections.id AS id
+        FROM courses JOIN sections on courses.id = sections.idcourse
+        WHERE courses.id = (SELECT courses.id FROM courses JOIN sections ON courses.id = sections.idcourse WHERE sections.id=:id) AND sections.ord = :ord";
+
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':id',$idSection1);
+        $ordQuery = $type == "up" ? $ord-1 : $ord+1;
+        $query->bindParam(':ord',$ordQuery);
+        $query->execute();
+        $idSection2 = $query->fetchAll()[0]['id'];
+
+        // PREPARED QUERY - Swap the order values from both sections
+        $querystring = "UPDATE sections SET ord=:ord1 WHERE id=:id1 ; UPDATE sections SET ord=:ord2 WHERE id=:id2 ;";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':id1',$idSection1);
+        $query->bindParam(':id2',$idSection2);
+        $query->bindParam(':ord1',$ordQuery);
+        $query->bindParam(':ord2',$ord);
+
+        $query->execute();
+
+        closePDO($conn);
+    }
 ?>

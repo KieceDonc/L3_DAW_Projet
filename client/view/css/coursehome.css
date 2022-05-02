@@ -15,3 +15,7 @@
 .themelabel{
     margin-left: 5px;
 }
+
+.orderSectionForm{
+    display:inline-flex
+}

@@ -13,8 +13,9 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
 ?>
 
-<?php 
-    echo $_POST['upBtn'];
+<?php
+    swapOrder($_GET['direction'],$_GET['current'],$_GET['order']);
+    header("Location: ".$_SERVER['HTTP_REFERER'])
 ?>
 </body>
 

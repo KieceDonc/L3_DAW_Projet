@@ -70,15 +70,16 @@ function printSections()
     // TODO : Give access to links guiding to themes only if the user takes the class.
     $sections = getSections();
     foreach($sections as $section){
-        echo "<div> Section " . $section["ord"] . " - " . $section["name"] ;
+        echo "<div> Section " . $section['ord'] . " - " . $section['name'] ;
 
         // Adding ^ and v buttons for each sections, allowing reordering the sections
         if($GLOBALS['isAdmin']){
-            echo "
-            <span>
-                <button id='upBtn' name='upBtn'>^</button>
-                <button id='upBtn' name='upBtn'>v</button>
-            </span>";
+            $isFirst = ($section['ord'] == 1) ? "disabled='true'" : "";
+            $isLast = ($section['ord'] == count($sections)) ? "disabled='true'" : "";
+            echo "<span>";
+            echo "<form class='orderSectionForm' action='changeorder.php?direction=up&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='^' class='upBtn' name='upBtn' ". $isFirst ."></form>";
+            echo "<form class='orderSectionForm' action='changeorder.php?direction=down&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='v' class='downBtn' name='downBtn' ". $isLast ."></form>";
+            echo "</span>";
         }
         echo "</div>";
         printThemes($section["id"]);

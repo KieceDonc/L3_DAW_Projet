@@ -20,3 +20,8 @@
         $themes = getThemesFromDB($idsection);
         return $themes;
     }
+
+    // Swap the section's ord value with the following or previous one ($type = {up,down})
+    function swapOrder($type,$section,$ord){
+        swapOrderDB($type,$section,$ord);
+    }
