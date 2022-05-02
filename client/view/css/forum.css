@@ -76,6 +76,7 @@ td {
 
 .message {
     text-align: justify;
+    white-space: pre-line;
 }
 
 #backBtn {
