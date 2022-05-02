@@ -172,7 +172,7 @@ error_reporting(E_ALL);
 		<div class="titleHolder">
 			<form> 
 				<input hidden name="page" value="<?php echo $page; ?>" />
-				<input id="searchTxt" type="text" name="searchTxt" value="<?php echo $searchTxt; ?>" /> <button id="searchBtn"> Search </button>
+				<input id="searchTxt" type="text" name="searchTxt" value="<?php echo $searchTxt; ?>" /> <button id="searchBtn"> <?php echo getTranslation(93); ?></button>
 			</form>
 			<h2> <?php echo getTranslation(23); ?> </h2>
 			<div>
