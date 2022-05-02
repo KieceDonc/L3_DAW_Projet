@@ -304,7 +304,7 @@ function showInputZone($topicId, $editedMessage, $currentMessage)
 					echo "<textarea id='msgArea' name='msg' placeholder='". getTranslation(18) ."'>" . $currentMessage . "</textarea>";
 					echo "<input name='messageId' value='". $editedMessage ."' hidden/>";
 					echo "<button id='addAnswerBtn' class='inputBtn' name='edit'>" . getTranslation(75) . "</button>";
-					echo "<button class='inputBtn'>" . getTranslation(78) . "</button>";
+					echo "<button type='button' class='inputBtn' data-href=".$topicId.">" . getTranslation(78) . "</button>";
 				}
 				else{
 					echo "<textarea id='msgArea' name='msg' placeholder='". getTranslation(18) ."'></textarea>";
