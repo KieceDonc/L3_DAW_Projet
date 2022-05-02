@@ -1,14 +1,30 @@
 <?php
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
-    
-    function getForumTopics(){
+
+    function getTopicCountInDB($searchTxt){
         $conn = getPDO();
 
         // TODO : use const
-        $result = $conn->query("SELECT topics.id AS id, topics.name AS name, topics.author AS author, topics.view_count as view_count, username FROM topics, users WHERE topics.author = users.ID;", PDO::FETCH_ASSOC);;
-        return $result->fetchAll();
-    } 
+        $query = $conn->prepare("SELECT COUNT(*) as count FROM topics WHERE topics.name LIKE :search;");
+        $query->bindValue("search", "%" . $searchTxt . "%");
+        $query->execute();
+        
+        return $query->fetch()["count"];
+    }
+    
+    function getForumTopicsInDB($searchTxt, $start, $count){
+        $conn = getPDO();
+
+        // TODO : use const
+        $query = $conn->prepare("SELECT topics.id AS id, topics.name AS name, topics.author AS author, topics.view_count as view_count, username FROM topics, users WHERE topics.author = users.ID AND topics.name LIKE :search LIMIT :start, :max;");
+        $query->bindValue("search", "%" . $searchTxt . "%");
+        $query->bindValue("start", $start, PDO::PARAM_INT);
+        $query->bindValue("max", $count, PDO::PARAM_INT);
+        $query->execute();
+        
+        return $query->fetchAll();
+    }
 
     function getForumTopicInfo($topicID){
         $conn = getPDO();

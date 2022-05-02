@@ -125,7 +125,7 @@ error_reporting(E_ALL);
     }
     else 
     {
-        listTopics();
+		listTopics();
     }
 	
     ?>
@@ -143,9 +143,68 @@ error_reporting(E_ALL);
 <?php
 
 	function listTopics(){
-		$topics = getForumTopics();
+		if(!isset($_REQUEST["searchTxt"]) || empty($_REQUEST["searchTxt"])){
+			$searchTxt = "";
+		}
+		else{
+			$searchTxt = $_REQUEST["searchTxt"];//TODO sanitize inputs
+		}
+
+		$nbPage = getForumTopicNbPages($searchTxt);
+
+		if(!isset($_REQUEST["page"]) || empty($_REQUEST["page"])){
+			$page = 0;
+		}
+		else{
+			$page = min($_REQUEST["page"], $nbPage);//TODO sanitize inputs
+		}
+
+		if(!isset($_COOKIE["topicsPerPage"]) || empty($_COOKIE["topicsPerPage"])){
+			$topicsPerPage = "10";
+		}
+		else{
+			$topicsPerPage = $_COOKIE["topicsPerPage"];//TODO sanitize inputs
+		}
+		
+		$topics = getForumTopics($page, $searchTxt);
+
 		?>
-		<h2> <?php echo getTranslation(23); ?> </h2>
+		<div class="titleHolder">
+			<form> 
+				<input hidden name="page" value="<?php echo $page; ?>" />
+				<input id="searchTxt" type="text" name="searchTxt" value="<?php echo $searchTxt; ?>" /> <button id="searchBtn"> <?php echo getTranslation(93); ?></button>
+			</form>
+			<h2> <?php echo getTranslation(23); ?> </h2>
+			<div>
+				<select id="selectTopicsPerPage">
+					<option value="10" <?php echo $topicsPerPage == 10 ? "selected" : "" ?>> 10 </option> 
+					<option value="50" <?php echo $topicsPerPage == 50 ? "selected" : "" ?>> 50 </option>
+					<option value="100" <?php echo $topicsPerPage == 100 ? "selected" : "" ?>> 100 </option> 
+				</select>
+				<form class="pageForm">
+					<input hidden name="searchTxt" value="<?php echo $searchTxt; ?>" />
+					
+					<?php
+					if($page > 0){
+						echo "<button name='page' value=" . ($page - 1) ."><</button>";
+					}
+					else{
+						echo "<button disabled><</button>";
+					}
+					echo "<span> ". $page ." </span>";
+
+					if($page < $nbPage){
+						echo "<button name='page' value=" . ($page + 1) .">></button>";
+					}
+					else{
+						echo "<button disabled>></button>";
+					}
+
+					
+					?>
+				</form>
+			</div>
+		</div>
 		<?php
 			// Is user connected
 			if(isset($_SESSION[CONST_SESSION_ISLOGGED])){

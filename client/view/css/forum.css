@@ -17,6 +17,16 @@ h1 {
     font-family: 'Quicksand Regular';
 }
 
+.titleHolder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageForm{
+    display: inline;
+}
+
 h2 {
     text-align: center;
     font-size: x-large;  

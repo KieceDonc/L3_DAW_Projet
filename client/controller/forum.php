@@ -87,4 +87,28 @@
         }
     }
 
+    function getForumTopics($page, $searchTxt){
+        if(!isset($_COOKIE["topicsPerPage"]) || empty($_COOKIE["topicsPerPage"])){
+			$topicsPerPage = 10;
+		}
+		else{
+			$topicsPerPage = $_COOKIE["topicsPerPage"];//TODO sanitize inputs
+		}
+
+        return getForumTopicsInDB($searchTxt, $page * $topicsPerPage, $topicsPerPage);
+    }
+
+    function getForumTopicNbPages($searchTxt){
+        if(!isset($_COOKIE["topicsPerPage"]) || empty($_COOKIE["topicsPerPage"])){
+			$topicsPerPage = 10;
+		}
+		else{
+			$topicsPerPage = $_COOKIE["topicsPerPage"];//TODO sanitize inputs
+		}
+
+        $count = getTopicCountInDB($searchTxt);
+
+        return intdiv($count, $topicsPerPage);
+    }
+
 ?>
