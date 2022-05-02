@@ -26,8 +26,18 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/coursesInfo.php");
 
+
+    // GLOBAL VARIABLES
+
+    $isAdmin = isAdmin($_GET['id']);
+    $isStudent = isInCourse($_GET["id"]);
+
+
+    // PRINTING THE PAGE
+
     printCourse();
     printSections();
+    printButton();
     ?>
 
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
@@ -43,22 +53,34 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 function printCourse()
 {
     $name = getCourse();
-    echo "<h1> NOM COURS : " . $name . " - ID : " . getUserID($_SESSION[CONST_SESSION_EMAIL]) . " = " .  print_r($_SESSION) . "</h1>";
+    $b = "NONNNN";
+    echo "<h1>" . $name . "</h1>";
 }
 
 function printSections()
 {
     // Tells the user if he has taken this class or not.
-    if(!isInCourse($_GET["id"]))
+    if(!$GLOBALS['isStudent'] && !$GLOBALS['isAdmin'])
         echo getTranslation(90);
     else
-        echo getTranslation(91);
+        if(!$GLOBALS['isAdmin'])
+            echo getTranslation(91);
 
     // Show the sections.
     // TODO : Give access to links guiding to themes only if the user takes the class.
     $sections = getSections();
     foreach($sections as $section){
-        echo "<div> Section " . $section["ord"] . " - " . $section["name"] . "</div>";
+        echo "<div> Section " . $section["ord"] . " - " . $section["name"] ;
+
+        // Adding ^ and v buttons for each sections, allowing reordering the sections
+        if($GLOBALS['isAdmin']){
+            echo "
+            <span>
+                <button id='upBtn' name='upBtn'>^</button>
+                <button id='upBtn' name='upBtn'>v</button>
+            </span>";
+        }
+        echo "</div>";
         printThemes($section["id"]);
     }
 }
@@ -72,5 +94,22 @@ function printThemes($idsection){
         echo "<div class='theme'>" . $icon . "<span class='themelabel'> Theme " . $theme["ord"] . " - " . $theme["name"] . "</span></div>";
     }
 }
+
+function printButton(){
+    if(!$GLOBALS['isAdmin'])
+        return;
+    else
+        echo "<div><input type='text' id='newSectionTxt' name='newSectionTxt'><button id='addSectionBtn' name='addSectionBtn'>" . getTranslation(92) . "</button></input></div>";
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Something posted
+  
+    if (isset($_POST['btnDelete'])) {
+      // btnDelete 
+    } else {
+      // Assume btnSubmit 
+    }
+  }
 
 ?>

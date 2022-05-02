@@ -12,4 +12,12 @@
         $isInCourse = isInCourseDB($_SESSION[CONST_SESSION_USERID],$idcourse);
         return boolval($isInCourse[0]['takescourse']);
     }
+
+    // Returns true if user made this course
+    function isAdmin($idcourse){
+        if(!isLogged())
+            return false;
+        $isAdmin = isAdminDB($_SESSION[CONST_SESSION_USERID],$idcourse);
+        return boolval($isAdmin[0]['isadmin']);
+    }
 ?>
