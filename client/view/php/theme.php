@@ -20,6 +20,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     <?php
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/theme.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/bbcode.php");
 
     if($_GET['type'] = "lesson")
         printLesson();
@@ -33,7 +34,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     <!-- JS -->
     <script src="../../../../shared/js/jquery.js"></script>
     <script src="../js/shared.js"></script>
-    <script src="../js/lesson.js"></script>
+    <!--<script src="../js/lesson.js"></script>-->
 </body>
 
 </html>
@@ -45,7 +46,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 
 function printLesson(){
     echo "<h1> LESSON </h1>";
-    echo "<div id='lesson'>". (getContent($_GET['id'])) . "</div>";
+    echo "<div id='lesson'>". convertBBCode(getContent($_GET['id'])) . "</div>";
 
 }
 
