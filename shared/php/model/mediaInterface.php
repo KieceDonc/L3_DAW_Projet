@@ -17,16 +17,39 @@
         closePDO($conn);
     }
 
-    function getAllFilesDB($id){
+    function getAllFilesDB($userId){
         $conn = getPDO();
 
         // PREPARED QUERY - Get all the media from user $id in DB 
         $querystring = "SELECT * FROM media WHERE owner=:id";
         $query = $conn->prepare( $querystring );
-        $query->bindParam(':id',$id);
+        $query->bindParam(':id',$userId);
         $query->execute();
         closePDO($conn);
 
         return $query->fetchAll();
+    }
 
+    function getFileDB($mediaId){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Get all the media from user $id in DB 
+        $querystring = "SELECT * FROM media WHERE id=:id";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':id',$mediaId);
+        $query->execute();
+        closePDO($conn);
+
+        return $query->fetchAll();
+    }
+
+    function deleteMediaDB($mediaId){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Delete a media in DB from its ID
+        $querystring = "DELETE FROM media WHERE id=:id";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':id',$mediaId);
+        $query->execute();
+        closePDO($conn);
     }

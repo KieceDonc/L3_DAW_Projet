@@ -1,5 +1,5 @@
 <?php
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/model/mediaManager.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/mediaInterface.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
 
     function uploadFile(){
@@ -10,11 +10,24 @@
         $fileContent = file_get_contents($_FILES['userfile']['tmp_name']);
         echo print_r($_FILES);
         insertMediaDB($fileOwner,$fileType,$fileName,$fileSize,$fileContent);
-        header("Location: /admin/mediaManager");
+        header("Location: /admin/profile");
     } 
 
     function getAllFiles(){
         $files = getAllFilesDB($_SESSION[CONST_SESSION_USERID]);
         return $files;
+    }
+
+    function getFile($mediaId){
+        $file = getFile($mediaId);
+        return $file[0]['content'];
+    }
+
+    function getFilePath($content){
+        return "<img src='data:image/png;base64,".base64_encode($content)."'/>";
+    }
+
+    function deleteMedia($mediaId){
+        deleteMediaDB($mediaId);
     }
 ?>
