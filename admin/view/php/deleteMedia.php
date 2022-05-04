@@ -10,7 +10,7 @@
 
 <body>
 <?php 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/mediaManager.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/mediaInterface.php");
 ?>
 
 <?php 

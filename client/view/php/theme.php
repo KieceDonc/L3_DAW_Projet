@@ -46,7 +46,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 
 function printLesson(){
     echo "<h1> LESSON </h1>";
-    echo "<div id='lesson'>". convertBBCode(getContent($_GET['id'])) . "</div>";
+    echo "<div id='lesson'>". convert(getContent($_GET['id'])) . "</div>";
 
 }
 

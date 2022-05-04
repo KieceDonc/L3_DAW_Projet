@@ -5,3 +5,7 @@
     background-color: var(--handler-lvl-2-color);
     white-space: pre-line;
 }
+
+.imgContainer{
+    text-align: center;
+}

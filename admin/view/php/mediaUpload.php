@@ -28,8 +28,8 @@
 
         <?php
         if ( isset($_FILES['userfile']) ){
-            uploadFile();
-            header("Location: /admin/mediaDisplay");
+            if(uploadFile())
+                header("Location: /admin/mediaDisplay");
         }
         ?>
     </div>

@@ -40,8 +40,8 @@ function showFiles(){
     echo "<div class='listContainer'>";
     foreach($files as $file){
         echo "
-        <div class='mediaBlock'>".
-            getFilePath($file['content'])."
+        <div class='mediaBlock'>
+            <img src=".getFilePath($file['content']).">
             <div class='mediaDesc'>".$file['name']."</div>
             <div class='formDelete'>
                 <form action='deleteMedia' method='post'>
