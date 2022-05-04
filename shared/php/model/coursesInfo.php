@@ -31,4 +31,24 @@
         return $query->fetchAll();
     }
 
+    function ownsMediaDB($idCourse,$idMedia){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Check if there's an entry in the table 
+        $querystring = "SELECT EXISTS(
+                            SELECT * 
+                            FROM media
+                            WHERE id = :m AND owner = 
+                                (SELECT DISTINCT idauthor 
+                                FROM courses 
+                                WHERE id=:c)) 
+                            AS ownsmedia";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':c',$idCourse);
+        $query->bindParam(':m',$idMedia);
+        $query->execute();
+        closePDO($conn);
+
+        return $query->fetchAll();
+    }
 ?>

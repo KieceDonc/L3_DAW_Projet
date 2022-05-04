@@ -31,10 +31,6 @@
         return "data:image/png;base64,".base64_encode($content);
     }
 
-    function ownsMedia($mediaId){
-        $res = ownsMediaDB($_SESSION[CONST_SESSION_USERID],$mediaId);
-    }
-
     function deleteMedia($mediaId){
         deleteMediaDB($mediaId);
     }

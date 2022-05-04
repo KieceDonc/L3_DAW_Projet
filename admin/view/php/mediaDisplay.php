@@ -43,10 +43,11 @@ function showFiles(){
         <div class='mediaBlock'>
             <img src=".getFilePath($file['content']).">
             <div class='mediaDesc'>".$file['name']."</div>
+            <div class='mediaId'>ID : ".$file['id']."</div>
             <div class='formDelete'>
                 <form action='deleteMedia' method='post'>
                     <input type='hidden' id='mediaId' name='mediaId' value='".$file['id']."'>
-                    <input type='submit' value='delete'>
+                    <input type='submit' value='delete' class='deleteButton'>
                 </form>
             </div>
         </div>";

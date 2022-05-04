@@ -20,4 +20,9 @@
         $isAdmin = isAdminDB($_SESSION[CONST_SESSION_USERID],$idcourse);
         return boolval($isAdmin[0]['isadmin']);
     }
+
+    function ownsMedia($idcourse,$idmedia){
+        $res = ownsMediaDB($idcourse,$idmedia);
+        return boolval($res[0]['ownsmedia']);
+    }
 ?>

@@ -1,11 +1,32 @@
+.imgContainer{
+    text-align: center;
+    padding:5px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+img{
+    max-width:70%;
+}
+
+.userLegend{
+    max-width:70%;
+    margin:auto;
+    font-style: italic;
+    overflow-wrap: break-word;
+}
+
 #lesson{
     margin-left: 15%;
     margin-right: 15%;
     padding:10px;
     background-color: var(--handler-lvl-2-color);
+    font-family: 'Quicksand Regular';
     white-space: pre-line;
 }
 
-.imgContainer{
+.vidContainer{
     text-align: center;
+    margin-top:20px;
+    margin-bottom:20px;
 }
