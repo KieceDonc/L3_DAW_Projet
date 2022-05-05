@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/contact.css" />
   </head>
   <body>
-    <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php"); ?>
+    <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
     <div id="mainContainer">
         <div id="imgContainer">
             <img src="../media/contact.jpg" alt="Contact img">
@@ -41,23 +41,50 @@
             </div>
                 <div>
                 <label for="email"><?php echo getTranslation(86); // Email * ?></label>
-                <input type="email" name="email">
+                <input type="email" name="email" required>
             </div>
             <div>
                 <label for="subject"><?php echo getTranslation(87); // Subject * ?></label>
-                <input type="subject" name="subject">
+                <input type="subject" name="subject" required>
             </div>
             <div>
                 <label for="question" style="vertical-align: middle;"><?php echo getTranslation(88); // Your question * ?></label>
-                <textarea></textarea>
+                <textarea name="question" required></textarea>
             </div>
             <div>
                 <label></label>
-                <input id="submit" type="submit" <?php echo "value='".getTranslation(89)."'"; // Send ?>>
+                <input id="submit" type="submit" name="submit" <?php echo "value='".getTranslation(89)."'"; // Send ?>>
             </div>
             </form>
         </div>
     </div>
+
+    <?php
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/contact.php");
+
+    $name = $_GET['name'];
+    $phone = $_GET['phone'];
+    $email = $_GET['email'];
+    $subject = $_GET['subject'];
+    $question = $_GET['question'];
+
+    if(isset($_GET['submit']))
+    {
+        if(insertContactDB($name, $phone, $email, $subject, $question) == true)
+        {
+            echo "<script>alert(\"Message envoyé avec succès\")</script>";
+            echo '<script>document.location.href="/client/view/php/index.php";</script>';
+            //echo "<script>alert(\'".getTranslation()."'\)</script>";
+        }
+        else
+        {
+            echo "<script>alert(\"Le message n'a pas peu être envoyé\")</script>";
+            //echo "<script>alert(\'".getTranslation()."'\)</script>";
+        }
+    }
+    ?>
+
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
       
     <!-- JS -->

@@ -25,6 +25,7 @@
 		<li <?php if($filename == "courseBuilder") echo "class='selected'";?>><a href="courseBuilder"> Create a new course </a></li>
 		<li <?php if($filename == "mediaUpload") echo "class='selected'";?>><a href="mediaUpload"> Upload a media </a></li>
 		<li <?php if($filename == "mediaDisplay") echo "class='selected'";?>><a href="mediaDisplay"> Display your medias </a></li>
+		<li <?php if($filename == "manageContact") echo "class='selected'";?>><a href="manageContact"> Manage contacts </a></li>
 	</ul>
 </nav>
 <div class="content">
