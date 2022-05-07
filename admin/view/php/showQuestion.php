@@ -49,7 +49,8 @@
         {
             supprimer($_GET["idQ"],$NumChapter);
             echo '<script type="text/javascript">window.location.href = "showQuestion.php?id={$NumChapter}";</script>';
-        }   
+        }
+
         reorgonize($NumChapter);
 
         $number = $xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question");
@@ -86,11 +87,11 @@
                         <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>supprimer=true&idQ=<?php echo $NumQuestion ?>">Supprimer la question</a>
                     </div>
                 </div>
-            </div>
+        </div>
             <?php 
                 };
             ?>
-        </div>
+        
         <div>
             <a href="addQuestion.php?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
         </div>
