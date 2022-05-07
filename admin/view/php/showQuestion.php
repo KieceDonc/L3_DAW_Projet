@@ -16,7 +16,9 @@
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
-        if (simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml")==false)
+        $chemindossier = ($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml";
+
+        if (simplexml_load_file($chemindossier)==false)
         {
             echo "cant open";
         }
