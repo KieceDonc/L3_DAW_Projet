@@ -16,9 +16,13 @@
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
+        if (simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml")==false)
+        {
+            echo "cant open";
+        }
+        else {
         $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
-        echo "test";
-
+        }
 
         function supprimer($a,$NumChapter)
         {
