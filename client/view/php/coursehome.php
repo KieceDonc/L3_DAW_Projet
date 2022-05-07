@@ -110,7 +110,9 @@ function printButton(){
 
 function printAddQuizz(){
     if($GLOBALS['isAdmin'])
-        echo "<a href='LIEN'>".getTranslation(94)."</a>"
+        echo "<a href='lien1'>".getTranslation(94)."</a>";   // EDIT THE QUIZZ (admin)
+    elseif($GLOBALS['isStudent'])
+    echo "<a href='lien2'>".getTranslation(95)."</a>";  // DO THE QUIZZ (student)
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
