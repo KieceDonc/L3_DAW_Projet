@@ -12,7 +12,7 @@ $Answer = $_GET["answer"];
 
 if(simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$id.".xml"==true)
 {
-$xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$id.".xml");
+$xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$id.".xml");
 $number = $xml->xpath("//Questionnaire[@chapitre={$id}]/question");
 $number = count($number);
 

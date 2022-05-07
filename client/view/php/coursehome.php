@@ -112,7 +112,7 @@ function printAddQuizz(){
     if($GLOBALS['isAdmin'])
         echo "<a href='/admin/view/php/showQuestion.php?id={$_GET['id']}'>".getTranslation(94)."</a>";   // EDIT THE QUIZZ (admin)
     elseif($GLOBALS['isStudent'])
-        echo "<a href=''>".getTranslation(95)."</a>";  // DO THE QUIZZ (student)
+        echo "<a href='doQuiz?id={$_GET['id']}'>".getTranslation(95)."</a>";  // DO THE QUIZZ (student)
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

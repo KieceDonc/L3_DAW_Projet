@@ -18,13 +18,13 @@
         $NumChapter = $_GET["id"];
         $NumQuestion=1;
 
-        $xml = simplexml_load_file("".$_SERVER['DOCUMENT_ROOT']) . "/quizxml/quiz".$id.".xml");
+        $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
         
         
 
         function supprimer($a,$NumChapter)
         {
-            $xml = simplexml_load_file("".$_SERVER['DOCUMENT_ROOT']) . "/quizxml/quiz".$id.".xml");
+            $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
             $tosupp = $xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$a}]");
             foreach($tosupp as $node)
             {
@@ -35,7 +35,7 @@
 
         function reorgonize($NumChapter)
         {
-            $xml = simplexml_load_file("".$_SERVER['DOCUMENT_ROOT']) . "/quizxml/quiz".$id.".xml");
+            $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
             $number = $xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question");
             $number = count($number);
 

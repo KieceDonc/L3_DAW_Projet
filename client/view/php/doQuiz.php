@@ -13,8 +13,12 @@
     <body>
         <?php 
         
+        
+
         $NumChapter = $_GET['id'];
         $NumQuestion = 1;
+
+        $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
 
         $number = $xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question");
         $number = count($number);
