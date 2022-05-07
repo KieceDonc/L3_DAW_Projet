@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Quiz</title>    
+        <title>Test Hugo</title>    
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="showquiz.css">
         <style>
@@ -11,8 +11,6 @@
     </head>
     
     <body>
-
-
     <?php 
         
         $NumChapter = $_GET["id"];
@@ -20,8 +18,6 @@
 
         $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
         
-        
-
         function supprimer($a,$NumChapter)
         {
             $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
