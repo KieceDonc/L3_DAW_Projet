@@ -18,6 +18,7 @@ Petit Evan, Perion Maxence, Pinon Alexandre
 \date{}
 
 \renewcommand*\contentsname{Sommaire}
+\renewcommand{\listfigurename}{Liste des images}%
 
 \begin{document}
 
@@ -62,7 +63,30 @@ Le forum permet la discussion entre apprenants. Il est global et les utilisateur
 FR et EN pour tous les utilisateurs 
 
 \subsection{Thèmes}
-Thèmes claire et sombre
+Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet d’abord de réduire la fatigue des yeux, de plus les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
+
+Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
+\begin{figure}[!h]
+\centerline{
+    \includegraphics[width=4cm]{images/boutonThemeClaire.PNG}
+    \includegraphics[width=4cm]{images/boutonThemeSombre.PNG}
+}
+\caption{Bouton en mode thème clair}
+\caption{Bouton en mode thème sombre}
+\label{fig}
+\end{figure}
+
+Le fonctionnement des thèmes est assez simple, en effet il nous suffit de déclarer 2 fichiers css que nous avons nommée respectivement "lightMode.css" et "darkMode.css". Et dans ces fichiers déclarer des variables avec "--nomVariable". Pour ces deux fichiers les variables doivent avoir le même nom mais avoir évidemment des valeurs différentes. Une fois ceci effectue, nous allons utiliser seulement les variables contenus dans les fichiers "lightMode.css" ou "darkMode.css" via différentes fonctions jQuerry créé par nos propres moyens. Finalement pour avoir un thème permanent et ne pas avoir besoin de repasser dans le thème souhaité à chaque rafraîchissement de la page, nous avons utilisé un cookie. Ce cookie permet de stocker la valeur du thème choisie et avec le traitement de nos fonctions en jQuerry chargé le bon thème.
+
+Dernièrement dans les fichiers css qui vont organiser nos différentes pages nous allons utiliser cette syntaxe: "var(--nomVariable)", qui aura une valeur différente en fonction du thème choisie.\\
+
+Pour illustrer ce qui a précédemment été vue, voyons avec un exemple concret, définissons une variable "--background-color: \#FFFFFF;" pour le thème clair et "--background-color: \#000000;" pour le thème sombre. Maintenant dans un fichier css quelconque on peut utiliser ceci:
+\begin{lstlisting}[language=HTML]
+  body{
+    background-color: var(--background-color);
+  }
+\end{lstlisting}
+Si le thème clair est utilisé alors la couleur de fond aura pour valeur FFFFFF c'est-à-dire blanc, et dans le cas contraire pour le thème sombre la couleur de fond aura pour valeur 000000 c'est-à-dire noir.
 
 \subsection{Décompte des visiteurs}
 Compteur du nombre de visiteur via fichier et non BDD.
