@@ -15,11 +15,10 @@
         
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
-        echo $NumChapter;
 
         $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
-        
-        print_r($xml);
+        echo $NumChapter;
+
 
         function supprimer($a,$NumChapter)
         {
