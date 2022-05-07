@@ -7,5 +7,6 @@
         //user is connected otherwise header would have already redirected to login form
         $userID = getUserID($_SESSION[CONST_SESSION_EMAIL]);
         return getCoursesDB($userID);
+       
     } 
 ?>

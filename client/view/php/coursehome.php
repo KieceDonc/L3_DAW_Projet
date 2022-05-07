@@ -79,6 +79,9 @@ function printSections()
             echo "<span>";
             echo "<form class='orderSectionForm' action='changeorder.php?direction=up&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='^' class='upBtn' name='upBtn' ". $isFirst ."></form>";
             echo "<form class='orderSectionForm' action='changeorder.php?direction=down&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='v' class='downBtn' name='downBtn' ". $isLast ."></form>";
+            echo "<form class='orderSectionForm' action='addtheme.php?section=".$section['id']."&type=lesson' method='post'><input type='submit' value='+' class='addBtn' name='addBtn'></form>";
+            
+            
             echo "</span>";
         }
         echo "</div>";

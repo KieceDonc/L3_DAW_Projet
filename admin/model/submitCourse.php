@@ -13,7 +13,7 @@ function addCourseInDB($name,$desc,$userid){
     $query->bindParam(':d',$desc);
     $query->execute();
 
-    $querystring = "SELECT LAST_INSERT_ID();";
+    $querystring = "SELECT LAST_INSERT_ID() AS lastid;";
     $query2 = $conn->prepare($querystring);
     $query2->execute();;
 
