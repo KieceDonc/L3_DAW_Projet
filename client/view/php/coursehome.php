@@ -110,7 +110,7 @@ function printButton(){
 
 function printAddQuizz(){
     if($GLOBALS['isAdmin'])
-        echo "<a href='/admin/view/php/addQuestion.php?id={$_GET['id']}'>".getTranslation(94)."</a>";   // EDIT THE QUIZZ (admin)
+        echo "<a href='/admin/view/php/showQuestion.php?id={$_GET['id']}'>".getTranslation(94)."</a>";   // EDIT THE QUIZZ (admin)
     elseif($GLOBALS['isStudent'])
         echo "<a href=''>".getTranslation(95)."</a>";  // DO THE QUIZZ (student)
 }
