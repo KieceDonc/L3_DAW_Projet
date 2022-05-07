@@ -61,14 +61,14 @@ form textarea {
 table{
     border-collapse: collapse;
     width:100%;
-    max-width:700px;
-    min-width:400px;
+    max-width:70%;
     text-align:center;
-    margin-left: auto;
+    margin-left: 25%;
     margin-right: auto;
     margin-bottom: 50px;
 }
 
 tr, td{
+    padding: 8px;
     border: 1px solid #2fa0f6;
 }
