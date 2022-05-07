@@ -15,6 +15,8 @@ function deleteTableFromContactDB($name, $subject){
 function printContactDB(){
     $conn = getPDO();
 
+    //<--TODO print infos for admin TODO-->
+
     // PREPARED QUERY - Print infos about contact table
     $querystring = "SELECT * FROM contact";
     $query = $conn->prepare( $querystring );
@@ -23,14 +25,14 @@ function printContactDB(){
     echo "<table><tbody>";
     while ($row = $query->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
         echo "<tr>";
-            echo "<td> Name : " . $row[0] . "</td>";
-            if(empty($row[1]))
+            echo "<td> Name : " . $row[1] . "</td>";
+            if(empty($row[2]))
                 echo "<td> Phone : no phone advise </td>"; 
             else
-                echo "<td> Phone : " . $row[1] . "</td>"; 
-            echo "<td> Email : " . $row[2] . "</td>";
-            echo "<td> Subject : " . $row[3] . "</td>";
-            echo "<td> Question : " . $row[4] . "</td>";
+                echo "<td> Phone : " . $row[2] . "</td>"; 
+            echo "<td> Email : " . $row[3] . "</td>";
+            echo "<td> Subject : " . $row[4] . "</td>";
+            echo "<td> Question : " . $row[5] . "</td>";
         echo "</tr>";
     }
     echo "</tbody></table>";
