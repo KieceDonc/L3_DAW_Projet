@@ -38,6 +38,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     printCourse();
     printSections();
     printButton();
+    printAddQuizz();
     ?>
 
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
@@ -65,6 +66,7 @@ function printSections()
     else
         if(!$GLOBALS['isAdmin'])
             echo getTranslation(91);
+            
 
     // Show the sections.
     // TODO : Give access to links guiding to themes only if the user takes the class.
@@ -106,6 +108,11 @@ function printButton(){
         echo "<div><input type='text' id='newSectionTxt' name='newSectionTxt'><button id='addSectionBtn' name='addSectionBtn'>" . getTranslation(92) . "</button></input></div>";
 }
 
+function printAddQuizz(){
+    if($GLOBALS['isAdmin'])
+        echo "<a href='LIEN'>".getTranslation(94)."</a>"
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Something posted
   
@@ -114,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       // Assume btnSubmit 
     }
-  }
+}
+
 
 ?>
