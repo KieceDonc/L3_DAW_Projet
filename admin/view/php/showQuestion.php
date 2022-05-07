@@ -13,13 +13,13 @@
     <body>
     <?php 
         
-        $NumChapter = $_GET["id"];
+        $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
         $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
         
         print_r($xml);
-        
+
         function supprimer($a,$NumChapter)
         {
             $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
