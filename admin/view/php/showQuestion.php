@@ -16,14 +16,14 @@
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
-        $chemindossier = ($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml";
+        $chemindossier ="/quizxml/quiz".$NumChapter.".xml";
 
         if (simplexml_load_file($chemindossier)==false)
         {
             echo "cant open";
         }
         else {
-        $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
+        $xml = simplexml_load_file("/quizxml/quiz".$NumChapter.".xml");
         }
 
         function supprimer($a,$NumChapter)
