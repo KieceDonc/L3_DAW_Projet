@@ -4,3 +4,4 @@ dev/*
 !dev/README.md
 .vs/*
 *.bak
+quizxml/*
