@@ -66,7 +66,7 @@
         if(isset($_GET['supprimer']))
         {
             supprimer($_GET["idQ"],$NumChapter);
-            echo '<script type="text/javascript">window.location.href = "showQuestion.php?id={$NumChapter}";</script>';
+            echo '<script type="text/javascript">window.location.href = "showQuestion.php?id='.$NumChapter.'";</script>';
         }
 
         reorgonize($NumChapter);
