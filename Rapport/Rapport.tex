@@ -51,6 +51,33 @@ Les couleurs et le texte choisir avec le site : https://coolors.co/
 \section{Les cours}
 \subsection{Quizz}
 Les quiz vont être proposés pour les apprenants. Les quiz doivent être sous le format XML, on va donc partir sur un document XML par cours .Celui-ci sera créer a la création du cours.
+Voici la DTD de notre quiz : 
+\begin{lstlisting}[language=XML]
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!ELEMENT Questionnaire (question+)>
+  <!ATTLIST Questionnaire chapitre NMTOKEN #REQUIRED>
+  <!ATTLIST Questionnaire Nom CDATA #REQUIRED>
+  <!ELEMENT question (difficulte,intitule,choix+,reponse+)>
+  <!ATTLIST question id NMTOKEN #REQUIRED>
+  <!ELEMENT difficulte (#PCDATA)>
+  <!ELEMENT intitule (#PCDATA)>
+  <!ELEMENT choix (#PCDATA)>
+  <!ATTLIST choix id NMTOKEN #REQUIRED>
+  <!ELEMENT reponse (#PCDATA)>
+\end{lstlisting}
+On peut donc voir qu'une question aura un id associé, une difficulté, son intitulé ainsi que 4 choix et sa réponse.
+Et donc lors de la création du cours, un document XML de cette forme sera créer : 
+\begin{lstlisting}[language=XML]
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE Questionnaire SYSTEM "quiz.dtd">
+  <Questionnaire chapitre="idducours" Nom="nomducours"> 
+  </Questionnaire>
+\end{lstlisting} 
+
+Ainsi l'administrateur de son cours pourra par la suite venir ajouter ou supprimer des questions de son cours. 
+
+Du côté des apprenants, ils pourront passer le quiz dans le cours associé. La liste des questions s'affichera et ils pourront y répondre en cliquant sur le choix qui veulent faire et ensuite valider le questionnaire.
+A la fin , ils verront leurs notes et pourront repasser le test s'ils ont envie de faire mieux.
 \subsection{Forum}
 Le forum permet la discussion entre apprenants. Il est global et les utilisateurs peuvent créer un nouveau sujet ou répondre dans un déjà créé s'ils sont connectés. Ils peuvent également consulter la liste des sujets et les messages dans ceux-ci. Les utilisateurs connectés ont également la possibilité de modifier ou supprimer les sujets et les messages dont ils sont les auteurs.
 
