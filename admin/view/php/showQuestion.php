@@ -19,7 +19,7 @@
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
-        $chemindossier =($_SERVER["DOCUMENT_ROOT"])."quizxml/quiz".$NumChapter.".xml";
+        $chemindossier =($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$NumChapter.".xml";
 
         if (simplexml_load_file($chemindossier)==false)
         {
