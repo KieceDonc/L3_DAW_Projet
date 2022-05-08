@@ -162,6 +162,30 @@
         }
     }
 
+    function getAdminID($email){
+        // we check if we already stored the lastname
+        if(!isset($_SESSION[CONST_SESSION_USERSTORED_ADMIN])){
+            // No, we need to query lastname
+            $admin = getDBAdmin($email);
+
+            // Has db returned error ?
+            if($admin != CONST_DB_ERR_USERDONTEXIST){
+                
+                // we store the admin value so we don't have to recall and spam db querry
+                $_SESSION[CONST_SESSION_USERSTORED_ADMIN] = $admin; 
+                return $birthdate;
+            }else{
+                var_dump($birthdate);
+                // TODO: You're trying to get admin value but DB say you don't have a user for this email. 
+                // Btw if this happend, good luck :) 
+            }
+        }else{
+
+            // Yes we return it
+            return $_SESSION[CONST_SESSION_USERSTORED_ADMIN]; 
+        }
+    }
+
     function setUsername($email, $value) {
         //reset cached value to not query bdd again
         $_SESSION[CONST_SESSION_USERSTORED_USERNAME] = $value;

@@ -34,6 +34,10 @@
         return getDBInfo($email, CONST_DB_TABLE_USERS_PASSWORD);
     }
 
+    function getDBAdmin($email) {
+        return getDBInfo($email, CONST_DB_TABLE_ADMIN_VALUE);
+    }
+
     function getDBInfo($email,$columnName){
         $conn = getPDO();
         $request = $conn->prepare("SELECT count(*), ".$columnName.", email FROM users where email = :email GROUP BY ".$columnName.";");
