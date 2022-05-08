@@ -25,6 +25,7 @@
     define('CONST_DB_TABLE_USERS_BIRTHDATE','birthdate'); // birthdate = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_CREATIONDATE','creationdate'); // creationdate = name of the column in db in users table
     define('CONST_DB_TABLE_USERS_PASSWORD','password'); // password = name of the column in db in users table
+    define('CONST_DB_TABLE_ADMIN_VALUE','admin'); // admin = name of the column in db in users table
 
     // DB return type
     define('CONST_DB_ACCEPTED', 'ACCEPTED');
@@ -64,7 +65,8 @@
     define('CONST_SESSION_USERSTORED_USERNAME','USER_STORED_USERNAME'); // Use for $_SESSION[CONST_SESSION_USERSTORED_USERNAME] and know the username if we stored it. Plz see userInfo.php in controller
     define('CONST_SESSION_USERSTORED_BIRTHDATE','USER_STORED_BIRTHDATE'); // Use for $_SESSION[CONST_SESSION_USERSTORED_BIRTHDATE] and know the birthdate if we stored it. Plz see userInfo.php in controller
     define('CONST_SESSION_USERSTORED_PASSWORD','USER_STORED_PASSWORD'); // Use for $_SESSION[CONST_SESSION_USERSTORED_PASSWORD] and know the password if we stored it. Plz see userInfo.php in controller
-    
+    define('CONST_SESSION_USERSTORED_ADMIN','USER_STORED_PASSWORD'); // Use for $_SESSION[CONST_SESSION_USERSTORED_ADMIN] and know the admin value if we stored it. Plz see userInfo.php in controller
+
     define('CONST_SESSION_LANGUAGESTORED_LIST','LANGUAGE_STORED_LIST'); // Use for $_SESSION[CONST_SESSION_LANGUAGESTORED_LIST] and know the list if we stored it.
     define('CONST_SESSION_LANGUAGESTORED_TRANSLATIONS','LANGUAGE_STORED_TRANSLATIONS'); // Use for $_SESSION[CONST_SESSION_LANGUAGESTORED_TRANSLATIONS] and know the list if we stored it.
     define('CONST_SESSION_LANGUAGESTORED_CURRENT_LANG','LANGUAGE_STORED_LANG'); // Use for $_SESSION[CONST_SESSION_LANGUAGESTORED_CURRENT_LANG] and know the current language for server if we stored it.
