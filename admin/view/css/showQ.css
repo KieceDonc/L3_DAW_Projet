@@ -1,0 +1,38 @@
+
+#Difficulty{
+    width:100px;
+    border : 0.1rem solid #1c2347;
+}
+
+#question{
+    width:400px;
+    border: 0.1rem solid #1c2347;
+}
+
+#GoodChoice {
+    width:100px;  
+    border: 0.1rem solid #1c2347;
+}
+
+#chapter {
+  margin-left: 50%;
+}
+
+.choice-container {
+  margin-top:0.5rem;
+  display: flex;
+  width: 60%;
+  font-size: 1.8rem;
+  margin-left: 30%;
+}
+
+.choice-prefix {
+  padding: 1.5rem 2.5rem;
+  color: #1c2347;
+}
+
+
+
+
+
+

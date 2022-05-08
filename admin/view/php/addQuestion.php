@@ -13,11 +13,9 @@
   <body>
 	<?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
     ?>
         <div class="quiz">
-            <form action="ValidateQuestion.php" method="get">
+            <form action="ValidateQuestion" method="get">
             <div class="question">
                 <input id="chapter" name="idchapter" placeholder="Entrez l'id du chapitre" pattern="[1-9]" value="<?php echo $_GET['id']; ?>" type="hidden" readonly="readonly""/>
 </br>

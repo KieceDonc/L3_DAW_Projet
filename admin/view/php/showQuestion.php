@@ -6,6 +6,7 @@
     
     <!-- CSS -->
 	<link rel="stylesheet" href="../css/sharedAdmin.css" />
+    <link rel="stylesheet" href="../css/showQ.css" />
     <link rel="stylesheet" href="../../client/view/css/font-face.css" />
     <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
   </head>
@@ -102,7 +103,7 @@
                 };
             ?>
         <div>
-            <a href="addQuestion.php?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
+            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
         </div>
     </body>
 </html>

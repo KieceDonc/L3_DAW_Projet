@@ -61,8 +61,8 @@ else {
 	<?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
     ?>
-        <div class="AddQuestion"> You have entered a question for the chapter <?php echo $id ."</div>";?>
-        <a href="addQuestion.php?id=<?php echo $id; ?>">Re add question</a>
+        <div>You have entered a question for the chapter <?php echo $id ."</div>";?>
+        <a href="addQuestion?id=<?php echo $id; ?>">Re add question</a>
 
     </body>
 </html>
