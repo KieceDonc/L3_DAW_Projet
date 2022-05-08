@@ -10,12 +10,11 @@ $Difficulty = $_GET["difficulté"];
 $isok=true;
 $Answer = $_GET["answer"];
 $chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$id.".xml");
-echo $id;
 if(simplexml_load_file($chemindossier)==true)
 {
-echo "ok";
 $xml = simplexml_load_file($chemindossier);
 $number = $xml->xpath("//Questionnaire[@chapitre={$id}]/question");
+
 $number = count($number);
 
 $Question = $xml->addChild("question","");
@@ -37,6 +36,8 @@ $choix4xml = $Question->addChild("choix",$choice4);
 $choix4xml->addAttribute("id",4);
 
 $Question->addChild("reponse",$Answer);
+
+print_r($xml);
 
 $xml->asXML($chemindossier);    
 }
