@@ -16,7 +16,7 @@
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
-        $chemindossier =($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$NumChapter.".xml";
+        $chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$NumChapter.".xml");
 
         if (simplexml_load_file($chemindossier)==false)
         {
@@ -27,7 +27,7 @@
         }
 
         $xml = simplexml_load_file($chemindossier);
-        
+
         function supprimer($a,$NumChapter)
         {
             $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
