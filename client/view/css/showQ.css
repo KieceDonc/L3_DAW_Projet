@@ -25,6 +25,10 @@
   font-size: 1.8rem;
 }
 
+.choice-prefix {
+  padding: 1.5rem 2.5rem;
+}
+
 a {
   text-align: center;
 }
