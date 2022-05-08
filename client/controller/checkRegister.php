@@ -58,7 +58,7 @@
             $errors = storeError($errors,CONST_URLPARAM_ERR_FIRSTNAME, CONST_ERR_EMPTY);
         }
 
-        if(!preg_match('/^[a-zA-Z]+$/', $firstname)){
+        if(!preg_match('/^[a-zA-Z\s]+$/', $firstname)){
             $errors = storeError($errors,CONST_URLPARAM_ERR_FIRSTNAME, CONST_ERR_FORBIDDENCHARS);
         }
 
