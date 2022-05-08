@@ -3,7 +3,8 @@
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/checkLogin.php");
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
-  
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/sanitizeHelper.php");
+
   $email = $_POST['email'];
   $password = $_POST['password'];
   
@@ -17,9 +18,9 @@
         $_SESSION[CONST_SESSION_EMAIL] = $email;
         $_SESSION[CONST_SESSION_USERID] = getUserID($_SESSION[CONST_SESSION_EMAIL]);
         
-        //TODO sanitize callback or vulnerable to xss
         if(isset($_REQUEST["callback"]) && !empty($_REQUEST["callback"])){
-          header('Location: '.$_REQUEST["callback"]);
+          $redirect = sanitizeURL($_REQUEST["callback"]);
+          header('Location: '. $redirect);
         }
         else {
           header('Location: /');

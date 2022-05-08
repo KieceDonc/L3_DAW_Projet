@@ -2,7 +2,7 @@
 
 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/sanitizeHelper.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/sanitizeHelper.php");
 
   function checkLogin($email, $password){
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars

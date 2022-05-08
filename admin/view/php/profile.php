@@ -57,7 +57,6 @@
   }
 
   function showEditProfile(){
-    //TODO put in common because same as register view
       //messages d'erreurs
       if(($error = checkError(CONST_URLPARAM_ERR_USERNAME)) !== false){
         switch($error){

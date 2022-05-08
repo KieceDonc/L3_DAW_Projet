@@ -1,7 +1,7 @@
 <?php
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/sanitizeHelper.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/sanitizeHelper.php");
     function editProfile(){
         $username = sanitizeString($_REQUEST["username"]);
         $firstname = sanitizeString($_REQUEST["firstname"]);
@@ -11,7 +11,6 @@
         $passwordconfirmation = sanitizeString($_REQUEST["passwordconfirmation"]);
 
         $errors = [];
-        //TODO put in common because same as checkregister controller
         if($username != getUsernameID($_SESSION[CONST_SESSION_EMAIL]))
         {
             //username vide ou carac interdits

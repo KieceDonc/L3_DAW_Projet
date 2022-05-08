@@ -1,23 +1,17 @@
 <?php
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/forum.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/sanitizeHelper.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/sanitizeHelper.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
 
     // Function call to add message inside a topic
-    // it sanitize input and then add user message in DB
+    // it sanitizes input and then add user message in DB
     // $userInput = message content    
     function addForumTopicMessage($topicID, $userID, $userInput){
-        $sanitizedInput = sanitizeString($userInput); // TODO : check if it is really sanitize cuz I don't really know
+        $sanitizedInput = sanitizeString($userInput);
         
-        if(isset($sanitizedInput)){
-            if(empty($sanitizedInput)){
-                // TODO: Handle error
-            }else{
-                addForumTopicMessageInDB($topicID, $userID, $sanitizedInput);        
-            }
-        }else{
-            // TODO: Handle error
+        if(isset($sanitizedInput) && !empty($sanitizedInput)){
+            addForumTopicMessageInDB($topicID, $userID, $sanitizedInput);        
         }
     } 
 
@@ -25,22 +19,12 @@
     // it sanitize input, add the new topic in DB and then load the page of the topic
     // $userInput = topic name
     function createTopic($userInput, $userID){
-        $sanitizedInput = sanitizeString($userInput); // TODO : check if it is really sanitize cuz I don't really know
+        $sanitizedInput = sanitizeString($userInput);
 
-        if(isset($sanitizedInput)){
-            if(empty($sanitizedInput)){
-                // TODO: Handle error
-            }else{
-                $topicID = createTopicInDB($sanitizedInput, $userID);        
-                header("Location: /forum?topic=". $topicID);
-
-            }
-        }else{
-            // TODO: Handle error
+        if(isset($sanitizedInput) && !empty($sanitizedInput)){
+            $topicID = createTopicInDB($sanitizedInput, $userID);        
+            header("Location: /forum?topic=". $topicID);
         }
-
-        // TODO : sanitize inputs
-        
     }
 
     function getForumTopicLastMessageDate($topicID){
@@ -92,7 +76,7 @@
 			$topicsPerPage = 10;
 		}
 		else{
-			$topicsPerPage = $_COOKIE["topicsPerPage"];//TODO sanitize inputs
+			$topicsPerPage = sanitizeString($_COOKIE["topicsPerPage"]);
 		}
 
         return getForumTopicsInDB($searchTxt, $page * $topicsPerPage, $topicsPerPage);
@@ -103,7 +87,7 @@
 			$topicsPerPage = 10;
 		}
 		else{
-			$topicsPerPage = $_COOKIE["topicsPerPage"];//TODO sanitize inputs
+			$topicsPerPage = sanitizeString($_COOKIE["topicsPerPage"]);
 		}
 
         $count = getTopicCountInDB($searchTxt);
@@ -117,7 +101,7 @@
 			$messagesPerPage = 10;
 		}
 		else{
-			$messagesPerPage = $_COOKIE["messagesPerPage"];//TODO sanitize inputs
+			$messagesPerPage = sanitizeString($_COOKIE["messagesPerPage"]);
 		}
 
         $count = getForumTopicMessageCountInDB($topicId);
@@ -130,7 +114,7 @@
 			$messagesPerPage = 10;
 		}
 		else{
-			$messagesPerPage = $_COOKIE["messagesPerPage"];//TODO sanitize inputs
+			$messagesPerPage = sanitizeString($_COOKIE["messagesPerPage"]);
 		}
 
         return getForumTopicMessagesInDB($topicID, $page * $messagesPerPage, $messagesPerPage);

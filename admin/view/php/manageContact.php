@@ -20,13 +20,13 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/manageContact.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
-
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/sanitizeHelper.php");
+    
     if(getAdminID($_SESSION[CONST_SESSION_EMAIL]) == 1){
         if(isset($_REQUEST['del']))
         {
             if(isset($_REQUEST['id']) && !empty($_REQUEST['id'])){
-                //TODO sanitize inputs
-                $id = $_REQUEST['id'];
+                $id = sanitizeString($_REQUEST['id']);
                 deleteContact($id);
             }
             else{

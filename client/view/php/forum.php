@@ -21,6 +21,7 @@
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/forum.php");
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/sanitizeHelper.php");
   ?>
   
   <div>
@@ -64,33 +65,30 @@
 						// We show messages from it
 						showTopic(getForumTopicInfo($topicID));
 					}
-					else if(isset($_REQUEST["edit"])){//TODO sanitize inputs
+					else if(isset($_REQUEST["edit"])){
 						//edited
 						if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
-							editMessage($_REQUEST["messageId"], $_REQUEST["msg"]);
+							editMessage(sanitizeString($_REQUEST["messageId"]), sanitizeString($_REQUEST["msg"]));
 
 							// We're inside a topic
 							// We show messages from it
 							showTopic(getForumTopicInfo($topicID));
 						}
 						else{//want to edit
-							//TODO sanitize inputs
-							showTopic(getForumTopicInfo($topicID), $_REQUEST["messageId"]);
+							showTopic(getForumTopicInfo($topicID), sanitizeString($_REQUEST["messageId"]));
 						}
 					}
 				}
 				else{
 					//topic options
 					if(isset($_REQUEST["delete"])){
-						//TODO more check
 						deleteTopic($topicID);
 
 						listTopics();
 					}
 					else if(isset($_REQUEST["edit"])){
 						if(isset($_REQUEST["name"]) && !empty($_REQUEST["name"])){
-							//TODO sanitize inputs
-							editTopic($topicID, $_REQUEST["name"]);
+							editTopic($topicID, sanitizeString($_REQUEST["name"]));
 
 							showTopic(getForumTopicInfo($topicID));
 						}
@@ -100,8 +98,7 @@
 					}
 					else if(isset($_REQUEST["msg"]) && !empty($_REQUEST["msg"])){
 						// User is trying to add a message
-						//TODO sanitize input
-						$userMessage = $_REQUEST["msg"]; 
+						$userMessage = sanitizeString($_REQUEST["msg"]); 
 						addForumTopicMessage($topicID,$userID,$userMessage);
 
 						// We're inside a topic
@@ -144,7 +141,7 @@
 			$searchTxt = "";
 		}
 		else{
-			$searchTxt = $_REQUEST["searchTxt"];//TODO sanitize inputs
+			$searchTxt = sanitizeString($_REQUEST["searchTxt"]);
 		}
 
 		$nbPage = getForumTopicNbPages($searchTxt);
@@ -153,14 +150,14 @@
 			$page = 0;
 		}
 		else{
-			$page = min($_REQUEST["page"], $nbPage);//TODO sanitize inputs
+			$page = min(sanitizeString($_REQUEST["page"]), $nbPage);
 		}
 
 		if(!isset($_COOKIE["topicsPerPage"]) || empty($_COOKIE["topicsPerPage"])){
 			$topicsPerPage = "10";
 		}
 		else{
-			$topicsPerPage = $_COOKIE["topicsPerPage"];//TODO sanitize inputs
+			$topicsPerPage = sanitizeString($_COOKIE["topicsPerPage"]);
 		}
 		
 		$topics = getForumTopics($page, $searchTxt);
@@ -277,14 +274,14 @@ function showTopic($topic, $editedMessage="-1")
 		$page = 0;
 	}
 	else{
-		$page = min($_REQUEST["page"], $nbPage);//TODO sanitize inputs
+		$page = min(sanitizeString($_REQUEST["page"]), $nbPage);
 	}
 
 	if(!isset($_COOKIE["messagesPerPage"]) || empty($_COOKIE["messagesPerPage"])){
 		$messagesPerPage = "10";
 	}
 	else{
-		$messagesPerPage = $_COOKIE["messagesPerPage"];//TODO sanitize inputs
+		$messagesPerPage = sanitizeString($_COOKIE["messagesPerPage"]);
 	}
 
 	?>
