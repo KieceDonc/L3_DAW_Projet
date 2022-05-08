@@ -27,7 +27,7 @@ Petit Evan, Perion Maxence, Pinon Alexandre
 
 \newpage
 \section{Introduction}
-L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legend" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". 
+L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legends" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". Il se calque sur le fonctionnement de plusieurs sites de coaching en esport comme https://www.skill-capped.com/lol/ 
 Dans ce rapport, nous allons aborder tous les aspects de la conception de notre site, c'est-à-dire que nous allons aussi bien expliquer la modélisation, le modèle MVC utilisé et tout ce qui peut-être fait sur notre site. Il est important de rappeler qu'un site de formation en ligne ou site d'e-learning dans notre cas pour un jeu vidéo, permet aux utilisateurs de celui-ci de développer leurs compétences en participant à différents cours et discuter à propos de ce même cours dans un forum entre apprenants. Dans notre cas, nous donnons également la possibilité de créer un cours à qui le souhaite afin de partager son savoir et ses connaissances. 
 
 \section{La gestion du projet}
@@ -45,8 +45,15 @@ Les couleurs et le texte choisir avec le site : https://coolors.co/
 
 \section{L'architecture MVC}
 \subsection{Modèle}
+Dans notre projet, les Contrôleurs appellent les Modèles pour deux raisons: Aller chercher des données dans la base de donnée dans la plupart des cas, ou bien les fichiers XML stockés sur notre serveur.\\
+Dans ces deux cas, nous utilisons les fonctions natives à PHP qui permettent de dialoguer avec la base de données MySQL et de modifier, créer ou supprimer des fichiers sur le serveur.
 \subsection{Vue}
+Les vues permettent l'affichage des pages HTML au client grâce à php. Ce sont des fichiers PHP qui vérifient les droits de l'utilisateur courant grâce aux différents cookies, et sessions (est-ce un administrateur? est-il connecté?), et appelle diverses fonctions vis-à-vis de ces droits pour afficher certains éléments de la page : \\
+Un utilisateur connecté n'a pas besoin de voir le bouton "se connecter", un élève ne doit pas avoir accès au bouton "modifier le cours" ou "ajouter une leçon".\\ \\
+Lorsque certaines données ont besoin d'être récupérées, par exemple pour afficher le contenu d'un cours, le pseudo de tous les utilisateurs, etc... Un appel est fait au contrôleur correspondant.
 \subsection{Contrôleur}
+Les contrôleurs sont des fichiers PHP qui permettent de faire appel aux modèles via les vues. Les données récupérées sont souvent brutes (les tables clé-valeur qui sont retournées par MySQL par exemple)//
+Avec les contrôleurs, nous nous assurons que les données récupérées sont traitées et affichables à l'utilisateur afin que la vue puisse l'afficher correctement.
 
 \section{Les cours}
 \subsection{Quizz}
