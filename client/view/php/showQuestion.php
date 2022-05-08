@@ -107,6 +107,9 @@
                     </div>
                 </div>
         </div>
+        <div>
+            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
+        </div>
             <?php 
                 };
             }
@@ -115,8 +118,5 @@
                 echo "Dont have right to be here";
             }
             ?>
-        <div>
-            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
-        </div>
     </body>
 </html>
