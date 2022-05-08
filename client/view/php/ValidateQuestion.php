@@ -10,7 +10,7 @@ $Difficulty = $_GET["difficulté"];
 $isok=true;
 $Answer = $_GET["answer"];
 $chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$id.".xml");
-
+echo $id;
 if(simplexml_load_file($chemindossier)==true)
 {
 echo "ok";
