@@ -26,4 +26,4 @@ jobs:
           git checkout prod
           git pull origin prod 
           git status
-          echo ${{ secrets.PASSWORD }} | sudo -S chown -R ${{ secrets.USERNAME }}:${{ secrets.USERNAME }} /var/www/html/*
+          echo ${{ secrets.PASSWORD }} | sudo -S su -c "find /var/www/html/ | grep -v '^/var/www/html/client/view/php/compteur.txt\|^/var/www/html/.git\|^/var/www/html/.github\|^/var/www/html/quizxml' | xargs chown ${{ secrets.USERNAME }}:${{ secrets.USERNAME }}"
