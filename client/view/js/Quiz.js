@@ -17,6 +17,7 @@ function Choice()
         $(this).closest(".question").find(" .choice-container").css("background-color","#F3F5F7");
 
         $(this).closest(" .choice-container").css("background-color","#2B3B68");
+        $(this).closest(" .choice-container").css("background-color","#black");
         
         $(this).closest(".question").find(".choice-input").val(choice);
         $(this).closest(".question").find(".choice-valid").text("Selected answer : " + choice);
