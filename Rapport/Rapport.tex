@@ -45,11 +45,11 @@ Nous considérons le besoin de spécifier 4 acteurs chez les utilisateurs de not
 
 \textbf{L'internaute :} Il s'agit d'un simple visiteur du site. L'internaute n'a pas accès aux cours, mais seulement à la page d'accueil et la possibilité de s'inscrire.\\\\
 
-\textbf{L'utilisateur :} Correspond aux \textbf{Apprenants} dans l'énoncé du sujet. L'utilisateur est un internaute qui s'est connecté. Il est bon de noter que la connexion n'est possible qu'après l'inscription, ce qui fait apparaître la notion de <<include>> de UML. Nous considérons qu'un utilisateur a accès à tous les cours du site, et il peut créer les siens : Dans ce cas il devient l'Administrateur de son propre cours (voir plus bas).
+\textbf{L'utilisateur :} Correspond aux \textbf{Apprenants} dans l'énoncé du sujet. L'utilisateur est un internaute qui s'est connecté. Il est bon de noter que la connexion n'est possible qu'après l'inscription, ce qui fait apparaître la notion de $<<include>>$ de UML. Nous considérons qu'un utilisateur a accès à tous les cours du site, et il peut créer les siens : Dans ce cas il devient l'Administrateur de son propre cours (voir plus bas).
 L'utilisateur a accès à un panneau d'administration qui lui permet de gérer son profil, ajouter des cours, et aussi ajouter des ressources liées à son compte : Ce sont des images qu'il peut utiliser dans ses cours, et qui sont hébergées dans notre base de donnée (via des BLOBs). Enfin, il peut participer au forum (créer des topics, répondre à ceux des autres utilisateurs, etc...).
 Pour consulter un cours, un utilisateur doit s'y être inscrit. Cela permet à l'administrateur de savoir si son cours a du succès ou non.\\\\
 
-\textbf{L'administrateur :} Correspond au titre du même nom dans l'énoncé du sujet. Il s'agit du statut d'un utilisateur dans son propre cours. Il peut rajouter des leçons, les supprimer, gérer ses QCM, etc...\\\\
+\textbf{L'administrateur :} Correspond au titre du même nom dans l'énoncé du sujet. Il s'agit du statut d'un utilisateur dans son propre cours. Il peut rajouter des leçons, les supprimer, gérer ses QCM, etc... :  Afin de modéliser ces choix liés à la gestion d'un cours, encore une fois, nous pouvons profiter d'une notion d'UML. Cette fois-ci des $<<extends>>$ \\\\
 
 \textbf{Les Webmasters :} Un comité très réduit d'utilisateurs possédant tous les droits sur le site. Ils ont un accès total au code source, à la base de données, et ont accès à une page leur permettant de voir des messages que les utilisateur leur ont envoyé via un formulaire de contact.
 \newpage
