@@ -153,6 +153,8 @@ Afin de changer la langue il suffit de cliquer sur ce menu déroulant:
 \label{fig}
 \end{figure}
 
+Pour ce qui est de la partie pratique, nous avons dans la table "texts" de notre base de données inscrit toutes les traductions à la main, c'est-à-dire que pour une même phrase elle est enregistrée 2 fois, une fois sous sa traduction Française et une fois sous sa traduction Anglaise. Ensuite il nous suffit d'afficher la traduction souhaitée.
+
 \subsection{Thèmes}
 Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet d’abord de réduire la fatigue des yeux, de plus les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
 
@@ -190,6 +192,16 @@ Voici un aperçu de l'affichage en question:
 \end{figure}
 
 \subsection{Contacter le support du site}
+Finalement, pour tous utilisateurs ayant la moindre question que ce soit sur le site, un cours en particulier ou autres informations, alors l'utilisateur peut nous faire parvenir un message via la session "Contact" sur la page d'accueil. Pour procéder à sa requête il suffit de remplir les champs nécessaires. Si le message est correctement traité alors un message de confirmation d'envoi est affiché. A partir de ce moment nous allons distinguer 2 cas, le cas classique ou la demande est envoyé par un utilisateur, alors après la demande il n'a plus rien à faire. Et le second cas étant réservé aux Webmasters. En effet ils possèdent une catégorie supplémentaire dans la partie profil. Cette catégorie se nomme "Manage contacts" et elle permet tous simplement d'afficher l'ensemble des messages envoyé par les utilisateurs. Ces messages peuvent être supprimés par les Webmasters, mais ils sont également dans la possibilité de répondre à ces messages via l'adresse mail renseigné.\\
+
+Voici à quoi ressemble la page de gestion des messages:
+\begin{figure}[!h]
+\centerline{\includegraphics[width=16cm]{images/manageContact.PNG}}
+\caption{L'affichage des messages pour les Webmasters.}
+\label{fig}
+\end{figure}
+
+Dernièrement, les messages sont stockés dans la table "contact", et les Webmaster sont définis par un boolean dans la table "users" que nous avons ajoutée à la main.
 
 \section{Conclusion}
 
