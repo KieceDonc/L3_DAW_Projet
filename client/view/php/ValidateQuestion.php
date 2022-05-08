@@ -39,7 +39,14 @@ $Question->addChild("reponse",$Answer);
 
 print_r($xml);
 
-$xml->asXML($chemindossier);    
+if($xml->asXML($chemindossier)==true)
+{
+  echo "Bien fini";
+} 
+else 
+{
+  echo "dont work";
+}  
 }
 
 else {
