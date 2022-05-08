@@ -1,0 +1,72 @@
+body{
+    background-color: #F3F5F7;
+    font-family:'Titillium Web', sans-serif;
+}
+
+#Difficulty{
+    width:100px;
+    border : 0.1rem solid #1c2347;
+}
+
+#question{
+    width:400px;
+    border: 0.1rem solid #1c2347;
+}
+
+#GoodChoice {
+    width:100px;  
+    border: 0.1rem solid #1c2347;
+}
+
+#chapter {
+  margin-left: 50%;
+}
+
+label {
+  margin-left : 30%;
+}
+
+.choice-container {
+  margin-top:0.5rem;
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 60%;
+  font-size: 1.8rem;
+  margin-left: 20%;
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.choice-prefix {
+  padding: 1.5rem 2.5rem;
+  color: #1c2347;
+}
+
+.choice-text {
+  width: 100%;
+  background: transparent;
+  border:none;
+}
+
+.choice-text:hover {
+  width: 100%;
+  background: transparent;
+  border:none;
+}
+
+.choice-valid{
+    padding :1.5rem;
+    border:none;
+    text-align:center;
+    margin-left: 45%;
+}
+
+
+
+
+

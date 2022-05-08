@@ -8,12 +8,13 @@
 	<link rel="stylesheet" href="../css/sharedAdmin.css" />
     <link rel="stylesheet" href="../../client/view/css/font-face.css" />
     <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
+    <link rel="stylesheet" href="../css/addQ.css" />
   </head>
+
   <body>
 	<?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/courses.php");
-  ?>
+    ?>
         <div class="quiz">
             <form action="ValidateQuestion.php" method="get">
             <div class="question">

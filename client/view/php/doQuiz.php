@@ -7,16 +7,13 @@
         <link rel="stylesheet" href="../css/quiz.css">
         <link rel="stylesheet" href="../css/font-face.css" />
         <link rel="stylesheet" href="../css/shared.css" />
-        <link rel="stylesheet" href="../css/forum.css" />
     </head>
     
     <body>
         
-        <?php 
-        
+        <?php
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
         
-
         $NumChapter = $_GET['id'];
         $NumQuestion = 1;
 

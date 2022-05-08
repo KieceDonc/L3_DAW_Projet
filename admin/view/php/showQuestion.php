@@ -34,7 +34,7 @@
             {
                 unset($node[0]);
             }
-            $xml->asXML("quiz.xml");
+            $xml->asXML(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
         }
 
         function reorgonize($NumChapter)
@@ -50,7 +50,7 @@
                 $toreplace[$i-1]['id']=$i;
             }
 
-            $xml->asXML("quiz.xml");
+            $xml->asXML(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
         }
 
         if(isset($_GET['supprimer']))
