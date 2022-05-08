@@ -53,9 +53,10 @@ else {
     <title>E-lolning</title>
     
     <!-- CSS -->
-	  <link rel="stylesheet" href="../css/sharedAdmin.css" />
-    <link rel="stylesheet" href="../../client/view/css/font-face.css" />
-    <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
+	  <link rel="stylesheet" href="../css/font-face.css" />
+    <link rel="stylesheet" href="../css/shared.css" />
+    <link rel="stylesheet" href="../css/font-face.css" />
+    <link rel="stylesheet" href="../css/darkMode.css" />
   </head>
   <body>
 	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
