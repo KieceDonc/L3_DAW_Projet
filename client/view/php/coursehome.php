@@ -94,9 +94,6 @@ function printThemes($idsection){
     foreach($themes as $theme){
         $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
         echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - <a href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a></span></div>";
-        if($GLOBALS['isAdmin']){
-            <form class='orderSectionForm' action='addtheme.php?section=".$section['id']."&course=".$_GET['id']."&type=lesson' method='post'><input type='submit' value='+' class='addBtn' name='addBtn'></form>
-        }
         echo "</div>";
     }
 }
