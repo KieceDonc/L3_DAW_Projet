@@ -108,6 +108,12 @@ Lorsque certaines données ont besoin d'être récupérées, par exemple pour af
 Les contrôleurs sont des fichiers PHP qui permettent de faire appel aux modèles via les vues. Les données récupérées sont souvent brutes (les tables clé-valeur qui sont retournées par MySQL par exemple)\\\\
 Avec les contrôleurs, nous nous assurons que les données récupérées sont traitées et affichables à l'utilisateur afin que la vue puisse l'afficher correctement.
 
+\newpage
+\section{L'inscription/Connexion}
+Le principe ici est assez simple et s'inspire de tout site web moderne.Des expressions régulières ont été ajoutées pour pouvoir contrôler les entrées, du genre le nom et prénom ne doivent pas contenir autre chose que des lettres, le nom d'utilisateur ne doit contenir que des lettres et des chiffres.Un contrôle de présence de chacune des entrées à été mis en place (on peut pas s'inscrire sans email par exemple).
+
+Chaque erreur (si présente) est directement transmise à l'utilisateur pour qu'il puisse la corriger avant de pouvoir valider son inscription.
+
 \section{Les cours}
 \subsection{Quizz}
 Les quiz vont être proposés pour les apprenants. Les quiz doivent être sous le format XML, on va donc partir sur un document XML par cours .Celui-ci sera créer a la création du cours.
