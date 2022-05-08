@@ -45,8 +45,7 @@ if($xml->asXML($chemindossier)==true)
 else 
 {
   echo "dont work";
-  $test = $xml->asXML();
-  echo $test;
+  print_r($xml)
 }  
 }
 
