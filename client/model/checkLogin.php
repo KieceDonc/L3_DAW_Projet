@@ -5,8 +5,7 @@
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/sanitizeHelper.php");
 
   function checkLogin($email, $password){
-    // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
-    // pour éliminer toute attaque de type injection SQL et XSS
+
       $conn = getPDO();
 
       $password = sanitizeString($password);
