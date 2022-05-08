@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Dashboard - E-lolning</title>
-    
     <!-- CSS -->
 	<link rel="stylesheet" href="../css/sharedAdmin.css" />
     <link rel="stylesheet" href="../../client/view/css/font-face.css" />
@@ -50,7 +49,6 @@
                 </div>
             </div>
             </form>
-</div>
+        </div>
     </body>
-
 </html> 
