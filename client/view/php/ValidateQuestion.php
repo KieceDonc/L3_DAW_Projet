@@ -37,7 +37,6 @@ $choix4xml->addAttribute("id",4);
 
 $Question->addChild("reponse",$Answer);
 
-print_r($xml);
 
 if($xml->asXML($chemindossier)==true)
 {
@@ -46,6 +45,8 @@ if($xml->asXML($chemindossier)==true)
 else 
 {
   echo "dont work";
+  $test = $xml->asXML();
+  echo $test;
 }  
 }
 
