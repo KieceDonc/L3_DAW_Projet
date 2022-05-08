@@ -1,0 +1,47 @@
+form {
+    display: table;
+    padding-left: 20px;
+    margin: auto;
+}
+
+form div {
+    display: table-row;
+}
+
+form label, form input[visible], form textarea {
+    display: table-cell;
+    margin-bottom: 20px;
+}
+
+form label {
+    padding-right: 30px;
+}
+
+form textarea {
+    width:300px;
+    height:100px;
+}
+
+#submit {
+    color: #ffffff;
+    background-color: #2fa0f6;
+    min-width: 120px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    font-size: 1em;
+}
+
+table{
+    border-collapse: collapse;
+    width:100%;
+    text-align:center;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+tr, td{
+    padding: 8px;
+    border: 1px solid #2fa0f6;
+}

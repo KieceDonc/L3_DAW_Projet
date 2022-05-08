@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
 ?>
 
@@ -92,7 +89,7 @@ error_reporting(E_ALL);
 					}
 					else if(isset($_REQUEST["edit"])){
 						if(isset($_REQUEST["name"]) && !empty($_REQUEST["name"])){
-							//TODO sanitize inputs, checks
+							//TODO sanitize inputs
 							editTopic($topicID, $_REQUEST["name"]);
 
 							showTopic(getForumTopicInfo($topicID));

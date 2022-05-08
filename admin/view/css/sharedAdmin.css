@@ -175,3 +175,7 @@ footer ul {
   list-style-type: none;
   padding: 0px;
 }
+
+input:hidden{
+  display: none;
+}

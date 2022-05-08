@@ -15,6 +15,30 @@
   </head>
   <body>
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
+
+    <?php
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/contact.php");
+
+    $name = $_GET['name'];
+    $phone = $_GET['phone'];
+    $email = $_GET['email'];
+    $subject = $_GET['subject'];
+    $question = $_GET['question'];
+
+    if(isset($_GET['submit']))
+    {
+        if(insertContactDB($name, $phone, $email, $subject, $question) == true)
+        {
+            echo "<p style='color: red'>". getTranslation(107) ."</p>";
+        }
+        else
+        {
+            echo "<p style='color: red'>". getTranslation(108) ."</p>";
+        }
+    }
+    ?>
+
     <div id="mainContainer">
         <div id="imgContainer">
             <img src="../media/contact.jpg" alt="Contact img">
@@ -58,32 +82,6 @@
             </form>
         </div>
     </div>
-
-    <?php
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/pdo.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/contact.php");
-
-    $name = $_GET['name'];
-    $phone = $_GET['phone'];
-    $email = $_GET['email'];
-    $subject = $_GET['subject'];
-    $question = $_GET['question'];
-
-    if(isset($_GET['submit']))
-    {
-        if(insertContactDB($name, $phone, $email, $subject, $question) == true)
-        {
-            echo "<script>alert(\"Message envoyé avec succès\")</script>";
-            echo '<script>document.location.href="/client/view/php/index.php";</script>';
-            //echo "<script>alert(\'".getTranslation()."'\)</script>";
-        }
-        else
-        {
-            echo "<script>alert(\"Le message n'a pas peu être envoyé\")</script>";
-            //echo "<script>alert(\'".getTranslation()."'\)</script>";
-        }
-    }
-    ?>
 
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
       

@@ -7,8 +7,7 @@
 		die;
 	}
 
-	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/userInfo.php");
-	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/contactAdmin.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
 ?>
 
 <nav>
@@ -27,14 +26,15 @@
 		<li <?php if($filename == "mediaUpload") echo "class='selected'";?>><a href="mediaUpload"> Upload a media </a></li>
 		<li <?php if($filename == "mediaDisplay") echo "class='selected'";?>><a href="mediaDisplay"> Display your medias </a></li>
 		<?php 
-				if(isAnAdmin() == 1 and $filename == "manageContact")
+				if(getAdminID($_SESSION[CONST_SESSION_EMAIL]) == 1)
 				{
-					echo "<li class='selected'>";
-					echo '<a href="manageContact"> Manage contacts </a></li>';
-				}
-				else if(isAnAdmin() == 1)
-				{
-					echo "<li>";
+					if($filename == "manageContact"){
+						echo "<li class='selected'>";
+					}
+					else{
+						echo "<li>";
+					}
+					
 					echo '<a href="manageContact"> Manage contacts </a></li>';
 				}
 		?>

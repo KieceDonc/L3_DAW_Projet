@@ -163,9 +163,9 @@
     }
 
     function getAdminID($email){
-        // we check if we already stored the lastname
+        // we check if we already stored the admin state
         if(!isset($_SESSION[CONST_SESSION_USERSTORED_ADMIN])){
-            // No, we need to query lastname
+            // No, we need to query admin state
             $admin = getDBAdmin($email);
 
             // Has db returned error ?
@@ -173,9 +173,9 @@
                 
                 // we store the admin value so we don't have to recall and spam db querry
                 $_SESSION[CONST_SESSION_USERSTORED_ADMIN] = $admin; 
-                return $birthdate;
+                return $admin;
             }else{
-                var_dump($birthdate);
+                var_dump($admin);
                 // TODO: You're trying to get admin value but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
