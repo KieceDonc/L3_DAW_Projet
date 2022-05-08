@@ -7,7 +7,7 @@ if [ "$#" -eq 1 ]; then
 fi
 
 
-rsync -rvc --delete ../* $USER@daw.privatedns.org:/var/www/html/
+rsync -rvc --delete --exclude quizxml --exclude compteur.txt ../* $USER@daw.privatedns.org:/var/www/html/
 echo '----------'
 echo ''
 echo '   done'
