@@ -26,11 +26,11 @@ for($i = 1;$i<=$number;$i++)
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>E-lolning</title>    
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/font-face.css" />
-        <link rel="stylesheet" href="../css/shared.css" />>
+        <link rel="stylesheet" href="../css/shared.css" />
+        <link rel="stylesheet" href="../css/font-face.css" />
+        <link rel="stylesheet" href="../css/darkMode.css" />
     </head>
     <body>
          
@@ -41,7 +41,7 @@ for($i = 1;$i<=$number;$i++)
 
         <div class="chapter">You have ended the test for the chapter <?php  $RequestAnswer =$xml->xpath("//Questionnaire/@Nom"); echo $RequestAnswer[0][0]; ?> </div>
         <div class="Note">You have <?php echo $NiceAnswer." on ".$number ; ?></div>
-        <a href="daw.privatedns.org">Go back</button>
+        <a href="/courses">Go to courses</button>
         
         <script src="../../../../shared/js/jquery.js"></script>
         <script src="../js/shared.js"></script>
