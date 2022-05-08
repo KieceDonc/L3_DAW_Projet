@@ -31,7 +31,7 @@ L'objectif de ce projet a été de réaliser un site de formation destiné à de
 Dans ce rapport, nous allons aborder tous les aspects de la conception de notre site, c'est-à-dire que nous allons aussi bien expliquer la modélisation, le modèle MVC utilisé et tout ce qui peut-être fait sur notre site. Il est important de rappeler qu'un site de formation en ligne ou site d'e-learning dans notre cas pour un jeu vidéo, permet aux utilisateurs de celui-ci de développer leurs compétences en participant à différents cours et discuter à propos de ce même cours dans un forum entre apprenants. Dans notre cas, nous donnons également la possibilité de créer un cours à qui le souhaite afin de partager son savoir et ses connaissances. 
 
 \section{La gestion du projet}
-Qui a fait quoi ? Comment on a repartie les taches ? Reunion ? Trello qui a permis d'organiser l'ensemble
+Qui a fait quoi ? Comment on a repartie les taches ? Reunion ? Trello qui a permis d'organiser l'ensemble, méthodes scrum...
 
 \section{La modélisation}
 La problématique de la modélisation s'est centrée autour de deux points : Le diagramme use-case afin de pouvoir discerner toutes les fonctionnalités à implémenter, ainsi que le diagramme relationnel afin de s'assurer d'avoir un schéma de données correctement normalisé et logique avant même d'y stocker des données.\\
@@ -144,7 +144,14 @@ Le forum permet la discussion entre apprenants. Il est global et les utilisateur
 
 \section{Les options}
 \subsection{Multilingue}
-FR et EN pour tous les utilisateurs 
+La première option que nous avons implémentée est tous simplement un site multilingue ou plurilingue. Les différentes langues implémentées sont le Français et l'Anglais pour tous les utilisateurs, nous avons fait cet ajout dans un souci d'utilisation étrangère de notre site. En effet nous sommes basés sur un jeu de renommée mondiale avec plusieurs milliers de millions d'utilisateurs annuels, et forcément parmi tous ces utilisateurs tous ne parle pas couramment Français. Alors l'Anglais est fait pour ça car pour rappel c'est la langue universelle.\\
+
+Afin de changer la langue il suffit de cliquer sur ce menu déroulant:
+\begin{figure}[!h]
+\centerline{\includegraphics[width=4cm]{images/menuLangues.PNG}}
+\caption{Les différentes langues proposées.}
+\label{fig}
+\end{figure}
 
 \subsection{Thèmes}
 Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet d’abord de réduire la fatigue des yeux, de plus les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
@@ -155,8 +162,8 @@ Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
     \includegraphics[width=4cm]{images/boutonThemeClaire.PNG}
     \includegraphics[width=4cm]{images/boutonThemeSombre.PNG}
 }
-\caption{Bouton en mode thème clair}
-\caption{Bouton en mode thème sombre}
+\caption{Bouton en mode thème clair.}
+\caption{Bouton en mode thème sombre.}
 \label{fig}
 \end{figure}
 
@@ -173,7 +180,16 @@ Pour illustrer ce qui a précédemment été vue, voyons avec un exemple concret
 Si le thème clair est utilisé alors la couleur de fond aura pour valeur FFFFFF c'est-à-dire blanc, et dans le cas contraire pour le thème sombre la couleur de fond aura pour valeur 000000 c'est-à-dire noir.
 
 \subsection{Décompte des visiteurs}
-Dans une dynamique de création d'options agréables pour tous, nous avons intégré un compteur du nombre de visiteur, ce compteur est affiché dès l'arrivée de l'utilisateur sur la page d'accueil. Afin de stocker le nombre de visiteur de notre site nous l'avons fait via un fichier et non base de données car PHP permet la gestion de ce genre de petit fichier. Le fichier se nomme tout simplement "compteur.txt" et contient le nombre de visiteurs.
+Dans une dynamique de création d'options agréables pour tous, nous avons intégré un compteur du nombre de visiteur, ce compteur est affiché dès l'arrivée de l'utilisateur sur la page d'accueil. Afin de stocker le nombre de visiteur de notre site nous l'avons fait via un fichier et non base de données car PHP permet la gestion de ce genre de petit fichier. Le fichier se nomme tout simplement "compteur.txt" et contient le nombre de visiteurs.\\
+
+Voici un aperçu de l'affichage en question: 
+\begin{figure}[!h]
+\centerline{\includegraphics[width=8cm]{images/numberVisiteurs.PNG}}
+\caption{L'affichage du nombre de visiteur.}
+\label{fig}
+\end{figure}
+
+\subsection{Contacter le support du site}
 
 \section{Conclusion}
 
