@@ -2,18 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Dashboard - E-lolning</title>
+    <title>E-lolning</title>
     <!-- CSS -->
-	<link rel="stylesheet" href="../css/sharedAdmin.css" />
     <link rel="stylesheet" href="../../client/view/css/font-face.css" />
     <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
     <link rel="stylesheet" href="../css/addQ.css" />
   </head>
 
   <body>
-	<?php 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
-    ?>
+    <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
+    
         <div class="quiz">
             <form action="ValidateQuestion" method="get">
             <div class="question">

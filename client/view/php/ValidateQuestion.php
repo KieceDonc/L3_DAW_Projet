@@ -50,7 +50,7 @@ else {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Dashboard - E-lolning</title>
+    <title>E-lolning</title>
     
     <!-- CSS -->
 	  <link rel="stylesheet" href="../css/sharedAdmin.css" />
@@ -58,9 +58,7 @@ else {
     <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
   </head>
   <body>
-	<?php 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
-    ?>
+	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
         <div>You have entered a question for the chapter <?php echo $id ."</div>";?>
         <a href="addQuestion?id=<?php echo $id; ?>">Re add question</a>
 
