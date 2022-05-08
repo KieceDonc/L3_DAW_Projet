@@ -5,8 +5,7 @@
     <title>Dashboard - E-lolning</title>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/coursesAdmin.css" />
-	  <link rel="stylesheet" href="../css/sharedAdmin.css" />
+	<link rel="stylesheet" href="../css/sharedAdmin.css" />
     <link rel="stylesheet" href="../../client/view/css/font-face.css" />
     <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
   </head>
@@ -21,7 +20,7 @@
                 <input id="chapter" name="idchapter" placeholder="Entrez l'id du chapitre" pattern="[1-9]" value="<?php echo $_GET['id']; ?>" type="hidden" readonly="readonly""/>
 </br>
                 <label>Entrez votre question : </label>
-                <input id="question" name="question" type=text placeholder="Entrez votre question"/>
+                <input id="question" name="question" type=text placeholder="Entrez"/>
 </br>
                 <label>Entrez la difficulte : </label>
                 <input id="Difficulty" name="difficulté" type=text placeholder="Entrez la difficulté" pattern="[1,2,3]" maxlength="1" />
@@ -50,8 +49,7 @@
                 </div>
             </div>
             </form>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</div>
     </body>
 
 </html> 

@@ -9,10 +9,11 @@ $ques = $_GET["question"];
 $Difficulty = $_GET["difficulté"];
 $isok=true;
 $Answer = $_GET["answer"];
+$cheminfichier = ($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$id.".xml";
 
-if(simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$id.".xml"==true)
+if(simplexml_load_file($cheminfichier)==true)
 {
-$xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$id.".xml");
+$xml = simplexml_load_file($cheminfichier);
 $number = $xml->xpath("//Questionnaire[@chapitre={$id}]/question");
 $number = count($number);
 
@@ -36,7 +37,7 @@ $choix4xml->addAttribute("id",4);
 
 $Question->addChild("reponse",$Answer);
 
-$xml->asXML($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$id.".xml");    
+$xml->asXML($cheminfichier);    
 }
 
 else {
@@ -52,7 +53,6 @@ else {
     <title>Dashboard - E-lolning</title>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/coursesAdmin.css" />
 	<link rel="stylesheet" href="../css/sharedAdmin.css" />
     <link rel="stylesheet" href="../../client/view/css/font-face.css" />
     <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
@@ -60,7 +60,6 @@ else {
   <body>
 	<?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/courses.php");
     ?>
         <div class="AddQuestion"> You have entered a question for the chapter <?php echo $id ."</div>";?>
         <a href="addQuestion.php?id=<?php echo $id; ?>">Re add question</a>
