@@ -12,8 +12,6 @@
   <body>
 	<?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
-    ?>
-    <?php 
         
         $NumChapter = $_GET['id'];
         $NumQuestion=1;

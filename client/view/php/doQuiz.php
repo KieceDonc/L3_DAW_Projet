@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Quiz</title>    
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="cssQuiz.css">
+        <link rel="stylesheet" href="../css/quiz.css">
         <link rel="stylesheet" href="../css/font-face.css" />
         <link rel="stylesheet" href="../css/shared.css" />
         <link rel="stylesheet" href="../css/forum.css" />
@@ -68,6 +68,6 @@
         </div>
         <script src="../../../../shared/js/jquery.js"></script>
         <script src="../js/shared.js"></script>
-        <script src="Quiz.js"></script>
+        <script src="../js/Quiz.js"></script>
     </body>
 </html>

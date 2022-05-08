@@ -1,44 +1,86 @@
 body{
-    background-color: #F3F5F7;
-    font-family:'Titillium Web', sans-serif;
+  background-color: #F3F5F7;
+  font-family:'Titillium Web', sans-serif;
 }
 
 #info{
-  text-align: center;
+text-align: center;
 }
 
 h1{
-  text-align: center;
+text-align: center;
 }
 
 .choice-container {
-  display: flex;
-  margin-bottom: 0.5rem;
-  width: 100%;
-  font-size: 1.8rem;
-  border: 0.1rem solid #1c2347;
+display: flex;
+margin-bottom: 0.3rem;
+width: 65%;
+font-size: 1.2rem;
+border: 0.1rem solid #1c2347;
+margin-left:15%;
+
 }
 
 .choice-container:hover {
-  cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
-  transform: translateY(-0.1rem);
-  transition: transform 150ms;
+cursor: pointer;
+box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+transform: translateY(-0.1rem);
+transition: transform 150ms;
 }
 
 .choice-prefix {
-  padding: 1.5rem 2.5rem;
-  color: #1c2347;;
+padding: 0.5rem 2.5rem;
+color: #1c2347;
 }
 
 .choice-text {
-  padding: 1.5rem;
+padding: 0.5rem;
+width: 100%;
+}
+
+.choice-valid{ 
   width: 100%;
+  text-align: center;
 }
 
-.choice-valid{
-    
-    width: 100%;
-    text-align: center;
+.choice-input {
+background: transparent;
+text-decoration: none;
+border : 0px;
+color:black; 
 }
 
+.SubmitBtn {
+display: flex;
+margin-bottom: 0.5rem;
+width: 65%;
+font-size: 1.8rem;
+border: 0.1rem solid #1c2347;
+text-align: justify;
+font-family:'Titillium Web', sans-serif;
+padding: 1.5rem;
+margin-left: 15%;
+margin-top : 1rem;
+}
+
+.SubmitBtn:hover{
+cursor: pointer;
+box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+transform: translateY(-0.1rem);
+transition: transform 150ms;
+}
+
+.chapter 
+{
+font-family: 'Titillium Web',sans-serif;
+margin-bottom: 0.5rem;
+text-align: center;
+padding :1.5rem;
+}
+
+.Note {
+font-family: 'Titillium Web',sans-serif;
+margin-bottom: 0.5rem;
+text-align: center;
+padding :1.5rem;
+}
