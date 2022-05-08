@@ -28,7 +28,7 @@
             <div id="info">
                 <div id="chapter">Chapitre <?php echo $NumChapter." : "; $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/@Nom"); echo $array[0][0] ?></div>
             </div>
-            <form action="finishquiz.php" method="get">
+            <form action="finishquiz" method="get">
             <?php
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
             ?>
