@@ -42,7 +42,11 @@ print_r($xml);
 if($xml->asXML($chemindossier)==true)
 {
   echo "Bien fini";
-}   
+} 
+else 
+{
+  echo "dont work";
+}  
 }
 
 else {
