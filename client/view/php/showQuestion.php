@@ -107,11 +107,12 @@
                     </div>
                 </div>
         </div>
-        <div>
-            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
-        </div>
             <?php 
-                };
+            };?>
+            <div>
+            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
+            </div>
+            <?php
             }
             else 
             {
