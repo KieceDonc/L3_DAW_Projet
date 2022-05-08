@@ -22,13 +22,19 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 <body>
   <?php
   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
-  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/addtheme.php");
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/theme.php");
   ?>
 
-  <h1>Add a theme:</h1>
-
   <?php
-    echo "<form >"
+    echo "<form><label for='lessonContent'>Type your lesson :</label>
+
+    <div id='lessonDiv'><textarea id='lessonContent' name='lessonContent' value=''></textarea></div>
+    </form>
+    <ul>
+      <li>".getTranslation(96)."</li>
+      <li>".getTranslation(97)."</li>
+      <li>".getTranslation(98)."</li>
+    </ul>"
   ?>
 
   <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>

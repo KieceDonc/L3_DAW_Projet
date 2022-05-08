@@ -24,9 +24,6 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 
     if($_GET['type'] = "lesson")
         printLesson();
-    else
-        printQuizz();
-
     ?>
 
     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
@@ -48,11 +45,6 @@ function printLesson(){
     echo "<h1> LESSON </h1>";
     echo "<div id='lesson'>". convert(getContent($_GET['id'])) . "</div>";
 
-}
-
-
-function printQuizz(){
-    echo "<h1> QUIZZ </h1>";
 }
 
 ?>

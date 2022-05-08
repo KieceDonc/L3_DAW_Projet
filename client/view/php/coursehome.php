@@ -95,9 +95,7 @@ function printThemes($idsection){
     $themes = getThemes($idsection);
     foreach($themes as $theme){
         $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
-        if($theme["type"]=="quizz")
-            $icon = "<img src='../media/quizz.png' alt='quizz icon' class='icon'>";
-        echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - <a href='/theme?id=" . $theme["id"] . "&type=".$theme["type"]."' class='courselink'>" . $theme["name"] . "</a></span></div>";
+        echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - <a href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a></span></div>";
     }
 }
 
