@@ -84,7 +84,7 @@
         {
     ?>
         <div class = "question">
-        <h1><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/intitule");echo $array[0][0] ?></h1>
+        <h1><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/intitule");echo "Question".$array[0][0] ?></h1>
                 <div class="choice">
                     <div class="choice-container">
                         <p class="choice-prefix">A.</p>
@@ -101,6 +101,10 @@
                     <div class="choice-container">
                         <p class="choice-prefix">D.</p>
                         <p class="choice-text" id="4" numberQ="<?php echo $NumQuestion; ?>"><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/choix[@id='4']");echo $array[0][0] ?></p>
+                    </div>
+                    <div class="choice-container">
+                        <p class="choice-prefix">Reponse.</p>
+                        <p class="choice-text" id="5" numberQ="<?php echo $NumQuestion; ?>"><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/reponse]");echo $array[0][0] ?></p>
                     </div>
                     <div class="choice-container">
                         <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>&supprimer=true&idQ=<?php echo $NumQuestion ?>">Supprimer la question</a>
