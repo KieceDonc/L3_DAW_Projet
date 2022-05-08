@@ -5,3 +5,5 @@ dev/*
 .vs/*
 *.bak
 quizxml/*
+quizxml
+client/view/php/compteur.txt
