@@ -2,6 +2,12 @@
 
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/Xml.php"); 
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/ValidateQuestion.php");
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/coursesInfo.php");
+
+$isAdmin = isAdmin($_GET['idchapter']);
+$isStudent = isInCourse($_GET["idchapter"]);
 
 $choice1 = $_GET['choice1'];
 $choice2 = $_GET['choice2'];
@@ -13,9 +19,10 @@ $ques = $_GET["question"];
 $Difficulty = $_GET["difficulté"];
 $isok=true;
 $Answer = $_GET["answer"];
-
+if($GLOBALS['isAdmin'])
+{
 addQuestion($id,$ques,$Difficulty,$isok,$Answer,$choice1,$choice2,$choice3,$choice4);
-
+}
 
 ?>
 
@@ -33,7 +40,7 @@ addQuestion($id,$ques,$Difficulty,$isok,$Answer,$choice1,$choice2,$choice3,$choi
     <link rel="stylesheet" href="../css/darkMode.css" />
   </head>
   <body>
-	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
+	      <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
         <div>You have entered a question for the chapter <?php echo $id ."</div>";?>
         <a href="addQuestion?id=<?php echo $id; ?>">Re add question</a>
         </br>
