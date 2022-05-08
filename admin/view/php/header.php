@@ -8,6 +8,7 @@
 	}
 
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/userInfo.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/contactAdmin.php");
 ?>
 
 <nav>
@@ -25,7 +26,18 @@
 		<li <?php if($filename == "courseBuilder") echo "class='selected'";?>><a href="courseBuilder"> Create a new course </a></li>
 		<li <?php if($filename == "mediaUpload") echo "class='selected'";?>><a href="mediaUpload"> Upload a media </a></li>
 		<li <?php if($filename == "mediaDisplay") echo "class='selected'";?>><a href="mediaDisplay"> Display your medias </a></li>
-		<li <?php if($filename == "manageContact") echo "class='selected'";?>><a href="manageContact"> Manage contacts </a></li>
+		<?php 
+				if(isAnAdmin() == 1 and $filename == "manageContact")
+				{
+					echo "<li class='selected'>";
+					echo '<a href="manageContact"> Manage contacts </a></li>';
+				}
+				else if(isAnAdmin() == 1)
+				{
+					echo "<li>";
+					echo '<a href="manageContact"> Manage contacts </a></li>';
+				}
+		?>
 	</ul>
 </nav>
 <div class="content">

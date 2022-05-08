@@ -15,8 +15,6 @@ function deleteTableFromContactDB($name, $subject){
 function printContactDB(){
     $conn = getPDO();
 
-    //<--TODO print infos for admin TODO-->
-
     // PREPARED QUERY - Print infos about contact table
     $querystring = "SELECT * FROM contact";
     $query = $conn->prepare( $querystring );
