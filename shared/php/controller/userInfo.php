@@ -1,7 +1,4 @@
 <?php
-
-    // TODO : generalize ( but can we ? ). Plz see in model userInfo.php to see how it was generalize
-
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/model/userInfo.php");
 
@@ -30,7 +27,7 @@
                 return $userID;
             }else{
                 var_dump($userID);
-                // TODO: You're trying to get userID but DB say you don't have a user for this email. 
+                // You're trying to get userID but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
         }else{
@@ -53,7 +50,7 @@
                 return $username;
             }else{
                 var_dump($username);
-                // TODO: You're trying to get username but DB say you don't have a user for this email. 
+                //  You're trying to get username but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
         }else{
@@ -78,7 +75,7 @@
                 return $firstname;
             }else{
                 var_dump($firstname);
-                // TODO: You're trying to get firstname but DB say you don't have a user for this email. 
+                // You're trying to get firstname but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
         }else{
@@ -104,7 +101,7 @@
                 return $lastname;
             }else{
                 var_dump($lastname);
-                // TODO: You're trying to get lastname but DB say you don't have a user for this email. 
+                // You're trying to get lastname but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
         }else{
@@ -128,7 +125,7 @@
                 return $birthdate;
             }else{
                 var_dump($birthdate);
-                // TODO: You're trying to get birthdate but DB say you don't have a user for this email. 
+                // You're trying to get birthdate but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
         }else{
@@ -152,7 +149,7 @@
                 return $password;
             }else{
                 var_dump($password);
-                // TODO: You're trying to get password but DB say you don't have a user for this email. 
+                // You're trying to get password but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
         }else{
@@ -176,7 +173,7 @@
                 return $admin;
             }else{
                 var_dump($admin);
-                // TODO: You're trying to get admin value but DB say you don't have a user for this email. 
+                // You're trying to get admin value but DB say you don't have a user for this email. 
                 // Btw if this happend, good luck :) 
             }
         }else{
