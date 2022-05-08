@@ -9,7 +9,7 @@ $ques = $_GET["question"];
 $Difficulty = $_GET["difficulté"];
 $isok=true;
 $Answer = $_GET["answer"];
-$chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$NumChapter.".xml");
+$chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$id.".xml");
 
 if(simplexml_load_file($chemindossier)==true)
 {
