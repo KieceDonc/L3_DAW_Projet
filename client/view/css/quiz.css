@@ -1,6 +1,5 @@
 body{
-  background-color: var(--handler-lvl-2-color);
-  color: var(--text-color-lvl-2);
+  background-color: #F3F5F7;
   font-family:'Titillium Web', sans-serif;
 }
 
@@ -17,7 +16,7 @@ display: flex;
 margin-bottom: 0.3rem;
 width: 65%;
 font-size: 1.2rem;
-border: 0.1rem solid var(--handler-lvl-3-color);;
+border: 0.1rem solid #1c2347;
 margin-left:15%;
 
 }
@@ -48,7 +47,7 @@ width: 100%;
 background: transparent;
 text-decoration: none;
 border : 0px;
-color: var(--text-color-lvl-2);; 
+color:black; 
 }
 
 .SubmitBtn {
@@ -56,7 +55,7 @@ display: flex;
 margin-bottom: 0.5rem;
 width: 65%;
 font-size: 1.8rem;
-border: 0.1rem solid var(--handler-lvl-3-color);;
+border: 0.1rem solid #1c2347;
 text-align: justify;
 font-family:'Titillium Web', sans-serif;
 padding: 1.5rem;

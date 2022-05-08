@@ -4,8 +4,6 @@
         <title>E-lolning</title>    
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/font-face.css" />
-        <link rel="stylesheet" href="../css/shared.css" />
-        <link rel="stylesheet" href="../css/font-face.css" />
         <link rel="stylesheet" href="../css/darkMode.css" />
         <link rel="stylesheet" href="../css/shared.css" />
         <link rel="stylesheet" href="../css/quiz.css" />
