@@ -26,6 +26,8 @@
         $xml = simplexml_load_file($chemindossier);
         }
 
+        $xml = simplexml_load_file($chemindossier);
+        
         function supprimer($a,$NumChapter)
         {
             $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
