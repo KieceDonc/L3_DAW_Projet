@@ -13,8 +13,14 @@
   </head>
   <body>
 	<?php 
-         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
-        
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/coursesInfo.php");
+
+        $isAdmin = isAdmin($_GET['id']);
+        $isStudent = isInCourse($_GET["id"]);
+
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
@@ -72,7 +78,8 @@
         echo "<div class='ChapterName'>Voici le quiz pour le chapitre : ";
         $array=$xml->xpath("//Questionnaire/@Nom");
         echo $array[0][0]."</div>";
-
+        if($GLOBALS['isAdmin'])        
+        {
         for($NumQuestion;$NumQuestion<=$number;$NumQuestion++)
         {
     ?>
@@ -102,6 +109,11 @@
         </div>
             <?php 
                 };
+            }
+            else 
+            {
+                echo "Dont have right to be here";
+            }
             ?>
         <div>
             <a href="addQuestion?id=<?php echo $NumChapter; ?>">Rajouter une question</a>

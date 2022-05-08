@@ -12,7 +12,18 @@
   </head>
 
   <body>
-    <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
+    <?php
+     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
+     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
+     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/coursesInfo.php");
+ 
+     $isAdmin = isAdmin($_GET['id']);
+     $isStudent = isInCourse($_GET["id"]);
+     
+     if($GLOBALS['isAdmin'])
+     {
+     ?>
     
         <div class="quiz">
             <form action="ValidateQuestion" method="get">
@@ -50,5 +61,11 @@
             </div>
             </form>
         </div>
+        <?php 
+     }
+     else
+     {
+         echo "<div>dont have permission to be here</div>";
+     }
     </body>
 </html> 

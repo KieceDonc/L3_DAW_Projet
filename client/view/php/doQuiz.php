@@ -14,6 +14,13 @@
         
         <?php
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/coursesInfo.php");
+
+    
+        $isAdmin = isAdmin($_GET['id']);
+        $isStudent = isInCourse($_GET["id"]);
         
         $NumChapter = $_GET['id'];
         $NumQuestion = 1;
@@ -30,6 +37,8 @@
             </div>
             <form action="finishquiz" method="get">
             <?php
+            if($GLOBALS['isStudent'])
+            {
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
             ?>
             <div class="question">
@@ -59,6 +68,7 @@
             </div>
             <?php 
                 };
+            };
             ?>
             <input type="submit" value = "Submit" class="SubmitBtn"/>    
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
