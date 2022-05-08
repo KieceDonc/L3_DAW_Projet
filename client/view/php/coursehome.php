@@ -72,7 +72,7 @@ function printSections()
     // TODO : Give access to links guiding to themes only if the user takes the class.
     $sections = getSections();
     foreach($sections as $section){
-        echo "<div> Section " . $section['ord'] . " - " . $section['name'] ;
+        echo "<div>Section " . $section['ord'] . " - " . $section['name'] ;
 
         // Adding ^ and v buttons for each sections, allowing reordering the sections
         if($GLOBALS['isAdmin']){
