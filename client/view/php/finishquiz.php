@@ -1,19 +1,18 @@
 <?php 
 
-
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/Xml.php"); 
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/xml.php");
 
 $NumChapter = $_GET["numchapter"];
-$xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
+$xml = GetXml($NumChapter);
 
-$number = $xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question");
-$number = count($number);
+$number = getCountXML($xml,$NumChapter);
 
 $NiceAnswer = 0;
 
 for($i = 1;$i<=$number;$i++)
 {
-    $RequestAnswer =$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$i}]/reponse");
-    $RequestAnswer = $RequestAnswer[0][0];
+    $RequestAnswer = getReponse($xml,$i,$NumChapter);
 
     if($_GET["choice{$i}"]==$RequestAnswer)
     {

@@ -16,7 +16,8 @@
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/coursesInfo.php");
-
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/Xml.php"); 
+        require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/xml.php");
     
         $isAdmin = isAdmin($_GET['id']);
         $isStudent = isInCourse($_GET["id"]);
@@ -24,15 +25,13 @@
         $NumChapter = $_GET['id'];
         $NumQuestion = 1;
 
-        $xml = simplexml_load_file(realpath(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml"));
+        $xml = GetXml($NumChapter);
 
-        $number = $xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question");
-        $number = count($number);
-        $RequestAnswer =$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/reponse");
+        $number = getCountXml($xml,$NumChapter);
         ?>
         <div class="quiz">
             <div id="info">
-                <div id="chapter">Chapitre <?php echo $NumChapter." : "; $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/@Nom"); echo $array[0][0] ?></div>
+                <div id="chapter">Chapitre <?php echo $NumChapter." : "; echo getName($xml) ?></div>
             </div>
             <form action="finishquiz" method="get">
             <?php
@@ -41,23 +40,23 @@
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
             ?>
             <div class="question">
-                <h1><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/intitule");echo $array[0][0] ?></h1>
+                <h1><?php echo getQuestion($xml,$NumQuestion,$NumChapter) ?></h1>
                 <div class="choice">
-                    <div class="choice-container">
+                <div class="choice-container">
                         <p class="choice-prefix">A.</p>
-                        <p class="choice-text" id="1" numberQ="<?php echo $NumQuestion; ?>"><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/choix[@id='1']");echo $array[0][0] ?></p>
+                        <p class="choice-text" id="1" numberQ="<?php echo $NumQuestion; ?>"><?php echo getChoice($NumQuestion,$xml,'1',$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
                         <p class="choice-prefix">B.</p>
-                        <p class="choice-text" id="2" numberQ="<?php echo $NumQuestion; ?>"><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/choix[@id='2']");echo $array[0][0] ?></p>
+                        <p class="choice-text" id="2" numberQ="<?php echo $NumQuestion; ?>"><?php echo getChoice($NumQuestion,$xml,'2',$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
                         <p class="choice-prefix">C.</p>
-                        <p class="choice-text" id="3" numberQ="<?php echo $NumQuestion; ?>"><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/choix[@id='3']");echo $array[0][0] ?></p>
+                        <p class="choice-text" id="3" numberQ="<?php echo $NumQuestion; ?>"><?php echo getChoice($NumQuestion,$xml,'3',$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
                         <p class="choice-prefix">D.</p>
-                        <p class="choice-text" id="4" numberQ="<?php echo $NumQuestion; ?>"><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/choix[@id='4']");echo $array[0][0] ?></p>
+                        <p class="choice-text" id="4" numberQ="<?php echo $NumQuestion; ?>"><?php echo getChoice($NumQuestion,$xml,'4',$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
                         <p class="choice-valid">Choose a Answer :</p>
