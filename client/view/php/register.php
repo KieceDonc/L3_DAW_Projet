@@ -109,7 +109,7 @@
                     case CONST_ERR_EMPTY:
                         echoError(getTranslation(51));
                         break;
-                    case CONST_ERR_ALREADYEXISTS:
+                    case CONST_ERR_FORBIDDENCHARS:
                         echoError(getTranslation(52));
                         break;
                 }
