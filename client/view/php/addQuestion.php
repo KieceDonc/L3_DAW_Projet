@@ -67,5 +67,6 @@
      {
          echo "<div>dont have permission to be here</div>";
      }
+     ?>
     </body>
 </html> 
