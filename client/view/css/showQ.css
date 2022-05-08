@@ -23,11 +23,14 @@
   display: flex;
   width: 60%;
   font-size: 1.8rem;
-  margin-left: 30%;
 }
 
 .choice-prefix {
   padding: 1.5rem 2.5rem;
+}
+
+a {
+  text-align: center;
 }
 
 
