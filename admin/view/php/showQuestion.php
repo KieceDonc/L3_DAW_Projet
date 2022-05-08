@@ -6,21 +6,20 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="../css/coursesAdmin.css" />
-	  <link rel="stylesheet" href="../css/sharedAdmin.css" />
+	<link rel="stylesheet" href="../css/sharedAdmin.css" />
     <link rel="stylesheet" href="../../client/view/css/font-face.css" />
     <link rel="stylesheet" href="../../client/view/css/darkMode.css" />
   </head>
   <body>
 	<?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/courses.php");
     ?>
     <?php 
         
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
-        $chemindossier ="../../quizxml/quiz".$NumChapter.".xml";
+        $chemindossier =($_SERVER["DOCUMENT_ROOT"])."quizxml/quiz".$NumChapter.".xml";
 
         if (simplexml_load_file($chemindossier)==false)
         {

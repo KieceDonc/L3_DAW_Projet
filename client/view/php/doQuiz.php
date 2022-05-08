@@ -66,8 +66,8 @@
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
             </form>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="jquery.js"></script>
+        <script src="../../../../shared/js/jquery.js"></script>
+        <script src="../js/shared.js"></script>
         <script src="Quiz.js"></script>
     </body>
 </html>
