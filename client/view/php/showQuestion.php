@@ -103,7 +103,7 @@
                         <p class="choice-text" id="4" numberQ="<?php echo $NumQuestion; ?>"><?php $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$NumQuestion}]/choix[@id='4']");echo $array[0][0] ?></p>
                     </div>
                     <div class="choice-container">
-                        <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>supprimer=true&idQ=<?php echo $NumQuestion ?>">Supprimer la question</a>
+                        <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>&supprimer=true&idQ=<?php echo $NumQuestion ?>">Supprimer la question</a>
                     </div>
                 </div>
         </div>

@@ -25,7 +25,7 @@
         $NumChapter = $_GET['id'];
         $NumQuestion = 1;
 
-        $xml = simplexml_load_file(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml");
+        $xml = simplexml_load_file(realpath(($_SERVER["DOCUMENT_ROOT"]) . "/quizxml/quiz".$NumChapter.".xml"));
 
         $number = $xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question");
         $number = count($number);
@@ -68,11 +68,13 @@
             </div>
             <?php 
                 };
-            };
             ?>
             <input type="submit" value = "Submit" class="SubmitBtn"/>    
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
             </form>
+            <?php 
+            };
+            ?>
         </div>
         <script src="../../../../shared/js/jquery.js"></script>
         <script src="../js/shared.js"></script>
