@@ -5,4 +5,8 @@ function getContent($id){
     return getContentDB($id)[0]['content'];
 }
 
+function addTheme($name,$content,$sectionId){
+    addThemeDB($name,$content,$sectionId);
+}
+
 ?>

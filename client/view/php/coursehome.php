@@ -79,11 +79,9 @@ function printSections()
             $isFirst = ($section['ord'] == 1) ? "disabled='true'" : "";
             $isLast = ($section['ord'] == count($sections)) ? "disabled='true'" : "";
             echo "<span>";
-            echo "<form class='orderSectionForm' action='changeorder.php?direction=up&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='^' class='upBtn' name='upBtn' ". $isFirst ."></form>";
-            echo "<form class='orderSectionForm' action='changeorder.php?direction=down&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='v' class='downBtn' name='downBtn' ". $isLast ."></form>";
-            echo "<form class='orderSectionForm' action='addtheme.php?section=".$section['id']."&type=lesson' method='post'><input type='submit' value='+' class='addBtn' name='addBtn'></form>";
-            
-            
+            echo "<form class='orderSectionForm' action='/forms/changeorder.php?direction=up&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='^' class='upBtn' name='upBtn' ". $isFirst ."></form>";
+            echo "<form class='orderSectionForm' action='/forms/changeorder.php?direction=down&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='v' class='downBtn' name='downBtn' ". $isLast ."></form>";
+            echo "<form class='orderSectionForm' action='addtheme.php?section=".$section['id']."&course=".$_GET['id']."&type=lesson' method='post'><input type='submit' value='+' class='addBtn' name='addBtn'></form>";
             echo "</span>";
         }
         echo "</div>";
@@ -96,6 +94,10 @@ function printThemes($idsection){
     foreach($themes as $theme){
         $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
         echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - <a href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a></span></div>";
+        if($GLOBALS['isAdmin']){
+            <form class='orderSectionForm' action='addtheme.php?section=".$section['id']."&course=".$_GET['id']."&type=lesson' method='post'><input type='submit' value='+' class='addBtn' name='addBtn'></form>
+        }
+        echo "</div>";
     }
 }
 

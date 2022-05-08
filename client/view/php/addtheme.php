@@ -26,14 +26,24 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
   ?>
 
   <?php
-    echo "<form><label for='lessonContent'>Type your lesson :</label>
-
-    <div id='lessonDiv'><textarea id='lessonContent' name='lessonContent' value=''></textarea></div>
+  echo "<form action='/forms/submitlesson' method='post'>
+    
+    <label for='lessonName'>Name :</label>
+      <div id='nameDiv'>
+        <input type='text' id='lessonName' name='lessonName'></br>
+      </div>
+    <label for='lessonContent'>Type your lesson :</label>
+    <div id='lessonDiv'>
+      <textarea id='lessonContent' name='lessonContent'></textarea>
+    </div>
+    <input id='submitBtn' name='submitBtn' type='submit' value='Submit your lesson'>
+    <input id='sectionId' name='sectionId' type='hidden' value='" . $_GET['section'] . "'>
+    <input id='courseId' name='courseId' type='hidden' value='" . $_GET['course'] . "'>
     </form>
     <ul>
-      <li>".getTranslation(96)."</li>
-      <li>".getTranslation(97)."</li>
-      <li>".getTranslation(98)."</li>
+      <li>" . getTranslation(96) . "</li>
+      <li>" . getTranslation(97) . "</li>
+      <li>" . getTranslation(98) . "</li>
     </ul>"
   ?>
 
