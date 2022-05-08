@@ -22,7 +22,7 @@
 
         if (simplexml_load_file($chemindossier)==false)
         {
-            echo $chemindossier;
+            echo "<div>".$chemindossier." cant be open</div>";
         }
         else {
         $xml = simplexml_load_file($chemindossier);
