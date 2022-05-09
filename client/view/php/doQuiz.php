@@ -19,6 +19,7 @@
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/Xml.php"); 
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/xml.php");
     
+        
         $isAdmin = isAdmin($_GET['id']);
         $isStudent = isInCourse($_GET["id"]);
         
