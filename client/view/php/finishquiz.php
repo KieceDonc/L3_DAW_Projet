@@ -39,7 +39,7 @@ for($i = 1;$i<=$number;$i++)
     ?>
 
         <div class="chapter">You have ended the test for the chapter <?php  $RequestAnswer =$xml->xpath("//Questionnaire/@Nom"); echo $RequestAnswer[0][0]; ?> </div>
-        <div class="Note">You have <?php echo $NiceAnswer." on ".$number ; ?></div>
+        <div class="Note">You have <?php if($NumChapter==0){echo getResultatBienvenue($RequestAnswer);}else{echo $NiceAnswer;};echo " on ".$number ; ?></div>
         <a href="/courses">Go to courses</button>
         
         <script src="../../../../shared/js/jquery.js"></script>
