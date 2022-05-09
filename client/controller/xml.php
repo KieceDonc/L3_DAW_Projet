@@ -55,3 +55,19 @@
         $number = count($number);
         return $number;
     }
+
+        function getResultatBienvenue($i)
+        {
+            if($i<4)
+            {
+                echo "You have ".$i."on 10 . You can start with basics course"
+            }
+            else if ($i<7)
+            {
+                echo "You have ".$i."on 10 . You can start with advanced course"
+            }
+            else
+            {
+                echo "You have ".$i."on 10 . You can start with expert course"
+            }
+        }

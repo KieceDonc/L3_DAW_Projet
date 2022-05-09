@@ -7,5 +7,12 @@
         $xml = simplexml_load_file($chemindossier);
         return $xml;
     }
+
+    function getBienvenueXml()
+    {
+        $chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz.xml");
+        $xml = simplexml_load_file($chemindossier);
+        return $xml;
+    }
 ?>
 
