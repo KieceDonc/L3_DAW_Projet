@@ -22,7 +22,7 @@
         $NumChapter = "0";
         $NumQuestion = 1;
 
-        if (  $xml = getXML($NumChapter)==false)
+        if (getXML($NumChapter)==false)
         {
             echo "help";
         }
