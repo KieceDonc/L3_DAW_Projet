@@ -36,8 +36,6 @@
             </div>
             <form action="finishquiz" method="get">
             <?php
-            if($GLOBALS['isStudent'])
-            {
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
             ?>
             <div class="question">
@@ -71,9 +69,6 @@
             <input type="submit" value = "Submit" class="SubmitBtn"/>    
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
             </form>
-            <?php 
-            };
-            ?>
         </div>
         <script src="../../../../shared/js/jquery.js"></script>
         <script src="../js/shared.js"></script>
