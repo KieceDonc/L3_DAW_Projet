@@ -27,7 +27,7 @@
 
 
         $xml = getXml($NumChapter);
-        
+
         if(isset($_GET['supprimer']))
         {
             supprimer($_GET["idQ"],$NumChapter);
@@ -44,7 +44,7 @@
         {
     ?>
         <div class = "question">
-        <h1><?php echo getName($xml) ?></h1>
+        <h1><?php echo "Question  : ".getQuestion($xml,$NumQuestion,$NumChapter) ?></h1>
                 <div class="choice">
                     <div class="choice-container">
                         <p class="choice-prefix">A.</p>
