@@ -14,13 +14,11 @@
 ?>
 
 <?php 
-    $name = $_POST['lessonName'];
-    $content = htmlspecialchars($_POST['lessonContent']);
-    $sectionId = $_POST['sectionId'];
-    addTheme($name,$content,$sectionId);
-    $course = $_POST['courseId'];
-    echo "NICE";
-    header("Location: /coursehome?id=".$course);
+    $courseId = $_POST['courseId'];
+    $content = htmlspecialchars($_POST['newSectionTxt']);
+    addSection($content,$sectionId);
+
+    header("Location: /coursehome?id=".$courseId);
 ?>
 </body>
 
