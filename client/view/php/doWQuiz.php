@@ -23,6 +23,10 @@
         $NumQuestion = 1;
 
         $xml = GetBienvenueXml();
+        if($xml==false)
+        {
+            echo "help";
+        }
         $number = getCountXml($xml,$NumChapter);
         ?>
 
