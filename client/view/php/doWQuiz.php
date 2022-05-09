@@ -22,7 +22,10 @@
         $NumChapter = "0";
         $NumQuestion = 1;
 
-        $xml = getXML($NumChapter);
+        if (  $xml = getXML($NumChapter)==false)
+        {
+            echo "help";
+        }
         $number = getCountXml($xml,$NumChapter);
         ?>
 
