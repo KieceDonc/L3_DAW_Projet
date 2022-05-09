@@ -78,28 +78,4 @@
 
         closePDO($conn);
     }
-
-    function addSectionDB($content,$courseId){
-        $conn = getPDO();
-
-        // PREPARED QUERY - Check if it's the first entry in the course or not. 
-        $querystring = "SELECT EXISTS(SELECT * FROM sections WHERE idcourse=:idcourse) AS isfirst";
-        $query = $conn->prepare( $querystring );
-        $query->bindParam(':idcourse',$courseId);
-        $query->execute();
-
-        $isFirst = boolval($query->fetchAll()[0]['isfirst']);
-
-        // PREPARED QUERY - Add a theme in the database
-        $querystring = "INSERT INTO sections(idcourse,name,ord) VALUES (:idcourse,:name,(SELECT MAX(ord) FROM sections s2 WHERE idcourse=:idcourse)+1)";
-        if(!$isFirst)
-            $querystring = "INSERT INTO sections(idcourse,name,ord) VALUES (:idcourse,:name,1)";
-
-        $query = $conn->prepare( $querystring );
-        $query->bindParam(':idcourse',$courseId);
-        $query->bindParam(':name',$content);
-        $query->execute();
-        
-        closePDO($conn);
-    }
 ?>

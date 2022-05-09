@@ -4,7 +4,8 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/Xml.php");
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/xml.php");
 
 $NumChapter = $_GET["numchapter"];
-$xml = GetXml($NumChapter);
+
+$xml = getBienvenueXml();
 
 $number = getCountXML($xml,$NumChapter);
 
@@ -18,7 +19,7 @@ for($i = 1;$i<=$number;$i++)
     {
         $NiceAnswer++;
     }
-}
+};
 
 ?>
 
@@ -38,8 +39,8 @@ for($i = 1;$i<=$number;$i++)
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
     ?>
 
-        <div class="chapter">You have ended the test for the chapter <?php  $RequestAnswer =$xml->xpath("//Questionnaire/@Nom"); echo $RequestAnswer[0][0]; ?> </div>
-        <div class="Note">You have <?php echo $NiceAnswer." on ".$number ; ?></div>
+        <div class="chapter">You have ended the welcome quiz </div>
+        <div class="Note">You have <?php  getResultatBienvenue($RequestAnswer) ?></div>
         <a href="/courses">Go to courses</button>
         
         <script src="../../../../shared/js/jquery.js"></script>

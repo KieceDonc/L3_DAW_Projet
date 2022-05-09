@@ -2,7 +2,6 @@
     <head>
         <meta charset="utf-8">
         <title>E-lolning</title>    
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/font-face.css" />
         <link rel="stylesheet" href="../css/darkMode.css" />
         <link rel="stylesheet" href="../css/shared.css" />
@@ -20,24 +19,19 @@
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/xml.php");
     
         
-        $isAdmin = isAdmin($_GET['id']);
-        $isStudent = isInCourse($_GET["id"]);
-        
-        $NumChapter = $_GET['id'];
+        $NumChapter = "0";
         $NumQuestion = 1;
 
-        $xml = GetXml($NumChapter);
-
+        $xml = GetBienvenueXml();
         $number = getCountXml($xml,$NumChapter);
         ?>
+
         <div class="quiz">
             <div id="info">
-                <div id="chapter">Chapitre <?php echo $NumChapter." : "; echo getName($xml) ?></div>
+                <div id="chapter">Welcome Quiz </div>
             </div>
-            <form action="finishquiz" method="get">
+            <form action="FinishQW" method="get">
             <?php
-            if($GLOBALS['isStudent'])
-            {
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
             ?>
             <div class="question">
@@ -66,14 +60,11 @@
                 </div>
             </div>
             <?php 
-                };
+                }
             ?>
             <input type="submit" value = "Submit" class="SubmitBtn"/>    
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
             </form>
-            <?php 
-            };
-            ?>
         </div>
         <script src="../../../../shared/js/jquery.js"></script>
         <script src="../js/shared.js"></script>

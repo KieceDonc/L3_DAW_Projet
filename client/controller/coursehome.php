@@ -25,8 +25,3 @@
     function swapOrder($type,$section,$ord){
         swapOrderDB($type,$section,$ord);
     }
-
-    // Add a section
-    function addSection($content,$courseId){
-        addSectionDB($content,$courseId);
-    }
