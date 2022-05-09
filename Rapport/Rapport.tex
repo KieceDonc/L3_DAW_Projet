@@ -27,7 +27,7 @@ Petit Evan, Perion Maxence, Pinon Alexandre
 
 \newpage
 \section{Introduction}
-L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legends" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". Il se calque sur le fonctionnement de plusieurs sites de coaching en esport comme https://www.skill-capped.com/lol/ 
+L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legends" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". Il se calque sur le fonctionnement de plusieurs sites de coaching en esport comme https://www.skill-capped.com/lol/.
 Dans ce rapport, nous allons aborder tous les aspects de la conception de notre site, c'est-à-dire que nous allons aussi bien expliquer la modélisation, le modèle MVC utilisé et tout ce qui peut-être fait sur notre site. Il est important de rappeler qu'un site de formation en ligne ou site d'e-learning dans notre cas pour un jeu vidéo, permet aux utilisateurs de celui-ci de développer leurs compétences en participant à différents cours et discuter à propos de ce même cours dans un forum entre apprenants. Dans notre cas, nous donnons également la possibilité de créer un cours à qui le souhaite afin de partager son savoir et ses connaissances. 
 
 \section{La modélisation}
@@ -87,7 +87,10 @@ Enfin, deux tables solitaires :
 \newpage
 
 \section{Notre installation}
-Serveur Lamp chez Valentin
+Pour l'installation nous avons utilisé un serveur LAMP. Celui-ci tourne sous une VM avec Debian 11, 8 GO de RAM et 4 cœurs. Cette même VM est contenu dans un hyperviseur de type 1 qui est installé dans un HP DL380P G8 physiquement présent chez l'un de nos développeurs. \\
+Un tel choix a été fait pour ajouter des plus valus qui aurait été indisponible avec une installation à l'université. Nous avons un contrôle total et nous avons par exemple notre propre adresse web : https://daw.privatedns.org/ 
+Sur cet VM nous avons également installé MySQL, un outil que nous maitrisons et connaissons. \\ 
+Pour gérer notre code nous utilisons github. Une "pipeline" a été mise en place pour déployer automatiquement le code source sur le serveur LAMP.
 
 \section{La charte graphique}
 Une charte graphique a été établie, comportant police d'écritures, tailles de police, couleurs pour le CSS, etc...
