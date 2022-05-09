@@ -17,12 +17,7 @@
     $courseId = $_POST['courseId'];
     $content = htmlspecialchars($_POST['newSectionTxt']);
     addSection($content,$courseId);
-
-    echo $couseId;
-    echo "  ";
-    echo $content;
-
-    //header("Location: /coursehome?id=".$courseId);
+    header("Location: /coursehome?id=".$courseId);
 ?>
 </body>
 
