@@ -2,7 +2,6 @@
     <head>
         <meta charset="utf-8">
         <title>E-lolning</title>    
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/font-face.css" />
         <link rel="stylesheet" href="../css/darkMode.css" />
         <link rel="stylesheet" href="../css/shared.css" />
@@ -24,7 +23,8 @@
         $NumQuestion = 1;
 
         $xml = GetBienvenueXml();
-        print_r($xml);
+
+
         $number = getCountXml($xml,$NumChapter);
         ?>
 
@@ -32,7 +32,7 @@
             <div id="info">
                 <div id="chapter">Welcome Quiz </div>
             </div>
-            <form action="finishquizbienvenue" method="get">
+            <form action="FinishQW" method="get">
             <?php
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
             ?>

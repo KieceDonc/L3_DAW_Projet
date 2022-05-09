@@ -4,6 +4,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/Xml.php");
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/xml.php");
 
 $NumChapter = $_GET["numchapter"];
+
 $xml = getBienvenueXml();
 
 $number = getCountXML($xml,$NumChapter);
