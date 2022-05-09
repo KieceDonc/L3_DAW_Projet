@@ -62,7 +62,7 @@
                 </div>
             </div>
             <?php 
-                };
+                }
             ?>
             <input type="submit" value = "Submit" class="SubmitBtn"/>    
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
