@@ -99,7 +99,7 @@
         }
 
     }else{
-        redirectTo('/',[]);
+        redirectTo('/doBienvenueQuiz',[]);
     }
 
     function redirectTo($path,$errors){
