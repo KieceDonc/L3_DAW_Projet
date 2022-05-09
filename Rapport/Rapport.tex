@@ -27,7 +27,7 @@ Petit Evan, Perion Maxence, Pinon Alexandre
 
 \newpage
 \section{Introduction}
-L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legends" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". Il se calque sur le fonctionnement de plusieurs sites de coaching en esport comme https://www.skill-capped.com/lol/ 
+L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legends" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". Il se calque sur le fonctionnement de plusieurs sites de coaching en esport comme https://www.skill-capped.com/lol/.
 Dans ce rapport, nous allons aborder tous les aspects de la conception de notre site, c'est-à-dire que nous allons aussi bien expliquer la modélisation, le modèle MVC utilisé et tout ce qui peut-être fait sur notre site. Il est important de rappeler qu'un site de formation en ligne ou site d'e-learning dans notre cas pour un jeu vidéo, permet aux utilisateurs de celui-ci de développer leurs compétences en participant à différents cours et discuter à propos de ce même cours dans un forum entre apprenants. Dans notre cas, nous donnons également la possibilité de créer un cours à qui le souhaite afin de partager son savoir et ses connaissances. 
 
 \section{La gestion du projet}
@@ -153,7 +153,7 @@ Le forum permet la discussion entre apprenants. Il est global et les utilisateur
 
 \section{Les options}
 \subsection{Multilingue}
-La première option que nous avons implémentée est tous simplement un site multilingue ou plurilingue. Les différentes langues implémentées sont le Français et l'Anglais pour tous les utilisateurs, nous avons fait cet ajout dans un souci d'utilisation étrangère de notre site. En effet nous sommes basés sur un jeu de renommée mondiale avec plusieurs milliers de millions d'utilisateurs annuels, et forcément parmi tous ces utilisateurs tous ne parle pas couramment Français. Alors l'Anglais est fait pour ça car pour rappel c'est la langue universelle.\\
+La première option que nous avons implémentée est un support multilingue ou plurilingue. Les différentes langues implémentées sont le Français et l'Anglais pour tous les utilisateurs. Nous avons fait cet ajout dans un soucis d'utilisation étrangère de notre site. En effet, nous nous sommes basés sur un jeu de renommée mondiale avec plusieurs milliers de millions d'utilisateurs annuels, et forcément parmi tous ces utilisateurs tous ne parlent pas couramment Français.\\
 
 Afin de changer la langue il suffit de cliquer sur ce menu déroulant:
 \begin{figure}[!h]
@@ -162,10 +162,10 @@ Afin de changer la langue il suffit de cliquer sur ce menu déroulant:
 \label{fig}
 \end{figure}
 
-Pour ce qui est de la partie pratique, nous avons dans la table "texts" de notre base de données inscrit toutes les traductions à la main, c'est-à-dire que pour une même phrase elle est enregistrée 2 fois, une fois sous sa traduction Française et une fois sous sa traduction Anglaise. Ensuite il nous suffit d'afficher la traduction souhaitée.
+Pour ce qui est de la partie technique, nous avons dans notre base de données la table ``texts" où sont inscrit tous les textes à afficher selon un identifiant de texte (qui est le même peu importe la langue) et une langue. Ensuite, il nous suffit d'afficher la traduction souhaitée dans le site après avoir récupéré la langue renseignée par l'utilisateur. Seules les traductions pour la langue anglaise et française sont actuellement disponibles, cependant le système a été conçu de façon scalable, c'est à dire que l'ajout d'une nouvelle langue dans la base de données rendra directement disponible cette langue pour les utilisateurs, sans que nous aillons à modifier quoi que ce soit dans nos scripts php. Cela est rendu possible grâce à une table ``languages" qui renseigne les différentes langues (abréviation, code, clé, ...) et la sélection de la langue depuis le site lit ces informations pour les afficher dans le sélecteur. La langue pour chaque traduction dans la table  ``texts" est une référence (clé étrangère) sur la clé de la table ``languages".
 
 \subsection{Thèmes}
-Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet d’abord de réduire la fatigue des yeux, de plus les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
+Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet de réduire la fatigue des yeux et les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
 
 Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
 \begin{figure}[!h]
@@ -178,11 +178,9 @@ Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
 \label{fig}
 \end{figure}
 
-Le fonctionnement des thèmes est assez simple, en effet il nous suffit de déclarer 2 fichiers css que nous avons nommée respectivement "lightMode.css" et "darkMode.css". Et dans ces fichiers déclarer des variables avec "--nomVariable". Pour ces deux fichiers les variables doivent avoir le même nom mais avoir évidemment des valeurs différentes. Une fois ceci effectue, nous allons utiliser seulement les variables contenus dans les fichiers "lightMode.css" ou "darkMode.css" via différentes fonctions jQuerry créé par nos propres moyens. Finalement pour avoir un thème permanent et ne pas avoir besoin de repasser dans le thème souhaité à chaque rafraîchissement de la page, nous avons utilisé un cookie. Ce cookie permet de stocker la valeur du thème choisie et avec le traitement de nos fonctions en jQuerry chargé le bon thème.
+Le fonctionnement des thèmes est assez simple, en effet il nous suffit de déclarer 2 fichiers css que nous avons nommés respectivement ``lightMode.css" et ``darkMode.css". Dans ces fichiers sont déclarées des variables avec ``--nomVariable" correspondant aux couleurs qui seront utilisées dans leurs thèmes respectifs. Pour ces deux fichiers les variables doivent avoir le même nom mais avoir évidemment des valeurs différentes. Une fois ceci effectué, nous allons utiliser seulement les variables contenus dans les fichiers ``lightMode.css" ou ``darkMode.css" via différentes fonctions jQuery créés par nos propres moyens permettant d'importer un fichier ou un autre selon le thème. Les feuilles de styles vont ensuite définir, pour chaque page, le style à appliquer en utilisant des variables à la place des couleurs grâce à la syntaxe ``var(--nomVariable)". Finalement pour avoir un thème permanent et ne pas avoir besoin de repasser dans le thème souhaité à chaque rafraîchissement ou changement de page, nous avons utilisé un cookie. Ce cookie permet de stocker la valeur du thème choisi et avec le traitement de nos fonctions en jQuery, charger le bon thème.\\
 
-Dernièrement dans les fichiers css qui vont organiser nos différentes pages nous allons utiliser cette syntaxe: "var(--nomVariable)", qui aura une valeur différente en fonction du thème choisie.\\
-
-Pour illustrer ce qui a précédemment été vue, voyons avec un exemple concret, définissons une variable "--background-color: \#FFFFFF;" pour le thème clair et "--background-color: \#000000;" pour le thème sombre. Maintenant dans un fichier css quelconque on peut utiliser ceci:
+Pour illustrer ce qui a précédemment été vu, voyons avec un exemple concret. Nous définissons une variable ``--background-color: \#FFFFFF;" pour le thème clair et ``--background-color: \#000000;" pour le thème sombre. Maintenant dans un fichier css quelconque on peut utiliser ceci:
 \begin{lstlisting}[language=HTML]
   body{
     background-color: var(--background-color);
@@ -201,7 +199,7 @@ Voici un aperçu de l'affichage en question:
 \end{figure}
 
 \subsection{Contacter le support du site}
-Finalement, pour tous utilisateurs ayant la moindre question que ce soit sur le site, un cours en particulier ou autres informations, alors l'utilisateur peut nous faire parvenir un message via la session "Contact" sur la page d'accueil. Pour procéder à sa requête il suffit de remplir les champs nécessaires. Si le message est correctement traité alors un message de confirmation d'envoi est affiché. A partir de ce moment nous allons distinguer 2 cas, le cas classique ou la demande est envoyé par un utilisateur, alors après la demande il n'a plus rien à faire. Et le second cas étant réservé aux Webmasters. En effet ils possèdent une catégorie supplémentaire dans la partie profil. Cette catégorie se nomme "Manage contacts" et elle permet tous simplement d'afficher l'ensemble des messages envoyé par les utilisateurs. Ces messages peuvent être supprimés par les Webmasters, mais ils sont également dans la possibilité de répondre à ces messages via l'adresse mail renseigné.\\
+Finalement, pour tous utilisateurs ayant la moindre question que ce soit sur le site, un cours en particulier ou d'autres informations, alors l'utilisateur peut nous faire parvenir un message via la section ``Contact" sur la page d'accueil. Pour envoyer à sa requête, il faut remplir les champs nécessaires sur cette page. Si le message est correctement traité alors un message de confirmation d'envoi est affiché. L'utilisateur peut ensuite attendre une réponse via l'un des moyens de contact qu'il a renseigné. Pour l'équipe d'administration, il existe une catégorie supplémentaire dans la partie profil. Cette catégorie se nomme ``Manage contacts" et elle permet d'afficher l'ensemble des messages envoyés par les utilisateurs. Ces messages peuvent être supprimés par les Webmasters, mais ils sont également dans la possibilité de répondre à ces messages via un ``mailto''.\\
 
 Voici à quoi ressemble la page de gestion des messages:
 \begin{figure}[!h]
@@ -210,7 +208,7 @@ Voici à quoi ressemble la page de gestion des messages:
 \label{fig}
 \end{figure}
 
-Dernièrement, les messages sont stockés dans la table "contact", et les Webmaster sont définis par un boolean dans la table "users" que nous avons ajoutée à la main.
+Dernièrement, les messages sont stockés dans la table ``contact" de la base de données et les administrateurs sont définis par un booléen dans la table ``users" que nous pouvons ajouter à la main.
 
 \section{Conclusion}
 
