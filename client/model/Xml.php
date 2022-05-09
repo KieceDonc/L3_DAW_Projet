@@ -3,9 +3,16 @@
     
     function GetXml($id)
     {
+
         $chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$id.".xml");
-        $xml = simplexml_load_file($chemindossier);
-        return $xml;
+        if($xml = simplexml_load_file($chemindossier)==true)
+        {
+            return $xml;
+        }
+        else
+        {
+            echo "Impossible to open";
+        }
     }
 
     function getBienvenueXml()

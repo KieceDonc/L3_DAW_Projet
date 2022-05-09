@@ -25,10 +25,9 @@
         $NumChapter = $_GET['id'];
         $NumQuestion=1;
 
-        $chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$NumChapter.".xml");
-
 
         $xml = getXml($NumChapter);
+        
         if(isset($_GET['supprimer']))
         {
             supprimer($_GET["idQ"],$NumChapter);
