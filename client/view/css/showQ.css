@@ -22,11 +22,15 @@
   margin-top:0.5rem;
   display: flex;
   width: 60%;
-  font-size: 1.8rem;
+  font-size: 0.8rem;
 }
 
 .choice-prefix {
-  padding: 1.5rem 2.5rem;
+  padding: 0.5rem 2.5rem;
+}
+
+.choice-text {
+  padding: 0.5rem;
 }
 
 a {
