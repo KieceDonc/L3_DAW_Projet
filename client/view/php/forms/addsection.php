@@ -10,7 +10,7 @@
 
 <body>
 <?php 
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/theme.php");
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
 ?>
 
 <?php 
