@@ -19,11 +19,9 @@ $ques = $_GET["question"];
 $Difficulty = $_GET["difficulté"];
 $isok=true;
 $Answer = $_GET["answer"];
-if($GLOBALS['isAdmin'])
-{
+
 addQuestion($id,$ques,$Difficulty,$isok,$Answer,$choice1,$choice2,$choice3,$choice4);
-echo "hello";
-}
+
 
 ?>
 
