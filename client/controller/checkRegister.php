@@ -99,7 +99,7 @@
         }
 
     }else{
-        redirectTo('/doBienvenueQuiz',[]);
+        redirectTo('/doQuiz?id=0',[]);
     }
 
     function redirectTo($path,$errors){
