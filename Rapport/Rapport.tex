@@ -126,6 +126,12 @@ Lorsque certaines données ont besoin d'être récupérées, par exemple pour af
 Les contrôleurs sont des fichiers PHP qui permettent de faire appel aux modèles via les vues. Les données récupérées sont souvent brutes (les tables clé-valeur qui sont retournées par MySQL par exemple)\\\\
 Avec les contrôleurs, nous nous assurons que les données récupérées sont traitées et affichables à l'utilisateur afin que la vue puisse l'afficher correctement.
 
+\newpage
+\section{L'inscription/Connexion}
+Le principe ici est assez simple et s'inspire de tout site web moderne.Des expressions régulières ont été ajoutées pour pouvoir contrôler les entrées, du genre le nom et prénom ne doivent pas contenir autre chose que des lettres, le nom d'utilisateur ne doit contenir que des lettres et des chiffres.Un contrôle de présence de chacune des entrées à été mis en place (on peut pas s'inscrire sans email par exemple).
+
+Chaque erreur (si présente) est directement transmise à l'utilisateur pour qu'il puisse la corriger avant de pouvoir valider son inscription.
+
 \section{Les cours}
 \subsection{Quizz}
 Les quiz vont être proposés pour les apprenants. Les quiz doivent être sous le format XML, on va donc partir sur un document XML par cours .Celui-ci sera créer a la création du cours.
@@ -162,10 +168,19 @@ Le forum permet la discussion entre apprenants. Il est global et les utilisateur
 
 \section{Les options}
 \subsection{Multilingue}
-FR et EN pour tous les utilisateurs 
+La première option que nous avons implémentée est un support multilingue ou plurilingue. Les différentes langues implémentées sont le Français et l'Anglais pour tous les utilisateurs. Nous avons fait cet ajout dans un soucis d'utilisation étrangère de notre site. En effet, nous nous sommes basés sur un jeu de renommée mondiale avec plusieurs milliers de millions d'utilisateurs annuels, et forcément parmi tous ces utilisateurs tous ne parlent pas couramment Français.\\
+
+Afin de changer la langue il suffit de cliquer sur ce menu déroulant:
+\begin{figure}[!h]
+\centerline{\includegraphics[width=4cm]{images/menuLangues.PNG}}
+\caption{Les différentes langues proposées.}
+\label{fig}
+\end{figure}
+
+Pour ce qui est de la partie technique, nous avons dans notre base de données la table ``texts" où sont inscrit tous les textes à afficher selon un identifiant de texte (qui est le même peu importe la langue) et une langue. Ensuite, il nous suffit d'afficher la traduction souhaitée dans le site après avoir récupéré la langue renseignée par l'utilisateur. Seules les traductions pour la langue anglaise et française sont actuellement disponibles, cependant le système a été conçu de façon scalable, c'est à dire que l'ajout d'une nouvelle langue dans la base de données rendra directement disponible cette langue pour les utilisateurs, sans que nous aillons à modifier quoi que ce soit dans nos scripts php. Cela est rendu possible grâce à une table ``languages" qui renseigne les différentes langues (abréviation, code, clé, ...) et la sélection de la langue depuis le site lit ces informations pour les afficher dans le sélecteur. La langue pour chaque traduction dans la table  ``texts" est une référence (clé étrangère) sur la clé de la table ``languages".
 
 \subsection{Thèmes}
-Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet d’abord de réduire la fatigue des yeux, de plus les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
+Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet de réduire la fatigue des yeux et les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
 
 Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
 \begin{figure}[!h]
@@ -191,7 +206,25 @@ Pour illustrer ce qui a précédemment été vue, voyons avec un exemple concret
 Si le thème clair est utilisé alors la couleur de fond aura pour valeur FFFFFF c'est-à-dire blanc, et dans le cas contraire pour le thème sombre la couleur de fond aura pour valeur 000000 c'est-à-dire noir.
 
 \subsection{Décompte des visiteurs}
-Compteur du nombre de visiteur via fichier et non BDD.
+Dans une dynamique de création d'options agréables pour tous, nous avons intégré un compteur du nombre de visiteur, ce compteur est affiché dès l'arrivée de l'utilisateur sur la page d'accueil. Afin de stocker le nombre de visiteur de notre site nous l'avons fait via un fichier et non base de données car PHP permet la gestion de ce genre de petit fichier. Le fichier se nomme tout simplement "compteur.txt" et contient le nombre de visiteurs.\\
+Voici un aperçu de l'affichage en question: 
+\begin{figure}[!h]
+\centerline{\includegraphics[width=8cm]{images/numberVisiteurs.PNG}}
+\caption{L'affichage du nombre de visiteur.}
+\label{fig}
+\end{figure}
+
+\subsection{Contacter le support du site}
+Finalement, pour tous utilisateurs ayant la moindre question que ce soit sur le site, un cours en particulier ou d'autres informations, alors l'utilisateur peut nous faire parvenir un message via la section ``Contact" sur la page d'accueil. Pour envoyer à sa requête, il faut remplir les champs nécessaires sur cette page. Si le message est correctement traité alors un message de confirmation d'envoi est affiché. L'utilisateur peut ensuite attendre une réponse via l'un des moyens de contact qu'il a renseigné. Pour l'équipe d'administration, il existe une catégorie supplémentaire dans la partie profil. Cette catégorie se nomme ``Manage contacts" et elle permet d'afficher l'ensemble des messages envoyés par les utilisateurs. Ces messages peuvent être supprimés par les Webmasters, mais ils sont également dans la possibilité de répondre à ces messages via un ``mailto''.\\
+
+Voici à quoi ressemble la page de gestion des messages:
+\begin{figure}[!h]
+\centerline{\includegraphics[width=16cm]{images/manageContact.PNG}}
+\caption{L'affichage des messages pour les Webmasters.}
+\label{fig}
+\end{figure}
+
+Dernièrement, les messages sont stockés dans la table ``contact" de la base de données et les administrateurs sont définis par un booléen dans la table ``users" que nous pouvons ajouter à la main.
 
 \subsection{Gestion des ressources}
 Un utilisateur peut utiliser deux types de ressources afin de décorer son cours : Les images, et les vidéos.\\\\
