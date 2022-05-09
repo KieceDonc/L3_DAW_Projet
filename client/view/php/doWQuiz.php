@@ -23,10 +23,7 @@
         $NumQuestion = 1;
 
         $xml = getXml($NumChapter);
-        if($xml == false)
-        {
-            echo "<div>hello</div>";
-        }
+        print_r($xml);
         $number = getCountXml($xml,$NumChapter);
         ?>
 
