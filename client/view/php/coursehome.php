@@ -99,10 +99,12 @@ function printThemes($idsection){
 }
 
 function printButton(){
-    if(!$GLOBALS['isAdmin'])
-        return;
-    else
-        echo "<div><input type='text' id='newSectionTxt' name='newSectionTxt'><button id='addSectionBtn' name='addSectionBtn'>" . getTranslation(92) . "</button></input></div>";
+    if($GLOBALS['isAdmin'])
+        echo "<form action='/forms/addsection method='post'>
+        <div><input type='text' id='newSectionTxt' name='newSectionTxt'>
+        <input type='submit' id='addSectionBtn' name='addSectionBtn' value='" . getTranslation(92) . "'></div>
+        <input id='courseId' name='courseId' type='hidden' value=".$_GET['id'].">
+        </form>";
 }
 
 function printAddQuizz(){
