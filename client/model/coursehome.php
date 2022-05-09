@@ -93,7 +93,7 @@
         // PREPARED QUERY - Add a theme in the database
         $querystring = "INSERT INTO sections(idcourse,name,ord) VALUES (:idcourse,:name,(SELECT MAX(ord) FROM sections s2 WHERE idcourse=:idcourse)+1)";
         if(!$isFirst)
-            $querystring = "INSERT INTO themes(idcourse,name,ord) VALUES (:idcourse,:name,1)";
+            $querystring = "INSERT INTO sections(idcourse,name,ord) VALUES (:idcourse,:name,1)";
 
         $query = $conn->prepare( $querystring );
         $query->bindParam(':idcourse',$courseId);
