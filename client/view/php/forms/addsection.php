@@ -14,7 +14,7 @@
 ?>
 
 <?php 
-    $courseId = $_POST['courseId'];
+    $courseId = $_POST['id'];
     $content = htmlspecialchars($_POST['newSectionTxt']);
     addSection($content,$sectionId);
 
