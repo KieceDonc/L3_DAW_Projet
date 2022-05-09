@@ -15,7 +15,11 @@
     function getForumTopicsInDB($searchTxt, $start, $count){
         $conn = getPDO();
 
-        $query = $conn->prepare("SELECT topics.id AS id, topics.name AS name, topics.author AS author, topics.view_count as view_count, username FROM topics, users WHERE topics.author = users.ID AND topics.name LIKE :search LIMIT :start, :max;");
+        $query = $conn->prepare("SELECT topics.id AS id, topics.name AS name, topics.author AS author, topics.view_count as view_count, username,
+            (SELECT MAX(date) FROM topics_posts WHERE topic=topics.id) AS date,
+            (SELECT count(content) FROM topics_posts WHERE topic=topics.id) AS msgCount,
+            (SELECT COUNT(*) as count FROM topics WHERE topics.name LIKE :search) AS nbPage
+            FROM topics, users WHERE topics.author = users.ID AND topics.name LIKE :search LIMIT :start, :max;");
         $query->bindValue("search", "%" . $searchTxt . "%");
         $query->bindValue("start", $start, PDO::PARAM_INT);
         $query->bindValue("max", $count, PDO::PARAM_INT);

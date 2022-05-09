@@ -64,7 +64,7 @@ h2 {
     max-width: 80%;
 }
 
-td {
+td, th {
     border: 1px solid grey;
 }
 

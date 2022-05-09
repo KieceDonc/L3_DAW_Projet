@@ -163,40 +163,48 @@
 		$topics = getForumTopics($page, $searchTxt);
 
 		?>
+		<script>
+			var msgTxt = "<?php echo getTranslation(14) ?>";
+			var nbTopicsPerPage = <?php echo $topicsPerPage ?>;
+			var userId = -1;
+			<?php 
+			if(
+				isset($_SESSION[CONST_SESSION_ISLOGGED]) 
+				&& $_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES 
+				)
+				echo "userId = " . getUserID($_SESSION[CONST_SESSION_EMAIL]) . ";"; 
+			?>
+			var youTxt = "<?php echo getTranslation(74) ?>";
+			var editTxt = "<?php echo getTranslation(75) ?>";
+			var deleteTxt = "<?php echo getTranslation(76) ?>";
+		</script>
 		<div class="titleHolder">
-			<form> 
-				<input hidden name="page" value="<?php echo $page; ?>" />
-				<input id="searchTxt" type="text" name="searchTxt" value="<?php echo $searchTxt; ?>" /> <button id="searchBtn"> <?php echo getTranslation(93); ?></button>
-			</form>
+			<input id="searchTxt" type="text" name="searchTxt" value="<?php echo $searchTxt; ?>" onkeyup="showTopicSearch(this.value)"/> 
 			<h2> <?php echo getTranslation(23); ?> </h2>
 			<div>
 				<select id="selectTopicsPerPage">
 					<option value="10" <?php echo $topicsPerPage == 10 ? "selected" : "" ?>> 10 </option> 
 					<option value="50" <?php echo $topicsPerPage == 50 ? "selected" : "" ?>> 50 </option>
 					<option value="100" <?php echo $topicsPerPage == 100 ? "selected" : "" ?>> 100 </option> 
-				</select>
-				<form class="pageForm">
-					<input hidden name="searchTxt" value="<?php echo $searchTxt; ?>" />
-					
-					<?php
-					if($page > 0){
-						echo "<button name='page' value=" . ($page - 1) ."><</button>";
-					}
-					else{
-						echo "<button disabled><</button>";
-					}
-					echo "<span> ". $page ." </span>";
+				</select>					
+				<?php
+				if($page > 0){
+					echo "<button id='pagedown' onclick='showTopicPageDown()'><</button>";
+				}
+				else{
+					echo "<button id='pagedown' onclick='showTopicPageDown()' disabled><</button>";
+				}
+				echo "<span id='pageElem'> ". $page ." </span>";
 
-					if($page < $nbPage){
-						echo "<button name='page' value=" . ($page + 1) .">></button>";
-					}
-					else{
-						echo "<button disabled>></button>";
-					}
+				if($page < $nbPage){
+					echo "<button id='pageup' onclick='showTopicPageUp()'>></button>";
+				}
+				else{
+					echo "<button disabled id='pageup' onclick='showTopicPageUp()'>></button>";
+				}
 
-					
-					?>
-				</form>
+				
+				?>
 			</div>
 		</div>
 		<?php
@@ -212,24 +220,25 @@
 			}
 		?>
 		<table id="topicsTable">
-		<tbody>
-		<tr>
-			<td class="tdTitle">
+		<thead><tr>
+			<th class="tdTitle">
 				<?php echo getTranslation(12); ?>
-			</td>
-			<td class="tdAuthor textCenter">	
+			</th>
+			<th class="tdAuthor textCenter">	
 				<?php echo getTranslation(13); ?>
-			</td>
-			<td class="tdMsg textCenter">
+			</th>
+			<th class="tdMsg textCenter">
 				<?php echo getTranslation(14); ?>
-			</td>
-			<td class="tdViewCount textCenter">
+			</th>
+			<th class="tdViewCount textCenter">
 				<?php echo getTranslation(15); ?>
-			</td>
-			<td class="tdLastMsg textCenter">
+			</th>
+			<th class="tdLastMsg textCenter">
 				<?php echo getTranslation(16); ?>
-			</td>
+			</th>
 		</tr>
+		</thead>
+		<tbody>
 		<?php 
 		foreach($topics as $topic)
 		{	
@@ -258,7 +267,6 @@
 				echo $date;
 			}
 			echo "</td></tr>";
-			// echo "<tr class = 'rowtopic'> <td> <button name='topic' value='". $topic["id"] ."' class='topicbutton'> ". $topic["name"]. " </button> </td> </tr>";
 		}
 		?>
 		</tbody>
