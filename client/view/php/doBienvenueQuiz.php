@@ -24,12 +24,13 @@
         $NumQuestion = 1;
 
         $xml = GetBienvenueXml();
-
+        print_r($xml);
         $number = getCountXml($xml,$NumChapter);
         ?>
+
         <div class="quiz">
             <div id="info">
-                <div id="chapter">Bienvenue Quiz </div>
+                <div id="chapter">Welcome Quiz </div>
             </div>
             <form action="finishquizbienvenue" method="get">
             <?php
