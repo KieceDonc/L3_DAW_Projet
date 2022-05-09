@@ -1,6 +1,5 @@
 body{
-  background-color: #F3F5F7;
-  font-family:'Titillium Web', sans-serif;
+  background-color: --var(--background-color);
 }
 
 #info{
@@ -58,7 +57,7 @@ font-size: 1.8rem;
 border: 0.1rem solid #1c2347;
 text-align: justify;
 font-family:'Titillium Web', sans-serif;
-padding: 1.5rem;
+padding: 1.5rem 30%;
 margin-left: 15%;
 margin-top : 1rem;
 }

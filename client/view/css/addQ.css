@@ -1,4 +1,9 @@
 
+body {
+  background-color: var(--background-color);
+  color : var(--text-color-lvl-1);
+}
+
 #Difficulty{
     width:100px;
     border : 0.1rem solid #1c2347;

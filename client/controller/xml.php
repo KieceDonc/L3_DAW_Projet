@@ -40,7 +40,7 @@
         function getQuestion($xml,$idQ,$NumChapter)
         {
             $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$idQ}]/intitule");
-            return "Question".$array[0][0] ;
+            return "Question n°".$idQ." : ".$array[0][0] ;
         }
 
         function getReponse($xml,$idQ,$NumChapter)

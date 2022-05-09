@@ -42,3 +42,5 @@
         $chemindossier =(realpath($_SERVER["DOCUMENT_ROOT"])."/quizxml/quiz".$id.".xml");
         $xml->asXML($chemindossier); 
     }
+
+?>
