@@ -14,11 +14,15 @@
 ?>
 
 <?php 
-    $courseId = $_POST['id'];
+    $courseId = $_POST['courseId'];
     $content = htmlspecialchars($_POST['newSectionTxt']);
     addSection($content,$sectionId);
 
-    header("Location: /coursehome?id=".$courseId);
+    echo $couseId;
+    echo "  ";
+    echo $content;
+
+    //header("Location: /coursehome?id=".$courseId);
 ?>
 </body>
 
