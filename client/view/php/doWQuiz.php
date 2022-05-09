@@ -22,7 +22,7 @@
         $NumChapter = "0";
         $NumQuestion = 1;
 
-        $xml = GetBienvenueXml();
+        $xml = getXML($NumChapter);
         $number = getCountXml($xml,$NumChapter);
         ?>
 
