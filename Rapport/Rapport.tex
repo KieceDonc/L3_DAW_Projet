@@ -27,11 +27,8 @@ Petit Evan, Perion Maxence, Pinon Alexandre
 
 \newpage
 \section{Introduction}
-L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legends" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". Il se calque sur le fonctionnement de plusieurs sites de coaching en esport comme https://www.skill-capped.com/lol/.
+L'objectif de ce projet a été de réaliser un site de formation destiné à des apprenants/étudiants. Nous avons basé la construction de notre site autour d'un jeu vidéo nommé ``League Of Legends" et c'est pour cette raison que nous avons décidé de l'appeler ``E-lolning". Il se calque sur le fonctionnement de plusieurs sites de coaching en esport comme https://www.skill-capped.com/lol/ 
 Dans ce rapport, nous allons aborder tous les aspects de la conception de notre site, c'est-à-dire que nous allons aussi bien expliquer la modélisation, le modèle MVC utilisé et tout ce qui peut-être fait sur notre site. Il est important de rappeler qu'un site de formation en ligne ou site d'e-learning dans notre cas pour un jeu vidéo, permet aux utilisateurs de celui-ci de développer leurs compétences en participant à différents cours et discuter à propos de ce même cours dans un forum entre apprenants. Dans notre cas, nous donnons également la possibilité de créer un cours à qui le souhaite afin de partager son savoir et ses connaissances. 
-
-\section{La gestion du projet}
-Qui a fait quoi ? Comment on a repartie les taches ? Reunion ? Trello qui a permis d'organiser l'ensemble, méthodes scrum...
 
 \section{La modélisation}
 La problématique de la modélisation s'est centrée autour de deux points : Le diagramme use-case afin de pouvoir discerner toutes les fonctionnalités à implémenter, ainsi que le diagramme relationnel afin de s'assurer d'avoir un schéma de données correctement normalisé et logique avant même d'y stocker des données.\\
@@ -90,14 +87,32 @@ Enfin, deux tables solitaires :
 \newpage
 
 \section{Notre installation}
-Pour l'installation nous avons utilisé un serveur LAMP. Celui-ci tourne sous une VM avec Debian 11, 8 GO de RAM et 4 cœurs. Cette même VM est contenu dans un hyperviseur de type 1 qui est installé dans un HP DL380P G8 physiquement présent chez l'un de nos développeurs. \\
-Un tel choix a été fait pour ajouter des plus valus qui aurait été indisponible avec une installation à l'université. Nous avons un contrôle total et nous avons par exemple notre propre adresse web : https://daw.privatedns.org/ 
-Sur cet VM nous avons également installé MySQL, un outil que nous maitrisons et connaissons. \\ 
-Pour gérer notre code nous utilisons github. Une "pipeline" a été mise en place pour déployer automatiquement le code source sur le serveur LAMP.
+Serveur Lamp chez Valentin
 
 \section{La charte graphique}
 Une charte graphique a été établie, comportant police d'écritures, tailles de police, couleurs pour le CSS, etc...
 Les couleurs ont étées choisies à l'aide de : https://coolors.co/
+
+\section{Gestion du projet}
+Afin de mener à bien le projet, nous nous sommes répartis plusieurs rôles au sein du groupe. Déjà, les deux imposés dans l'énoncé du projet :\\\\
+
+\textbf{Product Owner : Hugo Bertoux.} Le rôle du Product Owner a été constitué de deux points. Déjà, se mettre à la place du client et donner son avis sur le travail déjà effectué. Ensuite, d'être en relation (au besoin) avec l'équipe pédagogique en cas de concise peu claire, ou de demandes particulières pour le site.
+
+\textbf{Scrum Master : Evan Petit.} Son rôle a été de répartir tout le travail à faire entre les participants au développement du site. Cela se faisait au travers de réunion quotidiennes via messagerie instantanée et appels, tous les mercredis de chaque semaine. Nous n'avons pas adopté le système de points d'efforts, et avons préféré se répartir simplement une liste de tâches, qui, toute complétées permettent d'avoir un produit terminé. Chaque développeur qui est en retard peut déposer des "Todo" en commentaire dans son code (c'est à dire, du code à faire) - Code sur lequel chaque autre développeur en avance peut se pencher.\\
+
+\centerline{
+    \includegraphics[width=14cm]{images/trello.png}
+}
+
+Pour répartir efficacement les tâches, en garder une trace, cela et d'autres informations, un tableau sur Trello a été crée, voir image ci-dessus. On peut y apercevoir des catégories comme "à faire", "terminé", "ressources", etc... Nous sommes agréablement surpris que tous les participants aient apprécié s'en servir, et cela a permis d'accélérer significativement la vitesse de développement de notre site.\\
+D'un format plus classique, le code a été rédigé en collaboration sur GitHub, qui est un élément absolument nécessaire à maîtriser pour qui que ce soit qui compte créer un site web.\\\\
+
+Afin d'aller plus loin, nous avons considéré un autre autres rôle majeur :\\\\
+\textbf{DevOps : Valentin Verstracte.} En tant que propriétaire d'un serveur physique, Valentin a été l'administrateur du serveur sur lequel nous hébergons le site. C'est lui qui a mis en place l'accès distant au serveur, l'hébergement de la base de données... \\\\
+En plus des front-ends, back-ends, administrateurs de base de données.
+
+
+
 
 \section{L'architecture MVC}
 \subsection{Modèle}
@@ -110,12 +125,6 @@ Lorsque certaines données ont besoin d'être récupérées, par exemple pour af
 \subsection{Contrôleur}
 Les contrôleurs sont des fichiers PHP qui permettent de faire appel aux modèles via les vues. Les données récupérées sont souvent brutes (les tables clé-valeur qui sont retournées par MySQL par exemple)\\\\
 Avec les contrôleurs, nous nous assurons que les données récupérées sont traitées et affichables à l'utilisateur afin que la vue puisse l'afficher correctement.
-
-\newpage
-\section{L'inscription/Connexion}
-Le principe ici est assez simple et s'inspire de tout site web moderne.Des expressions régulières ont été ajoutées pour pouvoir contrôler les entrées, du genre le nom et prénom ne doivent pas contenir autre chose que des lettres, le nom d'utilisateur ne doit contenir que des lettres et des chiffres.Un contrôle de présence de chacune des entrées à été mis en place (on peut pas s'inscrire sans email par exemple).
-
-Chaque erreur (si présente) est directement transmise à l'utilisateur pour qu'il puisse la corriger avant de pouvoir valider son inscription.
 
 \section{Les cours}
 \subsection{Quizz}
@@ -153,19 +162,10 @@ Le forum permet la discussion entre apprenants. Il est global et les utilisateur
 
 \section{Les options}
 \subsection{Multilingue}
-La première option que nous avons implémentée est un support multilingue ou plurilingue. Les différentes langues implémentées sont le Français et l'Anglais pour tous les utilisateurs. Nous avons fait cet ajout dans un soucis d'utilisation étrangère de notre site. En effet, nous nous sommes basés sur un jeu de renommée mondiale avec plusieurs milliers de millions d'utilisateurs annuels, et forcément parmi tous ces utilisateurs tous ne parlent pas couramment Français.\\
-
-Afin de changer la langue il suffit de cliquer sur ce menu déroulant:
-\begin{figure}[!h]
-\centerline{\includegraphics[width=4cm]{images/menuLangues.PNG}}
-\caption{Les différentes langues proposées.}
-\label{fig}
-\end{figure}
-
-Pour ce qui est de la partie technique, nous avons dans notre base de données la table ``texts" où sont inscrit tous les textes à afficher selon un identifiant de texte (qui est le même peu importe la langue) et une langue. Ensuite, il nous suffit d'afficher la traduction souhaitée dans le site après avoir récupéré la langue renseignée par l'utilisateur. Seules les traductions pour la langue anglaise et française sont actuellement disponibles, cependant le système a été conçu de façon scalable, c'est à dire que l'ajout d'une nouvelle langue dans la base de données rendra directement disponible cette langue pour les utilisateurs, sans que nous aillons à modifier quoi que ce soit dans nos scripts php. Cela est rendu possible grâce à une table ``languages" qui renseigne les différentes langues (abréviation, code, clé, ...) et la sélection de la langue depuis le site lit ces informations pour les afficher dans le sélecteur. La langue pour chaque traduction dans la table  ``texts" est une référence (clé étrangère) sur la clé de la table ``languages".
+FR et EN pour tous les utilisateurs 
 
 \subsection{Thèmes}
-Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet de réduire la fatigue des yeux et les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
+Notre site d'e-learning possède une option qui permet de changer de thèmes, c'est-à-dire passer du thème clair (thème par défaut) au thème sombre. Les différents thèmes sont utilisables par tous les utilisateurs à leur bon vouloir. L'intérêt d'utiliser des thèmes sont les suivants: le thème sombre permet d’abord de réduire la fatigue des yeux, de plus les différents thèmes sont plus approprié à certaines conditions par exemple en pleine nuit le thème sombre sera plus apprécié.\\
 
 Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
 \begin{figure}[!h]
@@ -173,14 +173,16 @@ Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
     \includegraphics[width=4cm]{images/boutonThemeClaire.PNG}
     \includegraphics[width=4cm]{images/boutonThemeSombre.PNG}
 }
-\caption{Bouton en mode thème clair.}
-\caption{Bouton en mode thème sombre.}
+\caption{Bouton en mode thème clair}
+\caption{Bouton en mode thème sombre}
 \label{fig}
 \end{figure}
 
-Le fonctionnement des thèmes est assez simple, en effet il nous suffit de déclarer 2 fichiers css que nous avons nommés respectivement ``lightMode.css" et ``darkMode.css". Dans ces fichiers sont déclarées des variables avec ``--nomVariable" correspondant aux couleurs qui seront utilisées dans leurs thèmes respectifs. Pour ces deux fichiers les variables doivent avoir le même nom mais avoir évidemment des valeurs différentes. Une fois ceci effectué, nous allons utiliser seulement les variables contenus dans les fichiers ``lightMode.css" ou ``darkMode.css" via différentes fonctions jQuery créés par nos propres moyens permettant d'importer un fichier ou un autre selon le thème. Les feuilles de styles vont ensuite définir, pour chaque page, le style à appliquer en utilisant des variables à la place des couleurs grâce à la syntaxe ``var(--nomVariable)". Finalement pour avoir un thème permanent et ne pas avoir besoin de repasser dans le thème souhaité à chaque rafraîchissement ou changement de page, nous avons utilisé un cookie. Ce cookie permet de stocker la valeur du thème choisi et avec le traitement de nos fonctions en jQuery, charger le bon thème.\\
+Le fonctionnement des thèmes est assez simple, en effet il nous suffit de déclarer 2 fichiers css que nous avons nommée respectivement "lightMode.css" et "darkMode.css". Et dans ces fichiers déclarer des variables avec "--nomVariable". Pour ces deux fichiers les variables doivent avoir le même nom mais avoir évidemment des valeurs différentes. Une fois ceci effectue, nous allons utiliser seulement les variables contenus dans les fichiers "lightMode.css" ou "darkMode.css" via différentes fonctions jQuerry créé par nos propres moyens. Finalement pour avoir un thème permanent et ne pas avoir besoin de repasser dans le thème souhaité à chaque rafraîchissement de la page, nous avons utilisé un cookie. Ce cookie permet de stocker la valeur du thème choisie et avec le traitement de nos fonctions en jQuerry chargé le bon thème.
 
-Pour illustrer ce qui a précédemment été vu, voyons avec un exemple concret. Nous définissons une variable ``--background-color: \#FFFFFF;" pour le thème clair et ``--background-color: \#000000;" pour le thème sombre. Maintenant dans un fichier css quelconque on peut utiliser ceci:
+Dernièrement dans les fichiers css qui vont organiser nos différentes pages nous allons utiliser cette syntaxe: "var(--nomVariable)", qui aura une valeur différente en fonction du thème choisie.\\
+
+Pour illustrer ce qui a précédemment été vue, voyons avec un exemple concret, définissons une variable "--background-color: \#FFFFFF;" pour le thème clair et "--background-color: \#000000;" pour le thème sombre. Maintenant dans un fichier css quelconque on peut utiliser ceci:
 \begin{lstlisting}[language=HTML]
   body{
     background-color: var(--background-color);
@@ -189,26 +191,26 @@ Pour illustrer ce qui a précédemment été vu, voyons avec un exemple concret.
 Si le thème clair est utilisé alors la couleur de fond aura pour valeur FFFFFF c'est-à-dire blanc, et dans le cas contraire pour le thème sombre la couleur de fond aura pour valeur 000000 c'est-à-dire noir.
 
 \subsection{Décompte des visiteurs}
-Dans une dynamique de création d'options agréables pour tous, nous avons intégré un compteur du nombre de visiteur, ce compteur est affiché dès l'arrivée de l'utilisateur sur la page d'accueil. Afin de stocker le nombre de visiteur de notre site nous l'avons fait via un fichier et non base de données car PHP permet la gestion de ce genre de petit fichier. Le fichier se nomme tout simplement "compteur.txt" et contient le nombre de visiteurs.\\
+Compteur du nombre de visiteur via fichier et non BDD.
 
-Voici un aperçu de l'affichage en question: 
-\begin{figure}[!h]
-\centerline{\includegraphics[width=8cm]{images/numberVisiteurs.PNG}}
-\caption{L'affichage du nombre de visiteur.}
-\label{fig}
-\end{figure}
+\subsection{Gestion des ressources}
+Un utilisateur peut utiliser deux types de ressources afin de décorer son cours : Les images, et les vidéos.\\\\
 
-\subsection{Contacter le support du site}
-Finalement, pour tous utilisateurs ayant la moindre question que ce soit sur le site, un cours en particulier ou d'autres informations, alors l'utilisateur peut nous faire parvenir un message via la section ``Contact" sur la page d'accueil. Pour envoyer à sa requête, il faut remplir les champs nécessaires sur cette page. Si le message est correctement traité alors un message de confirmation d'envoi est affiché. L'utilisateur peut ensuite attendre une réponse via l'un des moyens de contact qu'il a renseigné. Pour l'équipe d'administration, il existe une catégorie supplémentaire dans la partie profil. Cette catégorie se nomme ``Manage contacts" et elle permet d'afficher l'ensemble des messages envoyés par les utilisateurs. Ces messages peuvent être supprimés par les Webmasters, mais ils sont également dans la possibilité de répondre à ces messages via un ``mailto''.\\
-
-Voici à quoi ressemble la page de gestion des messages:
-\begin{figure}[!h]
-\centerline{\includegraphics[width=16cm]{images/manageContact.PNG}}
-\caption{L'affichage des messages pour les Webmasters.}
-\label{fig}
-\end{figure}
-
-Dernièrement, les messages sont stockés dans la table ``contact" de la base de données et les administrateurs sont définis par un booléen dans la table ``users" que nous pouvons ajouter à la main.
+\textbf{Les images - } L'utilisateur a accès à un menu "Enregistrer un media" dans son panneau d'administration. Cela lui donne accès à un bouton lui permettant de choisir un fichier sur son ordinateur. Un clic sur le bouton "Envoyer" signale à PHP via un formulaire que la superglobale \$\_FILE['nomVariable'] de PHP est remplie avec toutes les informations concernant l'image. Incluant sa taille, son type, son nom et surtout le tableau de bits qui la compose.\\\\D
+\centerline{
+    \includegraphics[width=14cm]{images/uploadImage.png}
+}
+\\La vue envoie au controlleur toutes les informations, et essaye de les insérer dans le modèle (notre base de données) au format BLOB. Cela se fait si le format correspond (png ou jpeg), que la taille est sous le seuil maximum, etc...\\
+Cela redirige l'utilisateur vers la page "Voir ses medias" qui permet à l'utilisateur de consulter le nom et l'id de chacune de ses images. Il peut aussi les supprimer.\\\\
+\centerline{
+    \includegraphics[width=10cm]{images/displayImage.png}
+}
+\\\\L'utilisateur peut utiliser les balises $[img=<id>]<legende>[/img]$ dans son cours, en remplaçant $<id>$ par l'ID de l'image qu'il souhaite afficher de son répertoire de medias. Cela ne marchera bien évidement pas s'il essaye d'afficher une image en utilisant l'id d'un autre utilisateur. Avec PHP, le nécéssaire est fait pour convertir ces balises en code HTML qui permet d'afficher des images à l'écran.\\\\
+\textbf{Les vidéos - }Pour éviter de surcharger la base de données qui est hébergée sur le serveur personnel d'un des membres du groupe, nous avons décider de traiter le cas des vidéos d'une manière différente : L'utilisateur peut, muni d'un lien Youtube, utiliser les balises $[video]<lien>[/video]$ afin d'afficher une vidéo depuis youtube sur son cours, de la même manière qu'une image.\\\\
+Voici l'exemple d'un cours contenant une image et une vidéo :\\\\
+\centerline{
+    \includegraphics[width=10cm]{images/imageVideo.png}
+}
 
 \section{Conclusion}
 
