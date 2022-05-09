@@ -30,7 +30,7 @@
         <label><?php echo getTranslation(25); ?></label>
         <input type="email" placeholder="<?php echo getTranslation(26); ?>" name="email" required>
         <label>Date de naissance</label>
-        <input id="datefield" type='date' min='1900-01-01' max='2099-12-31' name="birthdate"></input>
+        <input id="datefield" type='date' min='1900-01-01' max='2020-12-31' name="birthdate"></input>
 
         <label>Password</label>
         <input type="password" placeholder="<?php echo getTranslation(27); ?>" name="password" required>
