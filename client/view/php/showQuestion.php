@@ -37,7 +37,7 @@
 
         $number = getCountXML($xml,$NumChapter);
 
-        echo "<div class='ChapterName'>Voici le quiz pour le chapitre : ".getName($xml)."</div>";
+        echo "<div class='ChapterName'>There is the quiz for the course : ".getName($xml)."</div>";
         if($GLOBALS['isAdmin'])        
         {
         for($NumQuestion;$NumQuestion<=$number;$NumQuestion++)
@@ -74,7 +74,7 @@
             <?php 
             };?>
             <div>
-            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Rajouter une question</a>
+            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Add Question</a>
             </div>
             <?php
             }
