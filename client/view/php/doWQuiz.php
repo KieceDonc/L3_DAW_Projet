@@ -19,12 +19,10 @@
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/xml.php");
     
         
-        $NumChapter = 0;
+        $NumChapter = "0";
         $NumQuestion = 1;
 
         $xml = GetBienvenueXml();
-
-
         $number = getCountXml($xml,$NumChapter);
         ?>
 

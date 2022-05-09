@@ -19,7 +19,7 @@ for($i = 1;$i<=$number;$i++)
     {
         $NiceAnswer++;
     }
-}
+};
 
 ?>
 
