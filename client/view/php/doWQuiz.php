@@ -25,7 +25,7 @@
         $xml = getXml($NumChapter);
         if($xml == false)
         {
-            echo "hello";
+            echo "<div>hello</div>";
         }
         $number = getCountXml($xml,$NumChapter);
         ?>
