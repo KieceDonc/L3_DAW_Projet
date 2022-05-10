@@ -38,8 +38,8 @@ for($i = 1;$i<=$number;$i++)
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
     ?>
 
-        <div class="chapter">You have ended the test for the chapter <?php  $RequestAnswer =$xml->xpath("//Questionnaire/@Nom"); echo $RequestAnswer[0][0]; ?> </div>
-        <div class="Note">You have <?php if($NumChapter==53){echo getResultatBienvenue($NiceAnswer);}else{  echo $NiceAnswer." on ".$number ;} ?></div>
+        <div class="chapter">You have ended the test</div>
+        <div class="Note"><?php if($NumChapter==53 ){echo getResultatBienvenue($NiceAnswer);}else{echo $NiceAnswer." on ".$number ;} ?></div>
         <a href="/courses">Go to courses</button>
         
         <script src="../../../../shared/js/jquery.js"></script>
