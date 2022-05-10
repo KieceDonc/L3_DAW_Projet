@@ -46,7 +46,7 @@
         function getReponse($xml,$idQ,$NumChapter)
         {
             $array=$xml->xpath("//Questionnaire[@chapitre={$NumChapter}]/question[@id={$idQ}]/reponse");
-            return array[0][0];
+            return $array[0][0];
         }
 
         function getCountXML($xml,$id)
