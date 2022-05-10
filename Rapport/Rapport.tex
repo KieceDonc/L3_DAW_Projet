@@ -167,8 +167,8 @@ Ainsi l'administrateur de son cours pourra par la suite venir ajouter ou supprim
 Du côté des apprenants, ils pourront passer le quiz dans le cours associé. La liste des questions s'affichera et ils pourront y répondre en cliquant sur le choix qui veulent faire et ensuite valider le questionnaire.
 A la fin , ils verront leurs notes et pourront repasser le test s'ils ont envie de faire mieux.
 \subsection{Forum}
-Le forum permet la discussion entre apprenants. Il est global et les utilisateurs peuvent créer un nouveau sujet ou répondre dans un déjà créé s'ils sont connectés. Ils peuvent également consulter la liste des sujets et les messages dans ceux-ci. Les utilisateurs connectés ont également la possibilité de modifier ou supprimer les sujets et les messages dont ils sont les auteurs. 
-
+Le forum permet la discussion entre apprenants. Il est global et les utilisateurs peuvent créer un nouveau sujet ou répondre dans un déjà créé s'ils sont connectés. Ils peuvent également consulter la liste des sujets et les messages dans ceux-ci. Les utilisateurs connectés ont également la possibilité de modifier ou supprimer les sujets et les messages dont ils sont les auteurs.\\
+Nous avons également mis en place un système AJAX permettant la recherche de mots-clés dans le titre des forums et le changement d'indice de ``page'' (les résultats sont séparés en page selon un nombre maximum par page) sans avoir à recharger la page.
 
 \section{Les options}
 \subsection{Multilingue}
@@ -197,11 +197,9 @@ Les utilisateurs peuvent changer de thèmes par l'intermédiaire de ce bouton:
 \label{fig}
 \end{figure}
 
-Le fonctionnement des thèmes est assez simple, en effet il nous suffit de déclarer 2 fichiers css que nous avons nommée respectivement "lightMode.css" et "darkMode.css". Et dans ces fichiers déclarer des variables avec "--nomVariable". Pour ces deux fichiers les variables doivent avoir le même nom mais avoir évidemment des valeurs différentes. Une fois ceci effectue, nous allons utiliser seulement les variables contenus dans les fichiers "lightMode.css" ou "darkMode.css" via différentes fonctions jQuerry créé par nos propres moyens. Finalement pour avoir un thème permanent et ne pas avoir besoin de repasser dans le thème souhaité à chaque rafraîchissement de la page, nous avons utilisé un cookie. Ce cookie permet de stocker la valeur du thème choisie et avec le traitement de nos fonctions en jQuerry chargé le bon thème.
+Le fonctionnement des thèmes est assez simple, en effet il nous suffit de déclarer 2 fichiers css que nous avons nommés respectivement ``lightMode.css" et ``darkMode.css". Dans ces fichiers sont déclarées des variables avec ``--nomVariable" correspondant aux couleurs qui seront utilisées dans leurs thèmes respectifs. Pour ces deux fichiers les variables doivent avoir le même nom mais avoir évidemment des valeurs différentes. Une fois ceci effectué, nous allons utiliser seulement les variables contenus dans les fichiers ``lightMode.css" ou ``darkMode.css" via différentes fonctions jQuery créés par nos propres moyens permettant d'importer un fichier ou un autre selon le thème. Les feuilles de styles vont ensuite définir, pour chaque page, le style à appliquer en utilisant des variables à la place des couleurs grâce à la syntaxe ``var(--nomVariable)". Finalement pour avoir un thème permanent et ne pas avoir besoin de repasser dans le thème souhaité à chaque rafraîchissement ou changement de page, nous avons utilisé un cookie. Ce cookie permet de stocker la valeur du thème choisi et avec le traitement de nos fonctions en jQuery, charger le bon thème.\\
 
-Dernièrement dans les fichiers css qui vont organiser nos différentes pages nous allons utiliser cette syntaxe: "var(--nomVariable)", qui aura une valeur différente en fonction du thème choisie.\\
-
-Pour illustrer ce qui a précédemment été vue, voyons avec un exemple concret, définissons une variable "--background-color: \#FFFFFF;" pour le thème clair et "--background-color: \#000000;" pour le thème sombre. Maintenant dans un fichier css quelconque on peut utiliser ceci:
+Pour illustrer ce qui a précédemment été vu, voyons avec un exemple concret. Nous définissons une variable ``--background-color: \#FFFFFF;" pour le thème clair et ``--background-color: \#000000;" pour le thème sombre. Maintenant dans un fichier css quelconque on peut utiliser ceci:
 \begin{lstlisting}[language=HTML]
   body{
     background-color: var(--background-color);
@@ -210,7 +208,7 @@ Pour illustrer ce qui a précédemment été vue, voyons avec un exemple concret
 Si le thème clair est utilisé alors la couleur de fond aura pour valeur FFFFFF c'est-à-dire blanc, et dans le cas contraire pour le thème sombre la couleur de fond aura pour valeur 000000 c'est-à-dire noir.
 
 \subsection{Décompte des visiteurs}
-Dans une dynamique de création d'options agréables pour tous, nous avons intégré un compteur du nombre de visiteur, ce compteur est affiché dès l'arrivée de l'utilisateur sur la page d'accueil. Afin de stocker le nombre de visiteur de notre site nous l'avons fait via un fichier et non base de données car PHP permet la gestion de ce genre de petit fichier. Le fichier se nomme tout simplement "compteur.txt" et contient le nombre de visiteurs.\\
+Dans une dynamique de création d'options agréables pour tous, nous avons intégré un compteur du nombre de visiteur, ce compteur est affiché dès l'arrivée de l'utilisateur sur la page d'accueil. Afin de stocker le nombre de visiteur de notre site nous l'avons fait via un fichier et non une base de données car PHP permet la gestion de ce genre de petit fichier, à l'inverse d'une base de données qui peut être couteuse à utiliser et à mettre en place. Le fichier se nomme simplement ``compteur.txt" et contient le nombre de visiteurs.\\
 Voici un aperçu de l'affichage en question: 
 \begin{figure}[!h]
 \centerline{\includegraphics[width=8cm]{images/numberVisiteurs.PNG}}
