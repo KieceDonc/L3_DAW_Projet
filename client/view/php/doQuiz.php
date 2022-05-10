@@ -32,7 +32,7 @@
         ?>
         <div class="quiz">
             <div id="info">
-                <div id="chapter">Chapitre <?php echo $NumChapter." : "; echo getName($xml) ?></div>
+                <div id="chapter">Chapitre <?php if($NumChapter!=53){echo $NumChapter." : "; echo getName($xml);}?></div>
             </div>
             <form action="finishquiz" method="get">
             <?php
