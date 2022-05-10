@@ -26,7 +26,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
   ?>
 
   <h1><?php echo getTranslation(3); ?></h1>
-  <a href='/doQuiz?id=0'>Click here for Welcome quiz</a>
+  <a href='/doQuiz?id=53'>Click here for Welcome quiz</a>
   </br>
   <?php
   showCourses();
