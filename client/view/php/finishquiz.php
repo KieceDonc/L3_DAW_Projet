@@ -39,8 +39,7 @@ for($i = 1;$i<=$number;$i++)
     ?>
 
         <div class="chapter">You have ended the test</div>
-       <?php echo $NiceAnswer;?>
-        <div class="Note"><?php if($NumChapter==53 ){echo getResultatBienvenue($NiceAnswer);}else{echo $NiceAnswer." on ".$number ;} ?></div>
+        <div class="Note"><?php if($NumChapter==53){echo getResultatBienvenue($NiceAnswer);}else{echo $NiceAnswer." on ".$number ;} ?></div>
         <a href="/courses">Go to courses</button>
         
         <script src="../../../../shared/js/jquery.js"></script>
