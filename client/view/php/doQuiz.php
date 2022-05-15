@@ -70,6 +70,7 @@
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
             </form>
         </div>
+        <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
         <script src="../../../../shared/js/jquery.js"></script>
         <script src="../js/shared.js"></script>
         <script src="../js/Quiz.js"></script>

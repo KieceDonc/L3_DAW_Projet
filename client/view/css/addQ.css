@@ -1,7 +1,7 @@
 
-body {
-  background-color: var(--background-color);
-  color : var(--text-color-lvl-1);
+body{
+  background-color: --var(--background-color);
+  color: black;
 }
 
 #Difficulty{

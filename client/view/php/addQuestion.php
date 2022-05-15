@@ -30,7 +30,7 @@
                 <input id="chapter" name="idchapter" placeholder="Entrez l'id du chapitre" pattern="[1-9]" value="<?php echo $_GET['id']; ?>" type="hidden" readonly="readonly""/>
 </br>
                 <label>Enter Question</label>
-                <input id="question" name="question" type=text placeholder="Entrez"/>
+                <input id="question" name="question" type=text placeholder="Enter question"/>
 </br>
                 <label>Enter difficulty </label>
                 <input id="Difficulty" name="difficulté" type=text placeholder="Enter difficulty" pattern="[1,2,3]" maxlength="1" />
@@ -67,5 +67,6 @@
          echo "<div>dont have permission to be here</div>";
      }
      ?>
+     <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
     </body>
 </html> 

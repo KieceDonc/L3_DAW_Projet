@@ -26,7 +26,13 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
   ?>
 
   <h1><?php echo getTranslation(3); ?></h1>
-  <a href='/doQuiz?id=53'>Click here for Welcome quiz</a>
+  <?php if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
+				if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
+
+					echo "<a href='/doQuiz?id=53'>Click here for Welcome quiz</a>";
+				}
+			}
+  ?>
   </br>
   <?php
   showCourses();
@@ -56,8 +62,16 @@ function showCourses()
 function addCourse($course)
 {
   echo  "<div class='course'>
-          <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"] . "</a></div>
-          <div class='author'>" . getTranslation(80) . " " . $course["username"] . "</div>
+          <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"];
+          if(getAdminID($_SESSION[CONST_SESSION_EMAIL]) == 1)
+          {
+            echo "(Certified)</a></div>";
+          }
+          else 
+          {
+            echo "</a></div>";
+          }
+          echo "<div class='author'>" . getTranslation(80) . " " . $course["username"] . "</div>
           <div class='description'>" . $course["description"] . "</div>
         </div>";
 }

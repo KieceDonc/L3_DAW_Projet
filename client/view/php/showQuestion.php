@@ -44,7 +44,7 @@
         {
     ?>
         <div class = "question">
-        <h1><?php echo "Question  : ".getQuestion($xml,$NumQuestion,$NumChapter) ?></h1>
+        <h1><?php echo getQuestion($xml,$NumQuestion,$NumChapter) ?></h1>
                 <div class="choice">
                     <div class="choice-container">
                         <p class="choice-prefix">A.</p>
@@ -83,5 +83,6 @@
                 echo "Dont have right to be here";
             }
             ?>
+            <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
     </body>
 </html>
