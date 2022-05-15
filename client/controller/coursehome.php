@@ -50,3 +50,8 @@
     function removeTheme($themeId){
         removeThemeDB($themeId);
     }
+
+    // Delete a course
+    function removeCourse($courseId){
+        removeThemeDB($courseId);
+    }

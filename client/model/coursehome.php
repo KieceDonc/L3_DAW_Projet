@@ -148,4 +148,15 @@
         $query->execute();
         closePDO($conn);
     }
+
+    function removeCourseDB($courseId){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Delete said course 
+        $querystring = "DELETE FROM courses WHERE id = :courseid";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':courseid',$courseId);
+        $query->execute();
+        closePDO($conn);
+    }
 ?>

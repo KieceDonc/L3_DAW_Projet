@@ -9,7 +9,7 @@
         $conn = getPDO();
 
         // QUERY - Retrieve the name of the course, name of its author and description of the course :
-        $courses = $conn->query("SELECT name, username, description, courses.id FROM courses JOIN users u on courses.idauthor = u.id;");
+        $courses = $conn->query("SELECT name, username, description, courses.id, certif FROM courses JOIN users u on courses.idauthor = u.id;");
 
         closePDO($conn);
 

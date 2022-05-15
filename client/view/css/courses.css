@@ -22,6 +22,12 @@
     color:rgb(193, 104, 184);
 }
 
+.certif{
+    text-decoration: underline;
+    margin-top: 5px;
+    text-align: center;
+}
+
 .author{
     font-style: italic;
     text-align: center;

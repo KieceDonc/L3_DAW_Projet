@@ -36,6 +36,21 @@
     box-shadow: 0px 1px 10px black;
 }
 
+.deleteTheme input{
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Quicksand Regular';
+    color: var(--text-color-lvl-1);
+    background-color: var(--background-color);
+    margin-left : 20px;
+}
+
+.deleteTheme input:hover{
+    box-shadow: 0px 1px 10px black;
+}
+
 .orderSectionForm input:disabled,
 input[disabled]{
   border: 1px solid #999999;

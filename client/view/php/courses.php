@@ -63,8 +63,10 @@ function addCourse($course)
 {
   echo  "<div class='course'>
           <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"] . "</a></div>
-          <div class='author'>" . getTranslation(80) . " " . $course["username"] . "</div>
-          <div class='description'>" . $course["description"] . "</div>
+          <div class='author'>" . getTranslation(80) . " " . $course["username"] . "</div>";
+  if(boolval($course["certif"]))
+    echo "<div class='certif'>".getTranslation(111)."</div>";
+  echo "<div class='description'>" . $course["description"] . "</div>
         </div>";
 }
 ?>

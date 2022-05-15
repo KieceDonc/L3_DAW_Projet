@@ -17,7 +17,8 @@
   ?>
 	<div class="content">
     <h1> Your courses </h1>
-    <?php ini_set('display_errors', 1);showCourses(); ?>
+    <?php ini_set('display_errors', 1);
+    showCourses(); ?>
 	</div>
 
 <!-- JS -->
