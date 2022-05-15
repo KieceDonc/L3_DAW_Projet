@@ -59,7 +59,6 @@ function printCourse()
 }
 
 function printJoinButton(){
-    echo "aaaaaaaaaaaa";
     if(!isLogged() || $GLOBALS['isAdmin']){
         return;
     }
