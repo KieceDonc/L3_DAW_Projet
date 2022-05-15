@@ -60,15 +60,15 @@
         {
             if(intval($i)<4)
             {
-                echo $i."on 10 . You can start with basics course";
+                echo $i."on 10 . You can start with basics course (Certified Courses)";
             }
             else if (intval($i)<7)
             {
-                echo $i."on 10 . You can start with advanced course";
+                echo $i."on 10 . You can start with advanced course (Certified Courses)";
             }
             else
             {
-                echo $i."on 10 . You can start with expert course";
+                echo $i."on 10 . You can start with expert course (Certified Courses)";
             }
         }
 ?>
