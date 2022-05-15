@@ -45,4 +45,6 @@ addQuestion($id,$ques,$Difficulty,$isok,$Answer,$choice1,$choice2,$choice3,$choi
         <a href="coursehome?id=<?php echo $id; ?>">Return to course</a>
         <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
     </body>
+    <script src="../../../../shared/js/jquery.js"></script>
+        <script src="../js/shared.js"></script>
 </html>
