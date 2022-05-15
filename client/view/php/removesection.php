@@ -14,10 +14,9 @@
 ?>
 
 <?php 
-    $sectionId = $_POST['courseIdDeleteSection'];
-    $courseId = $_POST['courseIdDeleteSection'];
-    removeSection($sectionId,$courseId);
-
+    $sectionId = $_POST['deleteSectionId'];
+    removeSection($sectionId);
+    header("Location: ".$_SERVER['HTTP_REFERER'])
 ?>
 </body>
 
