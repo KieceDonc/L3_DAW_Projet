@@ -38,7 +38,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     printCourse();
     printJoinButton();
     printSections();
-    printButton();
+    printButtons();
     printAddQuizz();
     ?>
 
@@ -119,11 +119,16 @@ function printThemes($idsection){
     }
 }
 
-function printButton(){
+function printButtons(){
     if($GLOBALS['isAdmin']){
         echo "<form action='/forms/addsection' method='post'>
         <div><input type='text' id='newSectionTxt' name='newSectionTxt'>
         <input type='submit' id='addSectionBtn' name='addSectionBtn' value='" . getTranslation(92) . "'></div>
+        <input id='courseId' name='courseId' type='hidden' value='".$_GET['id']."'>
+        </form>";
+        echo "<form action='/forms/removecourse' method='post'>
+        <div>
+        <input type='submit' id='deleteCourseBtn' name='deleteCourseBtn' value='" . getTranslation(112) . "'></div>
         <input id='courseId' name='courseId' type='hidden' value='".$_GET['id']."'>
         </form>";
     }
