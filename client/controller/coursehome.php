@@ -40,3 +40,8 @@
     function removeTakes($userId,$courseId){
         removeTakesDB($userId,$courseId);
     }
+
+    // Stop joining a course
+    function removeSection($sectionId){
+        removeSectionDB($sectionId);
+    }

@@ -99,6 +99,7 @@ function printSections()
             echo "<form class='orderSectionForm' action='/forms/changeorder.php?direction=up&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='^' class='upBtn' name='upBtn' ". $isFirst ."></form>";
             echo "<form class='orderSectionForm' action='/forms/changeorder.php?direction=down&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='v' class='downBtn' name='downBtn' ". $isLast ."></form>";
             echo "<form class='orderSectionForm' action='addtheme.php?section=".$section['id']."&course=".$_GET['id']."&type=lesson' method='post'><input type='submit' value='+' class='addBtn' name='addBtn'></form>";
+            echo "<form class='orderSectionForm' action='removesection' method='post'><input type='submit' value='-' class='delBtn' name='delBtn'><input type='hidden' value='".$section['id']."' name='deleteSectionId' id='deleteSectionId'></form>";
             echo "</span>";
         }
         echo "</div>";
@@ -109,8 +110,11 @@ function printSections()
 function printThemes($idsection){
     $themes = getThemes($idsection);
     foreach($themes as $theme){
+        $link = $theme["name"];
+        if($GLOBALS['isStudent'] || $GLOBALS['isAdmin'])
+            $link = "<a href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a>";
         $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
-        echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - <a href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a></span></div>";
+        echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - ".$link."</span></div>";
         echo "</div>";
     }
 }
@@ -126,10 +130,12 @@ function printButton(){
 }
 
 function printAddQuizz(){
+    $icon = "<img src='../media/quizz.png' alt='quizz icon' class='icon'>";
     if($GLOBALS['isAdmin'])
-        echo "<a href='showQuestion?id={$_GET['id']}'>".getTranslation(94)."</a>";   // EDIT THE QUIZZ (admin)
+        //echo "";   // EDIT THE QUIZZ (admin)
+        echo "<div class='theme' id='quizz'>" . $icon . "<span class='spanTheme'> <a href='showQuestion?id={$_GET['id']}'>".getTranslation(94)."</a></span></div>";
     elseif($GLOBALS['isStudent'])
-        echo "<a href='doQuiz?id={$_GET['id']}'>".getTranslation(95)."</a>";  // DO THE QUIZZ (student)
+        echo "<div class='theme' id='quizz'>" . $icon . "<span class='spanTheme'> <a href='doQuiz?id={$_GET['id']}'>".getTranslation(95)."</a></span></div>";  // DO THE QUIZZ (student)
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

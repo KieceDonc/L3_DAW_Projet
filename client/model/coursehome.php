@@ -118,11 +118,22 @@
     function removeTakesDB($userId,$courseId){
         $conn = getPDO();
 
-        // PREPARED QUERY - Indicates said user takes the course
+        // PREPARED QUERY - Delete said user takes the course
         $querystring = "DELETE FROM takes WHERE iduser = :userid AND idcourse = :courseid";
         $query = $conn->prepare( $querystring );
         $query->bindParam(':userid',$userId);
         $query->bindParam(':courseid',$courseId);
+        $query->execute();
+        closePDO($conn);
+    }
+
+    function removeSectionDB($sectionId){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Delete said section 
+        $querystring = "DELETE FROM sections WHERE id = :sectionid";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':sectionid',$sectionId);
         $query->execute();
         closePDO($conn);
     }

@@ -84,6 +84,7 @@
                 case CONST_DB_ACCEPTED:
                     $_SESSION[CONST_SESSION_ISLOGGED] = CONST_SESSION_ISLOGGED_YES;
                     $_SESSION[CONST_SESSION_EMAIL] = $email;
+                    $_SESSION[CONST_SESSION_USERID] = getUserID($_SESSION[CONST_SESSION_EMAIL]);
                     redirectTo('/',$errors);
                     break;
                 case CONST_DB_ERR_USERNAMEEXIST:
