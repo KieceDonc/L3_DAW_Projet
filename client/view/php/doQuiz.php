@@ -34,7 +34,7 @@
             <div id="info">
                 <div id="chapter"> <?php if($NumChapter!=63){echo getName($xml);}?></div>
             </div>
-            <?php if($GLOBALS('isStudent') || $NumChapter==63){?>
+            <?php if($GLOBALS['isStudent'] || $NumChapter==63){?>
             <form action="finishquiz" method="get">
             <?php
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
