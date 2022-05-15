@@ -113,7 +113,17 @@
         $query->bindParam(':courseid',$courseId);
         $query->execute();
         closePDO($conn);
+    }
 
-        return $query->fetchAll();
+    function removeTakesDB($userId,$courseId){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Indicates said user takes the course
+        $querystring = "DELETE FROM takes WHERE iduser = :userid AND idcourse = :courseid)";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':userid',$userId);
+        $query->bindParam(':courseid',$courseId);
+        $query->execute();
+        closePDO($conn);
     }
 ?>

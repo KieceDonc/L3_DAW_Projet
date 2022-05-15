@@ -35,3 +35,8 @@
     function addTakes($userId,$courseId){
         addTakesDB($userId,$courseId);
     }
+
+    // Stop joining a course
+    function removeTakes($userId,$courseId){
+        removeTakesDB($userId,$courseId);
+    }

@@ -18,10 +18,10 @@
     $courseId = $_POST['courseIdJoins'];
     $userId = $_SESSION[CONST_SESSION_USERID];
     echo $joins;
-    /*if($joins)
+    if($joins)
         addTakes($userId,$courseId);
     else
-        removeTakes($userId,$courseId)*/
+        removeTakes($userId,$courseId);
     //header("Location: ".$_SERVER['HTTP_REFERER'])
 ?>
 </body>
