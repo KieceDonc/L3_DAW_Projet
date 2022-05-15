@@ -121,7 +121,7 @@
         // PREPARED QUERY - Indicates said user takes the course
         $querystring = "DELETE FROM takes WHERE iduser = :userid AND idcourse = :courseid)";
         $query = $conn->prepare( $querystring );
-        $query->bindParam(':userid',$userId);
+        $query->bindParam(':userid',$userId);$_SESSION[CONST_SESSION_USERID];
         $query->bindParam(':courseid',$courseId);
         $query->execute();
         closePDO($conn);

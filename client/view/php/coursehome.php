@@ -64,11 +64,13 @@ function printJoinButton(){
     if(!$GLOBALS['isStudent']){
         echo "<form action='/forms/studentCourse' method='post'><input type='submit' name='joinCourse' id='joinCourse' value='".getTranslation(109)."'>
         <input type='hidden' id='joins' name='joins' value='1'>
+        <input type='hidden' id='userIdJoins' name='userIdJoins' value='".$_SESSION[CONST_SESSION_USERID]."'>
         <input id='courseIdJoins' name='courseIdJoins' type='hidden' value='".$_GET['id']."'></form>";
         return;
     }
     echo "<form action='/forms/studentCourse' method='post'><input' type='submit' name='quitCourse' id='quitCourse' value='".getTranslation(110)."'>
     <input type='hidden' id='joins' name='joins' value='0'>
+    <input type='hidden' id='userIdJoins' name='userIdJoins' value='".$_SESSION[CONST_SESSION_USERID]."'>
     <input id='courseIdJoins' name='courseId' type='hidden' value='".$_GET['id']."'></form>";
 }
 

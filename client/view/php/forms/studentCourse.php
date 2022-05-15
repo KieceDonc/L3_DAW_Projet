@@ -16,8 +16,8 @@
 <?php 
     $joins = boolval($_POST['joins']);
     $courseId = $_POST['courseIdJoins'];
-    $userId = $_SESSION[CONST_SESSION_USERID];
-    echo $joins;
+    $userId = $_POST['userIdJoins'];
+    echo $joins . "--" . $userId;
     if($joins)
         addTakes($userId,$courseId);
     else
