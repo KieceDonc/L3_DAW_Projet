@@ -14,7 +14,7 @@
 ?>
 
 <?php 
-    $sectionId = $_POST['deleteThemeId'];
+    $themeId = $_POST['deleteThemeId'];
     removeTheme($themeId);
     header("Location: ".$_SERVER['HTTP_REFERER'])
 ?>
