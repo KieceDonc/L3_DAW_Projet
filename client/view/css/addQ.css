@@ -57,7 +57,10 @@ label {
     margin-left: 45%;
 }
 
-
+.quiz {
+  background-color: var(--background-color);
+  color : black;
+}
 
 
 

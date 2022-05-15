@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/showQ.css" />
   </head>
   <body>
+      <div class="showQ">
 	<?php 
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/controller/coursehome.php");
@@ -84,5 +85,6 @@
             }
             ?>
             <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
+        </div>
     </body>
 </html>

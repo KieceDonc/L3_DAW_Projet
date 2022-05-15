@@ -38,6 +38,10 @@ a {
   text-align: center;
 }
 
+.showQ {
+  background-color: var(--background-color);
+  color: var(--text-color-lvl-1);
+}
 
 
 
