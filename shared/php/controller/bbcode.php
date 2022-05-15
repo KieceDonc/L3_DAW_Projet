@@ -33,9 +33,9 @@ src='https://www.youtube.com/embed/tgbNymZ7vqY'>
 function fetchImg($m) {
     $mediaId = $m[1];
 
-    if(!ownsMedia($_GET['id'],$mediaId))    // Checks if the resource id has indeed been uploaded by this user. 
+    if(!ownsMedia($_SESSION[CONST_SESSION_USERID],$mediaId))    // Checks if the resource id has indeed been uploaded by this user. 
         return "";
-
+    echo "OUIIIIIIIIII";
     $file = getFile($mediaId);
     $path = getFilePath($file['content']);
     return "<div class='imgContainer'><img class'userImg' src=".$path."><div class='userLegend'>".$m[2]."</div></div>";
