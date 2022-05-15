@@ -69,5 +69,6 @@
      ?>
      <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
     </body>
-    <script src="../js/shared.js"></script>
+    <script src="../../../../shared/js/jquery.js"></script>
+        <script src="../js/shared.js"></script>
 </html> 

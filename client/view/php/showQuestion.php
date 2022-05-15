@@ -76,7 +76,7 @@
             <?php 
             };?>
             <div>
-            <a href="addQuestion?id=<?php echo $NumChapter; ?>">Add Question</a>
+            <a style="color:black" href="addQuestion?id=<?php echo $NumChapter; ?>">Add Question</a>
             </div>
             <?php
             }

@@ -40,9 +40,9 @@ addQuestion($id,$ques,$Difficulty,$isok,$Answer,$choice1,$choice2,$choice3,$choi
   <body>
 	      <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
         <div>You have entered a question for the course <?php echo $id ."</div>";?>
-        <a href="addQuestion?id=<?php echo $id; ?>">Re add question</a>
+        <a style="color:black" href="addQuestion?id=<?php echo $id; ?>">Re add question</a>
         </br>
-        <a href="coursehome?id=<?php echo $id; ?>">Return to course</a>
+        <a style="color:black" href="coursehome?id=<?php echo $id; ?>">Return to course</a>
         <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
     </body>
     <script src="../../../../shared/js/jquery.js"></script>
