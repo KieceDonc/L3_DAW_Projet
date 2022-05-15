@@ -17,11 +17,11 @@
     $joins = boolval($_POST['joins']);
     $courseId = $_POST['courseIdJoins'];
     $userId = $_POST['userIdJoins'];
-    echo $joins . "--" . $userId;
     if($joins)
         addTakes($userId,$courseId);
     else
         removeTakes($userId,$courseId);
+    header("Location: ".$_SERVER['HTTP_REFERER'])
 ?>
 </body>
 
