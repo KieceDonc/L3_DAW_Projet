@@ -32,8 +32,9 @@
         ?>
         <div class="quiz">
             <div id="info">
-                <div id="chapter"> <?php if($NumChapter!=53){echo "Chapitre".$NumChapter." : "; echo getName($xml);}?></div>
+                <div id="chapter"> <?php if($NumChapter!=63){echo getName($xml);}?></div>
             </div>
+            <?php if($GLOBALS('isStudent') || $NumChapter!=63){?>
             <form action="finishquiz" method="get">
             <?php
                 for($NumQuestion;$NumQuestion<=$number;$NumQuestion++){ 
@@ -64,7 +65,7 @@
                 </div>
             </div>
             <?php 
-                };
+                };};
             ?>
             <input type="submit" value = "Submit" class="SubmitBtn"/>    
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
