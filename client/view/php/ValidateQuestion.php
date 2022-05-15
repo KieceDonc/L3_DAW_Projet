@@ -34,6 +34,7 @@ addQuestion($id,$ques,$Difficulty,$isok,$Answer,$choice1,$choice2,$choice3,$choi
     
     <!-- CSS -->
 	  <link rel="stylesheet" href="../css/font-face.css" />
+    <link rel="stylesheet" href="../css/darkMode.css" />
     <link rel="stylesheet" href="../css/shared.css" />
   </head>
   <body>
