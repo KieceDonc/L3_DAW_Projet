@@ -61,6 +61,7 @@ function showCourses()
 // Adds a course on the page, including a link redirecting towards its homepage. Passes the id of the course as an argument through the URL.
 function addCourse($course)
 {
+  require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/courses.php");
   echo  "<div class='course'>
           <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"] . "</a></div>
           <div class='author'>" . getTranslation(80) . " " . $course["username"];
