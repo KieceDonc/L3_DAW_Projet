@@ -36,6 +36,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
     // PRINTING THE PAGE
 
     printCourse();
+    printJoinButton();
     printSections();
     printButton();
     printAddQuizz();
@@ -54,8 +55,21 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
 function printCourse()
 {
     $name = getCourse();
-    $b = "NONNNN";
     echo "<h1>" . $name . "</h1>";
+}
+
+function printJoinButton(){
+    if(!isLogged() || $GLOBALS['isAdmin'])
+        return;
+    if(!$GLOBALS['isStudent']){
+        echo "<form action='/forms/studentCourse' method='post'><input type='submit' name='joinCourse' id='joinCourse' value='".getTranslation(109)."'>
+        <input type='hidden' id='joins' name='joins' value='1'>
+        <input id='courseIdJoins' name='courseIdJoins' type='hidden' value='".$_GET['id']."'></form>";
+        return;
+    }
+    echo "<form action='/forms/studentCourse' method='post'><input' type='submit' name='quitCourse' id='quitCourse' value='".getTranslation(110)."'>
+    <input type='hidden' id='joins' name='joins' value='0'>
+    <input id='courseIdJoins' name='courseId' type='hidden' value='".$_GET['id']."'></form>";
 }
 
 function printSections()
@@ -69,7 +83,6 @@ function printSections()
             
 
     // Show the sections.
-    // TODO : Give access to links guiding to themes only if the user takes the class.
     $sections = getSections();
     foreach($sections as $section){
         echo "<div>Section " . $section['ord'] . " - " . $section['name'] ;

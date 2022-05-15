@@ -19,3 +19,16 @@
 .orderSectionForm{
     display:inline-flex
 }
+
+h1{
+    text-transform:uppercase;
+}
+
+.icon{
+    background-color: #dfdafd;
+    border-radius: 100%;
+}
+
+a{
+    color:var(--text-color-lvl-1)
+}

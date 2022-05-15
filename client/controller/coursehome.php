@@ -30,3 +30,8 @@
     function addSection($content,$courseId){
         addSectionDB($content,$courseId);
     }
+
+    // Join a course
+    function addTakes($userId,$courseId){
+        addTakesDB($userId,$courseId);
+    }

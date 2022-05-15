@@ -102,4 +102,18 @@
         
         closePDO($conn);
     }
+
+    function addTakesDB($userId,$courseId){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Indicates said user takes the course
+        $querystring = "INSERT INTO takes VALUES (:userid,:courseid)";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':userid',$userId);
+        $query->bindParam(':courseid',$courseId);
+        $query->execute();
+        closePDO($conn);
+
+        return $query->fetchAll();
+    }
 ?>
