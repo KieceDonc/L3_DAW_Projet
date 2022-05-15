@@ -7,7 +7,8 @@
     <!-- CSS -->
     
     <link rel="stylesheet" href="../css/font-face.css" />
-    <link rel="stylesheet" href="../css/shared.css" />
+        <link rel="stylesheet" href="../css/darkMode.css" />
+        <link rel="stylesheet" href="../css/shared.css" />
     <link rel="stylesheet" href="../css/showQ.css" />
   </head>
   <body>
