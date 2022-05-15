@@ -18,7 +18,7 @@
     echo $courseId;
     removeCourse($courseId);
     
-    //header("Location: /courses");
+    header("Location: /courses");
 ?>
 </body>
 

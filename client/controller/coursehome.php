@@ -53,5 +53,5 @@
 
     // Delete a course
     function removeCourse($courseId){
-        removeThemeDB($courseId);
+        removeCourseDB($courseId);
     }
