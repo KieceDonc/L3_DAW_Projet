@@ -21,8 +21,8 @@
         return boolval($isAdmin[0]['isadmin']);
     }
 
-    function ownsMedia($idcourse,$idmedia){
-        $res = ownsMediaDB($idcourse,$idmedia);
+    function ownsMedia($iduser,$idmedia){
+        $res = ownsMediaDB($iduser,$idmedia);
         return boolval($res[0]['ownsmedia']);
     }
 ?>
