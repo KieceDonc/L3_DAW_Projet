@@ -22,7 +22,7 @@
         addTakes($userId,$courseId);
     else
         removeTakes($userId,$courseId);
-    //header("Location: ".$_SERVER['HTTP_REFERER'])
+    header("Location: ".$_SERVER['HTTP_REFERER'])
 ?>
 </body>
 

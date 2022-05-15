@@ -66,12 +66,12 @@ function printJoinButton(){
         <input type='hidden' id='joins' name='joins' value='1'>
         <input type='hidden' id='userIdJoins' name='userIdJoins' value='".$_SESSION[CONST_SESSION_USERID]."'>
         <input id='courseIdJoins' name='courseIdJoins' type='hidden' value='".$_GET['id']."'></form>";
-        return;
-    }
+    }else{
     echo "<form action='/forms/studentCourse' method='post'><input' type='submit' name='quitCourse' id='quitCourse' value='".getTranslation(110)."'>
     <input type='hidden' id='joins' name='joins' value='0'>
     <input type='hidden' id='userIdJoins' name='userIdJoins' value='".$_SESSION[CONST_SESSION_USERID]."'>
     <input id='courseIdJoins' name='courseId' type='hidden' value='".$_GET['id']."'></form>";
+    }
 }
 
 function printSections()
