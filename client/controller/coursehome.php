@@ -45,3 +45,8 @@
     function removeSection($sectionId){
         removeSectionDB($sectionId);
     }
+
+    // Delete a lesson
+    function removeTheme($themeId){
+        removeThemeDB($themeId);
+    }

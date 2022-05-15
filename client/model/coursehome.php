@@ -137,4 +137,15 @@
         $query->execute();
         closePDO($conn);
     }
+
+    function removeThemeDB($themeId){
+        $conn = getPDO();
+
+        // PREPARED QUERY - Delete said section 
+        $querystring = "DELETE FROM themes WHERE id = :themeid";
+        $query = $conn->prepare( $querystring );
+        $query->bindParam(':themeid',$themeId);
+        $query->execute();
+        closePDO($conn);
+    }
 ?>

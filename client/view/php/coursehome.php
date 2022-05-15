@@ -99,7 +99,7 @@ function printSections()
             echo "<form class='orderSectionForm' action='/forms/changeorder.php?direction=up&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='^' class='upBtn' name='upBtn' ". $isFirst ."></form>";
             echo "<form class='orderSectionForm' action='/forms/changeorder.php?direction=down&current=".$section['id']."&order=".$section['ord']."' method='post'><input type='submit' value='v' class='downBtn' name='downBtn' ". $isLast ."></form>";
             echo "<form class='orderSectionForm' action='addtheme.php?section=".$section['id']."&course=".$_GET['id']."&type=lesson' method='post'><input type='submit' value='+' class='addBtn' name='addBtn'></form>";
-            echo "<form class='orderSectionForm' action='removesection' method='post'><input type='submit' value='-' class='delBtn' name='delBtn'><input type='hidden' value='".$section['id']."' name='deleteSectionId' id='deleteSectionId'></form>";
+            echo "<form class='orderSectionForm' action='/forms/removesection' method='post'><input type='submit' value='-' class='delBtn' name='delBtn'><input type='hidden' value='".$section['id']."' name='deleteSectionId' id='deleteSectionId'></form>";
             echo "</span>";
         }
         echo "</div>";
@@ -114,7 +114,8 @@ function printThemes($idsection){
         if($GLOBALS['isStudent'] || $GLOBALS['isAdmin'])
             $link = "<a href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a>";
         $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
-        echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - ".$link."</span></div>";
+        echo "<div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " - ".$link."
+        <form class='deleteTheme' action='/forms/removetheme' method='post'><input type='submit' value='-' class='delThemeBtn' name='delThemeBtn'><input type='hidden' value='".$theme['id']."' name='deleteThemeId' id='deleteThemeId'></form></span></div>";
         echo "</div>";
     }
 }
