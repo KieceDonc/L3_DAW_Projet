@@ -67,7 +67,7 @@
                         <p class="choice-text" id="5" numberQ="<?php echo $NumQuestion; ?>"><?php echo getReponse($xml,$NumQuestion,$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
-                        <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>&supprimer=true&idQ=<?php echo $NumQuestion ?>">Supprimer la question</a>
+                        <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>&supprimer=true&idQ=<?php echo $NumQuestion ?>">Delete question</a>
                     </div>
                 </div>
         </div>

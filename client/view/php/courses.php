@@ -62,9 +62,17 @@ function showCourses()
 function addCourse($course)
 {
   echo  "<div class='course'>
-          <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"];
-          echo "<div class='author'>" . getTranslation(80) . " " . $course["username"] . "</div>
-          <div class='description'>" . $course["description"] . "</div>
+          <div class='coursename'><a href='/coursehome?id=" . $course["id"] . "' class='courselink'>" . $course["name"] . "</a></div>
+          <div class='author'>" . getTranslation(80) . " " . $course["username"];
+          if(getAdminID($_SESSION[CONST_SESSION_EMAIL]) == 1)
+				  {
+            echo "Certified</div>";
+          }
+          else{
+          echo"</div>";
+          }
+
+          echo "<div class='description'>" . $course["description"] . "</div>
         </div>";
 }
 ?>
