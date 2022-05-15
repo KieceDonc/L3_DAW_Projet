@@ -4,8 +4,8 @@
   --handler-lvl-1-color: #586da8;  /* Conteneur de niveau 1 */
   --handler-lvl-2-color: #6284bb;  /* Conteneur de niveau 2 */
   --handler-lvl-3-color: #2292DF;  /* Conteneur de niveau 3 */
-  --text-color-lvl-1: #000000;           /* Texte 1*/
-  --text-color-lvl-2: #ffffff;    /* Texte 2*/
+  --text-color-lvl-1: #000000;     /* Texte 1*/
+  --text-color-lvl-2: #ffffff;     /* Texte 2*/
   
 
   font-family: "Quicksand Regular", serif;
