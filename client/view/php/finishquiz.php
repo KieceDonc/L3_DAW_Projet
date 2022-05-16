@@ -39,7 +39,7 @@ for($i = 1;$i<=$number;$i++)
     ?>
 
         <div class="chapter"><?php echo getTranslation(119)?></div>
-        <div class="Note"><?php if($NumChapter==63){echo getResultatBienvenue($NiceAnswer);}else{echo $NiceAnswer." on ".$number ;} ?></div>
+        <div class="Note"><?php if($NumChapter==63){echo getResultatBienvenue($NiceAnswer);}else{echo $NiceAnswer.getTranslation(130).$number ;} ?></div>
         <a href="/courses"><?php echo getTranslation(120)?></button>
         <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
         <script src="../../../../shared/js/jquery.js"></script>
