@@ -8,6 +8,7 @@
 	}
 
 	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
 ?>
 
 <nav>
@@ -20,11 +21,11 @@
 			if($pos != false)
 				$filename = substr($filename, 0, $pos); 
 		?>
-		<li <?php if($filename == "profile") echo "class='selected'";?>><a href="profile"> Profile </a></li>
-		<li <?php if($filename == "courses") echo "class='selected'";?>><a href="courses"> Your courses </a></li>
-		<li <?php if($filename == "courseBuilder") echo "class='selected'";?>><a href="courseBuilder"> Create a new course </a></li>
-		<li <?php if($filename == "mediaUpload") echo "class='selected'";?>><a href="mediaUpload"> Upload a media </a></li>
-		<li <?php if($filename == "mediaDisplay") echo "class='selected'";?>><a href="mediaDisplay"> Display your medias </a></li>
+		<li <?php if($filename == "profile") echo "class='selected'";?>><a href="profile"> <?php echo getTranslation(5); ?> </a></li>
+		<li <?php if($filename == "courses") echo "class='selected'";?>><a href="courses"> <?php echo getTranslation(135); ?> </a></li>
+		<li <?php if($filename == "courseBuilder") echo "class='selected'";?>><a href="courseBuilder"> <?php echo getTranslation(136); ?> </a></li>
+		<li <?php if($filename == "mediaUpload") echo "class='selected'";?>><a href="mediaUpload"> <?php echo getTranslation(137); ?> </a></li>
+		<li <?php if($filename == "mediaDisplay") echo "class='selected'";?>><a href="mediaDisplay"> <?php echo getTranslation(138); ?> </a></li>
 		<?php 
 				if(getAdminID($_SESSION[CONST_SESSION_EMAIL]) == 1)
 				{
@@ -35,7 +36,7 @@
 						echo "<li>";
 					}
 					
-					echo '<a href="manageContact"> Manage contacts </a></li>';
+					echo '<a href="manageContact"> '. getTranslation(139) .'</a></li>';
 				}
 		?>
 	</ul>
@@ -43,7 +44,7 @@
 <div class="content">
 	<header>
 		<p class = "Welcome">
-			Welcome <?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?> ! <br />
+		<?php echo getTranslation(140); ?> <?php echo getDBUserName($_SESSION[CONST_SESSION_EMAIL]); ?> ! <br />
 		<p>
 	</header>
 </div>

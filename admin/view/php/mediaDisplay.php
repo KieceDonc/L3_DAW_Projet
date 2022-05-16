@@ -16,11 +16,11 @@
     <?php 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/mediaInterface.php");
-    
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");
     ?>
     
     <div class="content">
-        <h1>Your medias : </h1>
+        <h1><?php echo getTranslation(141); ?></h1>
         <?php 
         showFiles()
         ?>
