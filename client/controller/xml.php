@@ -60,15 +60,15 @@
         {
             if(intval($i)<4)
             {
-                echo $i."on 10 . You can start with basics course (Certified Courses)";
+                echo $i.getTranslation(127);
             }
             else if (intval($i)<7)
             {
-                echo $i."on 10 . You can start with advanced course (Certified Courses)";
+                echo $i.getTranslation(128);
             }
             else
             {
-                echo $i."on 10 . You can start with expert course (Certified Courses)";
+                echo $i.getTranslation(129);
             }
         }
 ?>
