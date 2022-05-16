@@ -32,10 +32,10 @@ src='https://www.youtube.com/embed/tgbNymZ7vqY'>
 // Builds a div containing the image and the legend, only if the image exists in the database and is owned by the user
 function fetchImg($m) {
     $mediaId = $m[1];
-    $courseId = $_GET['id'];
+    $userId = $_SESSION[CONST_SESSION_USERID];
 
-    //if(!ownsMedia($courseId,$mediaId))    // Checks if the resource id has indeed been uploaded by this user. 
-        //return "";
+    if(!ownsMedia($userId,$mediaId))    // Checks if the resource id has indeed been uploaded by this user. 
+        return "";
     
     $file = getFile($mediaId);
     $path = getFilePath($file['content']);

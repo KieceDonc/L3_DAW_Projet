@@ -34,11 +34,4 @@
     function deleteMedia($mediaId){
         deleteMediaDB($mediaId);
     }
-
-    function addLog($logName,$log){
-        $logs  = "[".date("F j, Y, g:i a")."] [User] \t: ".$_SERVER['REMOTE_ADDR'].PHP_EOL.
-        "[".date("F j, Y, g:i a")."] [".$logName."] \t: ".$log.PHP_EOL.
-        "-------------------------------------------------------------------------------".PHP_EOL;
-        file_put_contents('/var/log/apache2/php.log', $logs, FILE_APPEND);
-    }
 ?>
