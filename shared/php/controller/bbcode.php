@@ -34,8 +34,8 @@ function fetchImg($m) {
     $mediaId = $m[1];
     $userId = $_SESSION[CONST_SESSION_USERID];
 
-    if(!ownsMedia($userId,$mediaId))    // Checks if the resource id has indeed been uploaded by this user. 
-        return "";
+    //if(!ownsMedia($userId,$mediaId))    // Checks if the resource id has indeed been uploaded by this user. 
+        //return "";
     
     $file = getFile($mediaId);
     $path = getFilePath($file['content']);
