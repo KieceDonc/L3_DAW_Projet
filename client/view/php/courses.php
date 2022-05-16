@@ -29,7 +29,7 @@ require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/langu
   <?php if(isset($_SESSION[CONST_SESSION_ISLOGGED])){
 				if($_SESSION[CONST_SESSION_ISLOGGED] == CONST_SESSION_ISLOGGED_YES){
 
-					echo "<a class='WelcomeQ' href='/doQuiz?id=53'>Click here for Welcome quiz</a>";
+					echo "<a class='WelcomeQ' href='/doQuiz?id=63'>".getTranslation(125)."</a>";
 				}
 			}
   ?>
