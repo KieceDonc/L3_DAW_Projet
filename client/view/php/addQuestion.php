@@ -54,7 +54,7 @@
                         <p class="choice-prefix">4.</p>
                         <input class="choice-text" id="4" type="text"  name="choice4"/>
                     </div>
-                        <input class="choice-valid" id="validate" type="submit" value="Submit" />
+                        <input class="choice-valid" id="validate" type="submit" value="<?php echo getTranslation(116)?>" />
                     
                 </div>
             </div>
@@ -64,7 +64,7 @@
      }
      else
      {
-         echo "<div>dont have permission to be here</div>";
+         echo "<div>".getTranslation(117)."</div>";
      }
      ?>
      <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>

@@ -58,7 +58,7 @@
                         <p class="choice-text" id="4" numberQ="<?php echo $NumQuestion; ?>"><?php echo getChoice($NumQuestion,$xml,'4',$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
-                        <p class="choice-valid">Choose a Answer :</p>
+                        <p class="choice-valid"><?php echo getTranslation(118)?></p>
                         <input class="choice-input" name="<?php echo "choice".$NumQuestion ;?>" type="hidden" readonly="readonly" numberQ="<?php echo $NumQuestion; ?>" />
                     </div>
                 </div>
@@ -66,7 +66,7 @@
             <?php 
                 };
             ?>
-            <input type="submit" value = "Submit" class="SubmitBtn"/>    
+            <input type="submit" value = <?php echo getTranslation(116)?> class="SubmitBtn"/>    
             <input type="hidden" name="numchapter" class="tohidd" value=<?php echo $NumChapter ;?> /> 
             </form>
         </div>
