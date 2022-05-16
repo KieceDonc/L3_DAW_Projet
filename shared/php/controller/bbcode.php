@@ -15,7 +15,7 @@ function convert($txt) {
             [
                 '~\[([bi])](.*?)\[/\1]~' => fn($m) => sprintf('<%1$s>%2$s</%1$s>', $m[1], $m[2]),   // If matches [b]txt[/b] or [i]txt[/i], replace with bold or italic in html
                 '~\[img=(.*?)](.*?)\[/img]~' => 'fetchImg', // If matches [img]txt[/img], passes txt into the fetchImg($m) function
-                '~\[video](.*?)\[/video]~' => 'displayVideo', // If matches [img]txt[/img], passes txt into the fetchImg($m) function
+                '~\[vid](.*?)\[/vid]~' => 'displayVideo', // If matches [img]txt[/img], passes txt into the fetchImg($m) function
             ],
             $txt,
             -1,
