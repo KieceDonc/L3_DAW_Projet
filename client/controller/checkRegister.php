@@ -100,7 +100,7 @@
         }
 
     }else{
-        redirectTo('',[]);
+        redirectTo('/',[]);
     }
 
     function redirectTo($path,$errors){
