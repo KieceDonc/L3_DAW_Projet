@@ -14,7 +14,9 @@
 
 <body>
     <?php 
-
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/view/php/header.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/admin/controller/manageContact.php"); 
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/language.php");

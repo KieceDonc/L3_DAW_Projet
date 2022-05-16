@@ -38,9 +38,9 @@ for($i = 1;$i<=$number;$i++)
         require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");
     ?>
 
-        <div class="chapter"><?php echo getTranslation(119)?></div>
-        <div class="Note"><?php if($NumChapter==63){echo getResultatBienvenue($NiceAnswer);}else{echo $NiceAnswer.getTranslation(130).$number ;} ?></div>
-        <a href="/courses"><?php echo getTranslation(120)?></button>
+        <div class="chapter">You have ended the test</div>
+        <div class="Note"><?php if($NumChapter==53){echo getResultatBienvenue($NiceAnswer);}else{echo $NiceAnswer." on ".$number ;} ?></div>
+        <a href="/courses">Go to courses</button>
         <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
         <script src="../../../../shared/js/jquery.js"></script>
         <script src="../js/shared.js"></script>

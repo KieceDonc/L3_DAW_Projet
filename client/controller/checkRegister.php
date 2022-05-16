@@ -1,7 +1,6 @@
 <?php
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/model/checkRegister.php");
     require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/const.php");
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/shared/php/controller/userInfo.php");
 
     $errors = [];
     $username = $_POST['username'];

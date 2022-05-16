@@ -119,6 +119,9 @@ a{
     background-color: #670404;
 }
 
+a{
+    text-decoration: underline;
+}
 
 #quizz{
     margin-top:40px;

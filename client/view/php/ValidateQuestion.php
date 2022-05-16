@@ -39,10 +39,10 @@ addQuestion($id,$ques,$Difficulty,$isok,$Answer,$choice1,$choice2,$choice3,$choi
   </head>
   <body>
 	      <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/header.php");?>
-        <div><?php echo getTranslation(124)?></div>
-        <a style="color:black" href="addQuestion?id=<?php echo $id; ?>"><?php echo getTranslation(121)?></a>
+        <div>You have entered a question for the course <?php echo $id ."</div>";?>
+        <a style="color:black" href="addQuestion?id=<?php echo $id; ?>">Re add question</a>
         </br>
-        <a style="color:black" href="coursehome?id=<?php echo $id; ?>"><?php echo getTranslation(120)?></a>
+        <a style="color:black" href="coursehome?id=<?php echo $id; ?>">Return to course</a>
         <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
     </body>
     <script src="../../../../shared/js/jquery.js"></script>

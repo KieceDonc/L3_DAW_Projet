@@ -112,7 +112,7 @@ function printThemes($idsection){
     foreach($themes as $theme){
         $link = $theme["name"];
         if($GLOBALS['isStudent'] || $GLOBALS['isAdmin'])
-            $link = "<a style='text-decoration:underline' href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a>";
+            $link = "<a href='/theme?id=" . $theme["id"] . "&type=lesson' class='courselink'>" . $theme["name"] . "</a>";
         $icon = "<img src='../media/lesson.png' alt='lesson icon' class='icon'>";
         echo "<form class='deleteTheme' action='/forms/removetheme' method='post'><div class='theme'>" . $icon . "<span class='spanTheme'> Theme " . $theme["ord"] . " · ".$link. "<input type='submit' value='-' class='delThemeBtn' name='delThemeBtn'><input type='hidden' value='".$theme['id']."' name='deleteThemeId' id='deleteThemeId'></span></div></form>";
         echo "</div>";
