@@ -65,7 +65,7 @@
                         <p class="choice-text" id="4" numberQ="<?php echo $NumQuestion; ?>"><?php echo getChoice($NumQuestion,$xml,'4',$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
-                        <p class="choice-prefix">Reponse.</p>
+                        <p class="choice-prefix"><?php echo getTranslation(126)?></p>
                         <p class="choice-text" id="5" numberQ="<?php echo $NumQuestion; ?>"><?php echo getReponse($xml,$NumQuestion,$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
