@@ -84,7 +84,7 @@
             <img alt="pdp" src="../media/pdpEvan.png" > <figcaption> Petit Evan </figcaption>
         </figure>
         <figure>
-            <img alt="pdp" src="../media/pdpTest.png" > <figcaption> Bertoux Hugo </figcaption>
+            <img alt="pdp" src="../media/pdpHugo.png" > <figcaption> Bertoux Hugo </figcaption>
         </figure>
         <figure>
             <img alt="pdp" src="../media/pdpMaxence.png" > <figcaption> Perion Maxence </figcaption>
