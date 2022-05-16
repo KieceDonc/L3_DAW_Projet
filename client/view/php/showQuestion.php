@@ -39,7 +39,7 @@
 
         $number = getCountXML($xml,$NumChapter);
 
-        echo "<div class='ChapterName'>There is the quiz for the course : ".getName($xml)."</div>";
+        echo "<div class='ChapterName'>".getTranslation(123).getName($xml)."</div>";
         if($GLOBALS['isAdmin'])        
         {
         for($NumQuestion;$NumQuestion<=$number;$NumQuestion++)
@@ -69,20 +69,20 @@
                         <p class="choice-text" id="5" numberQ="<?php echo $NumQuestion; ?>"><?php echo getReponse($xml,$NumQuestion,$NumChapter); ?></p>
                     </div>
                     <div class="choice-container">
-                        <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>&supprimer=true&idQ=<?php echo $NumQuestion ?>">Delete question</a>
+                        <a class="SuppBtn" href="showQuestion.php?id=<?php echo $NumChapter ?>&supprimer=true&idQ=<?php echo $NumQuestion ?>"><?php echo getTranslation(122)?></a>
                     </div>
                 </div>
         </div>
             <?php 
             };?>
             <div>
-            <a style="color:black" href="addQuestion?id=<?php echo $NumChapter; ?>">Add Question</a>
+            <a style="color:black" href="addQuestion?id=<?php echo $NumChapter; ?>"><?php echo getTranslation(121)?></a>
             </div>
             <?php
             }
             else 
             {
-                echo "Dont have right to be here";
+                echo getTranslation(117);
             }
             ?>
             <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . "/client/view/php/footer.php"); ?>
